@@ -526,10 +526,10 @@ LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a
  *(.debug_frame)
  .debug_frame   0x00000000      0x310 TWI_Slave.o
 
-.debug_str      0x00000000      0x7c6
+.debug_str      0x00000000      0x7d0
  *(.debug_str)
- .debug_str     0x00000000      0x7c6 TWI_Slave.o
-                                0x8a7 (size before relaxing)
+ .debug_str     0x00000000      0x7d0 TWI_Slave.o
+                                0x8b1 (size before relaxing)
 
 .debug_loc      0x00000000     0x11eb
  *(.debug_loc)
