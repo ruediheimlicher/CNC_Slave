@@ -1,0 +1,4419 @@
+
+TWI_Slave.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000004a  00800100  000017fa  0000188e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000017fa  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          000000ea  0080014a  0080014a  000018d8  2**0
+                  ALLOC
+  3 .stab         00000750  00000000  00000000  000018d8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  4 .stabstr      00000082  00000000  00000000  00002028  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_aranges 00000198  00000000  00000000  000020aa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_pubnames 0000045b  00000000  00000000  00002242  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_info   00001afb  00000000  00000000  0000269d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_abbrev 000003b9  00000000  00000000  00004198  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line   00002274  00000000  00000000  00004551  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_frame  00000310  00000000  00000000  000067c8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_str    000007c6  00000000  00000000  00006ad8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_loc    000011eb  00000000  00000000  0000729e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 13 .debug_ranges 00000250  00000000  00000000  00008489  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+        {
+                /* LCD Backlight on */
+                LCD_PORT |= _BV(LCD_BACKLIGHT_PIN);                
+        } else {
+                /*  LCD Backlight off */
+                LCD_PORT &= ~_BV(LCD_BACKLIGHT_PIN);
+       0:	b0 c0       	rjmp	.+352    	; 0x162 <__ctors_end>
+       2:	00 00       	nop
+       4:	cd c0       	rjmp	.+410    	; 0x1a0 <__bad_interrupt>
+       6:	00 00       	nop
+       8:	cb c0       	rjmp	.+406    	; 0x1a0 <__bad_interrupt>
+       a:	00 00       	nop
+       c:	c9 c0       	rjmp	.+402    	; 0x1a0 <__bad_interrupt>
+       e:	00 00       	nop
+      10:	c7 c0       	rjmp	.+398    	; 0x1a0 <__bad_interrupt>
+      12:	00 00       	nop
+      14:	c5 c0       	rjmp	.+394    	; 0x1a0 <__bad_interrupt>
+      16:	00 00       	nop
+      18:	c3 c0       	rjmp	.+390    	; 0x1a0 <__bad_interrupt>
+      1a:	00 00       	nop
+      1c:	c1 c0       	rjmp	.+386    	; 0x1a0 <__bad_interrupt>
+      1e:	00 00       	nop
+      20:	bf c0       	rjmp	.+382    	; 0x1a0 <__bad_interrupt>
+      22:	00 00       	nop
+      24:	bd c0       	rjmp	.+378    	; 0x1a0 <__bad_interrupt>
+      26:	00 00       	nop
+      28:	34 c3       	rjmp	.+1640   	; 0x692 <__vector_10>
+      2a:	00 00       	nop
+      2c:	6a c3       	rjmp	.+1748   	; 0x702 <__vector_11>
+      2e:	00 00       	nop
+      30:	b7 c0       	rjmp	.+366    	; 0x1a0 <__bad_interrupt>
+      32:	00 00       	nop
+      34:	b5 c0       	rjmp	.+362    	; 0x1a0 <__bad_interrupt>
+      36:	00 00       	nop
+      38:	b3 c0       	rjmp	.+358    	; 0x1a0 <__bad_interrupt>
+      3a:	00 00       	nop
+      3c:	fb c4       	rjmp	.+2550   	; 0xa34 <__vector_15>
+      3e:	00 00       	nop
+      40:	af c0       	rjmp	.+350    	; 0x1a0 <__bad_interrupt>
+      42:	00 00       	nop
+      44:	ad c0       	rjmp	.+346    	; 0x1a0 <__bad_interrupt>
+      46:	00 00       	nop
+      48:	ab c0       	rjmp	.+342    	; 0x1a0 <__bad_interrupt>
+      4a:	00 00       	nop
+      4c:	a9 c0       	rjmp	.+338    	; 0x1a0 <__bad_interrupt>
+      4e:	00 00       	nop
+      50:	a7 c0       	rjmp	.+334    	; 0x1a0 <__bad_interrupt>
+      52:	00 00       	nop
+      54:	a5 c0       	rjmp	.+330    	; 0x1a0 <__bad_interrupt>
+      56:	00 00       	nop
+      58:	a3 c0       	rjmp	.+326    	; 0x1a0 <__bad_interrupt>
+      5a:	00 00       	nop
+      5c:	a1 c0       	rjmp	.+322    	; 0x1a0 <__bad_interrupt>
+      5e:	00 00       	nop
+      60:	9f c0       	rjmp	.+318    	; 0x1a0 <__bad_interrupt>
+      62:	00 00       	nop
+      64:	9d c0       	rjmp	.+314    	; 0x1a0 <__bad_interrupt>
+      66:	00 00       	nop
+      68:	9b c0       	rjmp	.+310    	; 0x1a0 <__bad_interrupt>
+      6a:	00 00       	nop
+      6c:	99 c0       	rjmp	.+306    	; 0x1a0 <__bad_interrupt>
+      6e:	00 00       	nop
+      70:	97 c0       	rjmp	.+302    	; 0x1a0 <__bad_interrupt>
+      72:	00 00       	nop
+      74:	95 c0       	rjmp	.+298    	; 0x1a0 <__bad_interrupt>
+      76:	00 00       	nop
+      78:	93 c0       	rjmp	.+294    	; 0x1a0 <__bad_interrupt>
+      7a:	00 00       	nop
+      7c:	91 c0       	rjmp	.+290    	; 0x1a0 <__bad_interrupt>
+      7e:	00 00       	nop
+      80:	8f c0       	rjmp	.+286    	; 0x1a0 <__bad_interrupt>
+      82:	00 00       	nop
+      84:	8d c0       	rjmp	.+282    	; 0x1a0 <__bad_interrupt>
+      86:	00 00       	nop
+      88:	8b c0       	rjmp	.+278    	; 0x1a0 <__bad_interrupt>
+      8a:	00 00       	nop
+      8c:	89 c0       	rjmp	.+274    	; 0x1a0 <__bad_interrupt>
+      8e:	00 00       	nop
+      90:	87 c0       	rjmp	.+270    	; 0x1a0 <__bad_interrupt>
+      92:	00 00       	nop
+      94:	85 c0       	rjmp	.+266    	; 0x1a0 <__bad_interrupt>
+      96:	00 00       	nop
+
+00000098 <descriptor_list>:
+      98:	00 01 00 00 d1 00 12 00 02 00 00 e3 00 29 00 22     .............)."
+      a8:	00 00 0c 01 1c 00 21 00 00 f5 00 09 00 03 00 00     ......!.........
+      b8:	28 01 04 01 03 09 04 2c 01 22 02 03 09 04 50 01     (......,."....P.
+      c8:	10                                                  .
+
+000000c9 <endpoint_config_table>:
+      c9:	01 c1 26 01 c0 26 00 00                             ..&..&..
+
+000000d1 <device_descriptor>:
+      d1:	12 01 00 02 00 00 00 20 c0 16 80 04 00 01 01 02     ....... ........
+      e1:	00 01                                               ..
+
+000000e3 <config1_descriptor>:
+      e3:	09 02 29 00 01 01 00 c0 32 09 04 00 00 02 03 00     ..).....2.......
+      f3:	00 00 09 21 11 01 00 01 22 1c 00 07 05 81 03 20     ...!...."...... 
+     103:	00 02 07 05 02 03 20 00 08                          ...... ..
+
+0000010c <rawhid_hid_report_desc>:
+     10c:	06 ab ff 0a 00 02 a1 01 75 08 15 00 26 ff 00 95     ........u...&...
+     11c:	20 09 01 81 02 95 20 09 02 91 02 c0                  ..... .....
+
+00000128 <string0>:
+     128:	04 03 09 04                                         ....
+
+0000012c <string1>:
+     12c:	22 03 52 00 75 00 65 00 64 00 69 00 5f 00 48 00     ".R.u.e.d.i._.H.
+     13c:	65 00 69 00 6d 00 6c 00 69 00 63 00 68 00 65 00     e.i.m.l.i.c.h.e.
+     14c:	72 00 00 00                                         r...
+
+00000150 <string2>:
+     150:	10 03 43 00 4e 00 43 00 5f 00 55 00 53 00 42 00     ..C.N.C._.U.S.B.
+     160:	00 00                                               ..
+
+00000162 <__ctors_end>:
+     162:	11 24       	eor	r1, r1
+     164:	1f be       	out	0x3f, r1	; 63
+     166:	cf ef       	ldi	r28, 0xFF	; 255
+     168:	d0 e2       	ldi	r29, 0x20	; 32
+     16a:	de bf       	out	0x3e, r29	; 62
+     16c:	cd bf       	out	0x3d, r28	; 61
+
+0000016e <__do_copy_data>:
+     16e:	11 e0       	ldi	r17, 0x01	; 1
+     170:	a0 e0       	ldi	r26, 0x00	; 0
+     172:	b1 e0       	ldi	r27, 0x01	; 1
+     174:	ea ef       	ldi	r30, 0xFA	; 250
+     176:	f7 e1       	ldi	r31, 0x17	; 23
+     178:	00 e0       	ldi	r16, 0x00	; 0
+     17a:	0b bf       	out	0x3b, r16	; 59
+     17c:	02 c0       	rjmp	.+4      	; 0x182 <__do_copy_data+0x14>
+     17e:	07 90       	elpm	r0, Z+
+     180:	0d 92       	st	X+, r0
+     182:	aa 34       	cpi	r26, 0x4A	; 74
+     184:	b1 07       	cpc	r27, r17
+     186:	d9 f7       	brne	.-10     	; 0x17e <__do_copy_data+0x10>
+
+00000188 <__do_clear_bss>:
+     188:	12 e0       	ldi	r17, 0x02	; 2
+     18a:	aa e4       	ldi	r26, 0x4A	; 74
+     18c:	b1 e0       	ldi	r27, 0x01	; 1
+     18e:	01 c0       	rjmp	.+2      	; 0x192 <.do_clear_bss_start>
+
+00000190 <.do_clear_bss_loop>:
+     190:	1d 92       	st	X+, r1
+
+00000192 <.do_clear_bss_start>:
+     192:	a4 33       	cpi	r26, 0x34	; 52
+     194:	b1 07       	cpc	r27, r17
+     196:	e1 f7       	brne	.-8      	; 0x190 <.do_clear_bss_loop>
+     198:	0e 94 db 08 	call	0x11b6	; 0x11b6 <main>
+     19c:	0c 94 fb 0b 	jmp	0x17f6	; 0x17f6 <_exit>
+
+000001a0 <__bad_interrupt>:
+     1a0:	2f cf       	rjmp	.-418    	; 0x0 <__vectors>
+
+000001a2 <lcd_load_byte>:
+*/
+void 
+lcd_load_byte(uint8_t out_byte)
+{
+        /* make sure clock is low */
+        LCD_PORT &= ~_BV(LCD_CLOCK_PIN);
+     1a2:	8f 98       	cbi	0x11, 7	; 17
+     1a4:	20 e0       	ldi	r18, 0x00	; 0
+     1a6:	30 e0       	ldi	r19, 0x00	; 0
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+     1a8:	4a e6       	ldi	r20, 0x6A	; 106
+        int i;
+        for(i=0; i<8; i++)
+        {
+                /* loop through bits */
+                
+                if (out_byte & 0x80)	// Maske 1000 0000
+     1aa:	87 ff       	sbrs	r24, 7
+     1ac:	02 c0       	rjmp	.+4      	; 0x1b2 <lcd_load_byte+0x10>
+                {
+                        /* this bit is high */
+                        LCD_PORT |=_BV(LCD_RSDS_PIN); 
+     1ae:	8d 9a       	sbi	0x11, 5	; 17
+     1b0:	01 c0       	rjmp	.+2      	; 0x1b4 <lcd_load_byte+0x12>
+                }
+                else
+                {
+                        /* this bit is low */
+                        LCD_PORT &= ~_BV(LCD_RSDS_PIN);
+     1b2:	8d 98       	cbi	0x11, 5	; 17
+                }
+                out_byte = out_byte << 1;
+                
+                /* pulse the the shift register clock */
+                LCD_PORT |= _BV(LCD_CLOCK_PIN);	
+     1b4:	8f 9a       	sbi	0x11, 7	; 17
+     1b6:	94 2f       	mov	r25, r20
+     1b8:	9a 95       	dec	r25
+     1ba:	f1 f7       	brne	.-4      	; 0x1b8 <lcd_load_byte+0x16>
+				_delay_us(20);											//CNC 20 statt 40
+				//Clk des Schieberegisters
+                LCD_PORT &= ~_BV(LCD_CLOCK_PIN);
+     1bc:	8f 98       	cbi	0x11, 7	; 17
+{
+        /* make sure clock is low */
+        LCD_PORT &= ~_BV(LCD_CLOCK_PIN);
+        
+        int i;
+        for(i=0; i<8; i++)
+     1be:	2f 5f       	subi	r18, 0xFF	; 255
+     1c0:	3f 4f       	sbci	r19, 0xFF	; 255
+     1c2:	28 30       	cpi	r18, 0x08	; 8
+     1c4:	31 05       	cpc	r19, r1
+     1c6:	11 f0       	breq	.+4      	; 0x1cc <lcd_load_byte+0x2a>
+                else
+                {
+                        /* this bit is low */
+                        LCD_PORT &= ~_BV(LCD_RSDS_PIN);
+                }
+                out_byte = out_byte << 1;
+     1c8:	88 0f       	add	r24, r24
+     1ca:	ef cf       	rjmp	.-34     	; 0x1aa <lcd_load_byte+0x8>
+     1cc:	08 95       	ret
+
+000001ce <lcd_send_cmd>:
+*/
+void
+lcd_send_cmd(void)
+{
+        /* Data in '164 is a command, so RS must be low (0) */
+        LCD_PORT &= ~_BV(LCD_RSDS_PIN); 
+     1ce:	8d 98       	cbi	0x11, 5	; 17
+*/
+void
+lcd_strobe_E(void)
+{
+        /* strobe E signal */
+        LCD_PORT |= _BV(LCD_ENABLE_PIN);
+     1d0:	8e 9a       	sbi	0x11, 6	; 17
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+     1d2:	88 e0       	ldi	r24, 0x08	; 8
+     1d4:	97 e0       	ldi	r25, 0x07	; 7
+     1d6:	01 97       	sbiw	r24, 0x01	; 1
+     1d8:	f1 f7       	brne	.-4      	; 0x1d6 <lcd_send_cmd+0x8>
+        _delay_us(450); 
+	//	lcddelay_ms(100);
+        LCD_PORT &= ~_BV(LCD_ENABLE_PIN);
+     1da:	8e 98       	cbi	0x11, 6	; 17
+     1dc:	88 ec       	ldi	r24, 0xC8	; 200
+     1de:	90 e0       	ldi	r25, 0x00	; 0
+     1e0:	01 97       	sbiw	r24, 0x01	; 1
+     1e2:	f1 f7       	brne	.-4      	; 0x1e0 <lcd_send_cmd+0x12>
+{
+        /* Data in '164 is a command, so RS must be low (0) */
+        LCD_PORT &= ~_BV(LCD_RSDS_PIN); 
+        lcd_strobe_E();	
+        _delay_us(50);
+}
+     1e4:	08 95       	ret
+
+000001e6 <lcd_initialize>:
+ 
+ 
+*/
+void
+lcd_initialize(uint8_t set_function, uint8_t set_entry_mode, uint8_t on)
+{
+     1e6:	ef 92       	push	r14
+     1e8:	ff 92       	push	r15
+     1ea:	0f 93       	push	r16
+     1ec:	1f 93       	push	r17
+     1ee:	08 2f       	mov	r16, r24
+     1f0:	f6 2e       	mov	r15, r22
+     1f2:	e4 2e       	mov	r14, r20
+     1f4:	8c e2       	ldi	r24, 0x2C	; 44
+     1f6:	91 e0       	ldi	r25, 0x01	; 1
+     1f8:	20 e9       	ldi	r18, 0x90	; 144
+     1fa:	31 e0       	ldi	r19, 0x01	; 1
+     1fc:	f9 01       	movw	r30, r18
+     1fe:	31 97       	sbiw	r30, 0x01	; 1
+     200:	f1 f7       	brne	.-4      	; 0x1fe <lcd_initialize+0x18>
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+     202:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+     204:	d9 f7       	brne	.-10     	; 0x1fc <lcd_initialize+0x16>
+        /* 20ms delay while LCD powers on */
+        _delay_ms(30);	   
+        
+        /* Write 0x30 to LCD and wait 5 mS for the instruction to complete */
+        lcd_load_byte(0x30);
+     206:	80 e3       	ldi	r24, 0x30	; 48
+     208:	cc df       	rcall	.-104    	; 0x1a2 <lcd_load_byte>
+        lcd_send_cmd();
+     20a:	e1 df       	rcall	.-62     	; 0x1ce <lcd_send_cmd>
+     20c:	80 e4       	ldi	r24, 0x40	; 64
+     20e:	9c e9       	ldi	r25, 0x9C	; 156
+     210:	01 97       	sbiw	r24, 0x01	; 1
+     212:	f1 f7       	brne	.-4      	; 0x210 <lcd_initialize+0x2a>
+        _delay_ms(10);
+        
+        /* Write 0x30 to LCD and wait 160 uS for instruction to complete */
+        lcd_load_byte(0x30);
+     214:	80 e3       	ldi	r24, 0x30	; 48
+     216:	c5 df       	rcall	.-118    	; 0x1a2 <lcd_load_byte>
+        lcd_send_cmd();
+     218:	da df       	rcall	.-76     	; 0x1ce <lcd_send_cmd>
+    can be achieved.
+*/
+void
+_delay_loop_1(uint8_t __count)
+{
+	__asm__ volatile (
+     21a:	8a e6       	ldi	r24, 0x6A	; 106
+     21c:	8a 95       	dec	r24
+     21e:	f1 f7       	brne	.-4      	; 0x21c <lcd_initialize+0x36>
+        _delay_us(20);
+        
+        /* Write 0x30 AGAIN to LCD and wait 160 uS */
+        lcd_load_byte(0x30);
+     220:	80 e3       	ldi	r24, 0x30	; 48
+     222:	bf df       	rcall	.-130    	; 0x1a2 <lcd_load_byte>
+        lcd_send_cmd();
+     224:	d4 df       	rcall	.-88     	; 0x1ce <lcd_send_cmd>
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+     226:	80 e8       	ldi	r24, 0x80	; 128
+     228:	92 e0       	ldi	r25, 0x02	; 2
+     22a:	01 97       	sbiw	r24, 0x01	; 1
+     22c:	f1 f7       	brne	.-4      	; 0x22a <lcd_initialize+0x44>
+        _delay_us(160);
+        
+        /* Set function and wait 40uS */
+        lcd_load_byte(set_function);
+     22e:	80 2f       	mov	r24, r16
+     230:	b8 df       	rcall	.-144    	; 0x1a2 <lcd_load_byte>
+        lcd_send_cmd();
+     232:	cd df       	rcall	.-102    	; 0x1ce <lcd_send_cmd>
+        
+        /* Turn off the display and wait 40uS */
+        lcd_load_byte(LCD_CMD_OFF);    
+     234:	88 e0       	ldi	r24, 0x08	; 8
+     236:	b5 df       	rcall	.-150    	; 0x1a2 <lcd_load_byte>
+        lcd_send_cmd();
+     238:	ca df       	rcall	.-108    	; 0x1ce <lcd_send_cmd>
+        
+        /* Clear display and wait 1.64mS */
+        lcd_load_byte(LCD_CMD_CLEAR);    
+     23a:	81 e0       	ldi	r24, 0x01	; 1
+     23c:	b2 df       	rcall	.-156    	; 0x1a2 <lcd_load_byte>
+        lcd_send_cmd();
+     23e:	c7 df       	rcall	.-114    	; 0x1ce <lcd_send_cmd>
+     240:	00 e8       	ldi	r16, 0x80	; 128
+     242:	1e e3       	ldi	r17, 0x3E	; 62
+     244:	c8 01       	movw	r24, r16
+     246:	01 97       	sbiw	r24, 0x01	; 1
+     248:	f1 f7       	brne	.-4      	; 0x246 <lcd_initialize+0x60>
+        _delay_ms(4);
+        
+        /* Set entry mode and wait 40uS */
+        lcd_load_byte(set_entry_mode);    
+     24a:	8f 2d       	mov	r24, r15
+     24c:	aa df       	rcall	.-172    	; 0x1a2 <lcd_load_byte>
+        lcd_send_cmd();
+     24e:	bf df       	rcall	.-130    	; 0x1ce <lcd_send_cmd>
+     250:	c8 01       	movw	r24, r16
+     252:	01 97       	sbiw	r24, 0x01	; 1
+     254:	f1 f7       	brne	.-4      	; 0x252 <lcd_initialize+0x6c>
+        _delay_ms(4);
+        /* Turn display back on and wait 40uS */
+        lcd_load_byte(on);    
+     256:	8e 2d       	mov	r24, r14
+     258:	a4 df       	rcall	.-184    	; 0x1a2 <lcd_load_byte>
+        lcd_send_cmd();
+     25a:	b9 df       	rcall	.-142    	; 0x1ce <lcd_send_cmd>
+     25c:	80 e9       	ldi	r24, 0x90	; 144
+     25e:	91 e0       	ldi	r25, 0x01	; 1
+     260:	20 e9       	ldi	r18, 0x90	; 144
+     262:	31 e0       	ldi	r19, 0x01	; 1
+     264:	f9 01       	movw	r30, r18
+     266:	31 97       	sbiw	r30, 0x01	; 1
+     268:	f1 f7       	brne	.-4      	; 0x266 <lcd_initialize+0x80>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+     26a:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+     26c:	d9 f7       	brne	.-10     	; 0x264 <lcd_initialize+0x7e>
+		_delay_ms(40);
+};
+     26e:	1f 91       	pop	r17
+     270:	0f 91       	pop	r16
+     272:	ff 90       	pop	r15
+     274:	ef 90       	pop	r14
+     276:	08 95       	ret
+
+00000278 <lcd_send_char>:
+*/
+void
+lcd_send_char(void)
+{
+        /* Data in '164 is a character, so RS must be high (1) */
+        LCD_PORT |= _BV(LCD_RSDS_PIN); 
+     278:	8d 9a       	sbi	0x11, 5	; 17
+*/
+void
+lcd_strobe_E(void)
+{
+        /* strobe E signal */
+        LCD_PORT |= _BV(LCD_ENABLE_PIN);
+     27a:	8e 9a       	sbi	0x11, 6	; 17
+     27c:	88 e0       	ldi	r24, 0x08	; 8
+     27e:	97 e0       	ldi	r25, 0x07	; 7
+     280:	01 97       	sbiw	r24, 0x01	; 1
+     282:	f1 f7       	brne	.-4      	; 0x280 <lcd_send_char+0x8>
+        _delay_us(450); 
+	//	lcddelay_ms(100);
+        LCD_PORT &= ~_BV(LCD_ENABLE_PIN);
+     284:	8e 98       	cbi	0x11, 6	; 17
+     286:	88 ec       	ldi	r24, 0xC8	; 200
+     288:	90 e0       	ldi	r25, 0x00	; 0
+     28a:	01 97       	sbiw	r24, 0x01	; 1
+     28c:	f1 f7       	brne	.-4      	; 0x28a <lcd_send_char+0x12>
+{
+        /* Data in '164 is a character, so RS must be high (1) */
+        LCD_PORT |= _BV(LCD_RSDS_PIN); 
+        lcd_strobe_E();
+        _delay_us(50);
+}
+     28e:	08 95       	ret
+
+00000290 <lcd_putc>:
+ *      c               The byte (character) to display
+*/
+void 
+lcd_putc(const char c)
+{
+        lcd_load_byte(c);
+     290:	88 df       	rcall	.-240    	; 0x1a2 <lcd_load_byte>
+        lcd_send_char();
+}
+     292:	f2 cf       	rjmp	.-28     	; 0x278 <lcd_send_char>
+
+00000294 <lcd_puts>:
+Input:    string to be displayed
+Returns:  none
+*************************************************************************/
+void lcd_puts(const char *s)
+/* print string on lcd (no auto linefeed) */
+{
+     294:	cf 93       	push	r28
+     296:	df 93       	push	r29
+     298:	ec 01       	movw	r28, r24
+     29a:	01 c0       	rjmp	.+2      	; 0x29e <lcd_puts+0xa>
+    register char c;
+
+    while ( (c = *s++) ) {
+        lcd_putc(c);
+     29c:	f9 df       	rcall	.-14     	; 0x290 <lcd_putc>
+void lcd_puts(const char *s)
+/* print string on lcd (no auto linefeed) */
+{
+    register char c;
+
+    while ( (c = *s++) ) {
+     29e:	89 91       	ld	r24, Y+
+     2a0:	88 23       	and	r24, r24
+     2a2:	e1 f7       	brne	.-8      	; 0x29c <lcd_puts+0x8>
+        lcd_putc(c);
+    }
+
+}/* lcd_puts */
+     2a4:	df 91       	pop	r29
+     2a6:	cf 91       	pop	r28
+     2a8:	08 95       	ret
+
+000002aa <lcd_gotoxy>:
+          y  vertical position    (0: first line)
+Returns:  none
+*************************************************************************/
+void lcd_gotoxy(uint8_t x, uint8_t y)
+{
+    if ( y==0 ) 
+     2aa:	66 23       	and	r22, r22
+     2ac:	11 f4       	brne	.+4      	; 0x2b2 <lcd_gotoxy+0x8>
+		{
+		
+        lcd_load_byte((1<<LCD_DDRAM)+LCD_START_LINE1+x);
+     2ae:	80 58       	subi	r24, 0x80	; 128
+     2b0:	01 c0       	rjmp	.+2      	; 0x2b4 <lcd_gotoxy+0xa>
+		lcd_send_cmd();
+		}
+    else
+	{
+       
+		lcd_load_byte((1<<LCD_DDRAM)+LCD_START_LINE2+x);
+     2b2:	80 54       	subi	r24, 0x40	; 64
+     2b4:	76 df       	rcall	.-276    	; 0x1a2 <lcd_load_byte>
+		lcd_send_cmd();
+     2b6:	8b cf       	rjmp	.-234    	; 0x1ce <lcd_send_cmd>
+
+000002b8 <lcd_cls>:
+
+}/* lcd_gotoxy */
+
+// Display loeschen
+void lcd_cls(void)   
+{
+     2b8:	0f 93       	push	r16
+     2ba:	1f 93       	push	r17
+	lcd_load_byte(0x01);
+     2bc:	81 e0       	ldi	r24, 0x01	; 1
+     2be:	71 df       	rcall	.-286    	; 0x1a2 <lcd_load_byte>
+	lcd_send_cmd();
+     2c0:	86 df       	rcall	.-244    	; 0x1ce <lcd_send_cmd>
+     2c2:	00 e0       	ldi	r16, 0x00	; 0
+     2c4:	1f e0       	ldi	r17, 0x0F	; 15
+     2c6:	c8 01       	movw	r24, r16
+     2c8:	01 97       	sbiw	r24, 0x01	; 1
+     2ca:	f1 f7       	brne	.-4      	; 0x2c8 <lcd_cls+0x10>
+     2cc:	c8 01       	movw	r24, r16
+     2ce:	01 97       	sbiw	r24, 0x01	; 1
+     2d0:	f1 f7       	brne	.-4      	; 0x2ce <lcd_cls+0x16>
+//	lcd_write(0x02,0);   	// B 0000 0010 => Display loeschen
+	lcddelay_ms(2);			// dauert eine Weile, Wert ausprobiert
+
+//	lcd_write(0x01,0);   	// B 0000 0001 => Cursor Home
+	lcd_load_byte(0x02);
+     2d2:	82 e0       	ldi	r24, 0x02	; 2
+     2d4:	66 df       	rcall	.-308    	; 0x1a2 <lcd_load_byte>
+	lcd_send_cmd();
+     2d6:	7b df       	rcall	.-266    	; 0x1ce <lcd_send_cmd>
+     2d8:	c8 01       	movw	r24, r16
+     2da:	01 97       	sbiw	r24, 0x01	; 1
+     2dc:	f1 f7       	brne	.-4      	; 0x2da <lcd_cls+0x22>
+     2de:	c8 01       	movw	r24, r16
+     2e0:	01 97       	sbiw	r24, 0x01	; 1
+     2e2:	f1 f7       	brne	.-4      	; 0x2e0 <lcd_cls+0x28>
+	
+	lcddelay_ms(2);			// dauert eine Weile, Wert ausprobiert
+}
+     2e4:	1f 91       	pop	r17
+     2e6:	0f 91       	pop	r16
+     2e8:	08 95       	ret
+
+000002ea <lcd_clr_line>:
+
+
+// Linie Loeschen
+void lcd_clr_line(uint8_t Linie)
+{
+     2ea:	0f 93       	push	r16
+     2ec:	1f 93       	push	r17
+     2ee:	08 2f       	mov	r16, r24
+	lcd_gotoxy(0,Linie);
+     2f0:	80 e0       	ldi	r24, 0x00	; 0
+     2f2:	60 2f       	mov	r22, r16
+     2f4:	da df       	rcall	.-76     	; 0x2aa <lcd_gotoxy>
+     2f6:	10 e0       	ldi	r17, 0x00	; 0
+	uint8_t i=0;
+	for (i=0;i<LCD_DISP_LENGTH;i++)
+	{
+		lcd_putc(' ');
+     2f8:	80 e2       	ldi	r24, 0x20	; 32
+     2fa:	ca df       	rcall	.-108    	; 0x290 <lcd_putc>
+// Linie Loeschen
+void lcd_clr_line(uint8_t Linie)
+{
+	lcd_gotoxy(0,Linie);
+	uint8_t i=0;
+	for (i=0;i<LCD_DISP_LENGTH;i++)
+     2fc:	1f 5f       	subi	r17, 0xFF	; 255
+     2fe:	14 31       	cpi	r17, 0x14	; 20
+     300:	d9 f7       	brne	.-10     	; 0x2f8 <lcd_clr_line+0xe>
+	{
+		lcd_putc(' ');
+	}
+	lcd_gotoxy(0,Linie);
+     302:	80 e0       	ldi	r24, 0x00	; 0
+     304:	60 2f       	mov	r22, r16
+     306:	d1 df       	rcall	.-94     	; 0x2aa <lcd_gotoxy>
+     308:	80 e0       	ldi	r24, 0x00	; 0
+     30a:	9f e0       	ldi	r25, 0x0F	; 15
+     30c:	fc 01       	movw	r30, r24
+     30e:	31 97       	sbiw	r30, 0x01	; 1
+     310:	f1 f7       	brne	.-4      	; 0x30e <lcd_clr_line+0x24>
+     312:	01 97       	sbiw	r24, 0x01	; 1
+     314:	f1 f7       	brne	.-4      	; 0x312 <lcd_clr_line+0x28>
+	lcddelay_ms(2);
+}	// Linie Loeschen
+     316:	1f 91       	pop	r17
+     318:	0f 91       	pop	r16
+     31a:	08 95       	ret
+
+0000031c <usb_init>:
+
+
+// initialize USB
+void usb_init(void)
+{
+	HW_CONFIG();
+     31c:	81 e8       	ldi	r24, 0x81	; 129
+     31e:	80 93 d7 00 	sts	0x00D7, r24
+	USB_FREEZE();				// enable USB
+     322:	80 ea       	ldi	r24, 0xA0	; 160
+     324:	80 93 d8 00 	sts	0x00D8, r24
+	PLL_CONFIG();				// config PLL
+     328:	86 e1       	ldi	r24, 0x16	; 22
+     32a:	89 bd       	out	0x29, r24	; 41
+        while (!(PLLCSR & (1<<PLOCK))) ;	// wait for PLL lock
+     32c:	09 b4       	in	r0, 0x29	; 41
+     32e:	00 fe       	sbrs	r0, 0
+     330:	fd cf       	rjmp	.-6      	; 0x32c <usb_init+0x10>
+        USB_CONFIG();				// start USB clock
+     332:	80 e9       	ldi	r24, 0x90	; 144
+     334:	80 93 d8 00 	sts	0x00D8, r24
+        UDCON = 0;				// enable attach resistor
+     338:	10 92 e0 00 	sts	0x00E0, r1
+	usb_configuration = 0;
+     33c:	10 92 ad 01 	sts	0x01AD, r1
+        UDIEN = (1<<EORSTE)|(1<<SOFE);
+     340:	8c e0       	ldi	r24, 0x0C	; 12
+     342:	80 93 e2 00 	sts	0x00E2, r24
+	sei();
+     346:	78 94       	sei
+}
+     348:	08 95       	ret
+
+0000034a <usb_rawhid_recv>:
+}
+
+
+// receive a packet, with timeout
+int8_t usb_rawhid_recv(uint8_t *buffer, uint8_t timeout)
+{
+     34a:	dc 01       	movw	r26, r24
+	uint8_t intr_state;
+
+	// if we're not online (enumerated and configured), error
+	if (!usb_configuration) return -1;
+     34c:	80 91 ad 01 	lds	r24, 0x01AD
+     350:	88 23       	and	r24, r24
+     352:	09 f4       	brne	.+2      	; 0x356 <usb_rawhid_recv+0xc>
+     354:	ca c0       	rjmp	.+404    	; 0x4ea <usb_rawhid_recv+0x1a0>
+	intr_state = SREG;
+     356:	9f b7       	in	r25, 0x3f	; 63
+	cli();
+     358:	f8 94       	cli
+	rx_timeout_count = timeout;
+     35a:	60 93 ae 01 	sts	0x01AE, r22
+	UENUM = RAWHID_RX_ENDPOINT;
+     35e:	82 e0       	ldi	r24, 0x02	; 2
+     360:	80 93 e9 00 	sts	0x00E9, r24
+		SREG = intr_state;
+		if (rx_timeout_count == 0) return 0;
+		if (!usb_configuration) return -1;
+		intr_state = SREG;
+		cli();
+		UENUM = RAWHID_RX_ENDPOINT;
+     364:	22 e0       	ldi	r18, 0x02	; 2
+	rx_timeout_count = timeout;
+	UENUM = RAWHID_RX_ENDPOINT;
+	// wait for data to be available in the FIFO
+	while (1) 
+   {
+		if (UEINTX & (1<<RWAL)) break;
+     366:	80 91 e8 00 	lds	r24, 0x00E8
+     36a:	85 fd       	sbrc	r24, 5
+     36c:	10 c0       	rjmp	.+32     	; 0x38e <usb_rawhid_recv+0x44>
+		SREG = intr_state;
+     36e:	9f bf       	out	0x3f, r25	; 63
+		if (rx_timeout_count == 0) return 0;
+     370:	80 91 ae 01 	lds	r24, 0x01AE
+     374:	88 23       	and	r24, r24
+     376:	09 f4       	brne	.+2      	; 0x37a <usb_rawhid_recv+0x30>
+     378:	b9 c0       	rjmp	.+370    	; 0x4ec <usb_rawhid_recv+0x1a2>
+		if (!usb_configuration) return -1;
+     37a:	80 91 ad 01 	lds	r24, 0x01AD
+     37e:	88 23       	and	r24, r24
+     380:	09 f4       	brne	.+2      	; 0x384 <usb_rawhid_recv+0x3a>
+     382:	b3 c0       	rjmp	.+358    	; 0x4ea <usb_rawhid_recv+0x1a0>
+		intr_state = SREG;
+     384:	9f b7       	in	r25, 0x3f	; 63
+		cli();
+     386:	f8 94       	cli
+		UENUM = RAWHID_RX_ENDPOINT;
+     388:	20 93 e9 00 	sts	0x00E9, r18
+     38c:	ec cf       	rjmp	.-40     	; 0x366 <usb_rawhid_recv+0x1c>
+	#endif
+	#if (RAWHID_RX_SIZE >= 33)
+	*buffer++ = UEDATX;
+	#endif
+	#if (RAWHID_RX_SIZE >= 32)
+	*buffer++ = UEDATX;
+     38e:	80 91 f1 00 	lds	r24, 0x00F1
+     392:	fd 01       	movw	r30, r26
+     394:	81 93       	st	Z+, r24
+	#endif
+	#if (RAWHID_RX_SIZE >= 31)
+	*buffer++ = UEDATX;
+     396:	80 91 f1 00 	lds	r24, 0x00F1
+     39a:	11 96       	adiw	r26, 0x01	; 1
+     39c:	8c 93       	st	X, r24
+     39e:	df 01       	movw	r26, r30
+     3a0:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 30)
+	*buffer++ = UEDATX;
+     3a2:	80 91 f1 00 	lds	r24, 0x00F1
+     3a6:	81 83       	std	Z+1, r24	; 0x01
+     3a8:	fd 01       	movw	r30, r26
+     3aa:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 29)
+	*buffer++ = UEDATX;
+     3ac:	80 91 f1 00 	lds	r24, 0x00F1
+     3b0:	11 96       	adiw	r26, 0x01	; 1
+     3b2:	8c 93       	st	X, r24
+     3b4:	df 01       	movw	r26, r30
+     3b6:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 28)
+	*buffer++ = UEDATX;
+     3b8:	80 91 f1 00 	lds	r24, 0x00F1
+     3bc:	81 83       	std	Z+1, r24	; 0x01
+     3be:	fd 01       	movw	r30, r26
+     3c0:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 27)
+	*buffer++ = UEDATX;
+     3c2:	80 91 f1 00 	lds	r24, 0x00F1
+     3c6:	11 96       	adiw	r26, 0x01	; 1
+     3c8:	8c 93       	st	X, r24
+     3ca:	df 01       	movw	r26, r30
+     3cc:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 26)
+	*buffer++ = UEDATX;
+     3ce:	80 91 f1 00 	lds	r24, 0x00F1
+     3d2:	81 83       	std	Z+1, r24	; 0x01
+     3d4:	fd 01       	movw	r30, r26
+     3d6:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 25)
+	*buffer++ = UEDATX;
+     3d8:	80 91 f1 00 	lds	r24, 0x00F1
+     3dc:	11 96       	adiw	r26, 0x01	; 1
+     3de:	8c 93       	st	X, r24
+     3e0:	df 01       	movw	r26, r30
+     3e2:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 24)
+	*buffer++ = UEDATX;
+     3e4:	80 91 f1 00 	lds	r24, 0x00F1
+     3e8:	81 83       	std	Z+1, r24	; 0x01
+     3ea:	fd 01       	movw	r30, r26
+     3ec:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 23)
+	*buffer++ = UEDATX;
+     3ee:	80 91 f1 00 	lds	r24, 0x00F1
+     3f2:	11 96       	adiw	r26, 0x01	; 1
+     3f4:	8c 93       	st	X, r24
+     3f6:	df 01       	movw	r26, r30
+     3f8:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 22)
+	*buffer++ = UEDATX;
+     3fa:	80 91 f1 00 	lds	r24, 0x00F1
+     3fe:	81 83       	std	Z+1, r24	; 0x01
+     400:	fd 01       	movw	r30, r26
+     402:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 21)
+	*buffer++ = UEDATX;
+     404:	80 91 f1 00 	lds	r24, 0x00F1
+     408:	11 96       	adiw	r26, 0x01	; 1
+     40a:	8c 93       	st	X, r24
+     40c:	df 01       	movw	r26, r30
+     40e:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 20)
+	*buffer++ = UEDATX;
+     410:	80 91 f1 00 	lds	r24, 0x00F1
+     414:	81 83       	std	Z+1, r24	; 0x01
+     416:	fd 01       	movw	r30, r26
+     418:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 19)
+	*buffer++ = UEDATX;
+     41a:	80 91 f1 00 	lds	r24, 0x00F1
+     41e:	11 96       	adiw	r26, 0x01	; 1
+     420:	8c 93       	st	X, r24
+     422:	df 01       	movw	r26, r30
+     424:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 18)
+	*buffer++ = UEDATX;
+     426:	80 91 f1 00 	lds	r24, 0x00F1
+     42a:	81 83       	std	Z+1, r24	; 0x01
+     42c:	fd 01       	movw	r30, r26
+     42e:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 17)
+	*buffer++ = UEDATX;
+     430:	80 91 f1 00 	lds	r24, 0x00F1
+     434:	11 96       	adiw	r26, 0x01	; 1
+     436:	8c 93       	st	X, r24
+     438:	df 01       	movw	r26, r30
+     43a:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 16)
+	*buffer++ = UEDATX;
+     43c:	80 91 f1 00 	lds	r24, 0x00F1
+     440:	81 83       	std	Z+1, r24	; 0x01
+     442:	fd 01       	movw	r30, r26
+     444:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 15)
+	*buffer++ = UEDATX;
+     446:	80 91 f1 00 	lds	r24, 0x00F1
+     44a:	11 96       	adiw	r26, 0x01	; 1
+     44c:	8c 93       	st	X, r24
+     44e:	df 01       	movw	r26, r30
+     450:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 14)
+	*buffer++ = UEDATX;
+     452:	80 91 f1 00 	lds	r24, 0x00F1
+     456:	81 83       	std	Z+1, r24	; 0x01
+     458:	fd 01       	movw	r30, r26
+     45a:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 13)
+	*buffer++ = UEDATX;
+     45c:	80 91 f1 00 	lds	r24, 0x00F1
+     460:	11 96       	adiw	r26, 0x01	; 1
+     462:	8c 93       	st	X, r24
+     464:	df 01       	movw	r26, r30
+     466:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 12)
+	*buffer++ = UEDATX;
+     468:	80 91 f1 00 	lds	r24, 0x00F1
+     46c:	81 83       	std	Z+1, r24	; 0x01
+     46e:	fd 01       	movw	r30, r26
+     470:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 11)
+	*buffer++ = UEDATX;
+     472:	80 91 f1 00 	lds	r24, 0x00F1
+     476:	11 96       	adiw	r26, 0x01	; 1
+     478:	8c 93       	st	X, r24
+     47a:	df 01       	movw	r26, r30
+     47c:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 10)
+	*buffer++ = UEDATX;
+     47e:	80 91 f1 00 	lds	r24, 0x00F1
+     482:	81 83       	std	Z+1, r24	; 0x01
+     484:	fd 01       	movw	r30, r26
+     486:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 9)
+	*buffer++ = UEDATX;
+     488:	80 91 f1 00 	lds	r24, 0x00F1
+     48c:	11 96       	adiw	r26, 0x01	; 1
+     48e:	8c 93       	st	X, r24
+     490:	df 01       	movw	r26, r30
+     492:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 8)
+	*buffer++ = UEDATX;
+     494:	80 91 f1 00 	lds	r24, 0x00F1
+     498:	81 83       	std	Z+1, r24	; 0x01
+     49a:	fd 01       	movw	r30, r26
+     49c:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 7)
+	*buffer++ = UEDATX;
+     49e:	80 91 f1 00 	lds	r24, 0x00F1
+     4a2:	11 96       	adiw	r26, 0x01	; 1
+     4a4:	8c 93       	st	X, r24
+     4a6:	df 01       	movw	r26, r30
+     4a8:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 6)
+	*buffer++ = UEDATX;
+     4aa:	80 91 f1 00 	lds	r24, 0x00F1
+     4ae:	81 83       	std	Z+1, r24	; 0x01
+     4b0:	fd 01       	movw	r30, r26
+     4b2:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 5)
+	*buffer++ = UEDATX;
+     4b4:	80 91 f1 00 	lds	r24, 0x00F1
+     4b8:	11 96       	adiw	r26, 0x01	; 1
+     4ba:	8c 93       	st	X, r24
+     4bc:	df 01       	movw	r26, r30
+     4be:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 4)
+	*buffer++ = UEDATX;
+     4c0:	80 91 f1 00 	lds	r24, 0x00F1
+     4c4:	81 83       	std	Z+1, r24	; 0x01
+     4c6:	fd 01       	movw	r30, r26
+     4c8:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_RX_SIZE >= 3)
+	*buffer++ = UEDATX;
+     4ca:	80 91 f1 00 	lds	r24, 0x00F1
+     4ce:	11 96       	adiw	r26, 0x01	; 1
+     4d0:	8c 93       	st	X, r24
+	#endif
+	#if (RAWHID_RX_SIZE >= 2)
+	*buffer++ = UEDATX;
+     4d2:	80 91 f1 00 	lds	r24, 0x00F1
+     4d6:	81 83       	std	Z+1, r24	; 0x01
+	#endif
+	#if (RAWHID_RX_SIZE >= 1)
+	*buffer++ = UEDATX;
+     4d8:	80 91 f1 00 	lds	r24, 0x00F1
+     4dc:	82 83       	std	Z+2, r24	; 0x02
+	#endif
+	// release the buffer
+	UEINTX = 0x6B;
+     4de:	8b e6       	ldi	r24, 0x6B	; 107
+     4e0:	80 93 e8 00 	sts	0x00E8, r24
+	SREG = intr_state;
+     4e4:	9f bf       	out	0x3f, r25	; 63
+     4e6:	80 e2       	ldi	r24, 0x20	; 32
+     4e8:	08 95       	ret
+	return RAWHID_RX_SIZE;
+     4ea:	8f ef       	ldi	r24, 0xFF	; 255
+}
+     4ec:	08 95       	ret
+
+000004ee <usb_rawhid_send>:
+
+// send a packet, with timeout
+int8_t usb_rawhid_send(const uint8_t *buffer, uint8_t timeout)
+{
+     4ee:	dc 01       	movw	r26, r24
+	uint8_t intr_state;
+
+	// if we're not online (enumerated and configured), error
+	if (!usb_configuration) return -1;
+     4f0:	80 91 ad 01 	lds	r24, 0x01AD
+     4f4:	88 23       	and	r24, r24
+     4f6:	09 f4       	brne	.+2      	; 0x4fa <usb_rawhid_send+0xc>
+     4f8:	ca c0       	rjmp	.+404    	; 0x68e <usb_rawhid_send+0x1a0>
+	intr_state = SREG;
+     4fa:	9f b7       	in	r25, 0x3f	; 63
+	cli();
+     4fc:	f8 94       	cli
+	tx_timeout_count = timeout;
+     4fe:	60 93 af 01 	sts	0x01AF, r22
+	UENUM = RAWHID_TX_ENDPOINT;
+     502:	81 e0       	ldi	r24, 0x01	; 1
+     504:	80 93 e9 00 	sts	0x00E9, r24
+		SREG = intr_state;
+		if (tx_timeout_count == 0) return 0;
+		if (!usb_configuration) return -1;
+		intr_state = SREG;
+		cli();
+		UENUM = RAWHID_TX_ENDPOINT;
+     508:	21 e0       	ldi	r18, 0x01	; 1
+	tx_timeout_count = timeout;
+	UENUM = RAWHID_TX_ENDPOINT;
+	// wait for the FIFO to be ready to accept data
+	while (1)
+   {
+		if (UEINTX & (1<<RWAL)) break;
+     50a:	80 91 e8 00 	lds	r24, 0x00E8
+     50e:	85 fd       	sbrc	r24, 5
+     510:	10 c0       	rjmp	.+32     	; 0x532 <usb_rawhid_send+0x44>
+		SREG = intr_state;
+     512:	9f bf       	out	0x3f, r25	; 63
+		if (tx_timeout_count == 0) return 0;
+     514:	80 91 af 01 	lds	r24, 0x01AF
+     518:	88 23       	and	r24, r24
+     51a:	09 f4       	brne	.+2      	; 0x51e <usb_rawhid_send+0x30>
+     51c:	b9 c0       	rjmp	.+370    	; 0x690 <usb_rawhid_send+0x1a2>
+		if (!usb_configuration) return -1;
+     51e:	80 91 ad 01 	lds	r24, 0x01AD
+     522:	88 23       	and	r24, r24
+     524:	09 f4       	brne	.+2      	; 0x528 <usb_rawhid_send+0x3a>
+     526:	b3 c0       	rjmp	.+358    	; 0x68e <usb_rawhid_send+0x1a0>
+		intr_state = SREG;
+     528:	9f b7       	in	r25, 0x3f	; 63
+		cli();
+     52a:	f8 94       	cli
+		UENUM = RAWHID_TX_ENDPOINT;
+     52c:	20 93 e9 00 	sts	0x00E9, r18
+     530:	ec cf       	rjmp	.-40     	; 0x50a <usb_rawhid_send+0x1c>
+	#endif
+	#if (RAWHID_TX_SIZE >= 33)
+	UEDATX = *buffer++;
+	#endif
+	#if (RAWHID_TX_SIZE >= 32)
+	UEDATX = *buffer++;
+     532:	fd 01       	movw	r30, r26
+     534:	81 91       	ld	r24, Z+
+     536:	80 93 f1 00 	sts	0x00F1, r24
+	#endif
+	#if (RAWHID_TX_SIZE >= 31)
+	UEDATX = *buffer++;
+     53a:	11 96       	adiw	r26, 0x01	; 1
+     53c:	8c 91       	ld	r24, X
+     53e:	80 93 f1 00 	sts	0x00F1, r24
+     542:	df 01       	movw	r26, r30
+     544:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 30)
+	UEDATX = *buffer++;
+     546:	81 81       	ldd	r24, Z+1	; 0x01
+     548:	80 93 f1 00 	sts	0x00F1, r24
+     54c:	fd 01       	movw	r30, r26
+     54e:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 29)
+	UEDATX = *buffer++;
+     550:	11 96       	adiw	r26, 0x01	; 1
+     552:	8c 91       	ld	r24, X
+     554:	80 93 f1 00 	sts	0x00F1, r24
+     558:	df 01       	movw	r26, r30
+     55a:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 28)
+	UEDATX = *buffer++;
+     55c:	81 81       	ldd	r24, Z+1	; 0x01
+     55e:	80 93 f1 00 	sts	0x00F1, r24
+     562:	fd 01       	movw	r30, r26
+     564:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 27)
+	UEDATX = *buffer++;
+     566:	11 96       	adiw	r26, 0x01	; 1
+     568:	8c 91       	ld	r24, X
+     56a:	80 93 f1 00 	sts	0x00F1, r24
+     56e:	df 01       	movw	r26, r30
+     570:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 26)
+	UEDATX = *buffer++;
+     572:	81 81       	ldd	r24, Z+1	; 0x01
+     574:	80 93 f1 00 	sts	0x00F1, r24
+     578:	fd 01       	movw	r30, r26
+     57a:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 25)
+	UEDATX = *buffer++;
+     57c:	11 96       	adiw	r26, 0x01	; 1
+     57e:	8c 91       	ld	r24, X
+     580:	80 93 f1 00 	sts	0x00F1, r24
+     584:	df 01       	movw	r26, r30
+     586:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 24)
+	UEDATX = *buffer++;
+     588:	81 81       	ldd	r24, Z+1	; 0x01
+     58a:	80 93 f1 00 	sts	0x00F1, r24
+     58e:	fd 01       	movw	r30, r26
+     590:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 23)
+	UEDATX = *buffer++;
+     592:	11 96       	adiw	r26, 0x01	; 1
+     594:	8c 91       	ld	r24, X
+     596:	80 93 f1 00 	sts	0x00F1, r24
+     59a:	df 01       	movw	r26, r30
+     59c:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 22)
+	UEDATX = *buffer++;
+     59e:	81 81       	ldd	r24, Z+1	; 0x01
+     5a0:	80 93 f1 00 	sts	0x00F1, r24
+     5a4:	fd 01       	movw	r30, r26
+     5a6:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 21)
+	UEDATX = *buffer++;
+     5a8:	11 96       	adiw	r26, 0x01	; 1
+     5aa:	8c 91       	ld	r24, X
+     5ac:	80 93 f1 00 	sts	0x00F1, r24
+     5b0:	df 01       	movw	r26, r30
+     5b2:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 20)
+	UEDATX = *buffer++;
+     5b4:	81 81       	ldd	r24, Z+1	; 0x01
+     5b6:	80 93 f1 00 	sts	0x00F1, r24
+     5ba:	fd 01       	movw	r30, r26
+     5bc:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 19)
+	UEDATX = *buffer++;
+     5be:	11 96       	adiw	r26, 0x01	; 1
+     5c0:	8c 91       	ld	r24, X
+     5c2:	80 93 f1 00 	sts	0x00F1, r24
+     5c6:	df 01       	movw	r26, r30
+     5c8:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 18)
+	UEDATX = *buffer++;
+     5ca:	81 81       	ldd	r24, Z+1	; 0x01
+     5cc:	80 93 f1 00 	sts	0x00F1, r24
+     5d0:	fd 01       	movw	r30, r26
+     5d2:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 17)
+	UEDATX = *buffer++;
+     5d4:	11 96       	adiw	r26, 0x01	; 1
+     5d6:	8c 91       	ld	r24, X
+     5d8:	80 93 f1 00 	sts	0x00F1, r24
+     5dc:	df 01       	movw	r26, r30
+     5de:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 16)
+	UEDATX = *buffer++;
+     5e0:	81 81       	ldd	r24, Z+1	; 0x01
+     5e2:	80 93 f1 00 	sts	0x00F1, r24
+     5e6:	fd 01       	movw	r30, r26
+     5e8:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 15)
+	UEDATX = *buffer++;
+     5ea:	11 96       	adiw	r26, 0x01	; 1
+     5ec:	8c 91       	ld	r24, X
+     5ee:	80 93 f1 00 	sts	0x00F1, r24
+     5f2:	df 01       	movw	r26, r30
+     5f4:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 14)
+	UEDATX = *buffer++;
+     5f6:	81 81       	ldd	r24, Z+1	; 0x01
+     5f8:	80 93 f1 00 	sts	0x00F1, r24
+     5fc:	fd 01       	movw	r30, r26
+     5fe:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 13)
+	UEDATX = *buffer++;
+     600:	11 96       	adiw	r26, 0x01	; 1
+     602:	8c 91       	ld	r24, X
+     604:	80 93 f1 00 	sts	0x00F1, r24
+     608:	df 01       	movw	r26, r30
+     60a:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 12)
+	UEDATX = *buffer++;
+     60c:	81 81       	ldd	r24, Z+1	; 0x01
+     60e:	80 93 f1 00 	sts	0x00F1, r24
+     612:	fd 01       	movw	r30, r26
+     614:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 11)
+	UEDATX = *buffer++;
+     616:	11 96       	adiw	r26, 0x01	; 1
+     618:	8c 91       	ld	r24, X
+     61a:	80 93 f1 00 	sts	0x00F1, r24
+     61e:	df 01       	movw	r26, r30
+     620:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 10)
+	UEDATX = *buffer++;
+     622:	81 81       	ldd	r24, Z+1	; 0x01
+     624:	80 93 f1 00 	sts	0x00F1, r24
+     628:	fd 01       	movw	r30, r26
+     62a:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 9)
+	UEDATX = *buffer++;
+     62c:	11 96       	adiw	r26, 0x01	; 1
+     62e:	8c 91       	ld	r24, X
+     630:	80 93 f1 00 	sts	0x00F1, r24
+     634:	df 01       	movw	r26, r30
+     636:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 8)
+	UEDATX = *buffer++;
+     638:	81 81       	ldd	r24, Z+1	; 0x01
+     63a:	80 93 f1 00 	sts	0x00F1, r24
+     63e:	fd 01       	movw	r30, r26
+     640:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 7)
+	UEDATX = *buffer++;
+     642:	11 96       	adiw	r26, 0x01	; 1
+     644:	8c 91       	ld	r24, X
+     646:	80 93 f1 00 	sts	0x00F1, r24
+     64a:	df 01       	movw	r26, r30
+     64c:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 6)
+	UEDATX = *buffer++;
+     64e:	81 81       	ldd	r24, Z+1	; 0x01
+     650:	80 93 f1 00 	sts	0x00F1, r24
+     654:	fd 01       	movw	r30, r26
+     656:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 5)
+	UEDATX = *buffer++;
+     658:	11 96       	adiw	r26, 0x01	; 1
+     65a:	8c 91       	ld	r24, X
+     65c:	80 93 f1 00 	sts	0x00F1, r24
+     660:	df 01       	movw	r26, r30
+     662:	11 96       	adiw	r26, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 4)
+	UEDATX = *buffer++;
+     664:	81 81       	ldd	r24, Z+1	; 0x01
+     666:	80 93 f1 00 	sts	0x00F1, r24
+     66a:	fd 01       	movw	r30, r26
+     66c:	31 96       	adiw	r30, 0x01	; 1
+	#endif
+	#if (RAWHID_TX_SIZE >= 3)
+	UEDATX = *buffer++;
+     66e:	11 96       	adiw	r26, 0x01	; 1
+     670:	8c 91       	ld	r24, X
+     672:	80 93 f1 00 	sts	0x00F1, r24
+	#endif
+	#if (RAWHID_TX_SIZE >= 2)
+	UEDATX = *buffer++;
+     676:	81 81       	ldd	r24, Z+1	; 0x01
+     678:	80 93 f1 00 	sts	0x00F1, r24
+	#endif
+	#if (RAWHID_TX_SIZE >= 1)
+	UEDATX = *buffer++;
+     67c:	82 81       	ldd	r24, Z+2	; 0x02
+     67e:	80 93 f1 00 	sts	0x00F1, r24
+	#endif
+	// transmit it now
+	UEINTX = 0x3A;
+     682:	8a e3       	ldi	r24, 0x3A	; 58
+     684:	80 93 e8 00 	sts	0x00E8, r24
+	SREG = intr_state;
+     688:	9f bf       	out	0x3f, r25	; 63
+     68a:	80 e2       	ldi	r24, 0x20	; 32
+     68c:	08 95       	ret
+	return RAWHID_TX_SIZE;
+     68e:	8f ef       	ldi	r24, 0xFF	; 255
+}
+     690:	08 95       	ret
+
+00000692 <__vector_10>:
+
+// USB Device Interrupt - handle all device-level events
+// the transmit buffer flushing is triggered by the start of frame
+//
+ISR(USB_GEN_vect)
+{
+     692:	1f 92       	push	r1
+     694:	0f 92       	push	r0
+     696:	0f b6       	in	r0, 0x3f	; 63
+     698:	0f 92       	push	r0
+     69a:	11 24       	eor	r1, r1
+     69c:	8f 93       	push	r24
+     69e:	9f 93       	push	r25
+	uint8_t intbits, t;
+
+        intbits = UDINT;
+     6a0:	80 91 e1 00 	lds	r24, 0x00E1
+        UDINT = 0;
+     6a4:	10 92 e1 00 	sts	0x00E1, r1
+        if (intbits & (1<<EORSTI)) {
+     6a8:	98 2f       	mov	r25, r24
+     6aa:	93 ff       	sbrs	r25, 3
+     6ac:	0f c0       	rjmp	.+30     	; 0x6cc <__vector_10+0x3a>
+		UENUM = 0;
+     6ae:	10 92 e9 00 	sts	0x00E9, r1
+		UECONX = 1;
+     6b2:	81 e0       	ldi	r24, 0x01	; 1
+     6b4:	80 93 eb 00 	sts	0x00EB, r24
+		UECFG0X = EP_TYPE_CONTROL;
+     6b8:	10 92 ec 00 	sts	0x00EC, r1
+		UECFG1X = EP_SIZE(ENDPOINT0_SIZE) | EP_SINGLE_BUFFER;
+     6bc:	82 e2       	ldi	r24, 0x22	; 34
+     6be:	80 93 ed 00 	sts	0x00ED, r24
+		UEIENX = (1<<RXSTPE);
+     6c2:	88 e0       	ldi	r24, 0x08	; 8
+     6c4:	80 93 f0 00 	sts	0x00F0, r24
+		usb_configuration = 0;
+     6c8:	10 92 ad 01 	sts	0x01AD, r1
+        }
+	if ((intbits & (1<<SOFI)) && usb_configuration) {
+     6cc:	92 ff       	sbrs	r25, 2
+     6ce:	12 c0       	rjmp	.+36     	; 0x6f4 <__vector_10+0x62>
+     6d0:	80 91 ad 01 	lds	r24, 0x01AD
+     6d4:	88 23       	and	r24, r24
+     6d6:	71 f0       	breq	.+28     	; 0x6f4 <__vector_10+0x62>
+		t = rx_timeout_count;
+     6d8:	80 91 ae 01 	lds	r24, 0x01AE
+		if (t) rx_timeout_count = --t;
+     6dc:	88 23       	and	r24, r24
+     6de:	19 f0       	breq	.+6      	; 0x6e6 <__vector_10+0x54>
+     6e0:	81 50       	subi	r24, 0x01	; 1
+     6e2:	80 93 ae 01 	sts	0x01AE, r24
+		t = tx_timeout_count;
+     6e6:	80 91 af 01 	lds	r24, 0x01AF
+		if (t) tx_timeout_count = --t;
+     6ea:	88 23       	and	r24, r24
+     6ec:	19 f0       	breq	.+6      	; 0x6f4 <__vector_10+0x62>
+     6ee:	81 50       	subi	r24, 0x01	; 1
+     6f0:	80 93 af 01 	sts	0x01AF, r24
+	}
+}
+     6f4:	9f 91       	pop	r25
+     6f6:	8f 91       	pop	r24
+     6f8:	0f 90       	pop	r0
+     6fa:	0f be       	out	0x3f, r0	; 63
+     6fc:	0f 90       	pop	r0
+     6fe:	1f 90       	pop	r1
+     700:	18 95       	reti
+
+00000702 <__vector_11>:
+// USB Endpoint Interrupt - endpoint 0 is handled here.  The
+// other endpoints are manipulated by the user-callable
+// functions, and the start-of-frame interrupt.
+//
+ISR(USB_COM_vect)
+{
+     702:	1f 92       	push	r1
+     704:	0f 92       	push	r0
+     706:	0f b6       	in	r0, 0x3f	; 63
+     708:	0f 92       	push	r0
+     70a:	0b b6       	in	r0, 0x3b	; 59
+     70c:	0f 92       	push	r0
+     70e:	11 24       	eor	r1, r1
+     710:	0f 93       	push	r16
+     712:	1f 93       	push	r17
+     714:	2f 93       	push	r18
+     716:	3f 93       	push	r19
+     718:	4f 93       	push	r20
+     71a:	5f 93       	push	r21
+     71c:	6f 93       	push	r22
+     71e:	7f 93       	push	r23
+     720:	8f 93       	push	r24
+     722:	9f 93       	push	r25
+     724:	af 93       	push	r26
+     726:	bf 93       	push	r27
+     728:	ef 93       	push	r30
+     72a:	ff 93       	push	r31
+	uint16_t wLength;
+	uint16_t desc_val;
+	const uint8_t *desc_addr;
+	uint8_t	desc_length;
+
+        UENUM = 0;
+     72c:	10 92 e9 00 	sts	0x00E9, r1
+	intbits = UEINTX;
+     730:	80 91 e8 00 	lds	r24, 0x00E8
+        if (intbits & (1<<RXSTPI)) {
+     734:	83 ff       	sbrs	r24, 3
+     736:	3a c1       	rjmp	.+628    	; 0x9ac <__vector_11+0x2aa>
+                bmRequestType = UEDATX;
+     738:	40 91 f1 00 	lds	r20, 0x00F1
+                bRequest = UEDATX;
+     73c:	30 91 f1 00 	lds	r19, 0x00F1
+                wValue = UEDATX;
+     740:	80 91 f1 00 	lds	r24, 0x00F1
+     744:	a8 2f       	mov	r26, r24
+     746:	b0 e0       	ldi	r27, 0x00	; 0
+                wValue |= (UEDATX << 8);
+     748:	20 91 f1 00 	lds	r18, 0x00F1
+     74c:	92 2f       	mov	r25, r18
+     74e:	80 e0       	ldi	r24, 0x00	; 0
+     750:	a8 2b       	or	r26, r24
+     752:	b9 2b       	or	r27, r25
+                wIndex = UEDATX;
+     754:	80 91 f1 00 	lds	r24, 0x00F1
+     758:	68 2f       	mov	r22, r24
+     75a:	70 e0       	ldi	r23, 0x00	; 0
+                wIndex |= (UEDATX << 8);
+     75c:	20 91 f1 00 	lds	r18, 0x00F1
+     760:	92 2f       	mov	r25, r18
+     762:	80 e0       	ldi	r24, 0x00	; 0
+     764:	68 2b       	or	r22, r24
+     766:	79 2b       	or	r23, r25
+                wLength = UEDATX;
+     768:	10 91 f1 00 	lds	r17, 0x00F1
+                wLength |= (UEDATX << 8);
+     76c:	00 91 f1 00 	lds	r16, 0x00F1
+                UEINTX = ~((1<<RXSTPI) | (1<<RXOUTI) | (1<<TXINI));
+     770:	82 ef       	ldi	r24, 0xF2	; 242
+     772:	80 93 e8 00 	sts	0x00E8, r24
+                if (bRequest == GET_DESCRIPTOR) {
+     776:	36 30       	cpi	r19, 0x06	; 6
+     778:	09 f0       	breq	.+2      	; 0x77c <__vector_11+0x7a>
+     77a:	5a c0       	rjmp	.+180    	; 0x830 <__vector_11+0x12e>
+     77c:	2f e9       	ldi	r18, 0x9F	; 159
+     77e:	30 e0       	ldi	r19, 0x00	; 0
+     780:	a9 01       	movw	r20, r18
+     782:	45 50       	subi	r20, 0x05	; 5
+     784:	50 40       	sbci	r21, 0x00	; 0
+			list = (const uint8_t *)descriptor_list;
+			for (i=0; ; i++) {
+				if (i >= NUM_DESC_LIST) {
+					UECONX = (1<<STALLRQ)|(1<<EPEN);  //stall
+					return;
+     786:	f9 01       	movw	r30, r18
+     788:	37 97       	sbiw	r30, 0x07	; 7
+				}
+				desc_val = pgm_read_word(list);
+     78a:	85 91       	lpm	r24, Z+
+     78c:	94 91       	lpm	r25, Z+
+				if (desc_val != wValue) {
+     78e:	8a 17       	cp	r24, r26
+     790:	9b 07       	cpc	r25, r27
+     792:	01 f5       	brne	.+64     	; 0x7d4 <__vector_11+0xd2>
+					list += sizeof(struct descriptor_list_struct);
+					continue;
+				}
+				list += 2;
+				desc_val = pgm_read_word(list);
+     794:	fa 01       	movw	r30, r20
+     796:	85 91       	lpm	r24, Z+
+     798:	94 91       	lpm	r25, Z+
+				if (desc_val != wIndex) {
+     79a:	86 17       	cp	r24, r22
+     79c:	97 07       	cpc	r25, r23
+     79e:	d1 f4       	brne	.+52     	; 0x7d4 <__vector_11+0xd2>
+					list += sizeof(struct descriptor_list_struct)-2;
+					continue;
+				}
+				list += 2;
+     7a0:	9a 01       	movw	r18, r20
+     7a2:	2e 5f       	subi	r18, 0xFE	; 254
+     7a4:	3f 4f       	sbci	r19, 0xFF	; 255
+				desc_addr = (const uint8_t *)pgm_read_word(list);
+     7a6:	f9 01       	movw	r30, r18
+     7a8:	65 91       	lpm	r22, Z+
+     7aa:	74 91       	lpm	r23, Z+
+				list += 2;
+				desc_length = pgm_read_byte(list);
+     7ac:	2e 5f       	subi	r18, 0xFE	; 254
+     7ae:	3f 4f       	sbci	r19, 0xFF	; 255
+     7b0:	f9 01       	movw	r30, r18
+     7b2:	44 91       	lpm	r20, Z+
+                bRequest = UEDATX;
+                wValue = UEDATX;
+                wValue |= (UEDATX << 8);
+                wIndex = UEDATX;
+                wIndex |= (UEDATX << 8);
+                wLength = UEDATX;
+     7b4:	21 2f       	mov	r18, r17
+     7b6:	30 e0       	ldi	r19, 0x00	; 0
+				desc_addr = (const uint8_t *)pgm_read_word(list);
+				list += 2;
+				desc_length = pgm_read_byte(list);
+				break;
+			}
+			len = (wLength < 256) ? wLength : 255;
+     7b8:	90 2f       	mov	r25, r16
+     7ba:	80 e0       	ldi	r24, 0x00	; 0
+     7bc:	28 2b       	or	r18, r24
+     7be:	39 2b       	or	r19, r25
+     7c0:	2f 3f       	cpi	r18, 0xFF	; 255
+     7c2:	31 05       	cpc	r19, r1
+     7c4:	19 f0       	breq	.+6      	; 0x7cc <__vector_11+0xca>
+     7c6:	10 f0       	brcs	.+4      	; 0x7cc <__vector_11+0xca>
+     7c8:	2f ef       	ldi	r18, 0xFF	; 255
+     7ca:	30 e0       	ldi	r19, 0x00	; 0
+     7cc:	24 17       	cp	r18, r20
+     7ce:	58 f4       	brcc	.+22     	; 0x7e6 <__vector_11+0xe4>
+     7d0:	42 2f       	mov	r20, r18
+     7d2:	09 c0       	rjmp	.+18     	; 0x7e6 <__vector_11+0xe4>
+     7d4:	29 5f       	subi	r18, 0xF9	; 249
+     7d6:	3f 4f       	sbci	r19, 0xFF	; 255
+     7d8:	49 5f       	subi	r20, 0xF9	; 249
+     7da:	5f 4f       	sbci	r21, 0xFF	; 255
+                wLength |= (UEDATX << 8);
+                UEINTX = ~((1<<RXSTPI) | (1<<RXOUTI) | (1<<TXINI));
+                if (bRequest == GET_DESCRIPTOR) {
+			list = (const uint8_t *)descriptor_list;
+			for (i=0; ; i++) {
+				if (i >= NUM_DESC_LIST) {
+     7dc:	f0 e0       	ldi	r31, 0x00	; 0
+     7de:	20 3d       	cpi	r18, 0xD0	; 208
+     7e0:	3f 07       	cpc	r19, r31
+     7e2:	89 f6       	brne	.-94     	; 0x786 <__vector_11+0x84>
+     7e4:	e3 c0       	rjmp	.+454    	; 0x9ac <__vector_11+0x2aa>
+{
+	while (!(UEINTX & (1<<TXINI))) ;
+}
+static inline void usb_send_in(void)
+{
+	UEINTX = ~(1<<TXINI);
+     7e6:	5e ef       	ldi	r21, 0xFE	; 254
+			len = (wLength < 256) ? wLength : 255;
+			if (len > desc_length) len = desc_length;
+			do {
+				// wait for host ready for IN packet
+				do {
+					i = UEINTX;
+     7e8:	80 91 e8 00 	lds	r24, 0x00E8
+				} while (!(i & ((1<<TXINI)|(1<<RXOUTI))));
+     7ec:	28 2f       	mov	r18, r24
+     7ee:	30 e0       	ldi	r19, 0x00	; 0
+     7f0:	c9 01       	movw	r24, r18
+     7f2:	85 70       	andi	r24, 0x05	; 5
+     7f4:	90 70       	andi	r25, 0x00	; 0
+     7f6:	89 2b       	or	r24, r25
+     7f8:	b9 f3       	breq	.-18     	; 0x7e8 <__vector_11+0xe6>
+				if (i & (1<<RXOUTI)) return;	// abort
+     7fa:	22 fd       	sbrc	r18, 2
+     7fc:	da c0       	rjmp	.+436    	; 0x9b2 <__vector_11+0x2b0>
+				// send IN packet
+				n = len < ENDPOINT0_SIZE ? len : ENDPOINT0_SIZE;
+     7fe:	34 2f       	mov	r19, r20
+     800:	41 32       	cpi	r20, 0x21	; 33
+     802:	08 f0       	brcs	.+2      	; 0x806 <__vector_11+0x104>
+     804:	30 e2       	ldi	r19, 0x20	; 32
+     806:	23 2f       	mov	r18, r19
+     808:	cb 01       	movw	r24, r22
+     80a:	06 c0       	rjmp	.+12     	; 0x818 <__vector_11+0x116>
+				for (i = n; i; i--) {
+     80c:	fc 01       	movw	r30, r24
+					UEDATX = pgm_read_byte(desc_addr++);
+     80e:	01 96       	adiw	r24, 0x01	; 1
+     810:	e4 91       	lpm	r30, Z+
+     812:	e0 93 f1 00 	sts	0x00F1, r30
+					i = UEINTX;
+				} while (!(i & ((1<<TXINI)|(1<<RXOUTI))));
+				if (i & (1<<RXOUTI)) return;	// abort
+				// send IN packet
+				n = len < ENDPOINT0_SIZE ? len : ENDPOINT0_SIZE;
+				for (i = n; i; i--) {
+     816:	21 50       	subi	r18, 0x01	; 1
+     818:	22 23       	and	r18, r18
+     81a:	c1 f7       	brne	.-16     	; 0x80c <__vector_11+0x10a>
+     81c:	63 0f       	add	r22, r19
+     81e:	71 1d       	adc	r23, r1
+					UEDATX = pgm_read_byte(desc_addr++);
+				}
+				len -= n;
+     820:	43 1b       	sub	r20, r19
+{
+	while (!(UEINTX & (1<<TXINI))) ;
+}
+static inline void usb_send_in(void)
+{
+	UEINTX = ~(1<<TXINI);
+     822:	50 93 e8 00 	sts	0x00E8, r21
+				for (i = n; i; i--) {
+					UEDATX = pgm_read_byte(desc_addr++);
+				}
+				len -= n;
+				usb_send_in();
+			} while (len || n == ENDPOINT0_SIZE);
+     826:	44 23       	and	r20, r20
+     828:	f9 f6       	brne	.-66     	; 0x7e8 <__vector_11+0xe6>
+     82a:	30 32       	cpi	r19, 0x20	; 32
+     82c:	e9 f2       	breq	.-70     	; 0x7e8 <__vector_11+0xe6>
+     82e:	c1 c0       	rjmp	.+386    	; 0x9b2 <__vector_11+0x2b0>
+			return;
+                }
+		if (bRequest == SET_ADDRESS) {
+     830:	35 30       	cpi	r19, 0x05	; 5
+     832:	61 f4       	brne	.+24     	; 0x84c <__vector_11+0x14a>
+{
+	while (!(UEINTX & (1<<TXINI))) ;
+}
+static inline void usb_send_in(void)
+{
+	UEINTX = ~(1<<TXINI);
+     834:	8e ef       	ldi	r24, 0xFE	; 254
+     836:	80 93 e8 00 	sts	0x00E8, r24
+
+
+// Misc functions to wait for ready and send/receive packets
+static inline void usb_wait_in_ready(void)
+{
+	while (!(UEINTX & (1<<TXINI))) ;
+     83a:	80 91 e8 00 	lds	r24, 0x00E8
+     83e:	80 ff       	sbrs	r24, 0
+     840:	fc cf       	rjmp	.-8      	; 0x83a <__vector_11+0x138>
+			return;
+                }
+		if (bRequest == SET_ADDRESS) {
+			usb_send_in();
+			usb_wait_in_ready();
+			UDADDR = wValue | (1<<ADDEN);
+     842:	8a 2f       	mov	r24, r26
+     844:	80 68       	ori	r24, 0x80	; 128
+     846:	80 93 e3 00 	sts	0x00E3, r24
+     84a:	b3 c0       	rjmp	.+358    	; 0x9b2 <__vector_11+0x2b0>
+			return;
+		}
+		if (bRequest == SET_CONFIGURATION && bmRequestType == 0) {
+     84c:	39 30       	cpi	r19, 0x09	; 9
+     84e:	31 f5       	brne	.+76     	; 0x89c <__vector_11+0x19a>
+     850:	44 23       	and	r20, r20
+     852:	09 f0       	breq	.+2      	; 0x856 <__vector_11+0x154>
+     854:	72 c0       	rjmp	.+228    	; 0x93a <__vector_11+0x238>
+			usb_configuration = wValue;
+     856:	a0 93 ad 01 	sts	0x01AD, r26
+{
+	while (!(UEINTX & (1<<TXINI))) ;
+}
+static inline void usb_send_in(void)
+{
+	UEINTX = ~(1<<TXINI);
+     85a:	8e ef       	ldi	r24, 0xFE	; 254
+     85c:	80 93 e8 00 	sts	0x00E8, r24
+     860:	89 ec       	ldi	r24, 0xC9	; 201
+     862:	90 e0       	ldi	r25, 0x00	; 0
+     864:	21 e0       	ldi	r18, 0x01	; 1
+		if (bRequest == SET_CONFIGURATION && bmRequestType == 0) {
+			usb_configuration = wValue;
+			usb_send_in();
+			cfg = endpoint_config_table;
+			for (i=1; i<5; i++) {
+				UENUM = i;
+     866:	20 93 e9 00 	sts	0x00E9, r18
+				en = pgm_read_byte(cfg++);
+     86a:	fc 01       	movw	r30, r24
+     86c:	01 96       	adiw	r24, 0x01	; 1
+     86e:	e4 91       	lpm	r30, Z+
+				UECONX = en;
+     870:	e0 93 eb 00 	sts	0x00EB, r30
+				if (en) {
+     874:	ee 23       	and	r30, r30
+     876:	69 f0       	breq	.+26     	; 0x892 <__vector_11+0x190>
+					UECFG0X = pgm_read_byte(cfg++);
+     878:	ac 01       	movw	r20, r24
+     87a:	4f 5f       	subi	r20, 0xFF	; 255
+     87c:	5f 4f       	sbci	r21, 0xFF	; 255
+     87e:	fc 01       	movw	r30, r24
+     880:	84 91       	lpm	r24, Z+
+     882:	80 93 ec 00 	sts	0x00EC, r24
+					UECFG1X = pgm_read_byte(cfg++);
+     886:	ca 01       	movw	r24, r20
+     888:	01 96       	adiw	r24, 0x01	; 1
+     88a:	fa 01       	movw	r30, r20
+     88c:	34 91       	lpm	r19, Z+
+     88e:	30 93 ed 00 	sts	0x00ED, r19
+		}
+		if (bRequest == SET_CONFIGURATION && bmRequestType == 0) {
+			usb_configuration = wValue;
+			usb_send_in();
+			cfg = endpoint_config_table;
+			for (i=1; i<5; i++) {
+     892:	2f 5f       	subi	r18, 0xFF	; 255
+     894:	25 30       	cpi	r18, 0x05	; 5
+     896:	39 f7       	brne	.-50     	; 0x866 <__vector_11+0x164>
+				if (en) {
+					UECFG0X = pgm_read_byte(cfg++);
+					UECFG1X = pgm_read_byte(cfg++);
+				}
+			}
+        		UERST = 0x1E;
+     898:	8e e1       	ldi	r24, 0x1E	; 30
+     89a:	4a c0       	rjmp	.+148    	; 0x930 <__vector_11+0x22e>
+        		UERST = 0;
+			return;
+		}
+		if (bRequest == GET_CONFIGURATION && bmRequestType == 0x80) {
+     89c:	38 30       	cpi	r19, 0x08	; 8
+     89e:	61 f4       	brne	.+24     	; 0x8b8 <__vector_11+0x1b6>
+     8a0:	40 38       	cpi	r20, 0x80	; 128
+     8a2:	09 f0       	breq	.+2      	; 0x8a6 <__vector_11+0x1a4>
+     8a4:	4a c0       	rjmp	.+148    	; 0x93a <__vector_11+0x238>
+
+
+// Misc functions to wait for ready and send/receive packets
+static inline void usb_wait_in_ready(void)
+{
+	while (!(UEINTX & (1<<TXINI))) ;
+     8a6:	80 91 e8 00 	lds	r24, 0x00E8
+     8aa:	80 ff       	sbrs	r24, 0
+     8ac:	fc cf       	rjmp	.-8      	; 0x8a6 <__vector_11+0x1a4>
+        		UERST = 0;
+			return;
+		}
+		if (bRequest == GET_CONFIGURATION && bmRequestType == 0x80) {
+			usb_wait_in_ready();
+			UEDATX = usb_configuration;
+     8ae:	80 91 ad 01 	lds	r24, 0x01AD
+     8b2:	80 93 f1 00 	sts	0x00F1, r24
+     8b6:	76 c0       	rjmp	.+236    	; 0x9a4 <__vector_11+0x2a2>
+			usb_send_in();
+			return;
+		}
+
+		if (bRequest == GET_STATUS) {
+     8b8:	33 23       	and	r19, r19
+     8ba:	d1 f4       	brne	.+52     	; 0x8f0 <__vector_11+0x1ee>
+
+
+// Misc functions to wait for ready and send/receive packets
+static inline void usb_wait_in_ready(void)
+{
+	while (!(UEINTX & (1<<TXINI))) ;
+     8bc:	80 91 e8 00 	lds	r24, 0x00E8
+     8c0:	80 ff       	sbrs	r24, 0
+     8c2:	fc cf       	rjmp	.-8      	; 0x8bc <__vector_11+0x1ba>
+		}
+
+		if (bRequest == GET_STATUS) {
+			usb_wait_in_ready();
+			i = 0;
+			if (bmRequestType == 0x82) {
+     8c4:	42 38       	cpi	r20, 0x82	; 130
+     8c6:	11 f0       	breq	.+4      	; 0x8cc <__vector_11+0x1ca>
+     8c8:	80 e0       	ldi	r24, 0x00	; 0
+     8ca:	0d c0       	rjmp	.+26     	; 0x8e6 <__vector_11+0x1e4>
+				UENUM = wIndex;
+     8cc:	60 93 e9 00 	sts	0x00E9, r22
+				if (UECONX & (1<<STALLRQ)) i = 1;
+     8d0:	80 91 eb 00 	lds	r24, 0x00EB
+     8d4:	90 e0       	ldi	r25, 0x00	; 0
+     8d6:	f5 e0       	ldi	r31, 0x05	; 5
+     8d8:	96 95       	lsr	r25
+     8da:	87 95       	ror	r24
+     8dc:	fa 95       	dec	r31
+     8de:	e1 f7       	brne	.-8      	; 0x8d8 <__vector_11+0x1d6>
+     8e0:	81 70       	andi	r24, 0x01	; 1
+				UENUM = 0;
+     8e2:	10 92 e9 00 	sts	0x00E9, r1
+			}
+			UEDATX = i;
+     8e6:	80 93 f1 00 	sts	0x00F1, r24
+			UEDATX = 0;
+     8ea:	10 92 f1 00 	sts	0x00F1, r1
+     8ee:	5a c0       	rjmp	.+180    	; 0x9a4 <__vector_11+0x2a2>
+			usb_send_in();
+			return;
+		}
+		if ((bRequest == CLEAR_FEATURE || bRequest == SET_FEATURE)
+     8f0:	31 30       	cpi	r19, 0x01	; 1
+     8f2:	11 f0       	breq	.+4      	; 0x8f8 <__vector_11+0x1f6>
+     8f4:	33 30       	cpi	r19, 0x03	; 3
+     8f6:	09 f5       	brne	.+66     	; 0x93a <__vector_11+0x238>
+     8f8:	42 30       	cpi	r20, 0x02	; 2
+     8fa:	f9 f4       	brne	.+62     	; 0x93a <__vector_11+0x238>
+     8fc:	ab 2b       	or	r26, r27
+     8fe:	e9 f4       	brne	.+58     	; 0x93a <__vector_11+0x238>
+		  && bmRequestType == 0x02 && wValue == 0) {
+			i = wIndex & 0x7F;
+     900:	26 2f       	mov	r18, r22
+     902:	2f 77       	andi	r18, 0x7F	; 127
+			if (i >= 1 && i <= MAX_ENDPOINT) {
+     904:	82 2f       	mov	r24, r18
+     906:	81 50       	subi	r24, 0x01	; 1
+     908:	84 30       	cpi	r24, 0x04	; 4
+     90a:	b8 f4       	brcc	.+46     	; 0x93a <__vector_11+0x238>
+{
+	while (!(UEINTX & (1<<TXINI))) ;
+}
+static inline void usb_send_in(void)
+{
+	UEINTX = ~(1<<TXINI);
+     90c:	8e ef       	ldi	r24, 0xFE	; 254
+     90e:	80 93 e8 00 	sts	0x00E8, r24
+		if ((bRequest == CLEAR_FEATURE || bRequest == SET_FEATURE)
+		  && bmRequestType == 0x02 && wValue == 0) {
+			i = wIndex & 0x7F;
+			if (i >= 1 && i <= MAX_ENDPOINT) {
+				usb_send_in();
+				UENUM = i;
+     912:	20 93 e9 00 	sts	0x00E9, r18
+				if (bRequest == SET_FEATURE) {
+     916:	33 30       	cpi	r19, 0x03	; 3
+     918:	09 f4       	brne	.+2      	; 0x91c <__vector_11+0x21a>
+     91a:	48 c0       	rjmp	.+144    	; 0x9ac <__vector_11+0x2aa>
+					UECONX = (1<<STALLRQ)|(1<<EPEN);
+				} else {
+					UECONX = (1<<STALLRQC)|(1<<RSTDT)|(1<<EPEN);
+     91c:	89 e1       	ldi	r24, 0x19	; 25
+     91e:	80 93 eb 00 	sts	0x00EB, r24
+					UERST = (1 << i);
+     922:	81 e0       	ldi	r24, 0x01	; 1
+     924:	90 e0       	ldi	r25, 0x00	; 0
+     926:	02 c0       	rjmp	.+4      	; 0x92c <__vector_11+0x22a>
+     928:	88 0f       	add	r24, r24
+     92a:	99 1f       	adc	r25, r25
+     92c:	2a 95       	dec	r18
+     92e:	e2 f7       	brpl	.-8      	; 0x928 <__vector_11+0x226>
+     930:	80 93 ea 00 	sts	0x00EA, r24
+					UERST = 0;
+     934:	10 92 ea 00 	sts	0x00EA, r1
+     938:	3c c0       	rjmp	.+120    	; 0x9b2 <__vector_11+0x2b0>
+				}
+				return;
+			}
+		}
+		if (wIndex == RAWHID_INTERFACE) {
+     93a:	67 2b       	or	r22, r23
+     93c:	b9 f5       	brne	.+110    	; 0x9ac <__vector_11+0x2aa>
+			if (bmRequestType == 0xA1 && bRequest == HID_GET_REPORT) {
+     93e:	41 3a       	cpi	r20, 0xA1	; 161
+     940:	11 f5       	brne	.+68     	; 0x986 <__vector_11+0x284>
+     942:	31 30       	cpi	r19, 0x01	; 1
+     944:	99 f5       	brne	.+102    	; 0x9ac <__vector_11+0x2aa>
+     946:	40 e2       	ldi	r20, 0x20	; 32
+{
+	while (!(UEINTX & (1<<TXINI))) ;
+}
+static inline void usb_send_in(void)
+{
+	UEINTX = ~(1<<TXINI);
+     948:	5e ef       	ldi	r21, 0xFE	; 254
+			if (bmRequestType == 0xA1 && bRequest == HID_GET_REPORT) {
+				len = RAWHID_TX_SIZE;
+				do {
+					// wait for host ready for IN packet
+					do {
+						i = UEINTX;
+     94a:	80 91 e8 00 	lds	r24, 0x00E8
+					} while (!(i & ((1<<TXINI)|(1<<RXOUTI))));
+     94e:	28 2f       	mov	r18, r24
+     950:	30 e0       	ldi	r19, 0x00	; 0
+     952:	c9 01       	movw	r24, r18
+     954:	85 70       	andi	r24, 0x05	; 5
+     956:	90 70       	andi	r25, 0x00	; 0
+     958:	89 2b       	or	r24, r25
+     95a:	b9 f3       	breq	.-18     	; 0x94a <__vector_11+0x248>
+					if (i & (1<<RXOUTI)) return;	// abort
+     95c:	22 fd       	sbrc	r18, 2
+     95e:	29 c0       	rjmp	.+82     	; 0x9b2 <__vector_11+0x2b0>
+					// send IN packet
+					n = len < ENDPOINT0_SIZE ? len : ENDPOINT0_SIZE;
+     960:	94 2f       	mov	r25, r20
+     962:	41 32       	cpi	r20, 0x21	; 33
+     964:	08 f0       	brcs	.+2      	; 0x968 <__vector_11+0x266>
+     966:	90 e2       	ldi	r25, 0x20	; 32
+     968:	89 2f       	mov	r24, r25
+     96a:	03 c0       	rjmp	.+6      	; 0x972 <__vector_11+0x270>
+					for (i = n; i; i--) {
+						// just send zeros
+						UEDATX = 0;
+     96c:	10 92 f1 00 	sts	0x00F1, r1
+						i = UEINTX;
+					} while (!(i & ((1<<TXINI)|(1<<RXOUTI))));
+					if (i & (1<<RXOUTI)) return;	// abort
+					// send IN packet
+					n = len < ENDPOINT0_SIZE ? len : ENDPOINT0_SIZE;
+					for (i = n; i; i--) {
+     970:	81 50       	subi	r24, 0x01	; 1
+     972:	88 23       	and	r24, r24
+     974:	d9 f7       	brne	.-10     	; 0x96c <__vector_11+0x26a>
+						// just send zeros
+						UEDATX = 0;
+					}
+					len -= n;
+     976:	49 1b       	sub	r20, r25
+{
+	while (!(UEINTX & (1<<TXINI))) ;
+}
+static inline void usb_send_in(void)
+{
+	UEINTX = ~(1<<TXINI);
+     978:	50 93 e8 00 	sts	0x00E8, r21
+						// just send zeros
+						UEDATX = 0;
+					}
+					len -= n;
+					usb_send_in();
+				} while (len || n == ENDPOINT0_SIZE);
+     97c:	44 23       	and	r20, r20
+     97e:	29 f7       	brne	.-54     	; 0x94a <__vector_11+0x248>
+     980:	90 32       	cpi	r25, 0x20	; 32
+     982:	19 f3       	breq	.-58     	; 0x94a <__vector_11+0x248>
+     984:	16 c0       	rjmp	.+44     	; 0x9b2 <__vector_11+0x2b0>
+				return;
+			}
+			if (bmRequestType == 0x21 && bRequest == HID_SET_REPORT) {
+     986:	41 32       	cpi	r20, 0x21	; 33
+     988:	89 f4       	brne	.+34     	; 0x9ac <__vector_11+0x2aa>
+     98a:	39 30       	cpi	r19, 0x09	; 9
+     98c:	79 f4       	brne	.+30     	; 0x9ac <__vector_11+0x2aa>
+{
+	UEINTX = ~(1<<TXINI);
+}
+static inline void usb_wait_receive_out(void)
+{
+	while (!(UEINTX & (1<<RXOUTI))) ;
+     98e:	80 91 e8 00 	lds	r24, 0x00E8
+     992:	82 ff       	sbrs	r24, 2
+     994:	fc cf       	rjmp	.-8      	; 0x98e <__vector_11+0x28c>
+}
+static inline void usb_ack_out(void)
+{
+	UEINTX = ~(1<<RXOUTI);
+     996:	8b ef       	ldi	r24, 0xFB	; 251
+     998:	80 93 e8 00 	sts	0x00E8, r24
+
+
+// Misc functions to wait for ready and send/receive packets
+static inline void usb_wait_in_ready(void)
+{
+	while (!(UEINTX & (1<<TXINI))) ;
+     99c:	80 91 e8 00 	lds	r24, 0x00E8
+     9a0:	80 ff       	sbrs	r24, 0
+     9a2:	fc cf       	rjmp	.-8      	; 0x99c <__vector_11+0x29a>
+}
+static inline void usb_send_in(void)
+{
+	UEINTX = ~(1<<TXINI);
+     9a4:	8e ef       	ldi	r24, 0xFE	; 254
+     9a6:	80 93 e8 00 	sts	0x00E8, r24
+     9aa:	03 c0       	rjmp	.+6      	; 0x9b2 <__vector_11+0x2b0>
+				usb_send_in();
+				return;
+			}
+		}
+	}
+	UECONX = (1<<STALLRQ) | (1<<EPEN);	// stall
+     9ac:	81 e2       	ldi	r24, 0x21	; 33
+     9ae:	80 93 eb 00 	sts	0x00EB, r24
+}
+     9b2:	ff 91       	pop	r31
+     9b4:	ef 91       	pop	r30
+     9b6:	bf 91       	pop	r27
+     9b8:	af 91       	pop	r26
+     9ba:	9f 91       	pop	r25
+     9bc:	8f 91       	pop	r24
+     9be:	7f 91       	pop	r23
+     9c0:	6f 91       	pop	r22
+     9c2:	5f 91       	pop	r21
+     9c4:	4f 91       	pop	r20
+     9c6:	3f 91       	pop	r19
+     9c8:	2f 91       	pop	r18
+     9ca:	1f 91       	pop	r17
+     9cc:	0f 91       	pop	r16
+     9ce:	0f 90       	pop	r0
+     9d0:	0b be       	out	0x3b, r0	; 59
+     9d2:	0f 90       	pop	r0
+     9d4:	0f be       	out	0x3f, r0	; 63
+     9d6:	0f 90       	pop	r0
+     9d8:	1f 90       	pop	r1
+     9da:	18 95       	reti
+
+000009dc <slaveinit>:
+void slaveinit(void)
+{
+	//OSZIPORTDDR |= (1<<PULS);	// Output
+	//OSZIPORT |= (1<<PULS);		// HI
+	
+	LOOPLEDDDR |=(1<<LOOPLED);
+     9dc:	56 9a       	sbi	0x0a, 6	; 10
+	LOOPLEDPORT |= (1<<LOOPLED);	// HI
+     9de:	5e 9a       	sbi	0x0b, 6	; 11
+
+	STEPPERDDR_1 |= (1<<MA_STEP);
+     9e0:	38 9a       	sbi	0x07, 0	; 7
+	STEPPERPORT_1 |= (1<<MA_STEP);	// HI
+     9e2:	40 9a       	sbi	0x08, 0	; 8
+	
+	STEPPERDDR_1 |= (1 << MA_RI);
+     9e4:	39 9a       	sbi	0x07, 1	; 7
+	STEPPERPORT_1 |= (1 << MA_RI);	// HI
+     9e6:	41 9a       	sbi	0x08, 1	; 8
+   
+	STEPPERDDR_1 |= (1 << MA_EN);
+     9e8:	3a 9a       	sbi	0x07, 2	; 7
+//	STEPPERPORT_1 &= ~(1 << MA_EN);   // LO
+   STEPPERPORT_1 |= (1 << MA_EN);	// HI
+     9ea:	42 9a       	sbi	0x08, 2	; 8
+	
+	STEPPERDDR_1 |= (1 << MB_STEP);
+     9ec:	3b 9a       	sbi	0x07, 3	; 7
+	STEPPERPORT_1 |= (1 << MB_STEP); // HI
+     9ee:	43 9a       	sbi	0x08, 3	; 8
+	
+	STEPPERDDR_1 |= (1 << MB_RI);
+     9f0:	3c 9a       	sbi	0x07, 4	; 7
+	STEPPERPORT_1 |= (1 << MB_RI);	// HI
+     9f2:	44 9a       	sbi	0x08, 4	; 8
+	
+	STEPPERDDR_1 |= (1 << MB_EN);
+     9f4:	3d 9a       	sbi	0x07, 5	; 7
+//	STEPPERPORT_1 &= ~(1 << MB_EN); // LO
+   STEPPERPORT_1 |= (1 << MB_EN);	// HI
+     9f6:	45 9a       	sbi	0x08, 5	; 8
+   
+   //Seite 2
+	STEPPERDDR_2 |= (1<<MC_STEP);
+     9f8:	20 9a       	sbi	0x04, 0	; 4
+	STEPPERPORT_2 |= (1<<MC_STEP);	// HI
+     9fa:	28 9a       	sbi	0x05, 0	; 5
+	
+	STEPPERDDR_2 |= (1 << MC_RI);
+     9fc:	21 9a       	sbi	0x04, 1	; 4
+	STEPPERPORT_1 |= (1 << MC_RI);	// HI
+     9fe:	41 9a       	sbi	0x08, 1	; 8
+   
+	STEPPERDDR_2 |= (1 << MC_EN);
+     a00:	22 9a       	sbi	0x04, 2	; 4
+	//STEPPERPORT_2 &= ~(1 << MC_EN);   // LO
+	STEPPERPORT_2 |= (1 << MC_EN);	// HI
+     a02:	2a 9a       	sbi	0x05, 2	; 5
+	
+	STEPPERDDR_2 |= (1 << MD_STEP);
+     a04:	23 9a       	sbi	0x04, 3	; 4
+	STEPPERPORT_2 |= (1 << MD_STEP); // HI
+     a06:	2b 9a       	sbi	0x05, 3	; 5
+	
+	STEPPERDDR_2 |= (1 << MD_RI);
+     a08:	24 9a       	sbi	0x04, 4	; 4
+	STEPPERPORT_2 |= (1 << MD_RI);	// HI
+     a0a:	2c 9a       	sbi	0x05, 4	; 5
+	
+	STEPPERDDR_2 |= (1 << MD_EN);
+     a0c:	25 9a       	sbi	0x04, 5	; 4
+	//STEPPERPORT_2 &= ~(1 << MD_EN); // LO
+   STEPPERPORT_2 |= (1 << MD_EN);	// HI
+     a0e:	2d 9a       	sbi	0x05, 5	; 5
+	
+    OSZIPORTDDR |= (1<<OSZI_PULS_B);		//Pin 1 von  als Ausgang fuer LED TWI
+    OSZIPORT |= (1<<OSZI_PULS_B);		//Pin   von   als Ausgang fuer OSZI
+	
+    */
+	TASTENDDR &= ~(1<<TASTE0);	//Bit 0 von PORT B als Eingang fŸr Taste 0
+     a10:	80 98       	cbi	0x10, 0	; 16
+	TASTENPORT |= (1<<TASTE0);	//Pull-up
+     a12:	88 9a       	sbi	0x11, 0	; 17
+//	DDRB &= ~(1<<PORTB1);	//Bit 1 von PORT B als Eingang fŸr Taste 1
+//	PORTB |= (1<<PORTB1);	//Pull-up
+	
+
+	//LCD
+	LCD_DDR |= (1<<LCD_RSDS_PIN);		//Pin 4 von PORT D als Ausgang fuer LCD
+     a14:	85 9a       	sbi	0x10, 5	; 16
+ 	LCD_DDR |= (1<<LCD_ENABLE_PIN);	//Pin 5 von PORT D als Ausgang fuer LCD
+     a16:	86 9a       	sbi	0x10, 6	; 16
+	LCD_DDR |= (1<<LCD_CLOCK_PIN);	//Pin 6 von PORT D als Ausgang fuer LCD
+     a18:	87 9a       	sbi	0x10, 7	; 16
+
+	
+   // Anschlaege
+   
+   STEPPERPORT_1 &= ~(1<<END_A0_PIN);			//	Eingang fŸr Endanschlag A0
+     a1a:	46 98       	cbi	0x08, 6	; 8
+	STEPPERPORT_1 |= (1<<END_A0_PIN);			// Pull-up
+     a1c:	46 9a       	sbi	0x08, 6	; 8
+
+	STEPPERPORT_1 &= ~(1<<END_B0_PIN);			//	Eingang fŸr Endanschlag B0
+     a1e:	47 98       	cbi	0x08, 7	; 8
+	STEPPERPORT_1 |= (1<<END_B0_PIN);			// Pull-up
+     a20:	47 9a       	sbi	0x08, 7	; 8
+
+   
+   STEPPERDDR_2 &= ~(1<<END_C0_PIN);			//	Eingang fŸr Endanschlag C0
+     a22:	26 98       	cbi	0x04, 6	; 4
+	STEPPERPORT_2 |= (1<<END_C0_PIN);			// Pull-up
+     a24:	2e 9a       	sbi	0x05, 6	; 5
+
+   STEPPERDDR_2 &= ~(1<<END_D0_PIN);			//	Eingang fŸr Endanschlag D0
+     a26:	27 98       	cbi	0x04, 7	; 4
+	STEPPERPORT_2 |= (1<<END_D0_PIN);			// Pull-up
+     a28:	2f 9a       	sbi	0x05, 7	; 5
+
+	
+   LOOPLEDDDR |= (1<<LOOPLED);                // Blink-LED
+     a2a:	56 9a       	sbi	0x0a, 6	; 10
+   LOOPLEDPORT |= (1<<LOOPLED);
+     a2c:	5e 9a       	sbi	0x0b, 6	; 11
+
+   CMD_DDR |= (1<<DC);                       // DC-PWM-Ausgang
+     a2e:	57 9a       	sbi	0x0a, 7	; 10
+   CMD_PORT |= (1<<DC);                      // HI
+     a30:	5f 9a       	sbi	0x0b, 7	; 11
+}
+     a32:	08 95       	ret
+
+00000a34 <__vector_15>:
+*/
+
+volatile uint16_t timer2Counter=0; 
+
+ISR (TIMER2_OVF_vect) 
+{ 
+     a34:	1f 92       	push	r1
+     a36:	0f 92       	push	r0
+     a38:	0f b6       	in	r0, 0x3f	; 63
+     a3a:	0f 92       	push	r0
+     a3c:	11 24       	eor	r1, r1
+     a3e:	8f 93       	push	r24
+     a40:	9f 93       	push	r25
+	timer2Counter +=1;
+     a42:	80 91 60 01 	lds	r24, 0x0160
+     a46:	90 91 61 01 	lds	r25, 0x0161
+     a4a:	01 96       	adiw	r24, 0x01	; 1
+     a4c:	90 93 61 01 	sts	0x0161, r25
+     a50:	80 93 60 01 	sts	0x0160, r24
+	
+	if (timer2Counter >= 14) 
+     a54:	80 91 60 01 	lds	r24, 0x0160
+     a58:	90 91 61 01 	lds	r25, 0x0161
+     a5c:	0e 97       	sbiw	r24, 0x0e	; 14
+     a5e:	a0 f1       	brcs	.+104    	; 0xac8 <__vector_15+0x94>
+	{
+		CounterA+=1;
+     a60:	80 91 50 01 	lds	r24, 0x0150
+     a64:	90 91 51 01 	lds	r25, 0x0151
+     a68:	01 96       	adiw	r24, 0x01	; 1
+     a6a:	90 93 51 01 	sts	0x0151, r25
+     a6e:	80 93 50 01 	sts	0x0150, r24
+		CounterB+=1;
+     a72:	80 91 52 01 	lds	r24, 0x0152
+     a76:	90 91 53 01 	lds	r25, 0x0153
+     a7a:	01 96       	adiw	r24, 0x01	; 1
+     a7c:	90 93 53 01 	sts	0x0153, r25
+     a80:	80 93 52 01 	sts	0x0152, r24
+      CounterC+=1;
+     a84:	80 91 54 01 	lds	r24, 0x0154
+     a88:	90 91 55 01 	lds	r25, 0x0155
+     a8c:	01 96       	adiw	r24, 0x01	; 1
+     a8e:	90 93 55 01 	sts	0x0155, r25
+     a92:	80 93 54 01 	sts	0x0154, r24
+      CounterD+=1;
+     a96:	80 91 56 01 	lds	r24, 0x0156
+     a9a:	90 91 57 01 	lds	r25, 0x0157
+     a9e:	01 96       	adiw	r24, 0x01	; 1
+     aa0:	90 93 57 01 	sts	0x0157, r25
+     aa4:	80 93 56 01 	sts	0x0156, r24
+      
+      if (PWM)
+     aa8:	80 91 4f 01 	lds	r24, 0x014F
+     aac:	88 23       	and	r24, r24
+     aae:	31 f0       	breq	.+12     	; 0xabc <__vector_15+0x88>
+      {
+         pwmposition ++;
+     ab0:	80 91 62 01 	lds	r24, 0x0162
+     ab4:	8f 5f       	subi	r24, 0xFF	; 255
+     ab6:	80 93 62 01 	sts	0x0162, r24
+     aba:	02 c0       	rjmp	.+4      	; 0xac0 <__vector_15+0x8c>
+      }
+      else
+      {
+         pwmposition =0;
+     abc:	10 92 62 01 	sts	0x0162, r1
+      }
+      
+		timer2Counter = 0; 
+     ac0:	10 92 61 01 	sts	0x0161, r1
+     ac4:	10 92 60 01 	sts	0x0160, r1
+        //OSZI_B_TOGG ;
+	
+   } 
+	TCNT2 = 10;							// ergibt 2 kHz fuer Timertakt
+     ac8:	8a e0       	ldi	r24, 0x0A	; 10
+     aca:	80 93 b2 00 	sts	0x00B2, r24
+}
+     ace:	9f 91       	pop	r25
+     ad0:	8f 91       	pop	r24
+     ad2:	0f 90       	pop	r0
+     ad4:	0f be       	out	0x3f, r0	; 63
+     ad6:	0f 90       	pop	r0
+     ad8:	1f 90       	pop	r1
+     ada:	18 95       	reti
+
+00000adc <AbschnittLaden>:
+*/
+
+
+
+uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten)
+{
+     adc:	fc 01       	movw	r30, r24
+    19   (11)   indexl   
+    
+	 */			
+	int lage = 0;
+//   lage = AbschnittDaten[9]; // Start: 1, innerhalb: 0, Ende: 2
+   lage = AbschnittDaten[17]; // Start: 1, innerhalb: 0, Ende: 2
+     ade:	81 89       	ldd	r24, Z+17	; 0x11
+	if (lage & 0x01)
+   {
+      returnwert=1;
+   }
+   if (lage & 0x02) // letztes Element
+     ae0:	81 ff       	sbrs	r24, 1
+     ae2:	02 c0       	rjmp	.+4      	; 0xae8 <AbschnittLaden+0xc>
+     ae4:	42 e0       	ldi	r20, 0x02	; 2
+     ae6:	02 c0       	rjmp	.+4      	; 0xaec <AbschnittLaden+0x10>
+     ae8:	48 2f       	mov	r20, r24
+     aea:	41 70       	andi	r20, 0x01	; 1
+   {
+      returnwert=2;
+   }
+   richtung=0;
+     aec:	10 92 ac 01 	sts	0x01AC, r1
+   
+	// Motor A
+	STEPPERPORT_1 &= ~(1<<MA_EN); // Pololu ON
+     af0:	42 98       	cbi	0x08, 2	; 8
+	CounterA=0;
+     af2:	10 92 51 01 	sts	0x0151, r1
+     af6:	10 92 50 01 	sts	0x0150, r1
+	uint8_t dataH=0;
+	
+	uint8_t delayL=0;
+	uint8_t delayH=0;
+	
+	dataL=AbschnittDaten[0];
+     afa:	20 81       	ld	r18, Z
+	dataH=AbschnittDaten[1];
+     afc:	91 81       	ldd	r25, Z+1	; 0x01
+	
+	//lcd_gotoxy(17,0);
+	if (dataH & (0x80)) // Bit 7 gesetzt, negative zahl
+     afe:	97 ff       	sbrs	r25, 7
+     b00:	07 c0       	rjmp	.+14     	; 0xb10 <AbschnittLaden+0x34>
+	{
+		richtung |= (1<<RICHTUNG_A); // Rueckwarts
+     b02:	80 91 ac 01 	lds	r24, 0x01AC
+     b06:	81 60       	ori	r24, 0x01	; 1
+     b08:	80 93 ac 01 	sts	0x01AC, r24
+		STEPPERPORT_1 &= ~(1<< MA_RI); // PIN fuer Treiber stellen
+     b0c:	41 98       	cbi	0x08, 1	; 8
+     b0e:	06 c0       	rjmp	.+12     	; 0xb1c <AbschnittLaden+0x40>
+		//lcd_putc('r');
+	}
+	else 
+	{
+		richtung &= ~(1<<RICHTUNG_A);
+     b10:	80 91 ac 01 	lds	r24, 0x01AC
+     b14:	8e 7f       	andi	r24, 0xFE	; 254
+     b16:	80 93 ac 01 	sts	0x01AC, r24
+		STEPPERPORT_1 |= (1<< MA_RI);
+     b1a:	41 9a       	sbi	0x08, 1	; 8
+		//lcd_putc('v');	// Vorwaerts
+	}
+	
+	dataH &= (0x7F);
+	StepCounterA= dataH;		// HByte
+     b1c:	9f 77       	andi	r25, 0x7F	; 127
+     b1e:	89 2f       	mov	r24, r25
+     b20:	90 e0       	ldi	r25, 0x00	; 0
+     b22:	90 93 59 01 	sts	0x0159, r25
+     b26:	80 93 58 01 	sts	0x0158, r24
+	StepCounterA <<= 8;		// shift 8
+     b2a:	80 91 58 01 	lds	r24, 0x0158
+     b2e:	90 91 59 01 	lds	r25, 0x0159
+     b32:	98 2f       	mov	r25, r24
+     b34:	88 27       	eor	r24, r24
+     b36:	90 93 59 01 	sts	0x0159, r25
+     b3a:	80 93 58 01 	sts	0x0158, r24
+	StepCounterA += dataL;	// +LByte
+     b3e:	80 91 58 01 	lds	r24, 0x0158
+     b42:	90 91 59 01 	lds	r25, 0x0159
+     b46:	82 0f       	add	r24, r18
+     b48:	91 1d       	adc	r25, r1
+     b4a:	90 93 59 01 	sts	0x0159, r25
+     b4e:	80 93 58 01 	sts	0x0158, r24
+	
+	delayL=AbschnittDaten[4];
+     b52:	24 81       	ldd	r18, Z+4	; 0x04
+	delayH=AbschnittDaten[5];
+	
+	
+	DelayA = delayH;
+     b54:	85 81       	ldd	r24, Z+5	; 0x05
+     b56:	90 e0       	ldi	r25, 0x00	; 0
+     b58:	90 93 1e 01 	sts	0x011E, r25
+     b5c:	80 93 1d 01 	sts	0x011D, r24
+	DelayA <<=8;
+     b60:	80 91 1d 01 	lds	r24, 0x011D
+     b64:	90 91 1e 01 	lds	r25, 0x011E
+     b68:	98 2f       	mov	r25, r24
+     b6a:	88 27       	eor	r24, r24
+     b6c:	90 93 1e 01 	sts	0x011E, r25
+     b70:	80 93 1d 01 	sts	0x011D, r24
+	DelayA += delayL;
+     b74:	80 91 1d 01 	lds	r24, 0x011D
+     b78:	90 91 1e 01 	lds	r25, 0x011E
+     b7c:	82 0f       	add	r24, r18
+     b7e:	91 1d       	adc	r25, r1
+     b80:	90 93 1e 01 	sts	0x011E, r25
+     b84:	80 93 1d 01 	sts	0x011D, r24
+	
+	// Motor B
+	CounterB=0;
+     b88:	10 92 53 01 	sts	0x0153, r1
+     b8c:	10 92 52 01 	sts	0x0152, r1
+	STEPPERPORT_1 &= ~(1<<MB_EN);	// Pololu ON
+     b90:	45 98       	cbi	0x08, 5	; 8
+	dataL=AbschnittDaten[2];
+     b92:	22 81       	ldd	r18, Z+2	; 0x02
+	dataH=AbschnittDaten[3];
+     b94:	93 81       	ldd	r25, Z+3	; 0x03
+	//lcd_gotoxy(19,1);
+   
+	if (dataH & (0x80)) // Bit 7 gesetzt, negative zahl
+     b96:	97 ff       	sbrs	r25, 7
+     b98:	07 c0       	rjmp	.+14     	; 0xba8 <AbschnittLaden+0xcc>
+	{
+		richtung |= (1<<RICHTUNG_B); // Rueckwarts
+     b9a:	80 91 ac 01 	lds	r24, 0x01AC
+     b9e:	82 60       	ori	r24, 0x02	; 2
+     ba0:	80 93 ac 01 	sts	0x01AC, r24
+		STEPPERPORT_1 &= ~(1<< MB_RI);
+     ba4:	44 98       	cbi	0x08, 4	; 8
+     ba6:	06 c0       	rjmp	.+12     	; 0xbb4 <AbschnittLaden+0xd8>
+		//lcd_putc('r');
+	}
+	else 
+	{
+		richtung &= ~(1<<RICHTUNG_B);
+     ba8:	80 91 ac 01 	lds	r24, 0x01AC
+     bac:	8d 7f       	andi	r24, 0xFD	; 253
+     bae:	80 93 ac 01 	sts	0x01AC, r24
+		STEPPERPORT_1 |= (1<< MB_RI);
+     bb2:	44 9a       	sbi	0x08, 4	; 8
+		//lcd_putc('v');
+	}
+	
+	dataH &= (0x7F);
+	StepCounterB= dataH;		// HByte
+     bb4:	9f 77       	andi	r25, 0x7F	; 127
+     bb6:	89 2f       	mov	r24, r25
+     bb8:	90 e0       	ldi	r25, 0x00	; 0
+     bba:	90 93 5b 01 	sts	0x015B, r25
+     bbe:	80 93 5a 01 	sts	0x015A, r24
+	StepCounterB <<= 8;		// shift 8
+     bc2:	80 91 5a 01 	lds	r24, 0x015A
+     bc6:	90 91 5b 01 	lds	r25, 0x015B
+     bca:	98 2f       	mov	r25, r24
+     bcc:	88 27       	eor	r24, r24
+     bce:	90 93 5b 01 	sts	0x015B, r25
+     bd2:	80 93 5a 01 	sts	0x015A, r24
+	StepCounterB += dataL;	// +LByte
+     bd6:	80 91 5a 01 	lds	r24, 0x015A
+     bda:	90 91 5b 01 	lds	r25, 0x015B
+     bde:	82 0f       	add	r24, r18
+     be0:	91 1d       	adc	r25, r1
+     be2:	90 93 5b 01 	sts	0x015B, r25
+     be6:	80 93 5a 01 	sts	0x015A, r24
+	
+	DelayB = (AbschnittDaten[7]<<8)+ AbschnittDaten[6];
+     bea:	97 81       	ldd	r25, Z+7	; 0x07
+     bec:	80 e0       	ldi	r24, 0x00	; 0
+     bee:	26 81       	ldd	r18, Z+6	; 0x06
+     bf0:	82 0f       	add	r24, r18
+     bf2:	91 1d       	adc	r25, r1
+     bf4:	90 93 20 01 	sts	0x0120, r25
+     bf8:	80 93 1f 01 	sts	0x011F, r24
+   
+   
+	// Motor C
+	STEPPERPORT_2 &= ~(1<<MC_EN); // Pololu ON
+     bfc:	2a 98       	cbi	0x05, 2	; 5
+	CounterC=0;
+     bfe:	10 92 55 01 	sts	0x0155, r1
+     c02:	10 92 54 01 	sts	0x0154, r1
+	dataH=0;
+	
+	delayL=0;
+	delayH=0;
+	
+	dataL=AbschnittDaten[8];
+     c06:	20 85       	ldd	r18, Z+8	; 0x08
+	dataH=AbschnittDaten[9];
+     c08:	91 85       	ldd	r25, Z+9	; 0x09
+   lcd_puthex(dataH);
+    */
+
+	//richtung=0;
+	//lcd_gotoxy(18,0);
+	if (dataH & (0x80)) // Bit 7 gesetzt, negative zahl
+     c0a:	97 ff       	sbrs	r25, 7
+     c0c:	07 c0       	rjmp	.+14     	; 0xc1c <AbschnittLaden+0x140>
+	{
+		richtung |= (1<<RICHTUNG_C); // Rueckwarts
+     c0e:	80 91 ac 01 	lds	r24, 0x01AC
+     c12:	84 60       	ori	r24, 0x04	; 4
+     c14:	80 93 ac 01 	sts	0x01AC, r24
+		STEPPERPORT_2 &= ~(1<< MC_RI);
+     c18:	29 98       	cbi	0x05, 1	; 5
+     c1a:	06 c0       	rjmp	.+12     	; 0xc28 <AbschnittLaden+0x14c>
+		//lcd_putc('r');
+	}
+	else 
+	{
+		richtung &= ~(1<<RICHTUNG_C);
+     c1c:	80 91 ac 01 	lds	r24, 0x01AC
+     c20:	8b 7f       	andi	r24, 0xFB	; 251
+     c22:	80 93 ac 01 	sts	0x01AC, r24
+		STEPPERPORT_2 |= (1<< MC_RI);
+     c26:	29 9a       	sbi	0x05, 1	; 5
+		//lcd_putc('v');	// Vorwaerts
+	}
+	
+	dataH &= (0x7F);
+	StepCounterC= dataH;		// HByte
+     c28:	9f 77       	andi	r25, 0x7F	; 127
+     c2a:	89 2f       	mov	r24, r25
+     c2c:	90 e0       	ldi	r25, 0x00	; 0
+     c2e:	90 93 5d 01 	sts	0x015D, r25
+     c32:	80 93 5c 01 	sts	0x015C, r24
+	StepCounterC <<= 8;		// shift 8
+     c36:	80 91 5c 01 	lds	r24, 0x015C
+     c3a:	90 91 5d 01 	lds	r25, 0x015D
+     c3e:	98 2f       	mov	r25, r24
+     c40:	88 27       	eor	r24, r24
+     c42:	90 93 5d 01 	sts	0x015D, r25
+     c46:	80 93 5c 01 	sts	0x015C, r24
+	StepCounterC += dataL;	// +LByte
+     c4a:	80 91 5c 01 	lds	r24, 0x015C
+     c4e:	90 91 5d 01 	lds	r25, 0x015D
+     c52:	82 0f       	add	r24, r18
+     c54:	91 1d       	adc	r25, r1
+     c56:	90 93 5d 01 	sts	0x015D, r25
+     c5a:	80 93 5c 01 	sts	0x015C, r24
+   
+	
+	delayL=AbschnittDaten[12];
+     c5e:	24 85       	ldd	r18, Z+12	; 0x0c
+   /*
+   lcd_gotoxy(5,1);
+   lcd_puthex(delayL);
+   lcd_puthex(delayH);
+   */
+	DelayC = delayH;
+     c60:	85 85       	ldd	r24, Z+13	; 0x0d
+     c62:	90 e0       	ldi	r25, 0x00	; 0
+     c64:	90 93 22 01 	sts	0x0122, r25
+     c68:	80 93 21 01 	sts	0x0121, r24
+	DelayC <<=8;
+     c6c:	80 91 21 01 	lds	r24, 0x0121
+     c70:	90 91 22 01 	lds	r25, 0x0122
+     c74:	98 2f       	mov	r25, r24
+     c76:	88 27       	eor	r24, r24
+     c78:	90 93 22 01 	sts	0x0122, r25
+     c7c:	80 93 21 01 	sts	0x0121, r24
+	DelayC += delayL;
+     c80:	80 91 21 01 	lds	r24, 0x0121
+     c84:	90 91 22 01 	lds	r25, 0x0122
+     c88:	82 0f       	add	r24, r18
+     c8a:	91 1d       	adc	r25, r1
+     c8c:	90 93 22 01 	sts	0x0122, r25
+     c90:	80 93 21 01 	sts	0x0121, r24
+   
+   
+   // Motor D
+	STEPPERPORT_2 &= ~(1<<MD_EN); // Pololu ON
+     c94:	2d 98       	cbi	0x05, 5	; 5
+	CounterD=0;
+     c96:	10 92 57 01 	sts	0x0157, r1
+     c9a:	10 92 56 01 	sts	0x0156, r1
+	dataH=0;
+	
+	delayL=0;
+	delayH=0;
+	
+	dataL=AbschnittDaten[10];
+     c9e:	22 85       	ldd	r18, Z+10	; 0x0a
+	dataH=AbschnittDaten[11];
+     ca0:	93 85       	ldd	r25, Z+11	; 0x0b
+   lcd_gotoxy(10,1);
+   lcd_puthex(dataL);
+   lcd_puthex(dataH);
+    */
+	//lcd_gotoxy(18,0);
+	if (dataH & (0x80)) // Bit 7 gesetzt, negative zahl
+     ca2:	97 ff       	sbrs	r25, 7
+     ca4:	07 c0       	rjmp	.+14     	; 0xcb4 <AbschnittLaden+0x1d8>
+	{
+		richtung |= (1<<RICHTUNG_D); // Rueckwarts
+     ca6:	80 91 ac 01 	lds	r24, 0x01AC
+     caa:	88 60       	ori	r24, 0x08	; 8
+     cac:	80 93 ac 01 	sts	0x01AC, r24
+		STEPPERPORT_2 &= ~(1<< MD_RI);
+     cb0:	2c 98       	cbi	0x05, 4	; 5
+     cb2:	06 c0       	rjmp	.+12     	; 0xcc0 <AbschnittLaden+0x1e4>
+		//lcd_putc('r');
+	}
+	else 
+	{
+		richtung &= ~(1<<RICHTUNG_D);
+     cb4:	80 91 ac 01 	lds	r24, 0x01AC
+     cb8:	87 7f       	andi	r24, 0xF7	; 247
+     cba:	80 93 ac 01 	sts	0x01AC, r24
+		STEPPERPORT_2 |= (1<< MD_RI);
+     cbe:	2c 9a       	sbi	0x05, 4	; 5
+		//lcd_putc('v');	// Vorwaerts
+	}
+	
+	dataH &= (0x7F);
+	StepCounterD= dataH;		// HByte
+     cc0:	9f 77       	andi	r25, 0x7F	; 127
+     cc2:	89 2f       	mov	r24, r25
+     cc4:	90 e0       	ldi	r25, 0x00	; 0
+     cc6:	90 93 5f 01 	sts	0x015F, r25
+     cca:	80 93 5e 01 	sts	0x015E, r24
+	StepCounterD <<= 8;		// shift 8
+     cce:	80 91 5e 01 	lds	r24, 0x015E
+     cd2:	90 91 5f 01 	lds	r25, 0x015F
+     cd6:	98 2f       	mov	r25, r24
+     cd8:	88 27       	eor	r24, r24
+     cda:	90 93 5f 01 	sts	0x015F, r25
+     cde:	80 93 5e 01 	sts	0x015E, r24
+	StepCounterD += dataL;	// +LByte
+     ce2:	80 91 5e 01 	lds	r24, 0x015E
+     ce6:	90 91 5f 01 	lds	r25, 0x015F
+     cea:	82 0f       	add	r24, r18
+     cec:	91 1d       	adc	r25, r1
+     cee:	90 93 5f 01 	sts	0x015F, r25
+     cf2:	80 93 5e 01 	sts	0x015E, r24
+	
+	delayL=AbschnittDaten[14];
+     cf6:	26 85       	ldd	r18, Z+14	; 0x0e
+   /*
+   lcd_gotoxy(15,1);
+   lcd_puthex(delayL);
+   lcd_puthex(delayH);
+   */
+	DelayD = delayH;
+     cf8:	87 85       	ldd	r24, Z+15	; 0x0f
+     cfa:	90 e0       	ldi	r25, 0x00	; 0
+     cfc:	90 93 24 01 	sts	0x0124, r25
+     d00:	80 93 23 01 	sts	0x0123, r24
+	DelayD <<=8;
+     d04:	80 91 23 01 	lds	r24, 0x0123
+     d08:	90 91 24 01 	lds	r25, 0x0124
+     d0c:	98 2f       	mov	r25, r24
+     d0e:	88 27       	eor	r24, r24
+     d10:	90 93 24 01 	sts	0x0124, r25
+     d14:	80 93 23 01 	sts	0x0123, r24
+	DelayD += delayL;
+     d18:	80 91 23 01 	lds	r24, 0x0123
+     d1c:	90 91 24 01 	lds	r25, 0x0124
+     d20:	82 0f       	add	r24, r18
+     d22:	91 1d       	adc	r25, r1
+     d24:	90 93 24 01 	sts	0x0124, r25
+     d28:	80 93 23 01 	sts	0x0123, r24
+   //lcd_putc(' ');
+   //lcd_gotoxy(19,0);
+    
+   
+   
+   motorstatus=0;
+     d2c:	10 92 a4 01 	sts	0x01A4, r1
+   // Test 16.12.11
+   //motorstatus |= (1<<COUNT_A);
+   
+   //return returnwert;
+   
+   if (StepCounterA > StepCounterB) 
+     d30:	20 91 58 01 	lds	r18, 0x0158
+     d34:	30 91 59 01 	lds	r19, 0x0159
+     d38:	80 91 5a 01 	lds	r24, 0x015A
+     d3c:	90 91 5b 01 	lds	r25, 0x015B
+     d40:	82 17       	cp	r24, r18
+     d42:	93 07       	cpc	r25, r19
+     d44:	d0 f4       	brcc	.+52     	; 0xd7a <AbschnittLaden+0x29e>
+   {
+      if (StepCounterA > StepCounterC)
+     d46:	20 91 58 01 	lds	r18, 0x0158
+     d4a:	30 91 59 01 	lds	r19, 0x0159
+     d4e:	80 91 5c 01 	lds	r24, 0x015C
+     d52:	90 91 5d 01 	lds	r25, 0x015D
+     d56:	82 17       	cp	r24, r18
+     d58:	93 07       	cpc	r25, r19
+     d5a:	48 f5       	brcc	.+82     	; 0xdae <AbschnittLaden+0x2d2>
+      {
+         if (StepCounterA > StepCounterD) // A max
+     d5c:	20 91 58 01 	lds	r18, 0x0158
+     d60:	30 91 59 01 	lds	r19, 0x0159
+     d64:	80 91 5e 01 	lds	r24, 0x015E
+     d68:	90 91 5f 01 	lds	r25, 0x015F
+     d6c:	82 17       	cp	r24, r18
+     d6e:	93 07       	cpc	r25, r19
+     d70:	68 f5       	brcc	.+90     	; 0xdcc <AbschnittLaden+0x2f0>
+         {
+            motorstatus |= (1<<COUNT_A);
+     d72:	80 91 a4 01 	lds	r24, 0x01A4
+     d76:	81 60       	ori	r24, 0x01	; 1
+     d78:	2c c0       	rjmp	.+88     	; 0xdd2 <AbschnittLaden+0x2f6>
+      }
+   }// A>B
+   
+   else // B>A A weg
+   {
+      if (StepCounterB > StepCounterC) // C weg
+     d7a:	20 91 5a 01 	lds	r18, 0x015A
+     d7e:	30 91 5b 01 	lds	r19, 0x015B
+     d82:	80 91 5c 01 	lds	r24, 0x015C
+     d86:	90 91 5d 01 	lds	r25, 0x015D
+     d8a:	82 17       	cp	r24, r18
+     d8c:	93 07       	cpc	r25, r19
+     d8e:	78 f4       	brcc	.+30     	; 0xdae <AbschnittLaden+0x2d2>
+      {
+         if (StepCounterB > StepCounterD) // D weg
+     d90:	20 91 5a 01 	lds	r18, 0x015A
+     d94:	30 91 5b 01 	lds	r19, 0x015B
+     d98:	80 91 5e 01 	lds	r24, 0x015E
+     d9c:	90 91 5f 01 	lds	r25, 0x015F
+     da0:	82 17       	cp	r24, r18
+     da2:	93 07       	cpc	r25, r19
+     da4:	98 f4       	brcc	.+38     	; 0xdcc <AbschnittLaden+0x2f0>
+         {
+            motorstatus |= (1<<COUNT_B);
+     da6:	80 91 a4 01 	lds	r24, 0x01A4
+     daa:	82 60       	ori	r24, 0x02	; 2
+     dac:	12 c0       	rjmp	.+36     	; 0xdd2 <AbschnittLaden+0x2f6>
+            //lcd_putc('D');
+         }
+      }
+      else // B<C B weg
+      {  
+         if (StepCounterC > StepCounterD) // D weg
+     dae:	20 91 5c 01 	lds	r18, 0x015C
+     db2:	30 91 5d 01 	lds	r19, 0x015D
+     db6:	80 91 5e 01 	lds	r24, 0x015E
+     dba:	90 91 5f 01 	lds	r25, 0x015F
+     dbe:	82 17       	cp	r24, r18
+     dc0:	93 07       	cpc	r25, r19
+     dc2:	20 f4       	brcc	.+8      	; 0xdcc <AbschnittLaden+0x2f0>
+         {
+            motorstatus |= (1<<COUNT_C);
+     dc4:	80 91 a4 01 	lds	r24, 0x01A4
+     dc8:	84 60       	ori	r24, 0x04	; 4
+     dca:	03 c0       	rjmp	.+6      	; 0xdd2 <AbschnittLaden+0x2f6>
+            //lcd_putc('C');
+         }
+         else // D>C C weg
+         {
+            motorstatus |= (1<<COUNT_D);
+     dcc:	80 91 a4 01 	lds	r24, 0x01A4
+     dd0:	88 60       	ori	r24, 0x08	; 8
+     dd2:	80 93 a4 01 	sts	0x01A4, r24
+         
+      }
+   }
+   
+   return returnwert;
+}
+     dd6:	84 2f       	mov	r24, r20
+     dd8:	08 95       	ret
+
+00000dda <AnschlagVonMotor>:
+
+void AnschlagVonMotor(const uint8_t motor)
+{
+     dda:	cf 93       	push	r28
+     ddc:	df 93       	push	r29
+     dde:	e8 2f       	mov	r30, r24
+   
+   if (richtung & (1<<(RICHTUNG_A + motor))) // Richtung ist auf Anschlag A0 zu         
+     de0:	80 91 ac 01 	lds	r24, 0x01AC
+     de4:	ce 2f       	mov	r28, r30
+     de6:	d0 e0       	ldi	r29, 0x00	; 0
+     de8:	90 e0       	ldi	r25, 0x00	; 0
+     dea:	0e 2e       	mov	r0, r30
+     dec:	02 c0       	rjmp	.+4      	; 0xdf2 <AnschlagVonMotor+0x18>
+     dee:	95 95       	asr	r25
+     df0:	87 95       	ror	r24
+     df2:	0a 94       	dec	r0
+     df4:	e2 f7       	brpl	.-8      	; 0xdee <AnschlagVonMotor+0x14>
+     df6:	be 01       	movw	r22, r28
+     df8:	6c 5f       	subi	r22, 0xFC	; 252
+     dfa:	7f 4f       	sbci	r23, 0xFF	; 255
+     dfc:	80 ff       	sbrs	r24, 0
+     dfe:	da c0       	rjmp	.+436    	; 0xfb4 <AnschlagVonMotor+0x1da>
+   {
+      
+      if (!(anschlagstatus &(1<< (END_A0 + motor))))
+     e00:	80 91 aa 01 	lds	r24, 0x01AA
+     e04:	90 e0       	ldi	r25, 0x00	; 0
+     e06:	06 2e       	mov	r0, r22
+     e08:	02 c0       	rjmp	.+4      	; 0xe0e <AnschlagVonMotor+0x34>
+     e0a:	95 95       	asr	r25
+     e0c:	87 95       	ror	r24
+     e0e:	0a 94       	dec	r0
+     e10:	e2 f7       	brpl	.-8      	; 0xe0a <AnschlagVonMotor+0x30>
+     e12:	80 fd       	sbrc	r24, 0
+     e14:	e7 c0       	rjmp	.+462    	; 0xfe4 <AnschlagVonMotor+0x20a>
+      {
+         cli();
+     e16:	f8 94       	cli
+         
+         anschlagstatus |= (1<< (END_A0 + motor));      // Bit fuer Anschlag A0 setzen
+     e18:	80 91 aa 01 	lds	r24, 0x01AA
+     e1c:	41 e0       	ldi	r20, 0x01	; 1
+     e1e:	50 e0       	ldi	r21, 0x00	; 0
+     e20:	9a 01       	movw	r18, r20
+     e22:	02 c0       	rjmp	.+4      	; 0xe28 <AnschlagVonMotor+0x4e>
+     e24:	22 0f       	add	r18, r18
+     e26:	33 1f       	adc	r19, r19
+     e28:	6a 95       	dec	r22
+     e2a:	e2 f7       	brpl	.-8      	; 0xe24 <AnschlagVonMotor+0x4a>
+     e2c:	82 2b       	or	r24, r18
+     e2e:	80 93 aa 01 	sts	0x01AA, r24
+         
+         
+
+         if (cncstatus & (1<<GO_HOME)) // nur eigene Seite abstellen
+     e32:	80 91 ab 01 	lds	r24, 0x01AB
+     e36:	83 ff       	sbrs	r24, 3
+     e38:	47 c0       	rjmp	.+142    	; 0xec8 <AnschlagVonMotor+0xee>
+            
+            
+            }//switch motor
+
+            
+            sendbuffer[0]=0xB5 + motor;
+     e3a:	eb 54       	subi	r30, 0x4B	; 75
+     e3c:	e0 93 83 01 	sts	0x0183, r30
+     e40:	e5 5b       	subi	r30, 0xB5	; 181
+            
+           cncstatus |= (1<<motor);
+     e42:	20 91 ab 01 	lds	r18, 0x01AB
+     e46:	ca 01       	movw	r24, r20
+     e48:	0c 2e       	mov	r0, r28
+     e4a:	02 c0       	rjmp	.+4      	; 0xe50 <AnschlagVonMotor+0x76>
+     e4c:	88 0f       	add	r24, r24
+     e4e:	99 1f       	adc	r25, r25
+     e50:	0a 94       	dec	r0
+     e52:	e2 f7       	brpl	.-8      	; 0xe4c <AnschlagVonMotor+0x72>
+     e54:	28 2b       	or	r18, r24
+     e56:	20 93 ab 01 	sts	0x01AB, r18
+     e5a:	be 01       	movw	r22, r28
+     e5c:	6e 5f       	subi	r22, 0xFE	; 254
+     e5e:	7f 4f       	sbci	r23, 0xFF	; 255
+                
+            if (motor<2) // Stepperport 1
+     e60:	e2 30       	cpi	r30, 0x02	; 2
+     e62:	c8 f4       	brcc	.+50     	; 0xe96 <AnschlagVonMotor+0xbc>
+            {
+               STEPPERPORT_1 |= (1<<(MA_EN + motor));     // Motor 0,1 OFF
+     e64:	88 b1       	in	r24, 0x08	; 8
+     e66:	02 c0       	rjmp	.+4      	; 0xe6c <AnschlagVonMotor+0x92>
+     e68:	44 0f       	add	r20, r20
+     e6a:	55 1f       	adc	r21, r21
+     e6c:	6a 95       	dec	r22
+     e6e:	e2 f7       	brpl	.-8      	; 0xe68 <AnschlagVonMotor+0x8e>
+     e70:	84 2b       	or	r24, r20
+     e72:	88 b9       	out	0x08, r24	; 8
+               //STEPPERPORT_2 |= (1<<(MA_EN + motor + 2)); // Paralleler Motor 2,3 OFF
+               StepCounterA=0;
+     e74:	10 92 59 01 	sts	0x0159, r1
+     e78:	10 92 58 01 	sts	0x0158, r1
+               StepCounterB=0;
+     e7c:	10 92 5b 01 	sts	0x015B, r1
+     e80:	10 92 5a 01 	sts	0x015A, r1
+               CounterA=0;
+     e84:	10 92 51 01 	sts	0x0151, r1
+     e88:	10 92 50 01 	sts	0x0150, r1
+               CounterB=0;
+     e8c:	10 92 53 01 	sts	0x0153, r1
+     e90:	10 92 52 01 	sts	0x0152, r1
+     e94:	66 c0       	rjmp	.+204    	; 0xf62 <AnschlagVonMotor+0x188>
+               
+           }
+            else // Stepperport 2
+            {
+               STEPPERPORT_2 |= (1<<(MA_EN + motor));     // Motor 2,3 OFF
+     e96:	85 b1       	in	r24, 0x05	; 5
+     e98:	02 c0       	rjmp	.+4      	; 0xe9e <AnschlagVonMotor+0xc4>
+     e9a:	44 0f       	add	r20, r20
+     e9c:	55 1f       	adc	r21, r21
+     e9e:	6a 95       	dec	r22
+     ea0:	e2 f7       	brpl	.-8      	; 0xe9a <AnschlagVonMotor+0xc0>
+     ea2:	84 2b       	or	r24, r20
+     ea4:	85 b9       	out	0x05, r24	; 5
+               //STEPPERPORT_1 |= (1<<(MA_EN + motor - 2)); // Paralleler Motor 0,1 OFF
+               StepCounterC=0;
+     ea6:	10 92 5d 01 	sts	0x015D, r1
+     eaa:	10 92 5c 01 	sts	0x015C, r1
+               StepCounterD=0;
+     eae:	10 92 5f 01 	sts	0x015F, r1
+     eb2:	10 92 5e 01 	sts	0x015E, r1
+               CounterC=0;
+     eb6:	10 92 55 01 	sts	0x0155, r1
+     eba:	10 92 54 01 	sts	0x0154, r1
+               CounterD=0;
+     ebe:	10 92 57 01 	sts	0x0157, r1
+     ec2:	10 92 56 01 	sts	0x0156, r1
+     ec6:	4d c0       	rjmp	.+154    	; 0xf62 <AnschlagVonMotor+0x188>
+            //cncstatus &= ~(1<<GO_HOME);
+         
+         }
+         else           // beide Seiten abstellen
+         {    
+            cncstatus=0;
+     ec8:	10 92 ab 01 	sts	0x01AB, r1
+            sendbuffer[0]=0xA5 + motor;
+     ecc:	eb 55       	subi	r30, 0x5B	; 91
+     ece:	e0 93 83 01 	sts	0x0183, r30
+     ed2:	e5 5a       	subi	r30, 0xA5	; 165
+     ed4:	be 01       	movw	r22, r28
+     ed6:	6e 5f       	subi	r22, 0xFE	; 254
+     ed8:	7f 4f       	sbci	r23, 0xFF	; 255
+            
+            if (motor<2) // Stepperport 1
+     eda:	e2 30       	cpi	r30, 0x02	; 2
+     edc:	60 f4       	brcc	.+24     	; 0xef6 <AnschlagVonMotor+0x11c>
+            {
+               STEPPERPORT_1 |= (1<<(MA_EN + motor));     // Motor 0,1 OFF
+     ede:	88 b1       	in	r24, 0x08	; 8
+     ee0:	02 c0       	rjmp	.+4      	; 0xee6 <AnschlagVonMotor+0x10c>
+     ee2:	44 0f       	add	r20, r20
+     ee4:	55 1f       	adc	r21, r21
+     ee6:	6a 95       	dec	r22
+     ee8:	e2 f7       	brpl	.-8      	; 0xee2 <AnschlagVonMotor+0x108>
+     eea:	84 2b       	or	r24, r20
+     eec:	88 b9       	out	0x08, r24	; 8
+               STEPPERPORT_2 |= (1<<(MA_EN + motor + 2)); // Paralleler Motor 2,3 OFF
+     eee:	85 b1       	in	r24, 0x05	; 5
+     ef0:	28 2b       	or	r18, r24
+     ef2:	25 b9       	out	0x05, r18	; 5
+     ef4:	12 c0       	rjmp	.+36     	; 0xf1a <AnschlagVonMotor+0x140>
+            }
+            else // Stepperport 2
+            {
+               STEPPERPORT_2 |= (1<<(MA_EN + motor));     // Motor 2,3 OFF
+     ef6:	85 b1       	in	r24, 0x05	; 5
+     ef8:	9a 01       	movw	r18, r20
+     efa:	02 c0       	rjmp	.+4      	; 0xf00 <AnschlagVonMotor+0x126>
+     efc:	22 0f       	add	r18, r18
+     efe:	33 1f       	adc	r19, r19
+     f00:	6a 95       	dec	r22
+     f02:	e2 f7       	brpl	.-8      	; 0xefc <AnschlagVonMotor+0x122>
+     f04:	82 2b       	or	r24, r18
+     f06:	85 b9       	out	0x05, r24	; 5
+               STEPPERPORT_1 |= (1<<(MA_EN + motor - 2)); // Paralleler Motor 0,1 OFF
+     f08:	88 b1       	in	r24, 0x08	; 8
+     f0a:	0c 2e       	mov	r0, r28
+     f0c:	02 c0       	rjmp	.+4      	; 0xf12 <AnschlagVonMotor+0x138>
+     f0e:	44 0f       	add	r20, r20
+     f10:	55 1f       	adc	r21, r21
+     f12:	0a 94       	dec	r0
+     f14:	e2 f7       	brpl	.-8      	; 0xf0e <AnschlagVonMotor+0x134>
+     f16:	84 2b       	or	r24, r20
+     f18:	88 b9       	out	0x08, r24	; 8
+            }
+            
+            // Alles abstellen
+            StepCounterA=0;
+     f1a:	10 92 59 01 	sts	0x0159, r1
+     f1e:	10 92 58 01 	sts	0x0158, r1
+            StepCounterB=0;
+     f22:	10 92 5b 01 	sts	0x015B, r1
+     f26:	10 92 5a 01 	sts	0x015A, r1
+            StepCounterC=0;
+     f2a:	10 92 5d 01 	sts	0x015D, r1
+     f2e:	10 92 5c 01 	sts	0x015C, r1
+            StepCounterD=0;
+     f32:	10 92 5f 01 	sts	0x015F, r1
+     f36:	10 92 5e 01 	sts	0x015E, r1
+            
+            CounterA=0;
+     f3a:	10 92 51 01 	sts	0x0151, r1
+     f3e:	10 92 50 01 	sts	0x0150, r1
+            CounterB=0;
+     f42:	10 92 53 01 	sts	0x0153, r1
+     f46:	10 92 52 01 	sts	0x0152, r1
+            CounterC=0;
+     f4a:	10 92 55 01 	sts	0x0155, r1
+     f4e:	10 92 54 01 	sts	0x0154, r1
+            CounterD=0;
+     f52:	10 92 57 01 	sts	0x0157, r1
+     f56:	10 92 56 01 	sts	0x0156, r1
+            
+            ladeposition=0;
+     f5a:	10 92 a7 01 	sts	0x01A7, r1
+            motorstatus=0;
+     f5e:	10 92 a4 01 	sts	0x01A4, r1
+         
+         }
+         
+         sendbuffer[5]=abschnittnummer;
+     f62:	80 91 a5 01 	lds	r24, 0x01A5
+     f66:	90 91 a6 01 	lds	r25, 0x01A6
+     f6a:	80 93 88 01 	sts	0x0188, r24
+         sendbuffer[6]=ladeposition;
+     f6e:	80 91 a7 01 	lds	r24, 0x01A7
+     f72:	80 93 89 01 	sts	0x0189, r24
+         sendbuffer[7]=cncstatus;
+     f76:	80 91 ab 01 	lds	r24, 0x01AB
+     f7a:	80 93 8a 01 	sts	0x018A, r24
+         usb_rawhid_send((void*)sendbuffer, 50);
+     f7e:	83 e8       	ldi	r24, 0x83	; 131
+     f80:	91 e0       	ldi	r25, 0x01	; 1
+     f82:	62 e3       	ldi	r22, 0x32	; 50
+     f84:	b4 da       	rcall	.-2712   	; 0x4ee <usb_rawhid_send>
+         sendbuffer[0]=0x00;
+     f86:	10 92 83 01 	sts	0x0183, r1
+         sendbuffer[5]=0x00;
+     f8a:	10 92 88 01 	sts	0x0188, r1
+         sendbuffer[6]=0x00;
+     f8e:	10 92 89 01 	sts	0x0189, r1
+         sendbuffer[7]=0x00;
+     f92:	10 92 8a 01 	sts	0x018A, r1
+
+         
+         //ladeposition=0;
+        // motorstatus=0;
+         
+         richtung &= ~(1<<(RICHTUNG_A + motor));
+     f96:	20 91 ac 01 	lds	r18, 0x01AC
+     f9a:	81 e0       	ldi	r24, 0x01	; 1
+     f9c:	90 e0       	ldi	r25, 0x00	; 0
+     f9e:	02 c0       	rjmp	.+4      	; 0xfa4 <AnschlagVonMotor+0x1ca>
+     fa0:	88 0f       	add	r24, r24
+     fa2:	99 1f       	adc	r25, r25
+     fa4:	ca 95       	dec	r28
+     fa6:	e2 f7       	brpl	.-8      	; 0xfa0 <AnschlagVonMotor+0x1c6>
+     fa8:	80 95       	com	r24
+     faa:	82 23       	and	r24, r18
+     fac:	80 93 ac 01 	sts	0x01AC, r24
+        
+         
+         sei();
+     fb0:	78 94       	sei
+     fb2:	18 c0       	rjmp	.+48     	; 0xfe4 <AnschlagVonMotor+0x20a>
+      }
+      
+   }
+   else 
+   {
+      if (!(anschlagstatus &(1<< (END_A0 + motor))))
+     fb4:	80 91 aa 01 	lds	r24, 0x01AA
+     fb8:	90 e0       	ldi	r25, 0x00	; 0
+     fba:	06 2e       	mov	r0, r22
+     fbc:	02 c0       	rjmp	.+4      	; 0xfc2 <AnschlagVonMotor+0x1e8>
+     fbe:	95 95       	asr	r25
+     fc0:	87 95       	ror	r24
+     fc2:	0a 94       	dec	r0
+     fc4:	e2 f7       	brpl	.-8      	; 0xfbe <AnschlagVonMotor+0x1e4>
+     fc6:	80 fd       	sbrc	r24, 0
+     fc8:	0d c0       	rjmp	.+26     	; 0xfe4 <AnschlagVonMotor+0x20a>
+      
+      {
+         anschlagstatus &= ~(1<< (END_A0 + motor)); // Bit fuer Anschlag B0 zuruecksetzen
+     fca:	20 91 aa 01 	lds	r18, 0x01AA
+     fce:	81 e0       	ldi	r24, 0x01	; 1
+     fd0:	90 e0       	ldi	r25, 0x00	; 0
+     fd2:	02 c0       	rjmp	.+4      	; 0xfd8 <AnschlagVonMotor+0x1fe>
+     fd4:	88 0f       	add	r24, r24
+     fd6:	99 1f       	adc	r25, r25
+     fd8:	6a 95       	dec	r22
+     fda:	e2 f7       	brpl	.-8      	; 0xfd4 <AnschlagVonMotor+0x1fa>
+     fdc:	80 95       	com	r24
+     fde:	82 23       	and	r24, r18
+     fe0:	80 93 aa 01 	sts	0x01AA, r24
+      }
+      
+   }
+   
+}
+     fe4:	df 91       	pop	r29
+     fe6:	cf 91       	pop	r28
+     fe8:	08 95       	ret
+
+00000fea <StepEndVonMotor>:
+
+
+void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D
+{
+     fea:	1f 93       	push	r17
+     fec:	18 2f       	mov	r17, r24
+   STEPPERPORT_1 |= (1<<(MA_EN + motor));					// Motor A... OFF
+     fee:	28 b1       	in	r18, 0x08	; 8
+     ff0:	68 2f       	mov	r22, r24
+     ff2:	70 e0       	ldi	r23, 0x00	; 0
+     ff4:	6e 5f       	subi	r22, 0xFE	; 254
+     ff6:	7f 4f       	sbci	r23, 0xFF	; 255
+     ff8:	41 e0       	ldi	r20, 0x01	; 1
+     ffa:	50 e0       	ldi	r21, 0x00	; 0
+     ffc:	ca 01       	movw	r24, r20
+     ffe:	06 2e       	mov	r0, r22
+    1000:	02 c0       	rjmp	.+4      	; 0x1006 <StepEndVonMotor+0x1c>
+    1002:	88 0f       	add	r24, r24
+    1004:	99 1f       	adc	r25, r25
+    1006:	0a 94       	dec	r0
+    1008:	e2 f7       	brpl	.-8      	; 0x1002 <StepEndVonMotor+0x18>
+    100a:	62 50       	subi	r22, 0x02	; 2
+    100c:	70 40       	sbci	r23, 0x00	; 0
+    100e:	98 2f       	mov	r25, r24
+    1010:	28 2b       	or	r18, r24
+    1012:	28 b9       	out	0x08, r18	; 8
+   
+   if (cncstatus & (1<<GO_HOME)) 
+    1014:	80 91 ab 01 	lds	r24, 0x01AB
+   else
+   {
+      
+   }
+   
+   if (motor < 2)
+    1018:	12 30       	cpi	r17, 0x02	; 2
+    101a:	60 f4       	brcc	.+24     	; 0x1034 <StepEndVonMotor+0x4a>
+   {
+   STEPPERPORT_1 |= (1<<(MA_EN + motor));
+    101c:	88 b1       	in	r24, 0x08	; 8
+    101e:	89 2b       	or	r24, r25
+    1020:	88 b9       	out	0x08, r24	; 8
+   StepCounterA=0;
+    1022:	10 92 59 01 	sts	0x0159, r1
+    1026:	10 92 58 01 	sts	0x0158, r1
+   StepCounterB=0;
+    102a:	10 92 5b 01 	sts	0x015B, r1
+    102e:	10 92 5a 01 	sts	0x015A, r1
+    1032:	11 c0       	rjmp	.+34     	; 0x1056 <StepEndVonMotor+0x6c>
+   }
+   else
+   {
+      STEPPERPORT_2 |= (1<<(MA_EN + motor -2)); // MC_EN ist = MA_EN, aber motor ist 3
+    1034:	85 b1       	in	r24, 0x05	; 5
+    1036:	06 2e       	mov	r0, r22
+    1038:	02 c0       	rjmp	.+4      	; 0x103e <StepEndVonMotor+0x54>
+    103a:	44 0f       	add	r20, r20
+    103c:	55 1f       	adc	r21, r21
+    103e:	0a 94       	dec	r0
+    1040:	e2 f7       	brpl	.-8      	; 0x103a <StepEndVonMotor+0x50>
+    1042:	84 2b       	or	r24, r20
+    1044:	85 b9       	out	0x05, r24	; 5
+      StepCounterC=0;
+    1046:	10 92 5d 01 	sts	0x015D, r1
+    104a:	10 92 5c 01 	sts	0x015C, r1
+      StepCounterD=0;
+    104e:	10 92 5f 01 	sts	0x015F, r1
+    1052:	10 92 5e 01 	sts	0x015E, r1
+      
+   }
+   
+   STEPPERPORT_1 |= (1<<(MA_EN + motor));
+    1056:	88 b1       	in	r24, 0x08	; 8
+    1058:	98 2b       	or	r25, r24
+    105a:	98 b9       	out	0x08, r25	; 8
+   StepCounterA=0;
+    105c:	10 92 59 01 	sts	0x0159, r1
+    1060:	10 92 58 01 	sts	0x0158, r1
+   StepCounterB=0;
+    1064:	10 92 5b 01 	sts	0x015B, r1
+    1068:	10 92 5a 01 	sts	0x015A, r1
+   CounterA=0;
+    106c:	10 92 51 01 	sts	0x0151, r1
+    1070:	10 92 50 01 	sts	0x0150, r1
+   CounterB=0;
+    1074:	10 92 53 01 	sts	0x0153, r1
+    1078:	10 92 52 01 	sts	0x0152, r1
+
+
+   STEPPERPORT_2 |= (1<<(MA_EN + motor -2));
+    107c:	25 b1       	in	r18, 0x05	; 5
+    107e:	41 e0       	ldi	r20, 0x01	; 1
+    1080:	50 e0       	ldi	r21, 0x00	; 0
+    1082:	ca 01       	movw	r24, r20
+    1084:	06 2e       	mov	r0, r22
+    1086:	02 c0       	rjmp	.+4      	; 0x108c <StepEndVonMotor+0xa2>
+    1088:	88 0f       	add	r24, r24
+    108a:	99 1f       	adc	r25, r25
+    108c:	0a 94       	dec	r0
+    108e:	e2 f7       	brpl	.-8      	; 0x1088 <StepEndVonMotor+0x9e>
+    1090:	28 2b       	or	r18, r24
+    1092:	25 b9       	out	0x05, r18	; 5
+   StepCounterC=0;
+    1094:	10 92 5d 01 	sts	0x015D, r1
+    1098:	10 92 5c 01 	sts	0x015C, r1
+   StepCounterD=0;
+    109c:	10 92 5f 01 	sts	0x015F, r1
+    10a0:	10 92 5e 01 	sts	0x015E, r1
+   CounterC=0;
+    10a4:	10 92 55 01 	sts	0x0155, r1
+    10a8:	10 92 54 01 	sts	0x0154, r1
+   CounterD=0;
+    10ac:	10 92 57 01 	sts	0x0157, r1
+    10b0:	10 92 56 01 	sts	0x0156, r1
+
+   
+   if (abschnittnummer==endposition)
+    10b4:	20 91 a5 01 	lds	r18, 0x01A5
+    10b8:	30 91 a6 01 	lds	r19, 0x01A6
+    10bc:	80 91 25 01 	lds	r24, 0x0125
+    10c0:	90 91 26 01 	lds	r25, 0x0126
+    10c4:	28 17       	cp	r18, r24
+    10c6:	39 07       	cpc	r19, r25
+    10c8:	d1 f5       	brne	.+116    	; 0x113e <StepEndVonMotor+0x154>
+   {  
+      ringbufferstatus = 0;
+    10ca:	10 92 a3 01 	sts	0x01A3, r1
+      //         anschlagstatus=0;
+      anschlagstatus &= ~(1<< (END_A0 + motor)); // Bit fuer Anschlag A0 zuruecksetzen
+    10ce:	90 91 aa 01 	lds	r25, 0x01AA
+    10d2:	6c 5f       	subi	r22, 0xFC	; 252
+    10d4:	7f 4f       	sbci	r23, 0xFF	; 255
+    10d6:	02 c0       	rjmp	.+4      	; 0x10dc <StepEndVonMotor+0xf2>
+    10d8:	44 0f       	add	r20, r20
+    10da:	55 1f       	adc	r21, r21
+    10dc:	6a 95       	dec	r22
+    10de:	e2 f7       	brpl	.-8      	; 0x10d8 <StepEndVonMotor+0xee>
+    10e0:	84 2f       	mov	r24, r20
+    10e2:	80 95       	com	r24
+    10e4:	89 23       	and	r24, r25
+    10e6:	80 93 aa 01 	sts	0x01AA, r24
+      motorstatus=0;
+    10ea:	10 92 a4 01 	sts	0x01A4, r1
+      sendbuffer[0]=0xAA + motor;
+    10ee:	16 55       	subi	r17, 0x56	; 86
+    10f0:	10 93 83 01 	sts	0x0183, r17
+      sendbuffer[1]=abschnittnummer;
+    10f4:	80 91 a5 01 	lds	r24, 0x01A5
+    10f8:	90 91 a6 01 	lds	r25, 0x01A6
+    10fc:	80 93 84 01 	sts	0x0184, r24
+      sendbuffer[5]=abschnittnummer;
+    1100:	80 91 a5 01 	lds	r24, 0x01A5
+    1104:	90 91 a6 01 	lds	r25, 0x01A6
+    1108:	80 93 88 01 	sts	0x0188, r24
+      sendbuffer[6]=ladeposition;
+    110c:	80 91 a7 01 	lds	r24, 0x01A7
+    1110:	80 93 89 01 	sts	0x0189, r24
+      sendbuffer[7]=cncstatus;
+    1114:	80 91 ab 01 	lds	r24, 0x01AB
+    1118:	80 93 8a 01 	sts	0x018A, r24
+      usb_rawhid_send((void*)sendbuffer, 50);
+    111c:	83 e8       	ldi	r24, 0x83	; 131
+    111e:	91 e0       	ldi	r25, 0x01	; 1
+    1120:	62 e3       	ldi	r22, 0x32	; 50
+    1122:	e5 d9       	rcall	.-3126   	; 0x4ee <usb_rawhid_send>
+      sendbuffer[0]=0x00;
+    1124:	10 92 83 01 	sts	0x0183, r1
+      sendbuffer[1]=0x00;
+    1128:	10 92 84 01 	sts	0x0184, r1
+      sendbuffer[5]=0x00;
+    112c:	10 92 88 01 	sts	0x0188, r1
+      sendbuffer[6]=0x00;
+    1130:	10 92 89 01 	sts	0x0189, r1
+      sendbuffer[7]=0;
+    1134:	10 92 8a 01 	sts	0x018A, r1
+      ladeposition=0;
+    1138:	10 92 a7 01 	sts	0x01A7, r1
+    113c:	3a c0       	rjmp	.+116    	; 0x11b2 <StepEndVonMotor+0x1c8>
+   }
+   else 
+   { 
+      uint8_t aktuellelage=0;
+      {
+         uint8_t aktuelleladeposition=(ladeposition & 0x00FF);
+    113e:	80 91 a7 01 	lds	r24, 0x01A7
+         aktuelleladeposition &= 0x03;
+         // aktuellen Abschnitt laden
+         aktuellelage = AbschnittLaden(CNCDaten[aktuelleladeposition]);
+    1142:	83 70       	andi	r24, 0x03	; 3
+    1144:	21 e2       	ldi	r18, 0x21	; 33
+    1146:	82 9f       	mul	r24, r18
+    1148:	c0 01       	movw	r24, r0
+    114a:	11 24       	eor	r1, r1
+    114c:	80 55       	subi	r24, 0x50	; 80
+    114e:	9e 4f       	sbci	r25, 0xFE	; 254
+    1150:	c5 dc       	rcall	.-1654   	; 0xadc <AbschnittLaden>
+         if (aktuellelage==2) // war letzter Abschnitt
+    1152:	82 30       	cpi	r24, 0x02	; 2
+    1154:	49 f4       	brne	.+18     	; 0x1168 <StepEndVonMotor+0x17e>
+         {
+            endposition=abschnittnummer; // letzter Abschnitt zu fahren
+    1156:	80 91 a5 01 	lds	r24, 0x01A5
+    115a:	90 91 a6 01 	lds	r25, 0x01A6
+    115e:	90 93 26 01 	sts	0x0126, r25
+    1162:	80 93 25 01 	sts	0x0125, r24
+    1166:	17 c0       	rjmp	.+46     	; 0x1196 <StepEndVonMotor+0x1ac>
+         }  
+         else
+         {
+            // neuen Abschnitt abrufen
+            sendbuffer[5]=abschnittnummer;
+    1168:	80 91 a5 01 	lds	r24, 0x01A5
+    116c:	90 91 a6 01 	lds	r25, 0x01A6
+    1170:	80 93 88 01 	sts	0x0188, r24
+            sendbuffer[6]=ladeposition;
+    1174:	80 91 a7 01 	lds	r24, 0x01A7
+    1178:	80 93 89 01 	sts	0x0189, r24
+            sendbuffer[0]=0xA0 + motor;
+    117c:	10 56       	subi	r17, 0x60	; 96
+    117e:	10 93 83 01 	sts	0x0183, r17
+            usb_rawhid_send((void*)sendbuffer, 50);
+    1182:	83 e8       	ldi	r24, 0x83	; 131
+    1184:	91 e0       	ldi	r25, 0x01	; 1
+    1186:	62 e3       	ldi	r22, 0x32	; 50
+    1188:	b2 d9       	rcall	.-3228   	; 0x4ee <usb_rawhid_send>
+            sendbuffer[0]=0x00;
+    118a:	10 92 83 01 	sts	0x0183, r1
+            sendbuffer[5]=0x00;
+    118e:	10 92 88 01 	sts	0x0188, r1
+            sendbuffer[6]=0x00;
+    1192:	10 92 89 01 	sts	0x0189, r1
+            
+         }
+         
+         ladeposition++;
+    1196:	80 91 a7 01 	lds	r24, 0x01A7
+    119a:	8f 5f       	subi	r24, 0xFF	; 255
+    119c:	80 93 a7 01 	sts	0x01A7, r24
+         
+      }
+      if (aktuellelage==2)
+      {
+      }
+      AbschnittCounter++;
+    11a0:	80 91 a8 01 	lds	r24, 0x01A8
+    11a4:	90 91 a9 01 	lds	r25, 0x01A9
+    11a8:	01 96       	adiw	r24, 0x01	; 1
+    11aa:	90 93 a9 01 	sts	0x01A9, r25
+    11ae:	80 93 a8 01 	sts	0x01A8, r24
+      
+   }
+   
+}
+    11b2:	1f 91       	pop	r17
+    11b4:	08 95       	ret
+
+000011b6 <main>:
+
+
+int main (void) 
+{
+    11b6:	6f 92       	push	r6
+    11b8:	7f 92       	push	r7
+    11ba:	8f 92       	push	r8
+    11bc:	9f 92       	push	r9
+    11be:	af 92       	push	r10
+    11c0:	bf 92       	push	r11
+    11c2:	cf 92       	push	r12
+    11c4:	df 92       	push	r13
+    11c6:	ef 92       	push	r14
+    11c8:	ff 92       	push	r15
+    11ca:	0f 93       	push	r16
+    11cc:	1f 93       	push	r17
+    11ce:	cf 93       	push	r28
+    11d0:	df 93       	push	r29
+    int8_t r;
+
+uint16_t count=0;
+    
+	// set for 16 MHz clock
+	CPU_PRESCALE(0);
+    11d2:	80 e8       	ldi	r24, 0x80	; 128
+    11d4:	80 93 61 00 	sts	0x0061, r24
+    11d8:	10 92 61 00 	sts	0x0061, r1
+    
+	// Initialize the USB, and then wait for the host to set configuration.
+	// If the Teensy is powered without a PC connected to the USB port,
+	// this will wait forever.
+	usb_init();
+    11dc:	9f d8       	rcall	.-3778   	; 0x31c <usb_init>
+
+// return 0 if the USB is not configured, or the configuration
+// number selected by the HOST
+uint8_t usb_configured(void)
+{
+	return usb_configuration;
+    11de:	80 91 ad 01 	lds	r24, 0x01AD
+	while (!usb_configured()) /* wait */ ;
+    11e2:	88 23       	and	r24, r24
+    11e4:	e1 f3       	breq	.-8      	; 0x11de <main+0x28>
+    11e6:	80 e1       	ldi	r24, 0x10	; 16
+    11e8:	97 e2       	ldi	r25, 0x27	; 39
+    11ea:	20 e9       	ldi	r18, 0x90	; 144
+    11ec:	31 e0       	ldi	r19, 0x01	; 1
+    11ee:	f9 01       	movw	r30, r18
+    11f0:	31 97       	sbiw	r30, 0x01	; 1
+    11f2:	f1 f7       	brne	.-4      	; 0x11f0 <main+0x3a>
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+    11f4:	01 97       	sbiw	r24, 0x01	; 1
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+    11f6:	d9 f7       	brne	.-10     	; 0x11ee <main+0x38>
+    
+	// Wait an extra second for the PC's operating system to load drivers
+	// and do whatever it does to actually be ready for input
+	_delay_ms(1000);
+
+	sei();
+    11f8:	78 94       	sei
+		
+	slaveinit();
+    11fa:	f0 db       	rcall	.-2080   	; 0x9dc <slaveinit>
+		
+	/* initialize the LCD */
+	lcd_initialize(LCD_FUNCTION_8x2, LCD_CMD_ENTRY_INC, LCD_CMD_ON);
+    11fc:	88 e3       	ldi	r24, 0x38	; 56
+    11fe:	66 e0       	ldi	r22, 0x06	; 6
+    1200:	4c e0       	ldi	r20, 0x0C	; 12
+    1202:	0e 94 f3 00 	call	0x1e6	; 0x1e6 <lcd_initialize>
+
+	lcd_puts("Guten Tag\0");
+    1206:	84 e0       	ldi	r24, 0x04	; 4
+    1208:	91 e0       	ldi	r25, 0x01	; 1
+    120a:	44 d8       	rcall	.-3960   	; 0x294 <lcd_puts>
+    120c:	84 e6       	ldi	r24, 0x64	; 100
+    120e:	90 e0       	ldi	r25, 0x00	; 0
+    1210:	20 e0       	ldi	r18, 0x00	; 0
+    1212:	3f e0       	ldi	r19, 0x0F	; 15
+    1214:	f9 01       	movw	r30, r18
+    1216:	31 97       	sbiw	r30, 0x01	; 1
+    1218:	f1 f7       	brne	.-4      	; 0x1216 <main+0x60>
+	// we use a calibrated macro. This is more
+	// accurate and not so much compiler dependent
+	// as self made code.
+	while(ms){
+		_delay_ms(0.96);
+		ms--;
+    121a:	01 97       	sbiw	r24, 0x01	; 1
+void delay_ms(unsigned int ms)/* delay for a minimum of <ms> */
+{
+	// we use a calibrated macro. This is more
+	// accurate and not so much compiler dependent
+	// as self made code.
+	while(ms){
+    121c:	d9 f7       	brne	.-10     	; 0x1214 <main+0x5e>
+	/* initialize the LCD */
+	lcd_initialize(LCD_FUNCTION_8x2, LCD_CMD_ENTRY_INC, LCD_CMD_ON);
+
+	lcd_puts("Guten Tag\0");
+	delay_ms(100);
+	lcd_cls();
+    121e:	4c d8       	rcall	.-3944   	; 0x2b8 <lcd_cls>
+	//lcd_puts("READY\0");
+	lcd_puts("V: \0");
+    1220:	8f e0       	ldi	r24, 0x0F	; 15
+    1222:	91 e0       	ldi	r25, 0x01	; 1
+    1224:	37 d8       	rcall	.-3986   	; 0x294 <lcd_puts>
+	lcd_puts(VERSION);
+    1226:	84 e1       	ldi	r24, 0x14	; 20
+    1228:	91 e0       	ldi	r25, 0x01	; 1
+    122a:	34 d8       	rcall	.-3992   	; 0x294 <lcd_puts>
+   lcd_clr_line(1);
+    122c:	81 e0       	ldi	r24, 0x01	; 1
+    122e:	5d d8       	rcall	.-3910   	; 0x2ea <lcd_clr_line>
+	//eeprom_write_byte(&WDT_ErrCount0,0);
+	
+	uint8_t i=0;
+   
+	//timer2
+	TCNT2   = 0; 
+    1230:	10 92 b2 00 	sts	0x00B2, r1
+//	TCCR2A |= (1 << WGM21); // Configure timer 2 for CTC mode 
+	TCCR2B |= (1 << CS20); // Start timer at Fcpu/8 
+    1234:	80 91 b1 00 	lds	r24, 0x00B1
+    1238:	81 60       	ori	r24, 0x01	; 1
+    123a:	80 93 b1 00 	sts	0x00B1, r24
+//	TIMSK2 |= (1 << OCIE2A); // Enable CTC interrupt 
+	TIMSK2 |= (1 << TOIE2); // Enable OV interrupt 
+    123e:	80 91 70 00 	lds	r24, 0x0070
+    1242:	81 60       	ori	r24, 0x01	; 1
+    1244:	80 93 70 00 	sts	0x0070, r24
+	//OCR2A   = 5; // Set CTC compare value with a prescaler of 64 
+    TCCR2A = 0x00;
+    1248:	10 92 b0 00 	sts	0x00B0, r1
+
+	  sei();
+    124c:	78 94       	sei
+    124e:	ee 24       	eor	r14, r14
+    1250:	ff 24       	eor	r15, r15
+		loopcount0+=1;
+		if (loopcount0==0xAFFF)
+		{
+			loopcount0=0;
+			loopcount1+=1;
+			LOOPLEDPORT ^=(1<<LOOPLED);
+    1252:	10 e4       	ldi	r17, 0x40	; 64
+    1254:	b1 2e       	mov	r11, r17
+         code = buffer[16];
+         
+         // Empfang quittieren
+         sendbuffer[5]=code;
+         sendbuffer[6]=code;
+         sendbuffer[0]=0x33;
+    1256:	b3 e3       	ldi	r27, 0x33	; 51
+    1258:	ab 2e       	mov	r10, r27
+         {
+            case 0xE0: // Man: Alles stoppen
+            {
+               ringbufferstatus = 0;
+               motorstatus=0;
+               sendbuffer[0]=0xE1;
+    125a:	a1 ee       	ldi	r26, 0xE1	; 225
+    125c:	9a 2e       	mov	r9, r26
+               {
+                  {
+                     //lcd_putc('*');
+                     sendbuffer[5]=abschnittnummer;
+                     sendbuffer[6]=ladeposition;
+                     sendbuffer[0]=0xAF;
+    125e:	ff ea       	ldi	r31, 0xAF	; 175
+    1260:	8f 2e       	mov	r8, r31
+                        CNCDaten[k][i]=0;  
+                     }
+                  }
+                  
+                  ladeposition=0;
+                  endposition=0xFFFF;
+    1262:	cc 24       	eor	r12, r12
+    1264:	ca 94       	dec	r12
+    1266:	dc 2c       	mov	r13, r12
+                     sendbuffer[0]=0x45;
+                     cncstatus |= (1<<GO_HOME); // Bit fuer go_home setzen
+                  }
+                  else
+                  {
+                     sendbuffer[0]=0x44;
+    1268:	e4 e4       	ldi	r30, 0x44	; 68
+    126a:	7e 2e       	mov	r7, r30
+                  
+                  
+                  if (code == 0xF0) // cncstatus fuer go_home setzen
+                  {
+                     sendbuffer[5]=0xF0;
+                     sendbuffer[0]=0x45;
+    126c:	75 e4       	ldi	r23, 0x45	; 69
+    126e:	67 2e       	mov	r6, r23
+            }break;
+               
+            case 0xE2: // DC ON_OFF
+            {
+               PWM = code;
+               sendbuffer[0]=0xE3;
+    1270:	03 ee       	ldi	r16, 0xE3	; 227
+#pragma mark while	  
+	while (1)
+	{	
+      //OSZI_B_LO;
+		//Blinkanzeige
+		loopcount0+=1;
+    1272:	08 94       	sec
+    1274:	e1 1c       	adc	r14, r1
+    1276:	f1 1c       	adc	r15, r1
+		if (loopcount0==0xAFFF)
+    1278:	8f ef       	ldi	r24, 0xFF	; 255
+    127a:	e8 16       	cp	r14, r24
+    127c:	8f ea       	ldi	r24, 0xAF	; 175
+    127e:	f8 06       	cpc	r15, r24
+    1280:	29 f4       	brne	.+10     	; 0x128c <main+0xd6>
+		{
+			loopcount0=0;
+			loopcount1+=1;
+			LOOPLEDPORT ^=(1<<LOOPLED);
+    1282:	8b b1       	in	r24, 0x0b	; 11
+    1284:	8b 25       	eor	r24, r11
+    1286:	8b b9       	out	0x0b, r24	; 11
+    1288:	ee 24       	eor	r14, r14
+    128a:	ff 24       	eor	r15, r15
+		}
+		
+      if (PWM) // Heizung ist ON
+    128c:	80 91 4f 01 	lds	r24, 0x014F
+    1290:	88 23       	and	r24, r24
+    1292:	59 f0       	breq	.+22     	; 0x12aa <main+0xf4>
+      {
+         if (pwmposition > PWM) // DC OFF, PIN ist HI
+    1294:	90 91 62 01 	lds	r25, 0x0162
+    1298:	80 91 4f 01 	lds	r24, 0x014F
+    129c:	89 17       	cp	r24, r25
+    129e:	18 f4       	brcc	.+6      	; 0x12a6 <main+0xf0>
+         {
+            CMD_PORT |= (1<<DC);
+    12a0:	5f 9a       	sbi	0x0b, 7	; 11
+            OSZI_A_LO ;
+    12a2:	10 98       	cbi	0x02, 0	; 2
+    12a4:	02 c0       	rjmp	.+4      	; 0x12aa <main+0xf4>
+         }
+         else                    // DC ON, PIN ist LO
+         {
+            CMD_PORT &= ~(1<<DC);
+    12a6:	5f 98       	cbi	0x0b, 7	; 11
+            OSZI_A_HI ;
+    12a8:	10 9a       	sbi	0x02, 0	; 2
+      }
+      /**	Begin USB-routinen	***********************/
+      
+      // Start USB
+      //lcd_putc('u');
+      r = usb_rawhid_recv((void*)buffer, 0);
+    12aa:	83 e6       	ldi	r24, 0x63	; 99
+    12ac:	91 e0       	ldi	r25, 0x01	; 1
+    12ae:	60 e0       	ldi	r22, 0x00	; 0
+    12b0:	4c d8       	rcall	.-3944   	; 0x34a <usb_rawhid_recv>
+		if (r > 0) 
+    12b2:	18 16       	cp	r1, r24
+    12b4:	0c f0       	brlt	.+2      	; 0x12b8 <main+0x102>
+    12b6:	50 c1       	rjmp	.+672    	; 0x1558 <main+0x3a2>
+      {
+         //OSZI_B_HI;
+         cli(); 
+    12b8:	f8 94       	cli
+         // code abfragen
+         uint8_t code = 0x00;
+         code = buffer[16];
+    12ba:	10 91 73 01 	lds	r17, 0x0173
+         
+         // Empfang quittieren
+         sendbuffer[5]=code;
+    12be:	10 93 88 01 	sts	0x0188, r17
+         sendbuffer[6]=code;
+    12c2:	10 93 89 01 	sts	0x0189, r17
+         sendbuffer[0]=0x33;
+    12c6:	a0 92 83 01 	sts	0x0183, r10
+         usb_rawhid_send((void*)sendbuffer, 50);
+    12ca:	83 e8       	ldi	r24, 0x83	; 131
+    12cc:	91 e0       	ldi	r25, 0x01	; 1
+    12ce:	62 e3       	ldi	r22, 0x32	; 50
+    12d0:	0e d9       	rcall	.-3556   	; 0x4ee <usb_rawhid_send>
+         sendbuffer[0]=0x00;
+    12d2:	10 92 83 01 	sts	0x0183, r1
+         sendbuffer[5]=0x00;
+    12d6:	10 92 88 01 	sts	0x0188, r1
+         sendbuffer[6]=0x00;
+    12da:	10 92 89 01 	sts	0x0189, r1
+         
+         switch (code)
+    12de:	10 3e       	cpi	r17, 0xE0	; 224
+    12e0:	21 f0       	breq	.+8      	; 0x12ea <main+0x134>
+    12e2:	12 3e       	cpi	r17, 0xE2	; 226
+    12e4:	09 f0       	breq	.+2      	; 0x12e8 <main+0x132>
+    12e6:	51 c0       	rjmp	.+162    	; 0x138a <main+0x1d4>
+    12e8:	41 c0       	rjmp	.+130    	; 0x136c <main+0x1b6>
+         {
+            case 0xE0: // Man: Alles stoppen
+            {
+               ringbufferstatus = 0;
+    12ea:	10 92 a3 01 	sts	0x01A3, r1
+               motorstatus=0;
+    12ee:	10 92 a4 01 	sts	0x01A4, r1
+               sendbuffer[0]=0xE1;
+    12f2:	90 92 83 01 	sts	0x0183, r9
+               sendbuffer[5]=abschnittnummer;
+    12f6:	80 91 a5 01 	lds	r24, 0x01A5
+    12fa:	90 91 a6 01 	lds	r25, 0x01A6
+    12fe:	80 93 88 01 	sts	0x0188, r24
+               sendbuffer[6]=ladeposition;
+    1302:	80 91 a7 01 	lds	r24, 0x01A7
+    1306:	80 93 89 01 	sts	0x0189, r24
+               usb_rawhid_send((void*)sendbuffer, 50);
+    130a:	83 e8       	ldi	r24, 0x83	; 131
+    130c:	91 e0       	ldi	r25, 0x01	; 1
+    130e:	62 e3       	ldi	r22, 0x32	; 50
+    1310:	ee d8       	rcall	.-3620   	; 0x4ee <usb_rawhid_send>
+               sendbuffer[0]=0x00;
+    1312:	10 92 83 01 	sts	0x0183, r1
+               sendbuffer[5]=0x00;
+    1316:	10 92 88 01 	sts	0x0188, r1
+               sendbuffer[6]=0x00;
+    131a:	10 92 89 01 	sts	0x0189, r1
+               ladeposition=0;
+    131e:	10 92 a7 01 	sts	0x01A7, r1
+               AbschnittCounter=0;
+    1322:	10 92 a9 01 	sts	0x01A9, r1
+    1326:	10 92 a8 01 	sts	0x01A8, r1
+               
+               StepCounterA=0;
+    132a:	10 92 59 01 	sts	0x0159, r1
+    132e:	10 92 58 01 	sts	0x0158, r1
+               StepCounterB=0;
+    1332:	10 92 5b 01 	sts	0x015B, r1
+    1336:	10 92 5a 01 	sts	0x015A, r1
+               StepCounterC=0;
+    133a:	10 92 5d 01 	sts	0x015D, r1
+    133e:	10 92 5c 01 	sts	0x015C, r1
+               StepCounterD=0;
+    1342:	10 92 5f 01 	sts	0x015F, r1
+    1346:	10 92 5e 01 	sts	0x015E, r1
+               
+               CounterA=0;
+    134a:	10 92 51 01 	sts	0x0151, r1
+    134e:	10 92 50 01 	sts	0x0150, r1
+               CounterB=0;
+    1352:	10 92 53 01 	sts	0x0153, r1
+    1356:	10 92 52 01 	sts	0x0152, r1
+               CounterC=0;
+    135a:	10 92 55 01 	sts	0x0155, r1
+    135e:	10 92 54 01 	sts	0x0154, r1
+               CounterD=0;
+    1362:	10 92 57 01 	sts	0x0157, r1
+    1366:	10 92 56 01 	sts	0x0156, r1
+    136a:	f5 c0       	rjmp	.+490    	; 0x1556 <main+0x3a0>
+               
+            }break;
+               
+            case 0xE2: // DC ON_OFF
+            {
+               PWM = code;
+    136c:	10 93 4f 01 	sts	0x014F, r17
+               sendbuffer[0]=0xE3;
+    1370:	00 93 83 01 	sts	0x0183, r16
+               usb_rawhid_send((void*)sendbuffer, 50);
+    1374:	83 e8       	ldi	r24, 0x83	; 131
+    1376:	91 e0       	ldi	r25, 0x01	; 1
+    1378:	62 e3       	ldi	r22, 0x32	; 50
+    137a:	b9 d8       	rcall	.-3726   	; 0x4ee <usb_rawhid_send>
+               sendbuffer[0]=0x00;
+    137c:	10 92 83 01 	sts	0x0183, r1
+               sendbuffer[5]=0x00;
+    1380:	10 92 88 01 	sts	0x0188, r1
+               sendbuffer[6]=0x00;
+    1384:	10 92 89 01 	sts	0x0189, r1
+    1388:	e6 c0       	rjmp	.+460    	; 0x1556 <main+0x3a0>
+            }break;
+               
+            default:
+            {  
+               
+               uint8_t indexh=buffer[18];
+    138a:	80 91 75 01 	lds	r24, 0x0175
+               uint8_t indexl=buffer[19];
+    138e:	20 91 76 01 	lds	r18, 0x0176
+               abschnittnummer= indexh<<8;
+    1392:	d8 2f       	mov	r29, r24
+    1394:	c0 e0       	ldi	r28, 0x00	; 0
+    1396:	d0 93 a6 01 	sts	0x01A6, r29
+    139a:	c0 93 a5 01 	sts	0x01A5, r28
+               abschnittnummer += indexl;
+    139e:	80 91 a5 01 	lds	r24, 0x01A5
+    13a2:	90 91 a6 01 	lds	r25, 0x01A6
+    13a6:	82 0f       	add	r24, r18
+    13a8:	91 1d       	adc	r25, r1
+    13aa:	90 93 a6 01 	sts	0x01A6, r25
+    13ae:	80 93 a5 01 	sts	0x01A5, r24
+               
+               
+               
+               if (abschnittnummer==0) // neue Datenreihe
+    13b2:	80 91 a5 01 	lds	r24, 0x01A5
+    13b6:	90 91 a6 01 	lds	r25, 0x01A6
+    13ba:	89 2b       	or	r24, r25
+    13bc:	09 f0       	breq	.+2      	; 0x13c0 <main+0x20a>
+    13be:	51 c0       	rjmp	.+162    	; 0x1462 <main+0x2ac>
+    13c0:	40 e0       	ldi	r20, 0x00	; 0
+    13c2:	50 e0       	ldi	r21, 0x00	; 0
+    13c4:	0f c0       	rjmp	.+30     	; 0x13e4 <main+0x22e>
+                  uint8_t i=0, k=0;
+                  for (k=0;k<RINGBUFFERTIEFE;k++)
+                  {
+                     for(i=0;i<USB_DATENBREITE;i++)
+                     {
+                        CNCDaten[k][i]=0;  
+    13c6:	f9 01       	movw	r30, r18
+    13c8:	e8 0f       	add	r30, r24
+    13ca:	f9 1f       	adc	r31, r25
+    13cc:	e0 55       	subi	r30, 0x50	; 80
+    13ce:	fe 4f       	sbci	r31, 0xFE	; 254
+    13d0:	10 82       	st	Z, r1
+    13d2:	01 96       	adiw	r24, 0x01	; 1
+               if (abschnittnummer==0) // neue Datenreihe
+               {
+                  uint8_t i=0, k=0;
+                  for (k=0;k<RINGBUFFERTIEFE;k++)
+                  {
+                     for(i=0;i<USB_DATENBREITE;i++)
+    13d4:	80 32       	cpi	r24, 0x20	; 32
+    13d6:	91 05       	cpc	r25, r1
+    13d8:	b1 f7       	brne	.-20     	; 0x13c6 <main+0x210>
+    13da:	4f 5f       	subi	r20, 0xFF	; 255
+    13dc:	5f 4f       	sbci	r21, 0xFF	; 255
+               
+               
+               if (abschnittnummer==0) // neue Datenreihe
+               {
+                  uint8_t i=0, k=0;
+                  for (k=0;k<RINGBUFFERTIEFE;k++)
+    13de:	44 30       	cpi	r20, 0x04	; 4
+    13e0:	51 05       	cpc	r21, r1
+    13e2:	59 f0       	breq	.+22     	; 0x13fa <main+0x244>
+    13e4:	80 e0       	ldi	r24, 0x00	; 0
+    13e6:	90 e0       	ldi	r25, 0x00	; 0
+                  {
+                     for(i=0;i<USB_DATENBREITE;i++)
+                     {
+                        CNCDaten[k][i]=0;  
+    13e8:	9a 01       	movw	r18, r20
+    13ea:	65 e0       	ldi	r22, 0x05	; 5
+    13ec:	22 0f       	add	r18, r18
+    13ee:	33 1f       	adc	r19, r19
+    13f0:	6a 95       	dec	r22
+    13f2:	e1 f7       	brne	.-8      	; 0x13ec <main+0x236>
+    13f4:	24 0f       	add	r18, r20
+    13f6:	35 1f       	adc	r19, r21
+    13f8:	e6 cf       	rjmp	.-52     	; 0x13c6 <main+0x210>
+                     }
+                  }
+                  
+                  ladeposition=0;
+    13fa:	10 92 a7 01 	sts	0x01A7, r1
+                  endposition=0xFFFF;
+    13fe:	d0 92 26 01 	sts	0x0126, r13
+    1402:	c0 92 25 01 	sts	0x0125, r12
+                  anschlagstatus=0;
+    1406:	10 92 aa 01 	sts	0x01AA, r1
+                  motorstatus=0;
+    140a:	10 92 a4 01 	sts	0x01A4, r1
+                  ringbufferstatus=0x00;
+    140e:	10 92 a3 01 	sts	0x01A3, r1
+                  ringbufferstatus |= (1<<FIRSTBIT);
+    1412:	80 91 a3 01 	lds	r24, 0x01A3
+    1416:	80 68       	ori	r24, 0x80	; 128
+    1418:	80 93 a3 01 	sts	0x01A3, r24
+                  AbschnittCounter=0;
+    141c:	10 92 a9 01 	sts	0x01A9, r1
+    1420:	10 92 a8 01 	sts	0x01A8, r1
+                  //             lcd_clr_line(1);
+                  sendbuffer[5]=0x00;
+    1424:	10 92 88 01 	sts	0x0188, r1
+                  sendbuffer[6]=code;
+    1428:	10 93 89 01 	sts	0x0189, r17
+                  
+                  
+                  if (code == 0xF0) // cncstatus fuer go_home setzen
+    142c:	10 3f       	cpi	r17, 0xF0	; 240
+    142e:	41 f4       	brne	.+16     	; 0x1440 <main+0x28a>
+                  {
+                     sendbuffer[5]=0xF0;
+    1430:	10 93 88 01 	sts	0x0188, r17
+                     sendbuffer[0]=0x45;
+    1434:	60 92 83 01 	sts	0x0183, r6
+                     cncstatus |= (1<<GO_HOME); // Bit fuer go_home setzen
+    1438:	80 91 ab 01 	lds	r24, 0x01AB
+    143c:	88 60       	ori	r24, 0x08	; 8
+    143e:	05 c0       	rjmp	.+10     	; 0x144a <main+0x294>
+                  }
+                  else
+                  {
+                     sendbuffer[0]=0x44;
+    1440:	70 92 83 01 	sts	0x0183, r7
+                     cncstatus &= ~(1<<GO_HOME); // Bit fuer go_home zuruecksetzen
+    1444:	80 91 ab 01 	lds	r24, 0x01AB
+    1448:	87 7f       	andi	r24, 0xF7	; 247
+    144a:	80 93 ab 01 	sts	0x01AB, r24
+                  }
+                  
+                  usb_rawhid_send((void*)sendbuffer, 50);
+    144e:	83 e8       	ldi	r24, 0x83	; 131
+    1450:	91 e0       	ldi	r25, 0x01	; 1
+    1452:	62 e3       	ldi	r22, 0x32	; 50
+    1454:	4c d8       	rcall	.-3944   	; 0x4ee <usb_rawhid_send>
+                  sendbuffer[0]=0x00;
+    1456:	10 92 83 01 	sts	0x0183, r1
+                  sendbuffer[5]=0x00;
+    145a:	10 92 88 01 	sts	0x0188, r1
+                  sendbuffer[6]=0x00;
+    145e:	10 92 89 01 	sts	0x0189, r1
+               
+               
+               
+               
+               
+               if (buffer[17]& 0x02)// letzter Abschnitt, Bit 1
+    1462:	80 91 74 01 	lds	r24, 0x0174
+    1466:	81 ff       	sbrs	r24, 1
+    1468:	11 c0       	rjmp	.+34     	; 0x148c <main+0x2d6>
+               {
+                  ringbufferstatus |= (1<<LASTBIT);
+    146a:	80 91 a3 01 	lds	r24, 0x01A3
+    146e:	80 61       	ori	r24, 0x10	; 16
+    1470:	80 93 a3 01 	sts	0x01A3, r24
+                  if (ringbufferstatus & (1<<FIRSTBIT)) // nur ein Abschnitt
+    1474:	80 91 a3 01 	lds	r24, 0x01A3
+    1478:	87 ff       	sbrs	r24, 7
+    147a:	08 c0       	rjmp	.+16     	; 0x148c <main+0x2d6>
+                  {
+                     endposition=abschnittnummer; // erster ist auch letzter Abschnitt
+    147c:	80 91 a5 01 	lds	r24, 0x01A5
+    1480:	90 91 a6 01 	lds	r25, 0x01A6
+    1484:	90 93 26 01 	sts	0x0126, r25
+    1488:	80 93 25 01 	sts	0x0125, r24
+                  }
+               }
+               
+               // Daten vom buffer in CNCDaten laden
+               {
+                  uint8_t pos=(abschnittnummer);
+    148c:	80 91 a5 01 	lds	r24, 0x01A5
+    1490:	90 91 a6 01 	lds	r25, 0x01A6
+                  pos &= 0x03; // 2 bit // Beschraenkung des index auf Buffertiefe, wert 0,1 
+    1494:	83 70       	andi	r24, 0x03	; 3
+                  if (abschnittnummer>8)
+    1496:	20 91 a5 01 	lds	r18, 0x01A5
+    149a:	30 91 a6 01 	lds	r19, 0x01A6
+    149e:	20 e0       	ldi	r18, 0x00	; 0
+    14a0:	30 e0       	ldi	r19, 0x00	; 0
+                     //lcd_putint1(pos);
+                  }
+                  uint8_t i=0;
+                  for(i=0;i<USB_DATENBREITE;i++)
+                  {
+                     CNCDaten[pos][i]=buffer[i];  
+    14a2:	90 e0       	ldi	r25, 0x00	; 0
+    14a4:	ac 01       	movw	r20, r24
+    14a6:	b5 e0       	ldi	r27, 0x05	; 5
+    14a8:	44 0f       	add	r20, r20
+    14aa:	55 1f       	adc	r21, r21
+    14ac:	ba 95       	dec	r27
+    14ae:	e1 f7       	brne	.-8      	; 0x14a8 <main+0x2f2>
+    14b0:	48 0f       	add	r20, r24
+    14b2:	59 1f       	adc	r21, r25
+    14b4:	f9 01       	movw	r30, r18
+    14b6:	ed 59       	subi	r30, 0x9D	; 157
+    14b8:	fe 4f       	sbci	r31, 0xFE	; 254
+    14ba:	80 81       	ld	r24, Z
+    14bc:	fa 01       	movw	r30, r20
+    14be:	e2 0f       	add	r30, r18
+    14c0:	f3 1f       	adc	r31, r19
+    14c2:	e0 55       	subi	r30, 0x50	; 80
+    14c4:	fe 4f       	sbci	r31, 0xFE	; 254
+    14c6:	80 83       	st	Z, r24
+    14c8:	2f 5f       	subi	r18, 0xFF	; 255
+    14ca:	3f 4f       	sbci	r19, 0xFF	; 255
+                  if (abschnittnummer>8)
+                  {
+                     //lcd_putint1(pos);
+                  }
+                  uint8_t i=0;
+                  for(i=0;i<USB_DATENBREITE;i++)
+    14cc:	20 32       	cpi	r18, 0x20	; 32
+    14ce:	31 05       	cpc	r19, r1
+    14d0:	89 f7       	brne	.-30     	; 0x14b4 <main+0x2fe>
+                  
+               }
+               
+               
+               // Erster Abschnitt, mehr als ein Abschnitt, naechsten Abschnitt laden
+               if ((abschnittnummer == 0)&&(endposition))
+    14d2:	80 91 a5 01 	lds	r24, 0x01A5
+    14d6:	90 91 a6 01 	lds	r25, 0x01A6
+    14da:	89 2b       	or	r24, r25
+    14dc:	e9 f4       	brne	.+58     	; 0x1518 <main+0x362>
+    14de:	80 91 25 01 	lds	r24, 0x0125
+    14e2:	90 91 26 01 	lds	r25, 0x0126
+    14e6:	89 2b       	or	r24, r25
+    14e8:	b9 f0       	breq	.+46     	; 0x1518 <main+0x362>
+               {
+                  {
+                     //lcd_putc('*');
+                     sendbuffer[5]=abschnittnummer;
+    14ea:	80 91 a5 01 	lds	r24, 0x01A5
+    14ee:	90 91 a6 01 	lds	r25, 0x01A6
+    14f2:	80 93 88 01 	sts	0x0188, r24
+                     sendbuffer[6]=ladeposition;
+    14f6:	80 91 a7 01 	lds	r24, 0x01A7
+    14fa:	80 93 89 01 	sts	0x0189, r24
+                     sendbuffer[0]=0xAF;
+    14fe:	80 92 83 01 	sts	0x0183, r8
+                     usb_rawhid_send((void*)sendbuffer, 50);
+    1502:	83 e8       	ldi	r24, 0x83	; 131
+    1504:	91 e0       	ldi	r25, 0x01	; 1
+    1506:	62 e3       	ldi	r22, 0x32	; 50
+    1508:	0e 94 77 02 	call	0x4ee	; 0x4ee <usb_rawhid_send>
+                     sendbuffer[0]=0x00;
+    150c:	10 92 83 01 	sts	0x0183, r1
+                     sendbuffer[5]=0x00;
+    1510:	10 92 88 01 	sts	0x0188, r1
+                     sendbuffer[6]=0x00;
+    1514:	10 92 89 01 	sts	0x0189, r1
+                     
+                     
+                  }  
+               }
+               
+               ringbufferstatus &= ~(1<<FIRSTBIT);
+    1518:	80 91 a3 01 	lds	r24, 0x01A3
+    151c:	8f 77       	andi	r24, 0x7F	; 127
+    151e:	80 93 a3 01 	sts	0x01A3, r24
+               
+               // Ringbuffer ist voll oder  letzter Abschnitt schon erreicht
+               if ((abschnittnummer ==1 )||((abschnittnummer ==0 )&&(ringbufferstatus & (1<<LASTBIT)))) 
+    1522:	80 91 a5 01 	lds	r24, 0x01A5
+    1526:	90 91 a6 01 	lds	r25, 0x01A6
+    152a:	01 97       	sbiw	r24, 0x01	; 1
+    152c:	51 f0       	breq	.+20     	; 0x1542 <main+0x38c>
+    152e:	80 91 a5 01 	lds	r24, 0x01A5
+    1532:	90 91 a6 01 	lds	r25, 0x01A6
+    1536:	89 2b       	or	r24, r25
+    1538:	71 f4       	brne	.+28     	; 0x1556 <main+0x3a0>
+    153a:	80 91 a3 01 	lds	r24, 0x01A3
+    153e:	84 ff       	sbrs	r24, 4
+    1540:	0a c0       	rjmp	.+20     	; 0x1556 <main+0x3a0>
+               {
+                  {
+                     ringbufferstatus &= ~(1<<LASTBIT);
+    1542:	80 91 a3 01 	lds	r24, 0x01A3
+    1546:	8f 7e       	andi	r24, 0xEF	; 239
+    1548:	80 93 a3 01 	sts	0x01A3, r24
+                     //Beginnen
+                     //lcd_putc('s');
+                     ringbufferstatus |= (1<<STARTBIT);
+    154c:	80 91 a3 01 	lds	r24, 0x01A3
+    1550:	84 60       	ori	r24, 0x04	; 4
+    1552:	80 93 a3 01 	sts	0x01A3, r24
+            }  
+         } // switch code
+         
+         
+         code=0;
+         sei();
+    1556:	78 94       	sei
+      
+      /**	End USB-routinen	***********************/
+		
+      /**	Start CNC-routinen	***********************/
+      
+      if (ringbufferstatus & (1<<STARTBIT)) // Buffer ist geladen, Abschnitt 0 laden
+    1558:	80 91 a3 01 	lds	r24, 0x01A3
+    155c:	82 ff       	sbrs	r24, 2
+    155e:	25 c0       	rjmp	.+74     	; 0x15aa <main+0x3f4>
+      {
+         cli();
+    1560:	f8 94       	cli
+         //lcd_putc('g'); // los
+         ringbufferstatus &= ~(1<<STARTBIT);         
+    1562:	80 91 a3 01 	lds	r24, 0x01A3
+    1566:	8b 7f       	andi	r24, 0xFB	; 251
+    1568:	80 93 a3 01 	sts	0x01A3, r24
+         ladeposition=0;
+    156c:	10 92 a7 01 	sts	0x01A7, r1
+         AbschnittCounter=0;
+    1570:	10 92 a9 01 	sts	0x01A9, r1
+    1574:	10 92 a8 01 	sts	0x01A8, r1
+         
+         // Ersten Abschnitt laden
+         uint8_t pos=AbschnittLaden((void*)CNCDaten[0]); 
+    1578:	80 eb       	ldi	r24, 0xB0	; 176
+    157a:	91 e0       	ldi	r25, 0x01	; 1
+    157c:	af da       	rcall	.-2722   	; 0xadc <AbschnittLaden>
+         ladeposition++;
+    157e:	90 91 a7 01 	lds	r25, 0x01A7
+    1582:	9f 5f       	subi	r25, 0xFF	; 255
+    1584:	90 93 a7 01 	sts	0x01A7, r25
+         if (pos==2) // nur ein Abschnitt
+    1588:	82 30       	cpi	r24, 0x02	; 2
+    158a:	29 f4       	brne	.+10     	; 0x1596 <main+0x3e0>
+         {
+            ringbufferstatus |=(1<<ENDBIT);
+    158c:	80 91 a3 01 	lds	r24, 0x01A3
+    1590:	80 62       	ori	r24, 0x20	; 32
+    1592:	80 93 a3 01 	sts	0x01A3, r24
+         }
+         
+         AbschnittCounter+=1;
+    1596:	80 91 a8 01 	lds	r24, 0x01A8
+    159a:	90 91 a9 01 	lds	r25, 0x01A9
+    159e:	01 96       	adiw	r24, 0x01	; 1
+    15a0:	90 93 a9 01 	sts	0x01A9, r25
+    15a4:	80 93 a8 01 	sts	0x01A8, r24
+         sei();
+    15a8:	78 94       	sei
+        
+       // ********************
+      // * Anschlag Motor A *
+      // ********************
+
+      if ((STEPPERPIN_1 & (1<< END_A0_PIN)) ) // Eingang ist HI, Schlitten nicht am Anschlag A0
+    15aa:	36 9b       	sbis	0x06, 6	; 6
+    15ac:	0a c0       	rjmp	.+20     	; 0x15c2 <main+0x40c>
+      {
+         if (anschlagstatus &(1<< END_A0))
+    15ae:	80 91 aa 01 	lds	r24, 0x01AA
+    15b2:	84 ff       	sbrs	r24, 4
+    15b4:	08 c0       	rjmp	.+16     	; 0x15c6 <main+0x410>
+         {
+            anschlagstatus &= ~(1<< END_A0); // Bit fuer Anschlag A0 zuruecksetzen
+    15b6:	80 91 aa 01 	lds	r24, 0x01AA
+    15ba:	8f 7e       	andi	r24, 0xEF	; 239
+    15bc:	80 93 aa 01 	sts	0x01AA, r24
+    15c0:	02 c0       	rjmp	.+4      	; 0x15c6 <main+0x410>
+         }
+      }
+      else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag A0
+      {
+         AnschlagVonMotor(0);
+    15c2:	80 e0       	ldi	r24, 0x00	; 0
+    15c4:	0a dc       	rcall	.-2028   	; 0xdda <AnschlagVonMotor>
+      // **************************************
+      // * Motor A *
+      // **************************************
+      // Es hat noch Steps, CounterA ist abgezaehlt (Ende des aktuellen Impulses, DelayA bestimmt Impulsabstand fuer Steps)
+ 		
+      if (StepCounterA && (CounterA >= DelayA) &&(!((anschlagstatus & (1<< END_A0)))))
+    15c6:	80 91 58 01 	lds	r24, 0x0158
+    15ca:	90 91 59 01 	lds	r25, 0x0159
+    15ce:	89 2b       	or	r24, r25
+    15d0:	61 f1       	breq	.+88     	; 0x162a <main+0x474>
+    15d2:	20 91 50 01 	lds	r18, 0x0150
+    15d6:	30 91 51 01 	lds	r19, 0x0151
+    15da:	80 91 1d 01 	lds	r24, 0x011D
+    15de:	90 91 1e 01 	lds	r25, 0x011E
+    15e2:	28 17       	cp	r18, r24
+    15e4:	39 07       	cpc	r19, r25
+    15e6:	08 f1       	brcs	.+66     	; 0x162a <main+0x474>
+    15e8:	80 91 aa 01 	lds	r24, 0x01AA
+    15ec:	84 fd       	sbrc	r24, 4
+    15ee:	1d c0       	rjmp	.+58     	; 0x162a <main+0x474>
+		{
+         cli();
+    15f0:	f8 94       	cli
+         //lcd_putc('A');
+         
+			STEPPERPORT_1 &= ~(1<<MA_STEP);					// Impuls an Motor A LO ON
+    15f2:	40 98       	cbi	0x08, 0	; 8
+			CounterA=0;
+    15f4:	10 92 51 01 	sts	0x0151, r1
+    15f8:	10 92 50 01 	sts	0x0150, r1
+			StepCounterA--;
+    15fc:	80 91 58 01 	lds	r24, 0x0158
+    1600:	90 91 59 01 	lds	r25, 0x0159
+    1604:	01 97       	sbiw	r24, 0x01	; 1
+    1606:	90 93 59 01 	sts	0x0159, r25
+    160a:	80 93 58 01 	sts	0x0158, r24
+         
+			if (StepCounterA ==0 && (motorstatus & (1<< COUNT_A))) // Motor A ist relevant fuer Stepcount 
+    160e:	80 91 58 01 	lds	r24, 0x0158
+    1612:	90 91 59 01 	lds	r25, 0x0159
+    1616:	89 2b       	or	r24, r25
+    1618:	31 f4       	brne	.+12     	; 0x1626 <main+0x470>
+    161a:	80 91 a4 01 	lds	r24, 0x01A4
+    161e:	80 ff       	sbrs	r24, 0
+    1620:	02 c0       	rjmp	.+4      	; 0x1626 <main+0x470>
+			{
+				
+            StepEndVonMotor(0);
+    1622:	80 e0       	ldi	r24, 0x00	; 0
+    1624:	e2 dc       	rcall	.-1596   	; 0xfea <StepEndVonMotor>
+         }
+      
+			sei();
+    1626:	78 94       	sei
+    1628:	08 c0       	rjmp	.+16     	; 0x163a <main+0x484>
+		}
+		else// if (CounterA)
+		{
+			STEPPERPORT_1 |= (1<<MA_STEP);
+    162a:	40 9a       	sbi	0x08, 0	; 8
+			if (StepCounterA ==0)							// Keine Steps mehr fuer Motor A
+    162c:	80 91 58 01 	lds	r24, 0x0158
+    1630:	90 91 59 01 	lds	r25, 0x0159
+    1634:	89 2b       	or	r24, r25
+    1636:	09 f4       	brne	.+2      	; 0x163a <main+0x484>
+			{
+ 				STEPPERPORT_1 |= (1<<MA_EN);					// Motor A OFF
+    1638:	42 9a       	sbi	0x08, 2	; 8
+
+      // **************************************
+      // * Anschlag Motor B *
+      // **************************************
+      // Anschlag B0
+      if ((STEPPERPIN_1 & (1<< END_B0_PIN)) ) // Schlitten nicht am Anschlag B0
+    163a:	37 9b       	sbis	0x06, 7	; 6
+    163c:	0a c0       	rjmp	.+20     	; 0x1652 <main+0x49c>
+      {
+         if (anschlagstatus &(1<< END_B0))
+    163e:	80 91 aa 01 	lds	r24, 0x01AA
+    1642:	85 ff       	sbrs	r24, 5
+    1644:	08 c0       	rjmp	.+16     	; 0x1656 <main+0x4a0>
+         {
+            anschlagstatus &= ~(1<< END_B0); // Bit fuer Anschlag B0 zuruecksetzen
+    1646:	80 91 aa 01 	lds	r24, 0x01AA
+    164a:	8f 7d       	andi	r24, 0xDF	; 223
+    164c:	80 93 aa 01 	sts	0x01AA, r24
+    1650:	02 c0       	rjmp	.+4      	; 0x1656 <main+0x4a0>
+         }
+      }
+      else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag B0
+      {
+         AnschlagVonMotor(1);
+    1652:	81 e0       	ldi	r24, 0x01	; 1
+    1654:	c2 db       	rcall	.-2172   	; 0xdda <AnschlagVonMotor>
+      
+      // **************************************
+      // * Motor B *
+      // **************************************
+
+		if (StepCounterB && (CounterB >= DelayB) &&(!((anschlagstatus & (1<< END_B0)))))
+    1656:	80 91 5a 01 	lds	r24, 0x015A
+    165a:	90 91 5b 01 	lds	r25, 0x015B
+    165e:	89 2b       	or	r24, r25
+    1660:	61 f1       	breq	.+88     	; 0x16ba <main+0x504>
+    1662:	20 91 52 01 	lds	r18, 0x0152
+    1666:	30 91 53 01 	lds	r19, 0x0153
+    166a:	80 91 1f 01 	lds	r24, 0x011F
+    166e:	90 91 20 01 	lds	r25, 0x0120
+    1672:	28 17       	cp	r18, r24
+    1674:	39 07       	cpc	r19, r25
+    1676:	08 f1       	brcs	.+66     	; 0x16ba <main+0x504>
+    1678:	80 91 aa 01 	lds	r24, 0x01AA
+    167c:	85 fd       	sbrc	r24, 5
+    167e:	1d c0       	rjmp	.+58     	; 0x16ba <main+0x504>
+		{
+         cli();
+    1680:	f8 94       	cli
+         //lcd_putc('B');
+         
+			STEPPERPORT_1 &= ~(1<<MB_STEP);                         // Impuls an Motor B LO ON
+    1682:	43 98       	cbi	0x08, 3	; 8
+			CounterB=0;
+    1684:	10 92 53 01 	sts	0x0153, r1
+    1688:	10 92 52 01 	sts	0x0152, r1
+			StepCounterB--;
+    168c:	80 91 5a 01 	lds	r24, 0x015A
+    1690:	90 91 5b 01 	lds	r25, 0x015B
+    1694:	01 97       	sbiw	r24, 0x01	; 1
+    1696:	90 93 5b 01 	sts	0x015B, r25
+    169a:	80 93 5a 01 	sts	0x015A, r24
+         
+			if (StepCounterB ==0 && (motorstatus & (1<< COUNT_B))) // Motor B ist relevant fuer Stepcount 
+    169e:	80 91 5a 01 	lds	r24, 0x015A
+    16a2:	90 91 5b 01 	lds	r25, 0x015B
+    16a6:	89 2b       	or	r24, r25
+    16a8:	31 f4       	brne	.+12     	; 0x16b6 <main+0x500>
+    16aa:	80 91 a4 01 	lds	r24, 0x01A4
+    16ae:	81 ff       	sbrs	r24, 1
+    16b0:	02 c0       	rjmp	.+4      	; 0x16b6 <main+0x500>
+			{
+				StepEndVonMotor(1);
+    16b2:	81 e0       	ldi	r24, 0x01	; 1
+    16b4:	9a dc       	rcall	.-1740   	; 0xfea <StepEndVonMotor>
+         }
+			
+			
+			sei();
+    16b6:	78 94       	sei
+    16b8:	08 c0       	rjmp	.+16     	; 0x16ca <main+0x514>
+		}
+		else  // if (CounterB)
+		{
+			STEPPERPORT_1 |= (1<<MB_STEP);
+    16ba:	43 9a       	sbi	0x08, 3	; 8
+			if (StepCounterB ==0)							// Keine Steps mehr fuer Motor B
+    16bc:	80 91 5a 01 	lds	r24, 0x015A
+    16c0:	90 91 5b 01 	lds	r25, 0x015B
+    16c4:	89 2b       	or	r24, r25
+    16c6:	09 f4       	brne	.+2      	; 0x16ca <main+0x514>
+			{
+				STEPPERPORT_1 |= (1<<MB_EN);					// Motor B OFF
+    16c8:	45 9a       	sbi	0x08, 5	; 8
+      // ********************
+      // * Anschlag Motor C *
+      // ********************
+      
+      // Anschlag C0
+      if ((STEPPERPIN_2 & (1<< END_C0_PIN)) ) // Eingang ist HI, Schlitten nicht am Anschlag C0
+    16ca:	1e 9b       	sbis	0x03, 6	; 3
+    16cc:	0a c0       	rjmp	.+20     	; 0x16e2 <main+0x52c>
+      {
+         if (anschlagstatus &(1<< END_C0))
+    16ce:	80 91 aa 01 	lds	r24, 0x01AA
+    16d2:	86 ff       	sbrs	r24, 6
+    16d4:	08 c0       	rjmp	.+16     	; 0x16e6 <main+0x530>
+         {
+            anschlagstatus &= ~(1<< END_C0); // Bit fuer Anschlag C0 zuruecksetzen
+    16d6:	80 91 aa 01 	lds	r24, 0x01AA
+    16da:	8f 7b       	andi	r24, 0xBF	; 191
+    16dc:	80 93 aa 01 	sts	0x01AA, r24
+    16e0:	02 c0       	rjmp	.+4      	; 0x16e6 <main+0x530>
+         }
+      
+      }
+      else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag C0
+      {
+       AnschlagVonMotor(2);
+    16e2:	82 e0       	ldi	r24, 0x02	; 2
+    16e4:	7a db       	rcall	.-2316   	; 0xdda <AnschlagVonMotor>
+     
+      // **************************************
+      // * Motor C *
+      // **************************************
+		
+      if (StepCounterC && (CounterC >= DelayC) &&(!((anschlagstatus & (1<< END_C0)))))
+    16e6:	80 91 5c 01 	lds	r24, 0x015C
+    16ea:	90 91 5d 01 	lds	r25, 0x015D
+    16ee:	89 2b       	or	r24, r25
+    16f0:	61 f1       	breq	.+88     	; 0x174a <main+0x594>
+    16f2:	20 91 54 01 	lds	r18, 0x0154
+    16f6:	30 91 55 01 	lds	r19, 0x0155
+    16fa:	80 91 21 01 	lds	r24, 0x0121
+    16fe:	90 91 22 01 	lds	r25, 0x0122
+    1702:	28 17       	cp	r18, r24
+    1704:	39 07       	cpc	r19, r25
+    1706:	08 f1       	brcs	.+66     	; 0x174a <main+0x594>
+    1708:	80 91 aa 01 	lds	r24, 0x01AA
+    170c:	86 fd       	sbrc	r24, 6
+    170e:	1d c0       	rjmp	.+58     	; 0x174a <main+0x594>
+		{
+         cli();
+    1710:	f8 94       	cli
+         //lcd_putc('C');
+         
+			STEPPERPORT_2 &= ~(1<<MC_STEP);					// Impuls an Motor C LO ON
+    1712:	28 98       	cbi	0x05, 0	; 5
+			CounterC=0;
+    1714:	10 92 55 01 	sts	0x0155, r1
+    1718:	10 92 54 01 	sts	0x0154, r1
+			StepCounterC--;
+    171c:	80 91 5c 01 	lds	r24, 0x015C
+    1720:	90 91 5d 01 	lds	r25, 0x015D
+    1724:	01 97       	sbiw	r24, 0x01	; 1
+    1726:	90 93 5d 01 	sts	0x015D, r25
+    172a:	80 93 5c 01 	sts	0x015C, r24
+         
+			if (StepCounterC ==0 && (motorstatus & (1<< COUNT_C))) // Motor C ist relevant fuer Stepcount 
+    172e:	80 91 5c 01 	lds	r24, 0x015C
+    1732:	90 91 5d 01 	lds	r25, 0x015D
+    1736:	89 2b       	or	r24, r25
+    1738:	31 f4       	brne	.+12     	; 0x1746 <main+0x590>
+    173a:	80 91 a4 01 	lds	r24, 0x01A4
+    173e:	82 ff       	sbrs	r24, 2
+    1740:	02 c0       	rjmp	.+4      	; 0x1746 <main+0x590>
+			{
+            
+            StepEndVonMotor(2);
+    1742:	82 e0       	ldi	r24, 0x02	; 2
+    1744:	52 dc       	rcall	.-1884   	; 0xfea <StepEndVonMotor>
+         }
+			sei();
+    1746:	78 94       	sei
+    1748:	08 c0       	rjmp	.+16     	; 0x175a <main+0x5a4>
+		}
+		else// if (CounterC)
+		{
+			STEPPERPORT_2 |= (1<<MC_STEP);
+    174a:	28 9a       	sbi	0x05, 0	; 5
+			if (StepCounterC ==0)							// Keine Steps mehr fuer Motor C
+    174c:	80 91 5c 01 	lds	r24, 0x015C
+    1750:	90 91 5d 01 	lds	r25, 0x015D
+    1754:	89 2b       	or	r24, r25
+    1756:	09 f4       	brne	.+2      	; 0x175a <main+0x5a4>
+			{
+ 				STEPPERPORT_2 |= (1<<MC_EN);					// Motor C OFF
+    1758:	2a 9a       	sbi	0x05, 2	; 5
+      // ***************
+      // * Anschlag Motor D *
+      // ***************
+      
+      // Anschlag D0
+      if ((STEPPERPIN_2 & (1<< END_D0_PIN)) ) // Schlitten nicht am Anschlag D0
+    175a:	1f 9b       	sbis	0x03, 7	; 3
+    175c:	0a c0       	rjmp	.+20     	; 0x1772 <main+0x5bc>
+      {
+         if (anschlagstatus &(1<< END_D0))
+    175e:	80 91 aa 01 	lds	r24, 0x01AA
+    1762:	87 ff       	sbrs	r24, 7
+    1764:	08 c0       	rjmp	.+16     	; 0x1776 <main+0x5c0>
+         {
+            anschlagstatus &= ~(1<< END_D0); // Bit fuer Anschlag D0 zuruecksetzen
+    1766:	80 91 aa 01 	lds	r24, 0x01AA
+    176a:	8f 77       	andi	r24, 0x7F	; 127
+    176c:	80 93 aa 01 	sts	0x01AA, r24
+    1770:	02 c0       	rjmp	.+4      	; 0x1776 <main+0x5c0>
+         }
+      }
+      else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag D0
+      {
+         AnschlagVonMotor(3);
+    1772:	83 e0       	ldi	r24, 0x03	; 3
+    1774:	32 db       	rcall	.-2460   	; 0xdda <AnschlagVonMotor>
+      
+
+      // **************************************
+      // * Motor D *
+      // **************************************
+      if (StepCounterD && (CounterD >= DelayD) &&(!((anschlagstatus & (1<< END_D0)))))
+    1776:	80 91 5e 01 	lds	r24, 0x015E
+    177a:	90 91 5f 01 	lds	r25, 0x015F
+    177e:	89 2b       	or	r24, r25
+    1780:	61 f1       	breq	.+88     	; 0x17da <main+0x624>
+    1782:	20 91 56 01 	lds	r18, 0x0156
+    1786:	30 91 57 01 	lds	r19, 0x0157
+    178a:	80 91 23 01 	lds	r24, 0x0123
+    178e:	90 91 24 01 	lds	r25, 0x0124
+    1792:	28 17       	cp	r18, r24
+    1794:	39 07       	cpc	r19, r25
+    1796:	08 f1       	brcs	.+66     	; 0x17da <main+0x624>
+    1798:	80 91 aa 01 	lds	r24, 0x01AA
+    179c:	87 fd       	sbrc	r24, 7
+    179e:	1d c0       	rjmp	.+58     	; 0x17da <main+0x624>
+		{
+         cli();
+    17a0:	f8 94       	cli
+         //lcd_putc('D');
+         
+			STEPPERPORT_2 &= ~(1<<MD_STEP);					// Impuls an Motor D LO ON
+    17a2:	2b 98       	cbi	0x05, 3	; 5
+			CounterD=0;
+    17a4:	10 92 57 01 	sts	0x0157, r1
+    17a8:	10 92 56 01 	sts	0x0156, r1
+			StepCounterD--;
+    17ac:	80 91 5e 01 	lds	r24, 0x015E
+    17b0:	90 91 5f 01 	lds	r25, 0x015F
+    17b4:	01 97       	sbiw	r24, 0x01	; 1
+    17b6:	90 93 5f 01 	sts	0x015F, r25
+    17ba:	80 93 5e 01 	sts	0x015E, r24
+         
+			if (StepCounterD ==0 && (motorstatus & (1<< COUNT_D))) // Motor D ist relevant fuer Stepcount 
+    17be:	80 91 5e 01 	lds	r24, 0x015E
+    17c2:	90 91 5f 01 	lds	r25, 0x015F
+    17c6:	89 2b       	or	r24, r25
+    17c8:	31 f4       	brne	.+12     	; 0x17d6 <main+0x620>
+    17ca:	80 91 a4 01 	lds	r24, 0x01A4
+    17ce:	83 ff       	sbrs	r24, 3
+    17d0:	02 c0       	rjmp	.+4      	; 0x17d6 <main+0x620>
+			{
+				StepEndVonMotor(3);
+    17d2:	83 e0       	ldi	r24, 0x03	; 3
+    17d4:	0a dc       	rcall	.-2028   	; 0xfea <StepEndVonMotor>
+          }
+			sei();
+    17d6:	78 94       	sei
+    17d8:	08 c0       	rjmp	.+16     	; 0x17ea <main+0x634>
+		}
+		else// if (CounterB)
+		{
+			STEPPERPORT_2 |= (1<<MD_STEP);
+    17da:	2b 9a       	sbi	0x05, 3	; 5
+			if (StepCounterD ==0)							// Keine Steps mehr fuer Motor D
+    17dc:	80 91 5e 01 	lds	r24, 0x015E
+    17e0:	90 91 5f 01 	lds	r25, 0x015F
+    17e4:	89 2b       	or	r24, r25
+    17e6:	09 f4       	brne	.+2      	; 0x17ea <main+0x634>
+			{
+				STEPPERPORT_2 |= (1<<MD_EN);					// Motor D OFF
+    17e8:	2d 9a       	sbi	0x05, 5	; 5
+      
+      // ***************
+      // * End Motor D *
+      // ***************
+      
+		sei(); 
+    17ea:	78 94       	sei
+      // rxdata
+		
+		//lcd_gotoxy(16,0);
+      //lcd_putint(StepCounterA & 0x00FF);
+		
+		if (!(TASTENPIN & (1<<TASTE0))) // Taste 0
+    17ec:	8f b1       	in	r24, 0x0f	; 15
+			
+		}	// Taste 0
+		
+      
+		
+		if (!(TASTENPIN & (1<<TASTE1))) // Taste 1
+    17ee:	8f b1       	in	r24, 0x0f	; 15
+		
+		//lcd_gotoxy(3,1);
+		//lcd_putint(Tastenwert);
+      
+		//OSZI_B_HI;
+      if (usbstatus & (1<< USB_SEND))
+    17f0:	80 91 4d 01 	lds	r24, 0x014D
+    17f4:	3e cd       	rjmp	.-1412   	; 0x1272 <main+0xbc>
+
+000017f6 <_exit>:
+    17f6:	f8 94       	cli
+
+000017f8 <__stop_program>:
+    17f8:	ff cf       	rjmp	.-2      	; 0x17f8 <__stop_program>

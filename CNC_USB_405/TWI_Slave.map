@@ -1,0 +1,687 @@
+Archive member included because of file (symbol)
+
+/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
+                              TWI_Slave.o (__udivmodqi4)
+/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
+                              TWI_Slave.o (__udivmodhi4)
+/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
+                              TWI_Slave.o (__divmodhi4)
+/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodsi4.o)
+                              TWI_Slave.o (__udivmodsi4)
+/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
+                              TWI_Slave.o (__divmodsi4)
+/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+                              /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o (exit)
+/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_clear_bss.o)
+                              TWI_Slave.o (__do_clear_bss)
+
+Allocating common symbols
+Common symbol       size              file
+
+buffer_adr          0x1               TWI_Slave.o
+ADCWert16           0x3               TWI_Slave.o
+
+Discarded input sections
+
+ .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+ .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+ .text          0x00000000        0x0 TWI_Slave.o
+ .text.lcddelay_ms
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_backlight
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_putint1
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_putint2
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_putint16
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_putint
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_strobe_E
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_cursor_home
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_move_cursor
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_inc_cursor
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_dec_cursor
+                0x00000000        0x0 TWI_Slave.o
+ .text.r_uitoa  0x00000000        0x0 TWI_Slave.o
+ .text.r_itoa   0x00000000        0x0 TWI_Slave.o
+ .text.r_itoa16
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_puthex
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_put_frac
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_put_zeit
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_put_wochentag
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_put_temperatur
+                0x00000000        0x0 TWI_Slave.o
+ .text.lcd_put_tempbis99
+                0x00000000        0x0 TWI_Slave.o
+ .text.readKanal16Bit
+                0x00000000        0x0 TWI_Slave.o
+ .text.initADC  0x00000000        0x0 TWI_Slave.o
+ .text.readKanal
+                0x00000000        0x0 TWI_Slave.o
+ .text.closeADC
+                0x00000000        0x0 TWI_Slave.o
+ .text.readKanalOrig
+                0x00000000        0x0 TWI_Slave.o
+ .text.usb_configured
+                0x00000000        0x0 TWI_Slave.o
+ .text.delay_ms
+                0x00000000        0x0 TWI_Slave.o
+ .text.timer0   0x00000000        0x0 TWI_Slave.o
+ COMMON         0x00000000        0x0 TWI_Slave.o
+ .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
+ .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
+ .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
+ .text.libgcc   0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
+ .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
+ .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
+ .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
+ .text.libgcc   0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
+ .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
+ .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
+ .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
+ .text.libgcc   0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
+ .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodsi4.o)
+ .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodsi4.o)
+ .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodsi4.o)
+ .text.libgcc   0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodsi4.o)
+ .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
+ .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
+ .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
+ .text.libgcc   0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
+ .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+ .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+ .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+ .text.libgcc   0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+ .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_clear_bss.o)
+ .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_clear_bss.o)
+ .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00000000        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_clear_bss.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+LOAD TWI_Slave.o
+LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libm.a
+LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a
+LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/libc.a
+LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x17fa
+ *(.vectors)
+ .vectors       0x00000000       0x98 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x00000098       0xca TWI_Slave.o
+                0x00000162                . = ALIGN (0x2)
+                0x00000162                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000162        0x0 linker stubs
+ *(.trampolines*)
+                0x00000162                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000162                __ctors_start = .
+ *(.ctors)
+                0x00000162                __ctors_end = .
+                0x00000162                __dtors_start = .
+ *(.dtors)
+                0x00000162                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000162        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+                0x00000162                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000162        0xc /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x0000016e       0x1a /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+                0x0000016e                __do_copy_data
+ .init4         0x00000188       0x10 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_clear_bss.o)
+                0x00000188                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000198        0x8 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+ *(.init9)
+ *(.text)
+ .text          0x000001a0        0x2 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+                0x000001a0                __vector_22
+                0x000001a0                __vector_28
+                0x000001a0                __vector_1
+                0x000001a0                __vector_32
+                0x000001a0                __vector_34
+                0x000001a0                __vector_24
+                0x000001a0                __vector_12
+                0x000001a0                __bad_interrupt
+                0x000001a0                __vector_6
+                0x000001a0                __vector_31
+                0x000001a0                __vector_35
+                0x000001a0                __vector_3
+                0x000001a0                __vector_23
+                0x000001a0                __vector_30
+                0x000001a0                __vector_25
+                0x000001a0                __vector_13
+                0x000001a0                __vector_17
+                0x000001a0                __vector_19
+                0x000001a0                __vector_7
+                0x000001a0                __vector_27
+                0x000001a0                __vector_5
+                0x000001a0                __vector_33
+                0x000001a0                __vector_37
+                0x000001a0                __vector_4
+                0x000001a0                __vector_9
+                0x000001a0                __vector_2
+                0x000001a0                __vector_21
+                0x000001a0                __vector_36
+                0x000001a0                __vector_29
+                0x000001a0                __vector_8
+                0x000001a0                __vector_26
+                0x000001a0                __vector_14
+                0x000001a0                __vector_16
+                0x000001a0                __vector_18
+                0x000001a0                __vector_20
+                0x000001a2                . = ALIGN (0x2)
+ *(.text.*)
+ .text.lcd_load_byte
+                0x000001a2       0x2c TWI_Slave.o
+                0x000001a2                lcd_load_byte
+ .text.lcd_send_cmd
+                0x000001ce       0x18 TWI_Slave.o
+                0x000001ce                lcd_send_cmd
+ .text.lcd_initialize
+                0x000001e6       0x92 TWI_Slave.o
+                0x000001e6                lcd_initialize
+ .text.lcd_send_char
+                0x00000278       0x18 TWI_Slave.o
+                0x00000278                lcd_send_char
+ .text.lcd_putc
+                0x00000290        0x4 TWI_Slave.o
+                0x00000290                lcd_putc
+ .text.lcd_puts
+                0x00000294       0x16 TWI_Slave.o
+                0x00000294                lcd_puts
+ .text.lcd_gotoxy
+                0x000002aa        0xe TWI_Slave.o
+                0x000002aa                lcd_gotoxy
+ .text.lcd_cls  0x000002b8       0x32 TWI_Slave.o
+                0x000002b8                lcd_cls
+ .text.lcd_clr_line
+                0x000002ea       0x32 TWI_Slave.o
+                0x000002ea                lcd_clr_line
+ .text.usb_init
+                0x0000031c       0x2e TWI_Slave.o
+                0x0000031c                usb_init
+ .text.usb_rawhid_recv
+                0x0000034a      0x1a4 TWI_Slave.o
+                0x0000034a                usb_rawhid_recv
+ .text.usb_rawhid_send
+                0x000004ee      0x1a4 TWI_Slave.o
+                0x000004ee                usb_rawhid_send
+ .text.__vector_10
+                0x00000692       0x70 TWI_Slave.o
+                0x00000692                __vector_10
+ .text.__vector_11
+                0x00000702      0x2da TWI_Slave.o
+                0x00000702                __vector_11
+ .text.slaveinit
+                0x000009dc       0x58 TWI_Slave.o
+                0x000009dc                slaveinit
+ .text.__vector_15
+                0x00000a34       0xa8 TWI_Slave.o
+                0x00000a34                __vector_15
+ .text.AbschnittLaden
+                0x00000adc      0x2fe TWI_Slave.o
+                0x00000adc                AbschnittLaden
+ .text.AnschlagVonMotor
+                0x00000dda      0x210 TWI_Slave.o
+                0x00000dda                AnschlagVonMotor
+ .text.StepEndVonMotor
+                0x00000fea      0x1cc TWI_Slave.o
+                0x00000fea                StepEndVonMotor
+ .text.main     0x000011b6      0x640 TWI_Slave.o
+                0x000011b6                main
+                0x000017f6                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x000017f6        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+                0x000017f6                exit
+                0x000017f6                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x000017f6        0x4 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+ *(.fini0)
+                0x000017fa                _etext = .
+
+.data           0x00800100       0x4a load address 0x000017fa
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100       0x4a TWI_Slave.o
+                0x0080011c                timer0startwert
+                0x00800121                DelayC
+                0x00800123                DelayD
+                0x0080011d                DelayA
+                0x0080011f                DelayB
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x0080014a                . = ALIGN (0x2)
+                0x0080014a                _edata = .
+                0x0080014a                PROVIDE (__data_end, .)
+
+.bss            0x0080014a       0xea
+                0x0080014a                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x0080014a       0xea TWI_Slave.o
+                0x00800160                timer2Counter
+                0x0080015e                StepCounterD
+                0x00800152                CounterB
+                0x0080014c                liniencounter
+                0x00800154                CounterC
+                0x0080014a                rxdata
+                0x0080015c                StepCounterC
+                0x0080014d                usbstatus
+                0x00800150                CounterA
+                0x0080015a                StepCounterB
+                0x0080014f                PWM
+                0x00800156                CounterD
+                0x0080014b                do_output
+                0x00800158                StepCounterA
+                0x0080014e                status
+ *(.bss*)
+ *(COMMON)
+                0x00800234                PROVIDE (__bss_end, .)
+                0x000017fa                __data_load_start = LOADADDR (.data)
+                0x00001844                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800234        0x0
+                0x00800234                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800234                PROVIDE (__noinit_end, .)
+                0x00800234                _end = .
+                0x00800234                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab           0x00000000      0x750
+ *(.stab)
+ .stab          0x00000000      0x750 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+
+.stabstr        0x00000000       0x82
+ *(.stabstr)
+ .stabstr       0x00000000       0x82 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x198
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000      0x198 TWI_Slave.o
+
+.debug_pubnames
+                0x00000000      0x45b
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000      0x45b TWI_Slave.o
+
+.debug_info     0x00000000     0x1afb
+ *(.debug_info)
+ .debug_info    0x00000000     0x1afb TWI_Slave.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x3b9
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x3b9 TWI_Slave.o
+
+.debug_line     0x00000000     0x2274
+ *(.debug_line)
+ .debug_line    0x00000000     0x2274 TWI_Slave.o
+
+.debug_frame    0x00000000      0x310
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x310 TWI_Slave.o
+
+.debug_str      0x00000000      0x7c6
+ *(.debug_str)
+ .debug_str     0x00000000      0x7c6 TWI_Slave.o
+                                0x8a7 (size before relaxing)
+
+.debug_loc      0x00000000     0x11eb
+ *(.debug_loc)
+ .debug_loc     0x00000000     0x11eb TWI_Slave.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(TWI_Slave.elf elf32-avr)
+LOAD linker stubs
+
+.debug_ranges   0x00000000      0x250
+ .debug_ranges  0x00000000      0x250 TWI_Slave.o
+
+Cross Reference Table
+
+Symbol                                            File
+ADCWert16                                         TWI_Slave.o
+AbschnittLaden                                    TWI_Slave.o
+AnschlagVonMotor                                  TWI_Slave.o
+CounterA                                          TWI_Slave.o
+CounterB                                          TWI_Slave.o
+CounterC                                          TWI_Slave.o
+CounterD                                          TWI_Slave.o
+DelayA                                            TWI_Slave.o
+DelayB                                            TWI_Slave.o
+DelayC                                            TWI_Slave.o
+DelayD                                            TWI_Slave.o
+PWM                                               TWI_Slave.o
+StepCounterA                                      TWI_Slave.o
+StepCounterB                                      TWI_Slave.o
+StepCounterC                                      TWI_Slave.o
+StepCounterD                                      TWI_Slave.o
+StepEndVonMotor                                   TWI_Slave.o
+__bad_interrupt                                   /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__bss_end                                         /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_clear_bss.o)
+__bss_start                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_clear_bss.o)
+__data_end                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__data_load_start                                 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__data_start                                      /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__divmodhi4                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
+                                                  TWI_Slave.o
+__divmodsi4                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
+                                                  TWI_Slave.o
+__do_clear_bss                                    /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_clear_bss.o)
+                                                  TWI_Slave.o
+__do_copy_data                                    /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+                                                  TWI_Slave.o
+__heap_end                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__init                                            /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__stack                                           /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__udivmodhi4                                      /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodhi4.o)
+                                                  /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
+                                                  TWI_Slave.o
+__udivmodqi4                                      /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodqi4.o)
+                                                  TWI_Slave.o
+__udivmodsi4                                      /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_udivmodsi4.o)
+                                                  /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodsi4.o)
+                                                  TWI_Slave.o
+__vector_1                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_10                                       TWI_Slave.o
+                                                  /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_11                                       TWI_Slave.o
+                                                  /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_12                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_13                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_14                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_15                                       TWI_Slave.o
+                                                  /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_16                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_17                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_18                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_19                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_2                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_20                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_21                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_22                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_23                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_24                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_25                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_26                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_27                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_28                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_29                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_3                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_30                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_31                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_32                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_33                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_34                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_35                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_36                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_37                                       /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_4                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_5                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_6                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_7                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_8                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_9                                        /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vector_default                                  /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+__vectors                                         /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+_div                                              /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_divmodhi4.o)
+_exit                                             /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+buffer_adr                                        TWI_Slave.o
+closeADC                                          TWI_Slave.o
+delay_ms                                          TWI_Slave.o
+do_output                                         TWI_Slave.o
+exit                                              /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+                                                  /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+initADC                                           TWI_Slave.o
+lcd_backlight                                     TWI_Slave.o
+lcd_clr_line                                      TWI_Slave.o
+lcd_cls                                           TWI_Slave.o
+lcd_cursor_home                                   TWI_Slave.o
+lcd_dec_cursor                                    TWI_Slave.o
+lcd_gotoxy                                        TWI_Slave.o
+lcd_inc_cursor                                    TWI_Slave.o
+lcd_initialize                                    TWI_Slave.o
+lcd_load_byte                                     TWI_Slave.o
+lcd_move_cursor                                   TWI_Slave.o
+lcd_put_frac                                      TWI_Slave.o
+lcd_put_tempbis99                                 TWI_Slave.o
+lcd_put_temperatur                                TWI_Slave.o
+lcd_put_wochentag                                 TWI_Slave.o
+lcd_put_zeit                                      TWI_Slave.o
+lcd_putc                                          TWI_Slave.o
+lcd_puthex                                        TWI_Slave.o
+lcd_putint                                        TWI_Slave.o
+lcd_putint1                                       TWI_Slave.o
+lcd_putint16                                      TWI_Slave.o
+lcd_putint2                                       TWI_Slave.o
+lcd_puts                                          TWI_Slave.o
+lcd_send_char                                     TWI_Slave.o
+lcd_send_cmd                                      TWI_Slave.o
+lcd_strobe_E                                      TWI_Slave.o
+lcddelay_ms                                       TWI_Slave.o
+liniencounter                                     TWI_Slave.o
+main                                              TWI_Slave.o
+                                                  /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
+r_itoa                                            TWI_Slave.o
+r_itoa16                                          TWI_Slave.o
+r_uitoa                                           TWI_Slave.o
+readKanal                                         TWI_Slave.o
+readKanal16Bit                                    TWI_Slave.o
+readKanalOrig                                     TWI_Slave.o
+rxdata                                            TWI_Slave.o
+slaveinit                                         TWI_Slave.o
+status                                            TWI_Slave.o
+timer0                                            TWI_Slave.o
+timer0startwert                                   TWI_Slave.o
+timer2Counter                                     TWI_Slave.o
+usb_configured                                    TWI_Slave.o
+usb_init                                          TWI_Slave.o
+usb_rawhid_recv                                   TWI_Slave.o
+usb_rawhid_send                                   TWI_Slave.o
+usbstatus                                         TWI_Slave.o
