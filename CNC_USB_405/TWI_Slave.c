@@ -86,6 +86,7 @@ volatile uint8_t           liniencounter= 0;
 #define LOOPLEDPORT         PORTD
 #define LOOPLED             6 
 #define DC                  7    // DC ON: LO
+#define STROM               4    // Stepperstrom ON: LO
 
 #define TASTENDDR           DDRF
 #define TASTENPORT          PORTF
@@ -216,8 +217,6 @@ void slaveinit(void)
 	//OSZIPORTDDR |= (1<<PULS);	// Output
 	//OSZIPORT |= (1<<PULS);		// HI
 	
-	LOOPLEDDDR |=(1<<LOOPLED);
-	LOOPLEDPORT |= (1<<LOOPLED);	// HI
 
 	STEPPERDDR_1 |= (1<<MA_STEP);
 	STEPPERPORT_1 |= (1<<MA_STEP);	// HI
@@ -305,6 +304,9 @@ void slaveinit(void)
 
    CMD_DDR |= (1<<DC);                       // DC-PWM-Ausgang
    CMD_PORT |= (1<<DC);                      // HI
+
+   CMD_DDR |= (1<<STROM);                    // Stepperstrom-Ausgang, Active HI
+   CMD_PORT &= ~(1<<STROM);                  // LO
 }
 
 
@@ -931,7 +933,7 @@ int main (void)
 {
     int8_t r;
 
-uint16_t count=0;
+   uint16_t count=0;
     
 	// set for 16 MHz clock
 	CPU_PRESCALE(0);
@@ -1003,23 +1005,10 @@ uint16_t count=0;
 			loopcount0=0;
 			loopcount1+=1;
 			LOOPLEDPORT ^=(1<<LOOPLED);
+         //LOOPLEDPORT ^=(1<<DC);
 		}
 		
-      if (PWM) // Heizung ist ON
-      {
-         if (pwmposition > PWM) // DC OFF, PIN ist HI
-         {
-            CMD_PORT |= (1<<DC);
-            OSZI_A_LO ;
-         }
-         else                    // DC ON, PIN ist LO
-         {
-            CMD_PORT &= ~(1<<DC);
-            OSZI_A_HI ;
-            
-         }
-      }
-      /**	Begin USB-routinen	***********************/
+       /**	Begin USB-routinen	***********************/
       
       // Start USB
       //lcd_putc('u');
@@ -1034,7 +1023,7 @@ uint16_t count=0;
          
          // Empfang quittieren
          sendbuffer[5]=code;
-         sendbuffer[6]=code;
+         //sendbuffer[6]=code;
          sendbuffer[0]=0x33;
          usb_rawhid_send((void*)sendbuffer, 50);
          sendbuffer[0]=0x00;
@@ -1071,9 +1060,31 @@ uint16_t count=0;
                
             case 0xE2: // DC ON_OFF
             {
-               PWM = code;
+               PWM = buffer[8];
+               if (PWM==0)
+               {
+                  CMD_PORT |= (1<<DC);
+               }
                sendbuffer[0]=0xE3;
-               usb_rawhid_send((void*)sendbuffer, 50);
+               //usb_rawhid_send((void*)sendbuffer, 50);
+               sendbuffer[0]=0x00;
+               sendbuffer[5]=0x00;
+               sendbuffer[6]=0x00;
+               
+            }break;
+               
+            case 0xE4: // Stepperstrom ON_OFF
+            {
+               if (buffer[8])
+               {
+                  CMD_PORT |= (1<<STROM); // ON
+               }
+               else
+               {
+                  CMD_PORT &= ~(1<<STROM); // OFF
+               }
+               sendbuffer[0]=0xE5;
+               //usb_rawhid_send((void*)sendbuffer, 50);
                sendbuffer[0]=0x00;
                sendbuffer[5]=0x00;
                sendbuffer[6]=0x00;
@@ -1110,7 +1121,7 @@ uint16_t count=0;
                   AbschnittCounter=0;
                   //             lcd_clr_line(1);
                   sendbuffer[5]=0x00;
-                  sendbuffer[6]=code;
+                  //sendbuffer[6]=code;
                   
                   
                   if (code == 0xF0) // cncstatus fuer go_home setzen
@@ -1205,8 +1216,27 @@ uint16_t count=0;
          sei();
 		} // end r>0, neue Daten
       
+      
+      
       /**	End USB-routinen	***********************/
-		
+     
+      /**	Heizung	***********************/
+      
+      if (PWM) // Heizung ist ON
+      {
+         if (pwmposition > PWM) // > DC OFF, PIN ist HI
+         {
+            CMD_PORT |= (1<<DC);
+            OSZI_A_HI ;
+         }
+         else                    // > DC ON, PIN ist LO
+         {
+            CMD_PORT &= ~(1<<DC);
+            OSZI_A_LO ;
+            
+         }
+      }
+
       /**	Start CNC-routinen	***********************/
       
       if (ringbufferstatus & (1<<STARTBIT)) // Buffer ist geladen, Abschnitt 0 laden

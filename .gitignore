@@ -1,0 +1,8 @@
+.DS_Store
+TWI_Slave.elf
+TWI_Slave.hex
+TWI_Slave.lss
+TWI_Slave.lst
+TWI_Slave.map
+TWI_Slave.o
+TWI_Slave.sym
