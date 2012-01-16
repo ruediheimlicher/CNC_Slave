@@ -3500,7 +3500,7 @@
  3588               	.LSM547:
  3589 004e 579A      		sbi 42-32,7
  3590               	.LSM548:
- 3591 0050 5F9A      		sbi 43-32,7
+ 3591 0050 5F98      		cbi 43-32,7
  3592               	.LSM549:
  3593 0052 549A      		sbi 42-32,4
  3594               	.LSM550:
@@ -4572,1372 +4572,1365 @@
  4671               	main:
  4672               	.LFB57:
  4673               	.LSM753:
- 4674 0000 5F92      		push r5
- 4675 0002 6F92      		push r6
- 4676 0004 7F92      		push r7
- 4677 0006 8F92      		push r8
- 4678 0008 9F92      		push r9
- 4679 000a AF92      		push r10
- 4680 000c BF92      		push r11
- 4681 000e CF92      		push r12
- 4682 0010 DF92      		push r13
- 4683 0012 EF92      		push r14
- 4684 0014 FF92      		push r15
- 4685 0016 0F93      		push r16
- 4686 0018 1F93      		push r17
- 4687 001a CF93      		push r28
- 4688 001c DF93      		push r29
- 4689               	/* prologue: function */
- 4690               	/* frame size = 0 */
- 4691               	.LSM754:
- 4692 001e 80E8      		ldi r24,lo8(-128)
- 4693 0020 8093 6100 		sts 97,r24
- 4694 0024 1092 6100 		sts 97,__zero_reg__
- 4695               	.LSM755:
- 4696 0028 0E94 0000 		call usb_init
- 4697               	.L281:
- 4698               	.LBB361:
- 4699               	.LBB362:
- 4700               	.LSM756:
- 4701 002c 8091 0000 		lds r24,usb_configuration
- 4702               	.LBE362:
- 4703               	.LBE361:
- 4704               	.LSM757:
- 4705 0030 8823      		tst r24
- 4706 0032 01F0      		breq .L281
- 4707 0034 80E1      		ldi r24,lo8(10000)
- 4708 0036 97E2      		ldi r25,hi8(10000)
- 4709               	.LVL352:
- 4710               	.LBB363:
- 4711               	.LBB364:
- 4712               	.LBB365:
- 4713               	.LBB366:
- 4714               	.LSM758:
- 4715 0038 20E9      		ldi r18,lo8(400)
- 4716 003a 31E0      		ldi r19,hi8(400)
- 4717               	.L282:
- 4718 003c F901      		movw r30,r18
- 4719               	.LVL353:
- 4720               	/* #APP */
- 4721               	 ;  105 "/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/include/util/delay_bas
- 4722 003e 3197      		1: sbiw r30,1
- 4723 0040 01F4      		brne 1b
- 4724               	 ;  0 "" 2
- 4725               	/* #NOAPP */
- 4726               	.LBE366:
- 4727               	.LBE365:
- 4728               	.LSM759:
- 4729 0042 0197      		sbiw r24,1
- 4730               	.LSM760:
- 4731 0044 01F4      		brne .L282
- 4732               	.LBE364:
- 4733               	.LBE363:
- 4734               	.LSM761:
- 4735               	/* #APP */
- 4736               	 ;  951 "TWI_Slave.c" 1
- 4737 0046 7894      		sei
- 4738               	 ;  0 "" 2
- 4739               	.LSM762:
- 4740               	/* #NOAPP */
- 4741 0048 0E94 0000 		call slaveinit
- 4742               	.LVL354:
- 4743               	.LSM763:
- 4744 004c 88E3      		ldi r24,lo8(56)
- 4745 004e 66E0      		ldi r22,lo8(6)
- 4746 0050 4CE0      		ldi r20,lo8(12)
- 4747 0052 0E94 0000 		call lcd_initialize
- 4748               	.LSM764:
- 4749 0056 80E0      		ldi r24,lo8(.LC1)
- 4750 0058 90E0      		ldi r25,hi8(.LC1)
- 4751 005a 0E94 0000 		call lcd_puts
- 4752 005e 84E6      		ldi r24,lo8(100)
- 4753 0060 90E0      		ldi r25,hi8(100)
- 4754               	.LVL355:
- 4755               	.LBB367:
- 4756               	.LBB368:
- 4757               	.LBB369:
- 4758               	.LBB370:
- 4759               	.LBB371:
- 4760               	.LBB372:
- 4761               	.LSM765:
- 4762 0062 20E0      		ldi r18,lo8(3840)
- 4763 0064 3FE0      		ldi r19,hi8(3840)
- 4764               	.L283:
- 4765 0066 F901      		movw r30,r18
- 4766               	.LVL356:
- 4767               	/* #APP */
- 4768               	 ;  105 "/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/include/util/delay_bas
- 4769 0068 3197      		1: sbiw r30,1
- 4770 006a 01F4      		brne 1b
- 4771               	 ;  0 "" 2
- 4772               	/* #NOAPP */
- 4773               	.LBE372:
- 4774               	.LBE371:
- 4775               	.LBE370:
- 4776               	.LBE369:
- 4777               	.LSM766:
- 4778 006c 0197      		sbiw r24,1
- 4779               	.LSM767:
- 4780 006e 01F4      		brne .L283
- 4781               	.LBE368:
- 4782               	.LBE367:
- 4783               	.LSM768:
- 4784 0070 0E94 0000 		call lcd_cls
- 4785               	.LVL357:
- 4786               	.LSM769:
- 4787 0074 80E0      		ldi r24,lo8(.LC2)
- 4788 0076 90E0      		ldi r25,hi8(.LC2)
- 4789 0078 0E94 0000 		call lcd_puts
- 4790               	.LSM770:
- 4791 007c 80E0      		ldi r24,lo8(.LC3)
- 4792 007e 90E0      		ldi r25,hi8(.LC3)
- 4793 0080 0E94 0000 		call lcd_puts
- 4794               	.LSM771:
- 4795 0084 81E0      		ldi r24,lo8(1)
- 4796 0086 0E94 0000 		call lcd_clr_line
- 4797               	.LSM772:
- 4798 008a 1092 B200 		sts 178,__zero_reg__
- 4799               	.LSM773:
- 4800 008e 8091 B100 		lds r24,177
- 4801 0092 8160      		ori r24,lo8(1)
- 4802 0094 8093 B100 		sts 177,r24
- 4803               	.LSM774:
- 4804 0098 8091 7000 		lds r24,112
- 4805 009c 8160      		ori r24,lo8(1)
- 4806 009e 8093 7000 		sts 112,r24
- 4807               	.LSM775:
- 4808 00a2 1092 B000 		sts 176,__zero_reg__
- 4809               	.LSM776:
- 4810               	/* #APP */
- 4811               	 ;  995 "TWI_Slave.c" 1
- 4812 00a6 7894      		sei
- 4813               	 ;  0 "" 2
- 4814               	/* #NOAPP */
- 4815 00a8 EE24      		clr r14
- 4816 00aa FF24      		clr r15
- 4817               	.LVL358:
- 4818               	.LSM777:
- 4819 00ac 00E4      		ldi r16,lo8(64)
- 4820 00ae 902E      		mov r9,r16
- 4821               	.LBB373:
- 4822               	.LSM778:
- 4823 00b0 13E3      		ldi r17,lo8(51)
- 4824 00b2 812E      		mov r8,r17
- 4825               	.LSM779:
- 4826 00b4 B3EE      		ldi r27,lo8(-29)
- 4827 00b6 7B2E      		mov r7,r27
- 4828               	.LSM780:
- 4829 00b8 A5EE      		ldi r26,lo8(-27)
- 4830 00ba 6A2E      		mov r6,r26
- 4831               	.LBB374:
- 4832               	.LSM781:
- 4833 00bc FFEA      		ldi r31,lo8(-81)
- 4834 00be 5F2E      		mov r5,r31
- 4835               	.LBB375:
- 4836               	.LSM782:
- 4837 00c0 CC24      		clr r12
- 4838 00c2 CA94      		dec r12
- 4839 00c4 DC2C      		mov r13,r12
- 4840               	.LSM783:
- 4841 00c6 04E4      		ldi r16,lo8(68)
- 4842               	.LSM784:
- 4843 00c8 E5E4      		ldi r30,lo8(69)
- 4844 00ca BE2E      		mov r11,r30
- 4845               	.LBE375:
- 4846               	.LBE374:
- 4847               	.LSM785:
- 4848 00cc 71EE      		ldi r23,lo8(-31)
- 4849 00ce A72E      		mov r10,r23
- 4850               	.LVL359:
- 4851               	.L328:
- 4852               	.LBE373:
+ 4674 0000 6F92      		push r6
+ 4675 0002 7F92      		push r7
+ 4676 0004 8F92      		push r8
+ 4677 0006 9F92      		push r9
+ 4678 0008 AF92      		push r10
+ 4679 000a BF92      		push r11
+ 4680 000c CF92      		push r12
+ 4681 000e DF92      		push r13
+ 4682 0010 EF92      		push r14
+ 4683 0012 FF92      		push r15
+ 4684 0014 0F93      		push r16
+ 4685 0016 1F93      		push r17
+ 4686 0018 CF93      		push r28
+ 4687 001a DF93      		push r29
+ 4688               	/* prologue: function */
+ 4689               	/* frame size = 0 */
+ 4690               	.LSM754:
+ 4691 001c 80E8      		ldi r24,lo8(-128)
+ 4692 001e 8093 6100 		sts 97,r24
+ 4693 0022 1092 6100 		sts 97,__zero_reg__
+ 4694               	.LSM755:
+ 4695 0026 0E94 0000 		call usb_init
+ 4696               	.L281:
+ 4697               	.LBB361:
+ 4698               	.LBB362:
+ 4699               	.LSM756:
+ 4700 002a 8091 0000 		lds r24,usb_configuration
+ 4701               	.LBE362:
+ 4702               	.LBE361:
+ 4703               	.LSM757:
+ 4704 002e 8823      		tst r24
+ 4705 0030 01F0      		breq .L281
+ 4706 0032 80E1      		ldi r24,lo8(10000)
+ 4707 0034 97E2      		ldi r25,hi8(10000)
+ 4708               	.LVL352:
+ 4709               	.LBB363:
+ 4710               	.LBB364:
+ 4711               	.LBB365:
+ 4712               	.LBB366:
+ 4713               	.LSM758:
+ 4714 0036 20E9      		ldi r18,lo8(400)
+ 4715 0038 31E0      		ldi r19,hi8(400)
+ 4716               	.L282:
+ 4717 003a F901      		movw r30,r18
+ 4718               	.LVL353:
+ 4719               	/* #APP */
+ 4720               	 ;  105 "/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/include/util/delay_bas
+ 4721 003c 3197      		1: sbiw r30,1
+ 4722 003e 01F4      		brne 1b
+ 4723               	 ;  0 "" 2
+ 4724               	/* #NOAPP */
+ 4725               	.LBE366:
+ 4726               	.LBE365:
+ 4727               	.LSM759:
+ 4728 0040 0197      		sbiw r24,1
+ 4729               	.LSM760:
+ 4730 0042 01F4      		brne .L282
+ 4731               	.LBE364:
+ 4732               	.LBE363:
+ 4733               	.LSM761:
+ 4734               	/* #APP */
+ 4735               	 ;  951 "TWI_Slave.c" 1
+ 4736 0044 7894      		sei
+ 4737               	 ;  0 "" 2
+ 4738               	.LSM762:
+ 4739               	/* #NOAPP */
+ 4740 0046 0E94 0000 		call slaveinit
+ 4741               	.LVL354:
+ 4742               	.LSM763:
+ 4743 004a 88E3      		ldi r24,lo8(56)
+ 4744 004c 66E0      		ldi r22,lo8(6)
+ 4745 004e 4CE0      		ldi r20,lo8(12)
+ 4746 0050 0E94 0000 		call lcd_initialize
+ 4747               	.LSM764:
+ 4748 0054 80E0      		ldi r24,lo8(.LC1)
+ 4749 0056 90E0      		ldi r25,hi8(.LC1)
+ 4750 0058 0E94 0000 		call lcd_puts
+ 4751 005c 84E6      		ldi r24,lo8(100)
+ 4752 005e 90E0      		ldi r25,hi8(100)
+ 4753               	.LVL355:
+ 4754               	.LBB367:
+ 4755               	.LBB368:
+ 4756               	.LBB369:
+ 4757               	.LBB370:
+ 4758               	.LBB371:
+ 4759               	.LBB372:
+ 4760               	.LSM765:
+ 4761 0060 20E0      		ldi r18,lo8(3840)
+ 4762 0062 3FE0      		ldi r19,hi8(3840)
+ 4763               	.L283:
+ 4764 0064 F901      		movw r30,r18
+ 4765               	.LVL356:
+ 4766               	/* #APP */
+ 4767               	 ;  105 "/usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/include/util/delay_bas
+ 4768 0066 3197      		1: sbiw r30,1
+ 4769 0068 01F4      		brne 1b
+ 4770               	 ;  0 "" 2
+ 4771               	/* #NOAPP */
+ 4772               	.LBE372:
+ 4773               	.LBE371:
+ 4774               	.LBE370:
+ 4775               	.LBE369:
+ 4776               	.LSM766:
+ 4777 006a 0197      		sbiw r24,1
+ 4778               	.LSM767:
+ 4779 006c 01F4      		brne .L283
+ 4780               	.LBE368:
+ 4781               	.LBE367:
+ 4782               	.LSM768:
+ 4783 006e 0E94 0000 		call lcd_cls
+ 4784               	.LVL357:
+ 4785               	.LSM769:
+ 4786 0072 80E0      		ldi r24,lo8(.LC2)
+ 4787 0074 90E0      		ldi r25,hi8(.LC2)
+ 4788 0076 0E94 0000 		call lcd_puts
+ 4789               	.LSM770:
+ 4790 007a 80E0      		ldi r24,lo8(.LC3)
+ 4791 007c 90E0      		ldi r25,hi8(.LC3)
+ 4792 007e 0E94 0000 		call lcd_puts
+ 4793               	.LSM771:
+ 4794 0082 81E0      		ldi r24,lo8(1)
+ 4795 0084 0E94 0000 		call lcd_clr_line
+ 4796               	.LSM772:
+ 4797 0088 1092 B200 		sts 178,__zero_reg__
+ 4798               	.LSM773:
+ 4799 008c 8091 B100 		lds r24,177
+ 4800 0090 8160      		ori r24,lo8(1)
+ 4801 0092 8093 B100 		sts 177,r24
+ 4802               	.LSM774:
+ 4803 0096 8091 7000 		lds r24,112
+ 4804 009a 8160      		ori r24,lo8(1)
+ 4805 009c 8093 7000 		sts 112,r24
+ 4806               	.LSM775:
+ 4807 00a0 1092 B000 		sts 176,__zero_reg__
+ 4808               	.LSM776:
+ 4809               	/* #APP */
+ 4810               	 ;  995 "TWI_Slave.c" 1
+ 4811 00a4 7894      		sei
+ 4812               	 ;  0 "" 2
+ 4813               	/* #NOAPP */
+ 4814 00a6 EE24      		clr r14
+ 4815 00a8 FF24      		clr r15
+ 4816               	.LVL358:
+ 4817               	.LSM777:
+ 4818 00aa 10E4      		ldi r17,lo8(64)
+ 4819 00ac 612E      		mov r6,r17
+ 4820               	.LBB373:
+ 4821               	.LSM778:
+ 4822 00ae 03E3      		ldi r16,lo8(51)
+ 4823               	.LSM779:
+ 4824 00b0 B5EE      		ldi r27,lo8(-27)
+ 4825 00b2 BB2E      		mov r11,r27
+ 4826               	.LBB374:
+ 4827               	.LSM780:
+ 4828 00b4 AFEA      		ldi r26,lo8(-81)
+ 4829 00b6 AA2E      		mov r10,r26
+ 4830               	.LBB375:
+ 4831               	.LSM781:
+ 4832 00b8 CC24      		clr r12
+ 4833 00ba CA94      		dec r12
+ 4834 00bc DC2C      		mov r13,r12
+ 4835               	.LSM782:
+ 4836 00be F4E4      		ldi r31,lo8(68)
+ 4837 00c0 9F2E      		mov r9,r31
+ 4838               	.LSM783:
+ 4839 00c2 E5E4      		ldi r30,lo8(69)
+ 4840 00c4 8E2E      		mov r8,r30
+ 4841               	.LBE375:
+ 4842               	.LBE374:
+ 4843               	.LSM784:
+ 4844 00c6 71EE      		ldi r23,lo8(-31)
+ 4845 00c8 772E      		mov r7,r23
+ 4846               	.LVL359:
+ 4847               	.L327:
+ 4848               	.LBE373:
+ 4849               	.LSM785:
+ 4850 00ca 0894      		sec
+ 4851 00cc E11C      		adc r14,__zero_reg__
+ 4852 00ce F11C      		adc r15,__zero_reg__
  4853               	.LSM786:
- 4854 00d0 0894      		sec
- 4855 00d2 E11C      		adc r14,__zero_reg__
- 4856 00d4 F11C      		adc r15,__zero_reg__
- 4857               	.LSM787:
- 4858 00d6 8FEF      		ldi r24,lo8(-20481)
- 4859 00d8 E816      		cp r14,r24
- 4860 00da 8FEA      		ldi r24,hi8(-20481)
- 4861 00dc F806      		cpc r15,r24
- 4862 00de 01F4      		brne .L284
- 4863               	.LSM788:
- 4864 00e0 8BB1      		in r24,43-32
- 4865 00e2 8925      		eor r24,r9
- 4866 00e4 8BB9      		out 43-32,r24
- 4867 00e6 EE24      		clr r14
- 4868 00e8 FF24      		clr r15
- 4869               	.L284:
- 4870               	.LSM789:
- 4871 00ea 80E0      		ldi r24,lo8(buffer)
- 4872 00ec 90E0      		ldi r25,hi8(buffer)
- 4873 00ee 60E0      		ldi r22,lo8(0)
- 4874 00f0 0E94 0000 		call usb_rawhid_recv
- 4875               	.LSM790:
- 4876 00f4 1816      		cp __zero_reg__,r24
- 4877 00f6 04F0      		brlt .+2
- 4878 00f8 00C0      		rjmp .L285
- 4879               	.LBB379:
- 4880               	.LSM791:
- 4881               	/* #APP */
- 4882               	 ;  1019 "TWI_Slave.c" 1
- 4883 00fa F894      		cli
- 4884               	 ;  0 "" 2
- 4885               	.LSM792:
- 4886               	/* #NOAPP */
- 4887 00fc 1091 0000 		lds r17,buffer+16
- 4888               	.LSM793:
- 4889 0100 1093 0000 		sts sendbuffer+5,r17
- 4890               	.LSM794:
- 4891 0104 8092 0000 		sts sendbuffer,r8
- 4892               	.LSM795:
- 4893 0108 80E0      		ldi r24,lo8(sendbuffer)
- 4894 010a 90E0      		ldi r25,hi8(sendbuffer)
- 4895 010c 62E3      		ldi r22,lo8(50)
- 4896 010e 0E94 0000 		call usb_rawhid_send
- 4897               	.LSM796:
- 4898 0112 1092 0000 		sts sendbuffer,__zero_reg__
- 4899               	.LSM797:
- 4900 0116 1092 0000 		sts sendbuffer+5,__zero_reg__
- 4901               	.LSM798:
- 4902 011a 1092 0000 		sts sendbuffer+6,__zero_reg__
- 4903               	.LSM799:
- 4904 011e 123E      		cpi r17,lo8(-30)
- 4905 0120 01F4      		brne .+2
- 4906 0122 00C0      		rjmp .L288
- 4907 0124 143E      		cpi r17,lo8(-28)
- 4908 0126 01F4      		brne .+2
- 4909 0128 00C0      		rjmp .L289
- 4910 012a 103E      		cpi r17,lo8(-32)
- 4911 012c 01F0      		breq .+2
- 4912 012e 00C0      		rjmp .L335
- 4913               	.LSM800:
- 4914 0130 1092 0000 		sts ringbufferstatus,__zero_reg__
- 4915               	.LSM801:
- 4916 0134 1092 0000 		sts motorstatus,__zero_reg__
- 4917               	.LSM802:
- 4918 0138 A092 0000 		sts sendbuffer,r10
+ 4854 00d0 8FEF      		ldi r24,lo8(-20481)
+ 4855 00d2 E816      		cp r14,r24
+ 4856 00d4 8FEA      		ldi r24,hi8(-20481)
+ 4857 00d6 F806      		cpc r15,r24
+ 4858 00d8 01F4      		brne .L284
+ 4859               	.LSM787:
+ 4860 00da 8BB1      		in r24,43-32
+ 4861 00dc 8625      		eor r24,r6
+ 4862 00de 8BB9      		out 43-32,r24
+ 4863 00e0 EE24      		clr r14
+ 4864 00e2 FF24      		clr r15
+ 4865               	.L284:
+ 4866               	.LSM788:
+ 4867 00e4 80E0      		ldi r24,lo8(buffer)
+ 4868 00e6 90E0      		ldi r25,hi8(buffer)
+ 4869 00e8 60E0      		ldi r22,lo8(0)
+ 4870 00ea 0E94 0000 		call usb_rawhid_recv
+ 4871               	.LSM789:
+ 4872 00ee 1816      		cp __zero_reg__,r24
+ 4873 00f0 04F0      		brlt .+2
+ 4874 00f2 00C0      		rjmp .L285
+ 4875               	.LBB379:
+ 4876               	.LSM790:
+ 4877               	/* #APP */
+ 4878               	 ;  1019 "TWI_Slave.c" 1
+ 4879 00f4 F894      		cli
+ 4880               	 ;  0 "" 2
+ 4881               	.LSM791:
+ 4882               	/* #NOAPP */
+ 4883 00f6 1091 0000 		lds r17,buffer+16
+ 4884               	.LSM792:
+ 4885 00fa 1093 0000 		sts sendbuffer+5,r17
+ 4886               	.LSM793:
+ 4887 00fe 0093 0000 		sts sendbuffer,r16
+ 4888               	.LSM794:
+ 4889 0102 80E0      		ldi r24,lo8(sendbuffer)
+ 4890 0104 90E0      		ldi r25,hi8(sendbuffer)
+ 4891 0106 62E3      		ldi r22,lo8(50)
+ 4892 0108 0E94 0000 		call usb_rawhid_send
+ 4893               	.LSM795:
+ 4894 010c 1092 0000 		sts sendbuffer,__zero_reg__
+ 4895               	.LSM796:
+ 4896 0110 1092 0000 		sts sendbuffer+5,__zero_reg__
+ 4897               	.LSM797:
+ 4898 0114 1092 0000 		sts sendbuffer+6,__zero_reg__
+ 4899               	.LSM798:
+ 4900 0118 123E      		cpi r17,lo8(-30)
+ 4901 011a 01F4      		brne .+2
+ 4902 011c 00C0      		rjmp .L288
+ 4903 011e 143E      		cpi r17,lo8(-28)
+ 4904 0120 01F4      		brne .+2
+ 4905 0122 00C0      		rjmp .L289
+ 4906 0124 103E      		cpi r17,lo8(-32)
+ 4907 0126 01F0      		breq .+2
+ 4908 0128 00C0      		rjmp .L334
+ 4909               	.LSM799:
+ 4910 012a 1092 0000 		sts ringbufferstatus,__zero_reg__
+ 4911               	.LSM800:
+ 4912 012e 1092 0000 		sts motorstatus,__zero_reg__
+ 4913               	.LSM801:
+ 4914 0132 7092 0000 		sts sendbuffer,r7
+ 4915               	.LSM802:
+ 4916 0136 8091 0000 		lds r24,abschnittnummer
+ 4917 013a 9091 0000 		lds r25,(abschnittnummer)+1
+ 4918 013e 8093 0000 		sts sendbuffer+5,r24
  4919               	.LSM803:
- 4920 013c 8091 0000 		lds r24,abschnittnummer
- 4921 0140 9091 0000 		lds r25,(abschnittnummer)+1
- 4922 0144 8093 0000 		sts sendbuffer+5,r24
- 4923               	.LSM804:
- 4924 0148 8091 0000 		lds r24,ladeposition
- 4925 014c 8093 0000 		sts sendbuffer+6,r24
- 4926               	.LSM805:
- 4927 0150 80E0      		ldi r24,lo8(sendbuffer)
- 4928 0152 90E0      		ldi r25,hi8(sendbuffer)
- 4929 0154 62E3      		ldi r22,lo8(50)
- 4930 0156 0E94 0000 		call usb_rawhid_send
- 4931               	.LSM806:
- 4932 015a 1092 0000 		sts sendbuffer,__zero_reg__
- 4933               	.LSM807:
- 4934 015e 1092 0000 		sts sendbuffer+5,__zero_reg__
- 4935               	.LSM808:
- 4936 0162 1092 0000 		sts sendbuffer+6,__zero_reg__
- 4937               	.LSM809:
- 4938 0166 1092 0000 		sts ladeposition,__zero_reg__
- 4939               	.LSM810:
- 4940 016a 1092 0000 		sts (AbschnittCounter)+1,__zero_reg__
- 4941 016e 1092 0000 		sts AbschnittCounter,__zero_reg__
- 4942               	.LSM811:
- 4943 0172 1092 0000 		sts (StepCounterA)+1,__zero_reg__
- 4944 0176 1092 0000 		sts StepCounterA,__zero_reg__
- 4945               	.LSM812:
- 4946 017a 1092 0000 		sts (StepCounterB)+1,__zero_reg__
- 4947 017e 1092 0000 		sts StepCounterB,__zero_reg__
- 4948               	.LSM813:
- 4949 0182 1092 0000 		sts (StepCounterC)+1,__zero_reg__
- 4950 0186 1092 0000 		sts StepCounterC,__zero_reg__
- 4951               	.LSM814:
- 4952 018a 1092 0000 		sts (StepCounterD)+1,__zero_reg__
- 4953 018e 1092 0000 		sts StepCounterD,__zero_reg__
- 4954               	.LSM815:
- 4955 0192 1092 0000 		sts (CounterA)+1,__zero_reg__
- 4956 0196 1092 0000 		sts CounterA,__zero_reg__
- 4957               	.LSM816:
- 4958 019a 1092 0000 		sts (CounterB)+1,__zero_reg__
- 4959 019e 1092 0000 		sts CounterB,__zero_reg__
- 4960               	.LSM817:
- 4961 01a2 1092 0000 		sts (CounterC)+1,__zero_reg__
- 4962 01a6 1092 0000 		sts CounterC,__zero_reg__
- 4963               	.LSM818:
- 4964 01aa 1092 0000 		sts (CounterD)+1,__zero_reg__
- 4965 01ae 1092 0000 		sts CounterD,__zero_reg__
- 4966 01b2 00C0      		rjmp .L290
- 4967               	.L288:
- 4968               	.LSM819:
- 4969 01b4 8091 0000 		lds r24,buffer+8
- 4970 01b8 8093 0000 		sts PWM,r24
- 4971               	.LSM820:
- 4972 01bc 8091 0000 		lds r24,PWM
- 4973 01c0 8823      		tst r24
- 4974 01c2 01F4      		brne .L291
- 4975               	.LSM821:
- 4976 01c4 5F9A      		sbi 43-32,7
- 4977               	.L291:
- 4978               	.LSM822:
- 4979 01c6 7092 0000 		sts sendbuffer,r7
- 4980 01ca 00C0      		rjmp .L337
- 4981               	.L289:
- 4982               	.LSM823:
- 4983 01cc 8091 0000 		lds r24,buffer+8
- 4984 01d0 8823      		tst r24
- 4985 01d2 01F0      		breq .L292
- 4986               	.LSM824:
- 4987 01d4 5C9A      		sbi 43-32,4
- 4988 01d6 00C0      		rjmp .L293
- 4989               	.L292:
- 4990               	.LSM825:
- 4991 01d8 5C98      		cbi 43-32,4
- 4992               	.L293:
- 4993               	.LSM826:
- 4994 01da 6092 0000 		sts sendbuffer,r6
- 4995               	.L337:
- 4996               	.LSM827:
- 4997 01de 1092 0000 		sts sendbuffer,__zero_reg__
+ 4920 0142 8091 0000 		lds r24,ladeposition
+ 4921 0146 8093 0000 		sts sendbuffer+6,r24
+ 4922               	.LSM804:
+ 4923 014a 80E0      		ldi r24,lo8(sendbuffer)
+ 4924 014c 90E0      		ldi r25,hi8(sendbuffer)
+ 4925 014e 62E3      		ldi r22,lo8(50)
+ 4926 0150 0E94 0000 		call usb_rawhid_send
+ 4927               	.LSM805:
+ 4928 0154 1092 0000 		sts sendbuffer,__zero_reg__
+ 4929               	.LSM806:
+ 4930 0158 1092 0000 		sts sendbuffer+5,__zero_reg__
+ 4931               	.LSM807:
+ 4932 015c 1092 0000 		sts sendbuffer+6,__zero_reg__
+ 4933               	.LSM808:
+ 4934 0160 1092 0000 		sts ladeposition,__zero_reg__
+ 4935               	.LSM809:
+ 4936 0164 1092 0000 		sts (AbschnittCounter)+1,__zero_reg__
+ 4937 0168 1092 0000 		sts AbschnittCounter,__zero_reg__
+ 4938               	.LSM810:
+ 4939 016c 1092 0000 		sts (StepCounterA)+1,__zero_reg__
+ 4940 0170 1092 0000 		sts StepCounterA,__zero_reg__
+ 4941               	.LSM811:
+ 4942 0174 1092 0000 		sts (StepCounterB)+1,__zero_reg__
+ 4943 0178 1092 0000 		sts StepCounterB,__zero_reg__
+ 4944               	.LSM812:
+ 4945 017c 1092 0000 		sts (StepCounterC)+1,__zero_reg__
+ 4946 0180 1092 0000 		sts StepCounterC,__zero_reg__
+ 4947               	.LSM813:
+ 4948 0184 1092 0000 		sts (StepCounterD)+1,__zero_reg__
+ 4949 0188 1092 0000 		sts StepCounterD,__zero_reg__
+ 4950               	.LSM814:
+ 4951 018c 1092 0000 		sts (CounterA)+1,__zero_reg__
+ 4952 0190 1092 0000 		sts CounterA,__zero_reg__
+ 4953               	.LSM815:
+ 4954 0194 1092 0000 		sts (CounterB)+1,__zero_reg__
+ 4955 0198 1092 0000 		sts CounterB,__zero_reg__
+ 4956               	.LSM816:
+ 4957 019c 1092 0000 		sts (CounterC)+1,__zero_reg__
+ 4958 01a0 1092 0000 		sts CounterC,__zero_reg__
+ 4959               	.LSM817:
+ 4960 01a4 1092 0000 		sts (CounterD)+1,__zero_reg__
+ 4961 01a8 1092 0000 		sts CounterD,__zero_reg__
+ 4962 01ac 00C0      		rjmp .L290
+ 4963               	.L288:
+ 4964               	.LSM818:
+ 4965 01ae 8091 0000 		lds r24,buffer+8
+ 4966 01b2 8093 0000 		sts PWM,r24
+ 4967               	.LSM819:
+ 4968 01b6 8091 0000 		lds r24,PWM
+ 4969 01ba 8823      		tst r24
+ 4970 01bc 01F0      		breq .+2
+ 4971 01be 00C0      		rjmp .L290
+ 4972               	.LSM820:
+ 4973 01c0 5F98      		cbi 43-32,7
+ 4974 01c2 00C0      		rjmp .L290
+ 4975               	.L289:
+ 4976               	.LSM821:
+ 4977 01c4 8091 0000 		lds r24,buffer+8
+ 4978 01c8 8823      		tst r24
+ 4979 01ca 01F0      		breq .L291
+ 4980               	.LSM822:
+ 4981 01cc 5C9A      		sbi 43-32,4
+ 4982 01ce 00C0      		rjmp .L292
+ 4983               	.L291:
+ 4984               	.LSM823:
+ 4985 01d0 5C98      		cbi 43-32,4
+ 4986               	.L292:
+ 4987               	.LSM824:
+ 4988 01d2 B092 0000 		sts sendbuffer,r11
+ 4989               	.LSM825:
+ 4990 01d6 1092 0000 		sts sendbuffer,__zero_reg__
+ 4991               	.LSM826:
+ 4992 01da 1092 0000 		sts sendbuffer+5,__zero_reg__
+ 4993               	.LSM827:
+ 4994 01de 1092 0000 		sts sendbuffer+6,__zero_reg__
+ 4995 01e2 00C0      		rjmp .L290
+ 4996               	.L334:
+ 4997               	.LBB378:
  4998               	.LSM828:
- 4999 01e2 1092 0000 		sts sendbuffer+5,__zero_reg__
- 5000               	.LSM829:
- 5001 01e6 1092 0000 		sts sendbuffer+6,__zero_reg__
- 5002 01ea 00C0      		rjmp .L290
- 5003               	.L335:
- 5004               	.LBB378:
- 5005               	.LSM830:
- 5006 01ec 8091 0000 		lds r24,buffer+18
- 5007               	.LVL360:
- 5008               	.LSM831:
- 5009 01f0 2091 0000 		lds r18,buffer+19
- 5010               	.LVL361:
- 5011               	.LSM832:
- 5012 01f4 D82F      		mov r29,r24
- 5013 01f6 C0E0      		ldi r28,lo8(0)
- 5014 01f8 D093 0000 		sts (abschnittnummer)+1,r29
- 5015 01fc C093 0000 		sts abschnittnummer,r28
- 5016               	.LSM833:
- 5017 0200 8091 0000 		lds r24,abschnittnummer
- 5018 0204 9091 0000 		lds r25,(abschnittnummer)+1
- 5019               	.LVL362:
- 5020 0208 820F      		add r24,r18
- 5021 020a 911D      		adc r25,__zero_reg__
- 5022 020c 9093 0000 		sts (abschnittnummer)+1,r25
- 5023 0210 8093 0000 		sts abschnittnummer,r24
- 5024               	.LSM834:
- 5025 0214 8091 0000 		lds r24,abschnittnummer
- 5026 0218 9091 0000 		lds r25,(abschnittnummer)+1
- 5027 021c 892B      		or r24,r25
- 5028 021e 01F0      		breq .+2
- 5029 0220 00C0      		rjmp .L294
- 5030 0222 40E0      		ldi r20,lo8(0)
- 5031 0224 50E0      		ldi r21,hi8(0)
- 5032 0226 00C0      		rjmp .L295
- 5033               	.LVL363:
- 5034               	.L296:
- 5035               	.LBB376:
- 5036               	.LSM835:
- 5037 0228 F901      		movw r30,r18
- 5038 022a E80F      		add r30,r24
- 5039 022c F91F      		adc r31,r25
- 5040 022e E050      		subi r30,lo8(-(CNCDaten))
- 5041 0230 F040      		sbci r31,hi8(-(CNCDaten))
- 5042 0232 1082      		st Z,__zero_reg__
- 5043 0234 0196      		adiw r24,1
- 5044               	.LSM836:
- 5045 0236 8032      		cpi r24,32
- 5046 0238 9105      		cpc r25,__zero_reg__
- 5047 023a 01F4      		brne .L296
- 5048 023c 4F5F      		subi r20,lo8(-(1))
- 5049 023e 5F4F      		sbci r21,hi8(-(1))
- 5050               	.LSM837:
- 5051 0240 4430      		cpi r20,4
- 5052 0242 5105      		cpc r21,__zero_reg__
- 5053 0244 01F0      		breq .L297
- 5054               	.LVL364:
- 5055               	.L295:
- 5056 0246 80E0      		ldi r24,lo8(0)
- 5057 0248 90E0      		ldi r25,hi8(0)
- 5058               	.LSM838:
- 5059 024a 9A01      		movw r18,r20
- 5060               	.LVL365:
- 5061 024c 65E0      		ldi r22,5
- 5062 024e 220F      	1:	lsl r18
- 5063 0250 331F      		rol r19
- 5064 0252 6A95      		dec r22
- 5065 0254 01F4      		brne 1b
- 5066 0256 240F      		add r18,r20
- 5067 0258 351F      		adc r19,r21
- 5068 025a 00C0      		rjmp .L296
- 5069               	.L297:
- 5070               	.LSM839:
- 5071 025c 1092 0000 		sts ladeposition,__zero_reg__
- 5072               	.LSM840:
- 5073 0260 D092 0000 		sts (endposition)+1,r13
- 5074 0264 C092 0000 		sts endposition,r12
- 5075               	.LSM841:
- 5076 0268 1092 0000 		sts anschlagstatus,__zero_reg__
- 5077               	.LSM842:
- 5078 026c 1092 0000 		sts motorstatus,__zero_reg__
- 5079               	.LSM843:
- 5080 0270 1092 0000 		sts ringbufferstatus,__zero_reg__
+ 4999 01e4 8091 0000 		lds r24,buffer+18
+ 5000               	.LVL360:
+ 5001               	.LSM829:
+ 5002 01e8 2091 0000 		lds r18,buffer+19
+ 5003               	.LVL361:
+ 5004               	.LSM830:
+ 5005 01ec D82F      		mov r29,r24
+ 5006 01ee C0E0      		ldi r28,lo8(0)
+ 5007 01f0 D093 0000 		sts (abschnittnummer)+1,r29
+ 5008 01f4 C093 0000 		sts abschnittnummer,r28
+ 5009               	.LSM831:
+ 5010 01f8 8091 0000 		lds r24,abschnittnummer
+ 5011 01fc 9091 0000 		lds r25,(abschnittnummer)+1
+ 5012               	.LVL362:
+ 5013 0200 820F      		add r24,r18
+ 5014 0202 911D      		adc r25,__zero_reg__
+ 5015 0204 9093 0000 		sts (abschnittnummer)+1,r25
+ 5016 0208 8093 0000 		sts abschnittnummer,r24
+ 5017               	.LSM832:
+ 5018 020c 8091 0000 		lds r24,abschnittnummer
+ 5019 0210 9091 0000 		lds r25,(abschnittnummer)+1
+ 5020 0214 892B      		or r24,r25
+ 5021 0216 01F0      		breq .+2
+ 5022 0218 00C0      		rjmp .L293
+ 5023 021a 40E0      		ldi r20,lo8(0)
+ 5024 021c 50E0      		ldi r21,hi8(0)
+ 5025 021e 00C0      		rjmp .L294
+ 5026               	.LVL363:
+ 5027               	.L295:
+ 5028               	.LBB376:
+ 5029               	.LSM833:
+ 5030 0220 F901      		movw r30,r18
+ 5031 0222 E80F      		add r30,r24
+ 5032 0224 F91F      		adc r31,r25
+ 5033 0226 E050      		subi r30,lo8(-(CNCDaten))
+ 5034 0228 F040      		sbci r31,hi8(-(CNCDaten))
+ 5035 022a 1082      		st Z,__zero_reg__
+ 5036 022c 0196      		adiw r24,1
+ 5037               	.LSM834:
+ 5038 022e 8032      		cpi r24,32
+ 5039 0230 9105      		cpc r25,__zero_reg__
+ 5040 0232 01F4      		brne .L295
+ 5041 0234 4F5F      		subi r20,lo8(-(1))
+ 5042 0236 5F4F      		sbci r21,hi8(-(1))
+ 5043               	.LSM835:
+ 5044 0238 4430      		cpi r20,4
+ 5045 023a 5105      		cpc r21,__zero_reg__
+ 5046 023c 01F0      		breq .L296
+ 5047               	.LVL364:
+ 5048               	.L294:
+ 5049 023e 80E0      		ldi r24,lo8(0)
+ 5050 0240 90E0      		ldi r25,hi8(0)
+ 5051               	.LSM836:
+ 5052 0242 9A01      		movw r18,r20
+ 5053               	.LVL365:
+ 5054 0244 65E0      		ldi r22,5
+ 5055 0246 220F      	1:	lsl r18
+ 5056 0248 331F      		rol r19
+ 5057 024a 6A95      		dec r22
+ 5058 024c 01F4      		brne 1b
+ 5059 024e 240F      		add r18,r20
+ 5060 0250 351F      		adc r19,r21
+ 5061 0252 00C0      		rjmp .L295
+ 5062               	.L296:
+ 5063               	.LSM837:
+ 5064 0254 1092 0000 		sts ladeposition,__zero_reg__
+ 5065               	.LSM838:
+ 5066 0258 D092 0000 		sts (endposition)+1,r13
+ 5067 025c C092 0000 		sts endposition,r12
+ 5068               	.LSM839:
+ 5069 0260 1092 0000 		sts anschlagstatus,__zero_reg__
+ 5070               	.LSM840:
+ 5071 0264 1092 0000 		sts motorstatus,__zero_reg__
+ 5072               	.LSM841:
+ 5073 0268 1092 0000 		sts ringbufferstatus,__zero_reg__
+ 5074               	.LSM842:
+ 5075 026c 8091 0000 		lds r24,ringbufferstatus
+ 5076 0270 8068      		ori r24,lo8(-128)
+ 5077 0272 8093 0000 		sts ringbufferstatus,r24
+ 5078               	.LSM843:
+ 5079 0276 1092 0000 		sts (AbschnittCounter)+1,__zero_reg__
+ 5080 027a 1092 0000 		sts AbschnittCounter,__zero_reg__
  5081               	.LSM844:
- 5082 0274 8091 0000 		lds r24,ringbufferstatus
- 5083 0278 8068      		ori r24,lo8(-128)
- 5084 027a 8093 0000 		sts ringbufferstatus,r24
- 5085               	.LSM845:
- 5086 027e 1092 0000 		sts (AbschnittCounter)+1,__zero_reg__
- 5087 0282 1092 0000 		sts AbschnittCounter,__zero_reg__
- 5088               	.LSM846:
- 5089 0286 1092 0000 		sts sendbuffer+5,__zero_reg__
- 5090               	.LSM847:
- 5091 028a 103F      		cpi r17,lo8(-16)
- 5092 028c 01F4      		brne .L298
- 5093               	.LSM848:
- 5094 028e 1093 0000 		sts sendbuffer+5,r17
+ 5082 027e 1092 0000 		sts sendbuffer+5,__zero_reg__
+ 5083               	.LSM845:
+ 5084 0282 103F      		cpi r17,lo8(-16)
+ 5085 0284 01F4      		brne .L297
+ 5086               	.LSM846:
+ 5087 0286 1093 0000 		sts sendbuffer+5,r17
+ 5088               	.LSM847:
+ 5089 028a 8092 0000 		sts sendbuffer,r8
+ 5090               	.LSM848:
+ 5091 028e 8091 0000 		lds r24,cncstatus
+ 5092 0292 8860      		ori r24,lo8(8)
+ 5093 0294 00C0      		rjmp .L335
+ 5094               	.L297:
  5095               	.LSM849:
- 5096 0292 B092 0000 		sts sendbuffer,r11
+ 5096 0296 9092 0000 		sts sendbuffer,r9
  5097               	.LSM850:
- 5098 0296 8091 0000 		lds r24,cncstatus
- 5099 029a 8860      		ori r24,lo8(8)
- 5100 029c 00C0      		rjmp .L336
- 5101               	.L298:
+ 5098 029a 8091 0000 		lds r24,cncstatus
+ 5099 029e 877F      		andi r24,lo8(-9)
+ 5100               	.L335:
+ 5101 02a0 8093 0000 		sts cncstatus,r24
  5102               	.LSM851:
- 5103 029e 0093 0000 		sts sendbuffer,r16
- 5104               	.LSM852:
- 5105 02a2 8091 0000 		lds r24,cncstatus
- 5106 02a6 877F      		andi r24,lo8(-9)
- 5107               	.L336:
- 5108 02a8 8093 0000 		sts cncstatus,r24
+ 5103 02a4 80E0      		ldi r24,lo8(sendbuffer)
+ 5104 02a6 90E0      		ldi r25,hi8(sendbuffer)
+ 5105 02a8 62E3      		ldi r22,lo8(50)
+ 5106 02aa 0E94 0000 		call usb_rawhid_send
+ 5107               	.LSM852:
+ 5108 02ae 1092 0000 		sts sendbuffer,__zero_reg__
  5109               	.LSM853:
- 5110 02ac 80E0      		ldi r24,lo8(sendbuffer)
- 5111 02ae 90E0      		ldi r25,hi8(sendbuffer)
- 5112 02b0 62E3      		ldi r22,lo8(50)
- 5113 02b2 0E94 0000 		call usb_rawhid_send
- 5114               	.LSM854:
- 5115 02b6 1092 0000 		sts sendbuffer,__zero_reg__
+ 5110 02b2 1092 0000 		sts sendbuffer+5,__zero_reg__
+ 5111               	.LSM854:
+ 5112 02b6 1092 0000 		sts sendbuffer+6,__zero_reg__
+ 5113               	.LVL366:
+ 5114               	.L293:
+ 5115               	.LBE376:
  5116               	.LSM855:
- 5117 02ba 1092 0000 		sts sendbuffer+5,__zero_reg__
- 5118               	.LSM856:
- 5119 02be 1092 0000 		sts sendbuffer+6,__zero_reg__
- 5120               	.LVL366:
- 5121               	.L294:
- 5122               	.LBE376:
- 5123               	.LSM857:
- 5124 02c2 8091 0000 		lds r24,buffer+17
- 5125 02c6 81FF      		sbrs r24,1
- 5126 02c8 00C0      		rjmp .L300
- 5127               	.LSM858:
- 5128 02ca 8091 0000 		lds r24,ringbufferstatus
- 5129 02ce 8061      		ori r24,lo8(16)
- 5130 02d0 8093 0000 		sts ringbufferstatus,r24
- 5131               	.LSM859:
- 5132 02d4 8091 0000 		lds r24,ringbufferstatus
- 5133 02d8 87FF      		sbrs r24,7
- 5134 02da 00C0      		rjmp .L300
- 5135               	.LSM860:
- 5136 02dc 8091 0000 		lds r24,abschnittnummer
- 5137 02e0 9091 0000 		lds r25,(abschnittnummer)+1
- 5138 02e4 9093 0000 		sts (endposition)+1,r25
- 5139 02e8 8093 0000 		sts endposition,r24
- 5140               	.L300:
- 5141               	.LBB377:
- 5142               	.LSM861:
- 5143 02ec 8091 0000 		lds r24,abschnittnummer
- 5144 02f0 9091 0000 		lds r25,(abschnittnummer)+1
- 5145               	.LSM862:
- 5146 02f4 8370      		andi r24,lo8(3)
- 5147               	.LVL367:
- 5148               	.LSM863:
- 5149 02f6 2091 0000 		lds r18,abschnittnummer
- 5150 02fa 3091 0000 		lds r19,(abschnittnummer)+1
- 5151               	.LVL368:
- 5152 02fe 20E0      		ldi r18,lo8(0)
- 5153 0300 30E0      		ldi r19,hi8(0)
- 5154               	.LSM864:
- 5155 0302 90E0      		ldi r25,lo8(0)
- 5156 0304 AC01      		movw r20,r24
- 5157               	.LVL369:
- 5158 0306 B5E0      		ldi r27,5
- 5159 0308 440F      	1:	lsl r20
- 5160 030a 551F      		rol r21
- 5161 030c BA95      		dec r27
- 5162 030e 01F4      		brne 1b
- 5163 0310 480F      		add r20,r24
- 5164 0312 591F      		adc r21,r25
- 5165               	.L301:
- 5166 0314 F901      		movw r30,r18
- 5167 0316 E050      		subi r30,lo8(-(buffer))
- 5168 0318 F040      		sbci r31,hi8(-(buffer))
- 5169 031a 8081      		ld r24,Z
- 5170 031c FA01      		movw r30,r20
- 5171 031e E20F      		add r30,r18
- 5172 0320 F31F      		adc r31,r19
- 5173 0322 E050      		subi r30,lo8(-(CNCDaten))
- 5174 0324 F040      		sbci r31,hi8(-(CNCDaten))
- 5175 0326 8083      		st Z,r24
- 5176 0328 2F5F      		subi r18,lo8(-(1))
- 5177 032a 3F4F      		sbci r19,hi8(-(1))
- 5178               	.LSM865:
- 5179 032c 2032      		cpi r18,32
- 5180 032e 3105      		cpc r19,__zero_reg__
- 5181 0330 01F4      		brne .L301
- 5182               	.LBE377:
- 5183               	.LSM866:
- 5184 0332 8091 0000 		lds r24,abschnittnummer
- 5185 0336 9091 0000 		lds r25,(abschnittnummer)+1
- 5186 033a 892B      		or r24,r25
- 5187 033c 01F4      		brne .L302
- 5188 033e 8091 0000 		lds r24,endposition
- 5189 0342 9091 0000 		lds r25,(endposition)+1
- 5190 0346 892B      		or r24,r25
- 5191 0348 01F0      		breq .L302
+ 5117 02ba 8091 0000 		lds r24,buffer+17
+ 5118 02be 81FF      		sbrs r24,1
+ 5119 02c0 00C0      		rjmp .L299
+ 5120               	.LSM856:
+ 5121 02c2 8091 0000 		lds r24,ringbufferstatus
+ 5122 02c6 8061      		ori r24,lo8(16)
+ 5123 02c8 8093 0000 		sts ringbufferstatus,r24
+ 5124               	.LSM857:
+ 5125 02cc 8091 0000 		lds r24,ringbufferstatus
+ 5126 02d0 87FF      		sbrs r24,7
+ 5127 02d2 00C0      		rjmp .L299
+ 5128               	.LSM858:
+ 5129 02d4 8091 0000 		lds r24,abschnittnummer
+ 5130 02d8 9091 0000 		lds r25,(abschnittnummer)+1
+ 5131 02dc 9093 0000 		sts (endposition)+1,r25
+ 5132 02e0 8093 0000 		sts endposition,r24
+ 5133               	.L299:
+ 5134               	.LBB377:
+ 5135               	.LSM859:
+ 5136 02e4 8091 0000 		lds r24,abschnittnummer
+ 5137 02e8 9091 0000 		lds r25,(abschnittnummer)+1
+ 5138               	.LSM860:
+ 5139 02ec 8370      		andi r24,lo8(3)
+ 5140               	.LVL367:
+ 5141               	.LSM861:
+ 5142 02ee 2091 0000 		lds r18,abschnittnummer
+ 5143 02f2 3091 0000 		lds r19,(abschnittnummer)+1
+ 5144               	.LVL368:
+ 5145 02f6 20E0      		ldi r18,lo8(0)
+ 5146 02f8 30E0      		ldi r19,hi8(0)
+ 5147               	.LSM862:
+ 5148 02fa 90E0      		ldi r25,lo8(0)
+ 5149 02fc AC01      		movw r20,r24
+ 5150               	.LVL369:
+ 5151 02fe B5E0      		ldi r27,5
+ 5152 0300 440F      	1:	lsl r20
+ 5153 0302 551F      		rol r21
+ 5154 0304 BA95      		dec r27
+ 5155 0306 01F4      		brne 1b
+ 5156 0308 480F      		add r20,r24
+ 5157 030a 591F      		adc r21,r25
+ 5158               	.L300:
+ 5159 030c F901      		movw r30,r18
+ 5160 030e E050      		subi r30,lo8(-(buffer))
+ 5161 0310 F040      		sbci r31,hi8(-(buffer))
+ 5162 0312 8081      		ld r24,Z
+ 5163 0314 FA01      		movw r30,r20
+ 5164 0316 E20F      		add r30,r18
+ 5165 0318 F31F      		adc r31,r19
+ 5166 031a E050      		subi r30,lo8(-(CNCDaten))
+ 5167 031c F040      		sbci r31,hi8(-(CNCDaten))
+ 5168 031e 8083      		st Z,r24
+ 5169 0320 2F5F      		subi r18,lo8(-(1))
+ 5170 0322 3F4F      		sbci r19,hi8(-(1))
+ 5171               	.LSM863:
+ 5172 0324 2032      		cpi r18,32
+ 5173 0326 3105      		cpc r19,__zero_reg__
+ 5174 0328 01F4      		brne .L300
+ 5175               	.LBE377:
+ 5176               	.LSM864:
+ 5177 032a 8091 0000 		lds r24,abschnittnummer
+ 5178 032e 9091 0000 		lds r25,(abschnittnummer)+1
+ 5179 0332 892B      		or r24,r25
+ 5180 0334 01F4      		brne .L301
+ 5181 0336 8091 0000 		lds r24,endposition
+ 5182 033a 9091 0000 		lds r25,(endposition)+1
+ 5183 033e 892B      		or r24,r25
+ 5184 0340 01F0      		breq .L301
+ 5185               	.LSM865:
+ 5186 0342 8091 0000 		lds r24,abschnittnummer
+ 5187 0346 9091 0000 		lds r25,(abschnittnummer)+1
+ 5188 034a 8093 0000 		sts sendbuffer+5,r24
+ 5189               	.LSM866:
+ 5190 034e 8091 0000 		lds r24,ladeposition
+ 5191 0352 8093 0000 		sts sendbuffer+6,r24
  5192               	.LSM867:
- 5193 034a 8091 0000 		lds r24,abschnittnummer
- 5194 034e 9091 0000 		lds r25,(abschnittnummer)+1
- 5195 0352 8093 0000 		sts sendbuffer+5,r24
- 5196               	.LSM868:
- 5197 0356 8091 0000 		lds r24,ladeposition
- 5198 035a 8093 0000 		sts sendbuffer+6,r24
+ 5193 0356 A092 0000 		sts sendbuffer,r10
+ 5194               	.LSM868:
+ 5195 035a 80E0      		ldi r24,lo8(sendbuffer)
+ 5196 035c 90E0      		ldi r25,hi8(sendbuffer)
+ 5197 035e 62E3      		ldi r22,lo8(50)
+ 5198 0360 0E94 0000 		call usb_rawhid_send
  5199               	.LSM869:
- 5200 035e 5092 0000 		sts sendbuffer,r5
+ 5200 0364 1092 0000 		sts sendbuffer,__zero_reg__
  5201               	.LSM870:
- 5202 0362 80E0      		ldi r24,lo8(sendbuffer)
- 5203 0364 90E0      		ldi r25,hi8(sendbuffer)
- 5204 0366 62E3      		ldi r22,lo8(50)
- 5205 0368 0E94 0000 		call usb_rawhid_send
- 5206               	.LSM871:
- 5207 036c 1092 0000 		sts sendbuffer,__zero_reg__
- 5208               	.LSM872:
- 5209 0370 1092 0000 		sts sendbuffer+5,__zero_reg__
+ 5202 0368 1092 0000 		sts sendbuffer+5,__zero_reg__
+ 5203               	.LSM871:
+ 5204 036c 1092 0000 		sts sendbuffer+6,__zero_reg__
+ 5205               	.L301:
+ 5206               	.LSM872:
+ 5207 0370 8091 0000 		lds r24,ringbufferstatus
+ 5208 0374 8F77      		andi r24,lo8(127)
+ 5209 0376 8093 0000 		sts ringbufferstatus,r24
  5210               	.LSM873:
- 5211 0374 1092 0000 		sts sendbuffer+6,__zero_reg__
- 5212               	.L302:
- 5213               	.LSM874:
- 5214 0378 8091 0000 		lds r24,ringbufferstatus
- 5215 037c 8F77      		andi r24,lo8(127)
- 5216 037e 8093 0000 		sts ringbufferstatus,r24
- 5217               	.LSM875:
- 5218 0382 8091 0000 		lds r24,abschnittnummer
- 5219 0386 9091 0000 		lds r25,(abschnittnummer)+1
- 5220 038a 0197      		sbiw r24,1
- 5221 038c 01F0      		breq .L303
- 5222 038e 8091 0000 		lds r24,abschnittnummer
- 5223 0392 9091 0000 		lds r25,(abschnittnummer)+1
- 5224 0396 892B      		or r24,r25
- 5225 0398 01F4      		brne .L290
- 5226 039a 8091 0000 		lds r24,ringbufferstatus
- 5227 039e 84FF      		sbrs r24,4
- 5228 03a0 00C0      		rjmp .L290
- 5229               	.L303:
- 5230               	.LSM876:
- 5231 03a2 8091 0000 		lds r24,ringbufferstatus
- 5232 03a6 8F7E      		andi r24,lo8(-17)
- 5233 03a8 8093 0000 		sts ringbufferstatus,r24
- 5234               	.LSM877:
- 5235 03ac 8091 0000 		lds r24,ringbufferstatus
- 5236 03b0 8460      		ori r24,lo8(4)
- 5237 03b2 8093 0000 		sts ringbufferstatus,r24
- 5238               	.L290:
- 5239               	.LBE378:
- 5240               	.LSM878:
- 5241               	/* #APP */
- 5242               	 ;  1216 "TWI_Slave.c" 1
- 5243 03b6 7894      		sei
- 5244               	 ;  0 "" 2
- 5245               	/* #NOAPP */
- 5246               	.L285:
- 5247               	.LBE379:
- 5248               	.LSM879:
- 5249 03b8 8091 0000 		lds r24,PWM
- 5250 03bc 8823      		tst r24
- 5251 03be 01F0      		breq .L304
+ 5211 037a 8091 0000 		lds r24,abschnittnummer
+ 5212 037e 9091 0000 		lds r25,(abschnittnummer)+1
+ 5213 0382 0197      		sbiw r24,1
+ 5214 0384 01F0      		breq .L302
+ 5215 0386 8091 0000 		lds r24,abschnittnummer
+ 5216 038a 9091 0000 		lds r25,(abschnittnummer)+1
+ 5217 038e 892B      		or r24,r25
+ 5218 0390 01F4      		brne .L290
+ 5219 0392 8091 0000 		lds r24,ringbufferstatus
+ 5220 0396 84FF      		sbrs r24,4
+ 5221 0398 00C0      		rjmp .L290
+ 5222               	.L302:
+ 5223               	.LSM874:
+ 5224 039a 8091 0000 		lds r24,ringbufferstatus
+ 5225 039e 8F7E      		andi r24,lo8(-17)
+ 5226 03a0 8093 0000 		sts ringbufferstatus,r24
+ 5227               	.LSM875:
+ 5228 03a4 8091 0000 		lds r24,ringbufferstatus
+ 5229 03a8 8460      		ori r24,lo8(4)
+ 5230 03aa 8093 0000 		sts ringbufferstatus,r24
+ 5231               	.L290:
+ 5232               	.LBE378:
+ 5233               	.LSM876:
+ 5234               	/* #APP */
+ 5235               	 ;  1217 "TWI_Slave.c" 1
+ 5236 03ae 7894      		sei
+ 5237               	 ;  0 "" 2
+ 5238               	/* #NOAPP */
+ 5239               	.L285:
+ 5240               	.LBE379:
+ 5241               	.LSM877:
+ 5242 03b0 8091 0000 		lds r24,PWM
+ 5243 03b4 8823      		tst r24
+ 5244 03b6 01F0      		breq .L303
+ 5245               	.LSM878:
+ 5246 03b8 9091 0000 		lds r25,pwmposition
+ 5247 03bc 8091 0000 		lds r24,PWM
+ 5248 03c0 8917      		cp r24,r25
+ 5249 03c2 00F4      		brsh .L304
+ 5250               	.LSM879:
+ 5251 03c4 5F98      		cbi 43-32,7
  5252               	.LSM880:
- 5253 03c0 9091 0000 		lds r25,pwmposition
- 5254 03c4 8091 0000 		lds r24,PWM
- 5255 03c8 8917      		cp r24,r25
- 5256 03ca 00F4      		brsh .L305
- 5257               	.LSM881:
- 5258 03cc 5F9A      		sbi 43-32,7
- 5259               	.LSM882:
- 5260 03ce 109A      		sbi 34-32,0
- 5261 03d0 00C0      		rjmp .L304
- 5262               	.L305:
- 5263               	.LSM883:
- 5264 03d2 5F98      		cbi 43-32,7
- 5265               	.LSM884:
- 5266 03d4 1098      		cbi 34-32,0
- 5267               	.L304:
- 5268               	.LSM885:
- 5269 03d6 8091 0000 		lds r24,ringbufferstatus
- 5270 03da 82FF      		sbrs r24,2
- 5271 03dc 00C0      		rjmp .L306
- 5272               	.LBB380:
- 5273               	.LSM886:
- 5274               	/* #APP */
- 5275               	 ;  1244 "TWI_Slave.c" 1
- 5276 03de F894      		cli
- 5277               	 ;  0 "" 2
+ 5253 03c6 109A      		sbi 34-32,0
+ 5254 03c8 00C0      		rjmp .L303
+ 5255               	.L304:
+ 5256               	.LSM881:
+ 5257 03ca 5F9A      		sbi 43-32,7
+ 5258               	.LSM882:
+ 5259 03cc 1098      		cbi 34-32,0
+ 5260               	.L303:
+ 5261               	.LSM883:
+ 5262 03ce 8091 0000 		lds r24,ringbufferstatus
+ 5263 03d2 82FF      		sbrs r24,2
+ 5264 03d4 00C0      		rjmp .L305
+ 5265               	.LBB380:
+ 5266               	.LSM884:
+ 5267               	/* #APP */
+ 5268               	 ;  1245 "TWI_Slave.c" 1
+ 5269 03d6 F894      		cli
+ 5270               	 ;  0 "" 2
+ 5271               	.LSM885:
+ 5272               	/* #NOAPP */
+ 5273 03d8 8091 0000 		lds r24,ringbufferstatus
+ 5274 03dc 8B7F      		andi r24,lo8(-5)
+ 5275 03de 8093 0000 		sts ringbufferstatus,r24
+ 5276               	.LSM886:
+ 5277 03e2 1092 0000 		sts ladeposition,__zero_reg__
  5278               	.LSM887:
- 5279               	/* #NOAPP */
- 5280 03e0 8091 0000 		lds r24,ringbufferstatus
- 5281 03e4 8B7F      		andi r24,lo8(-5)
- 5282 03e6 8093 0000 		sts ringbufferstatus,r24
- 5283               	.LSM888:
- 5284 03ea 1092 0000 		sts ladeposition,__zero_reg__
+ 5279 03e6 1092 0000 		sts (AbschnittCounter)+1,__zero_reg__
+ 5280 03ea 1092 0000 		sts AbschnittCounter,__zero_reg__
+ 5281               	.LSM888:
+ 5282 03ee 80E0      		ldi r24,lo8(CNCDaten)
+ 5283 03f0 90E0      		ldi r25,hi8(CNCDaten)
+ 5284 03f2 0E94 0000 		call AbschnittLaden
  5285               	.LSM889:
- 5286 03ee 1092 0000 		sts (AbschnittCounter)+1,__zero_reg__
- 5287 03f2 1092 0000 		sts AbschnittCounter,__zero_reg__
- 5288               	.LSM890:
- 5289 03f6 80E0      		ldi r24,lo8(CNCDaten)
- 5290 03f8 90E0      		ldi r25,hi8(CNCDaten)
- 5291 03fa 0E94 0000 		call AbschnittLaden
+ 5286 03f6 9091 0000 		lds r25,ladeposition
+ 5287 03fa 9F5F      		subi r25,lo8(-(1))
+ 5288 03fc 9093 0000 		sts ladeposition,r25
+ 5289               	.LSM890:
+ 5290 0400 8230      		cpi r24,lo8(2)
+ 5291 0402 01F4      		brne .L306
  5292               	.LSM891:
- 5293 03fe 9091 0000 		lds r25,ladeposition
- 5294 0402 9F5F      		subi r25,lo8(-(1))
- 5295 0404 9093 0000 		sts ladeposition,r25
- 5296               	.LSM892:
- 5297 0408 8230      		cpi r24,lo8(2)
- 5298 040a 01F4      		brne .L307
- 5299               	.LSM893:
- 5300 040c 8091 0000 		lds r24,ringbufferstatus
- 5301 0410 8062      		ori r24,lo8(32)
- 5302 0412 8093 0000 		sts ringbufferstatus,r24
- 5303               	.L307:
- 5304               	.LSM894:
- 5305 0416 8091 0000 		lds r24,AbschnittCounter
- 5306 041a 9091 0000 		lds r25,(AbschnittCounter)+1
- 5307 041e 0196      		adiw r24,1
- 5308 0420 9093 0000 		sts (AbschnittCounter)+1,r25
- 5309 0424 8093 0000 		sts AbschnittCounter,r24
- 5310               	.LSM895:
- 5311               	/* #APP */
- 5312               	 ;  1259 "TWI_Slave.c" 1
- 5313 0428 7894      		sei
- 5314               	 ;  0 "" 2
- 5315               	/* #NOAPP */
- 5316               	.L306:
- 5317               	.LBE380:
+ 5293 0404 8091 0000 		lds r24,ringbufferstatus
+ 5294 0408 8062      		ori r24,lo8(32)
+ 5295 040a 8093 0000 		sts ringbufferstatus,r24
+ 5296               	.L306:
+ 5297               	.LSM892:
+ 5298 040e 8091 0000 		lds r24,AbschnittCounter
+ 5299 0412 9091 0000 		lds r25,(AbschnittCounter)+1
+ 5300 0416 0196      		adiw r24,1
+ 5301 0418 9093 0000 		sts (AbschnittCounter)+1,r25
+ 5302 041c 8093 0000 		sts AbschnittCounter,r24
+ 5303               	.LSM893:
+ 5304               	/* #APP */
+ 5305               	 ;  1260 "TWI_Slave.c" 1
+ 5306 0420 7894      		sei
+ 5307               	 ;  0 "" 2
+ 5308               	/* #NOAPP */
+ 5309               	.L305:
+ 5310               	.LBE380:
+ 5311               	.LSM894:
+ 5312 0422 369B      		sbis 38-32,6
+ 5313 0424 00C0      		rjmp .L307
+ 5314               	.LSM895:
+ 5315 0426 8091 0000 		lds r24,anschlagstatus
+ 5316 042a 84FF      		sbrs r24,4
+ 5317 042c 00C0      		rjmp .L308
  5318               	.LSM896:
- 5319 042a 369B      		sbis 38-32,6
- 5320 042c 00C0      		rjmp .L308
- 5321               	.LSM897:
- 5322 042e 8091 0000 		lds r24,anschlagstatus
- 5323 0432 84FF      		sbrs r24,4
- 5324 0434 00C0      		rjmp .L309
- 5325               	.LSM898:
- 5326 0436 8091 0000 		lds r24,anschlagstatus
- 5327 043a 8F7E      		andi r24,lo8(-17)
- 5328 043c 8093 0000 		sts anschlagstatus,r24
- 5329 0440 00C0      		rjmp .L309
- 5330               	.L308:
- 5331               	.LSM899:
- 5332 0442 80E0      		ldi r24,lo8(0)
- 5333 0444 0E94 0000 		call AnschlagVonMotor
- 5334               	.L309:
- 5335               	.LSM900:
- 5336 0448 8091 0000 		lds r24,StepCounterA
- 5337 044c 9091 0000 		lds r25,(StepCounterA)+1
- 5338 0450 892B      		or r24,r25
- 5339 0452 01F0      		breq .L310
- 5340 0454 2091 0000 		lds r18,CounterA
- 5341 0458 3091 0000 		lds r19,(CounterA)+1
- 5342 045c 8091 0000 		lds r24,DelayA
- 5343 0460 9091 0000 		lds r25,(DelayA)+1
- 5344 0464 2817      		cp r18,r24
- 5345 0466 3907      		cpc r19,r25
- 5346 0468 00F0      		brlo .L310
- 5347 046a 8091 0000 		lds r24,anschlagstatus
- 5348 046e 84FD      		sbrc r24,4
- 5349 0470 00C0      		rjmp .L310
- 5350               	.LSM901:
- 5351               	/* #APP */
- 5352               	 ;  1288 "TWI_Slave.c" 1
- 5353 0472 F894      		cli
- 5354               	 ;  0 "" 2
- 5355               	.LSM902:
- 5356               	/* #NOAPP */
- 5357 0474 4098      		cbi 40-32,0
- 5358               	.LSM903:
- 5359 0476 1092 0000 		sts (CounterA)+1,__zero_reg__
- 5360 047a 1092 0000 		sts CounterA,__zero_reg__
- 5361               	.LSM904:
- 5362 047e 8091 0000 		lds r24,StepCounterA
- 5363 0482 9091 0000 		lds r25,(StepCounterA)+1
- 5364 0486 0197      		sbiw r24,1
- 5365 0488 9093 0000 		sts (StepCounterA)+1,r25
- 5366 048c 8093 0000 		sts StepCounterA,r24
- 5367               	.LSM905:
- 5368 0490 8091 0000 		lds r24,StepCounterA
- 5369 0494 9091 0000 		lds r25,(StepCounterA)+1
- 5370 0498 892B      		or r24,r25
- 5371 049a 01F4      		brne .L311
- 5372 049c 8091 0000 		lds r24,motorstatus
- 5373 04a0 80FF      		sbrs r24,0
- 5374 04a2 00C0      		rjmp .L311
- 5375               	.LSM906:
- 5376 04a4 80E0      		ldi r24,lo8(0)
- 5377 04a6 0E94 0000 		call StepEndVonMotor
- 5378               	.L311:
- 5379               	.LSM907:
- 5380               	/* #APP */
- 5381               	 ;  1301 "TWI_Slave.c" 1
- 5382 04aa 7894      		sei
- 5383               	 ;  0 "" 2
- 5384               	/* #NOAPP */
- 5385 04ac 00C0      		rjmp .L312
- 5386               	.L310:
+ 5319 042e 8091 0000 		lds r24,anschlagstatus
+ 5320 0432 8F7E      		andi r24,lo8(-17)
+ 5321 0434 8093 0000 		sts anschlagstatus,r24
+ 5322 0438 00C0      		rjmp .L308
+ 5323               	.L307:
+ 5324               	.LSM897:
+ 5325 043a 80E0      		ldi r24,lo8(0)
+ 5326 043c 0E94 0000 		call AnschlagVonMotor
+ 5327               	.L308:
+ 5328               	.LSM898:
+ 5329 0440 8091 0000 		lds r24,StepCounterA
+ 5330 0444 9091 0000 		lds r25,(StepCounterA)+1
+ 5331 0448 892B      		or r24,r25
+ 5332 044a 01F0      		breq .L309
+ 5333 044c 2091 0000 		lds r18,CounterA
+ 5334 0450 3091 0000 		lds r19,(CounterA)+1
+ 5335 0454 8091 0000 		lds r24,DelayA
+ 5336 0458 9091 0000 		lds r25,(DelayA)+1
+ 5337 045c 2817      		cp r18,r24
+ 5338 045e 3907      		cpc r19,r25
+ 5339 0460 00F0      		brlo .L309
+ 5340 0462 8091 0000 		lds r24,anschlagstatus
+ 5341 0466 84FD      		sbrc r24,4
+ 5342 0468 00C0      		rjmp .L309
+ 5343               	.LSM899:
+ 5344               	/* #APP */
+ 5345               	 ;  1289 "TWI_Slave.c" 1
+ 5346 046a F894      		cli
+ 5347               	 ;  0 "" 2
+ 5348               	.LSM900:
+ 5349               	/* #NOAPP */
+ 5350 046c 4098      		cbi 40-32,0
+ 5351               	.LSM901:
+ 5352 046e 1092 0000 		sts (CounterA)+1,__zero_reg__
+ 5353 0472 1092 0000 		sts CounterA,__zero_reg__
+ 5354               	.LSM902:
+ 5355 0476 8091 0000 		lds r24,StepCounterA
+ 5356 047a 9091 0000 		lds r25,(StepCounterA)+1
+ 5357 047e 0197      		sbiw r24,1
+ 5358 0480 9093 0000 		sts (StepCounterA)+1,r25
+ 5359 0484 8093 0000 		sts StepCounterA,r24
+ 5360               	.LSM903:
+ 5361 0488 8091 0000 		lds r24,StepCounterA
+ 5362 048c 9091 0000 		lds r25,(StepCounterA)+1
+ 5363 0490 892B      		or r24,r25
+ 5364 0492 01F4      		brne .L310
+ 5365 0494 8091 0000 		lds r24,motorstatus
+ 5366 0498 80FF      		sbrs r24,0
+ 5367 049a 00C0      		rjmp .L310
+ 5368               	.LSM904:
+ 5369 049c 80E0      		ldi r24,lo8(0)
+ 5370 049e 0E94 0000 		call StepEndVonMotor
+ 5371               	.L310:
+ 5372               	.LSM905:
+ 5373               	/* #APP */
+ 5374               	 ;  1302 "TWI_Slave.c" 1
+ 5375 04a2 7894      		sei
+ 5376               	 ;  0 "" 2
+ 5377               	/* #NOAPP */
+ 5378 04a4 00C0      		rjmp .L311
+ 5379               	.L309:
+ 5380               	.LSM906:
+ 5381 04a6 409A      		sbi 40-32,0
+ 5382               	.LSM907:
+ 5383 04a8 8091 0000 		lds r24,StepCounterA
+ 5384 04ac 9091 0000 		lds r25,(StepCounterA)+1
+ 5385 04b0 892B      		or r24,r25
+ 5386 04b2 01F4      		brne .L311
  5387               	.LSM908:
- 5388 04ae 409A      		sbi 40-32,0
- 5389               	.LSM909:
- 5390 04b0 8091 0000 		lds r24,StepCounterA
- 5391 04b4 9091 0000 		lds r25,(StepCounterA)+1
- 5392 04b8 892B      		or r24,r25
- 5393 04ba 01F4      		brne .L312
- 5394               	.LSM910:
- 5395 04bc 429A      		sbi 40-32,2
- 5396               	.L312:
+ 5388 04b4 429A      		sbi 40-32,2
+ 5389               	.L311:
+ 5390               	.LSM909:
+ 5391 04b6 379B      		sbis 38-32,7
+ 5392 04b8 00C0      		rjmp .L312
+ 5393               	.LSM910:
+ 5394 04ba 8091 0000 		lds r24,anschlagstatus
+ 5395 04be 85FF      		sbrs r24,5
+ 5396 04c0 00C0      		rjmp .L313
  5397               	.LSM911:
- 5398 04be 379B      		sbis 38-32,7
- 5399 04c0 00C0      		rjmp .L313
- 5400               	.LSM912:
- 5401 04c2 8091 0000 		lds r24,anschlagstatus
- 5402 04c6 85FF      		sbrs r24,5
- 5403 04c8 00C0      		rjmp .L314
- 5404               	.LSM913:
- 5405 04ca 8091 0000 		lds r24,anschlagstatus
- 5406 04ce 8F7D      		andi r24,lo8(-33)
- 5407 04d0 8093 0000 		sts anschlagstatus,r24
- 5408 04d4 00C0      		rjmp .L314
- 5409               	.L313:
- 5410               	.LSM914:
- 5411 04d6 81E0      		ldi r24,lo8(1)
- 5412 04d8 0E94 0000 		call AnschlagVonMotor
- 5413               	.L314:
- 5414               	.LSM915:
- 5415 04dc 8091 0000 		lds r24,StepCounterB
- 5416 04e0 9091 0000 		lds r25,(StepCounterB)+1
- 5417 04e4 892B      		or r24,r25
- 5418 04e6 01F0      		breq .L315
- 5419 04e8 2091 0000 		lds r18,CounterB
- 5420 04ec 3091 0000 		lds r19,(CounterB)+1
- 5421 04f0 8091 0000 		lds r24,DelayB
- 5422 04f4 9091 0000 		lds r25,(DelayB)+1
- 5423 04f8 2817      		cp r18,r24
- 5424 04fa 3907      		cpc r19,r25
- 5425 04fc 00F0      		brlo .L315
- 5426 04fe 8091 0000 		lds r24,anschlagstatus
- 5427 0502 85FD      		sbrc r24,5
- 5428 0504 00C0      		rjmp .L315
- 5429               	.LSM916:
- 5430               	/* #APP */
- 5431               	 ;  1356 "TWI_Slave.c" 1
- 5432 0506 F894      		cli
- 5433               	 ;  0 "" 2
- 5434               	.LSM917:
- 5435               	/* #NOAPP */
- 5436 0508 4398      		cbi 40-32,3
- 5437               	.LSM918:
- 5438 050a 1092 0000 		sts (CounterB)+1,__zero_reg__
- 5439 050e 1092 0000 		sts CounterB,__zero_reg__
- 5440               	.LSM919:
- 5441 0512 8091 0000 		lds r24,StepCounterB
- 5442 0516 9091 0000 		lds r25,(StepCounterB)+1
- 5443 051a 0197      		sbiw r24,1
- 5444 051c 9093 0000 		sts (StepCounterB)+1,r25
- 5445 0520 8093 0000 		sts StepCounterB,r24
- 5446               	.LSM920:
- 5447 0524 8091 0000 		lds r24,StepCounterB
- 5448 0528 9091 0000 		lds r25,(StepCounterB)+1
- 5449 052c 892B      		or r24,r25
- 5450 052e 01F4      		brne .L316
- 5451 0530 8091 0000 		lds r24,motorstatus
- 5452 0534 81FF      		sbrs r24,1
- 5453 0536 00C0      		rjmp .L316
- 5454               	.LSM921:
- 5455 0538 81E0      		ldi r24,lo8(1)
- 5456 053a 0E94 0000 		call StepEndVonMotor
- 5457               	.L316:
- 5458               	.LSM922:
- 5459               	/* #APP */
- 5460               	 ;  1369 "TWI_Slave.c" 1
- 5461 053e 7894      		sei
- 5462               	 ;  0 "" 2
- 5463               	/* #NOAPP */
- 5464 0540 00C0      		rjmp .L317
- 5465               	.L315:
+ 5398 04c2 8091 0000 		lds r24,anschlagstatus
+ 5399 04c6 8F7D      		andi r24,lo8(-33)
+ 5400 04c8 8093 0000 		sts anschlagstatus,r24
+ 5401 04cc 00C0      		rjmp .L313
+ 5402               	.L312:
+ 5403               	.LSM912:
+ 5404 04ce 81E0      		ldi r24,lo8(1)
+ 5405 04d0 0E94 0000 		call AnschlagVonMotor
+ 5406               	.L313:
+ 5407               	.LSM913:
+ 5408 04d4 8091 0000 		lds r24,StepCounterB
+ 5409 04d8 9091 0000 		lds r25,(StepCounterB)+1
+ 5410 04dc 892B      		or r24,r25
+ 5411 04de 01F0      		breq .L314
+ 5412 04e0 2091 0000 		lds r18,CounterB
+ 5413 04e4 3091 0000 		lds r19,(CounterB)+1
+ 5414 04e8 8091 0000 		lds r24,DelayB
+ 5415 04ec 9091 0000 		lds r25,(DelayB)+1
+ 5416 04f0 2817      		cp r18,r24
+ 5417 04f2 3907      		cpc r19,r25
+ 5418 04f4 00F0      		brlo .L314
+ 5419 04f6 8091 0000 		lds r24,anschlagstatus
+ 5420 04fa 85FD      		sbrc r24,5
+ 5421 04fc 00C0      		rjmp .L314
+ 5422               	.LSM914:
+ 5423               	/* #APP */
+ 5424               	 ;  1357 "TWI_Slave.c" 1
+ 5425 04fe F894      		cli
+ 5426               	 ;  0 "" 2
+ 5427               	.LSM915:
+ 5428               	/* #NOAPP */
+ 5429 0500 4398      		cbi 40-32,3
+ 5430               	.LSM916:
+ 5431 0502 1092 0000 		sts (CounterB)+1,__zero_reg__
+ 5432 0506 1092 0000 		sts CounterB,__zero_reg__
+ 5433               	.LSM917:
+ 5434 050a 8091 0000 		lds r24,StepCounterB
+ 5435 050e 9091 0000 		lds r25,(StepCounterB)+1
+ 5436 0512 0197      		sbiw r24,1
+ 5437 0514 9093 0000 		sts (StepCounterB)+1,r25
+ 5438 0518 8093 0000 		sts StepCounterB,r24
+ 5439               	.LSM918:
+ 5440 051c 8091 0000 		lds r24,StepCounterB
+ 5441 0520 9091 0000 		lds r25,(StepCounterB)+1
+ 5442 0524 892B      		or r24,r25
+ 5443 0526 01F4      		brne .L315
+ 5444 0528 8091 0000 		lds r24,motorstatus
+ 5445 052c 81FF      		sbrs r24,1
+ 5446 052e 00C0      		rjmp .L315
+ 5447               	.LSM919:
+ 5448 0530 81E0      		ldi r24,lo8(1)
+ 5449 0532 0E94 0000 		call StepEndVonMotor
+ 5450               	.L315:
+ 5451               	.LSM920:
+ 5452               	/* #APP */
+ 5453               	 ;  1370 "TWI_Slave.c" 1
+ 5454 0536 7894      		sei
+ 5455               	 ;  0 "" 2
+ 5456               	/* #NOAPP */
+ 5457 0538 00C0      		rjmp .L316
+ 5458               	.L314:
+ 5459               	.LSM921:
+ 5460 053a 439A      		sbi 40-32,3
+ 5461               	.LSM922:
+ 5462 053c 8091 0000 		lds r24,StepCounterB
+ 5463 0540 9091 0000 		lds r25,(StepCounterB)+1
+ 5464 0544 892B      		or r24,r25
+ 5465 0546 01F4      		brne .L316
  5466               	.LSM923:
- 5467 0542 439A      		sbi 40-32,3
- 5468               	.LSM924:
- 5469 0544 8091 0000 		lds r24,StepCounterB
- 5470 0548 9091 0000 		lds r25,(StepCounterB)+1
- 5471 054c 892B      		or r24,r25
- 5472 054e 01F4      		brne .L317
- 5473               	.LSM925:
- 5474 0550 459A      		sbi 40-32,5
- 5475               	.L317:
+ 5467 0548 459A      		sbi 40-32,5
+ 5468               	.L316:
+ 5469               	.LSM924:
+ 5470 054a 1E9B      		sbis 35-32,6
+ 5471 054c 00C0      		rjmp .L317
+ 5472               	.LSM925:
+ 5473 054e 8091 0000 		lds r24,anschlagstatus
+ 5474 0552 86FF      		sbrs r24,6
+ 5475 0554 00C0      		rjmp .L318
  5476               	.LSM926:
- 5477 0552 1E9B      		sbis 35-32,6
- 5478 0554 00C0      		rjmp .L318
- 5479               	.LSM927:
- 5480 0556 8091 0000 		lds r24,anschlagstatus
- 5481 055a 86FF      		sbrs r24,6
- 5482 055c 00C0      		rjmp .L319
- 5483               	.LSM928:
- 5484 055e 8091 0000 		lds r24,anschlagstatus
- 5485 0562 8F7B      		andi r24,lo8(-65)
- 5486 0564 8093 0000 		sts anschlagstatus,r24
- 5487 0568 00C0      		rjmp .L319
- 5488               	.L318:
- 5489               	.LSM929:
- 5490 056a 82E0      		ldi r24,lo8(2)
- 5491 056c 0E94 0000 		call AnschlagVonMotor
- 5492               	.L319:
- 5493               	.LSM930:
- 5494 0570 8091 0000 		lds r24,StepCounterC
- 5495 0574 9091 0000 		lds r25,(StepCounterC)+1
- 5496 0578 892B      		or r24,r25
- 5497 057a 01F0      		breq .L320
- 5498 057c 2091 0000 		lds r18,CounterC
- 5499 0580 3091 0000 		lds r19,(CounterC)+1
- 5500 0584 8091 0000 		lds r24,DelayC
- 5501 0588 9091 0000 		lds r25,(DelayC)+1
- 5502 058c 2817      		cp r18,r24
- 5503 058e 3907      		cpc r19,r25
- 5504 0590 00F0      		brlo .L320
- 5505 0592 8091 0000 		lds r24,anschlagstatus
- 5506 0596 86FD      		sbrc r24,6
- 5507 0598 00C0      		rjmp .L320
- 5508               	.LSM931:
- 5509               	/* #APP */
- 5510               	 ;  1411 "TWI_Slave.c" 1
- 5511 059a F894      		cli
- 5512               	 ;  0 "" 2
- 5513               	.LSM932:
- 5514               	/* #NOAPP */
- 5515 059c 2898      		cbi 37-32,0
- 5516               	.LSM933:
- 5517 059e 1092 0000 		sts (CounterC)+1,__zero_reg__
- 5518 05a2 1092 0000 		sts CounterC,__zero_reg__
- 5519               	.LSM934:
- 5520 05a6 8091 0000 		lds r24,StepCounterC
- 5521 05aa 9091 0000 		lds r25,(StepCounterC)+1
- 5522 05ae 0197      		sbiw r24,1
- 5523 05b0 9093 0000 		sts (StepCounterC)+1,r25
- 5524 05b4 8093 0000 		sts StepCounterC,r24
- 5525               	.LSM935:
- 5526 05b8 8091 0000 		lds r24,StepCounterC
- 5527 05bc 9091 0000 		lds r25,(StepCounterC)+1
- 5528 05c0 892B      		or r24,r25
- 5529 05c2 01F4      		brne .L321
- 5530 05c4 8091 0000 		lds r24,motorstatus
- 5531 05c8 82FF      		sbrs r24,2
- 5532 05ca 00C0      		rjmp .L321
- 5533               	.LSM936:
- 5534 05cc 82E0      		ldi r24,lo8(2)
- 5535 05ce 0E94 0000 		call StepEndVonMotor
- 5536               	.L321:
- 5537               	.LSM937:
- 5538               	/* #APP */
- 5539               	 ;  1423 "TWI_Slave.c" 1
- 5540 05d2 7894      		sei
- 5541               	 ;  0 "" 2
- 5542               	/* #NOAPP */
- 5543 05d4 00C0      		rjmp .L322
- 5544               	.L320:
+ 5477 0556 8091 0000 		lds r24,anschlagstatus
+ 5478 055a 8F7B      		andi r24,lo8(-65)
+ 5479 055c 8093 0000 		sts anschlagstatus,r24
+ 5480 0560 00C0      		rjmp .L318
+ 5481               	.L317:
+ 5482               	.LSM927:
+ 5483 0562 82E0      		ldi r24,lo8(2)
+ 5484 0564 0E94 0000 		call AnschlagVonMotor
+ 5485               	.L318:
+ 5486               	.LSM928:
+ 5487 0568 8091 0000 		lds r24,StepCounterC
+ 5488 056c 9091 0000 		lds r25,(StepCounterC)+1
+ 5489 0570 892B      		or r24,r25
+ 5490 0572 01F0      		breq .L319
+ 5491 0574 2091 0000 		lds r18,CounterC
+ 5492 0578 3091 0000 		lds r19,(CounterC)+1
+ 5493 057c 8091 0000 		lds r24,DelayC
+ 5494 0580 9091 0000 		lds r25,(DelayC)+1
+ 5495 0584 2817      		cp r18,r24
+ 5496 0586 3907      		cpc r19,r25
+ 5497 0588 00F0      		brlo .L319
+ 5498 058a 8091 0000 		lds r24,anschlagstatus
+ 5499 058e 86FD      		sbrc r24,6
+ 5500 0590 00C0      		rjmp .L319
+ 5501               	.LSM929:
+ 5502               	/* #APP */
+ 5503               	 ;  1412 "TWI_Slave.c" 1
+ 5504 0592 F894      		cli
+ 5505               	 ;  0 "" 2
+ 5506               	.LSM930:
+ 5507               	/* #NOAPP */
+ 5508 0594 2898      		cbi 37-32,0
+ 5509               	.LSM931:
+ 5510 0596 1092 0000 		sts (CounterC)+1,__zero_reg__
+ 5511 059a 1092 0000 		sts CounterC,__zero_reg__
+ 5512               	.LSM932:
+ 5513 059e 8091 0000 		lds r24,StepCounterC
+ 5514 05a2 9091 0000 		lds r25,(StepCounterC)+1
+ 5515 05a6 0197      		sbiw r24,1
+ 5516 05a8 9093 0000 		sts (StepCounterC)+1,r25
+ 5517 05ac 8093 0000 		sts StepCounterC,r24
+ 5518               	.LSM933:
+ 5519 05b0 8091 0000 		lds r24,StepCounterC
+ 5520 05b4 9091 0000 		lds r25,(StepCounterC)+1
+ 5521 05b8 892B      		or r24,r25
+ 5522 05ba 01F4      		brne .L320
+ 5523 05bc 8091 0000 		lds r24,motorstatus
+ 5524 05c0 82FF      		sbrs r24,2
+ 5525 05c2 00C0      		rjmp .L320
+ 5526               	.LSM934:
+ 5527 05c4 82E0      		ldi r24,lo8(2)
+ 5528 05c6 0E94 0000 		call StepEndVonMotor
+ 5529               	.L320:
+ 5530               	.LSM935:
+ 5531               	/* #APP */
+ 5532               	 ;  1424 "TWI_Slave.c" 1
+ 5533 05ca 7894      		sei
+ 5534               	 ;  0 "" 2
+ 5535               	/* #NOAPP */
+ 5536 05cc 00C0      		rjmp .L321
+ 5537               	.L319:
+ 5538               	.LSM936:
+ 5539 05ce 289A      		sbi 37-32,0
+ 5540               	.LSM937:
+ 5541 05d0 8091 0000 		lds r24,StepCounterC
+ 5542 05d4 9091 0000 		lds r25,(StepCounterC)+1
+ 5543 05d8 892B      		or r24,r25
+ 5544 05da 01F4      		brne .L321
  5545               	.LSM938:
- 5546 05d6 289A      		sbi 37-32,0
- 5547               	.LSM939:
- 5548 05d8 8091 0000 		lds r24,StepCounterC
- 5549 05dc 9091 0000 		lds r25,(StepCounterC)+1
- 5550 05e0 892B      		or r24,r25
- 5551 05e2 01F4      		brne .L322
- 5552               	.LSM940:
- 5553 05e4 2A9A      		sbi 37-32,2
- 5554               	.L322:
+ 5546 05dc 2A9A      		sbi 37-32,2
+ 5547               	.L321:
+ 5548               	.LSM939:
+ 5549 05de 1F9B      		sbis 35-32,7
+ 5550 05e0 00C0      		rjmp .L322
+ 5551               	.LSM940:
+ 5552 05e2 8091 0000 		lds r24,anschlagstatus
+ 5553 05e6 87FF      		sbrs r24,7
+ 5554 05e8 00C0      		rjmp .L323
  5555               	.LSM941:
- 5556 05e6 1F9B      		sbis 35-32,7
- 5557 05e8 00C0      		rjmp .L323
- 5558               	.LSM942:
- 5559 05ea 8091 0000 		lds r24,anschlagstatus
- 5560 05ee 87FF      		sbrs r24,7
- 5561 05f0 00C0      		rjmp .L324
- 5562               	.LSM943:
- 5563 05f2 8091 0000 		lds r24,anschlagstatus
- 5564 05f6 8F77      		andi r24,lo8(127)
- 5565 05f8 8093 0000 		sts anschlagstatus,r24
- 5566 05fc 00C0      		rjmp .L324
- 5567               	.L323:
- 5568               	.LSM944:
- 5569 05fe 83E0      		ldi r24,lo8(3)
- 5570 0600 0E94 0000 		call AnschlagVonMotor
- 5571               	.L324:
- 5572               	.LSM945:
- 5573 0604 8091 0000 		lds r24,StepCounterD
- 5574 0608 9091 0000 		lds r25,(StepCounterD)+1
- 5575 060c 892B      		or r24,r25
- 5576 060e 01F0      		breq .L325
- 5577 0610 2091 0000 		lds r18,CounterD
- 5578 0614 3091 0000 		lds r19,(CounterD)+1
- 5579 0618 8091 0000 		lds r24,DelayD
- 5580 061c 9091 0000 		lds r25,(DelayD)+1
- 5581 0620 2817      		cp r18,r24
- 5582 0622 3907      		cpc r19,r25
- 5583 0624 00F0      		brlo .L325
- 5584 0626 8091 0000 		lds r24,anschlagstatus
- 5585 062a 87FD      		sbrc r24,7
- 5586 062c 00C0      		rjmp .L325
- 5587               	.LSM946:
- 5588               	/* #APP */
- 5589               	 ;  1464 "TWI_Slave.c" 1
- 5590 062e F894      		cli
- 5591               	 ;  0 "" 2
- 5592               	.LSM947:
- 5593               	/* #NOAPP */
- 5594 0630 2B98      		cbi 37-32,3
- 5595               	.LSM948:
- 5596 0632 1092 0000 		sts (CounterD)+1,__zero_reg__
- 5597 0636 1092 0000 		sts CounterD,__zero_reg__
- 5598               	.LSM949:
- 5599 063a 8091 0000 		lds r24,StepCounterD
- 5600 063e 9091 0000 		lds r25,(StepCounterD)+1
- 5601 0642 0197      		sbiw r24,1
- 5602 0644 9093 0000 		sts (StepCounterD)+1,r25
- 5603 0648 8093 0000 		sts StepCounterD,r24
- 5604               	.LSM950:
- 5605 064c 8091 0000 		lds r24,StepCounterD
- 5606 0650 9091 0000 		lds r25,(StepCounterD)+1
- 5607 0654 892B      		or r24,r25
- 5608 0656 01F4      		brne .L326
- 5609 0658 8091 0000 		lds r24,motorstatus
- 5610 065c 83FF      		sbrs r24,3
- 5611 065e 00C0      		rjmp .L326
- 5612               	.LSM951:
- 5613 0660 83E0      		ldi r24,lo8(3)
- 5614 0662 0E94 0000 		call StepEndVonMotor
- 5615               	.L326:
- 5616               	.LSM952:
- 5617               	/* #APP */
- 5618               	 ;  1475 "TWI_Slave.c" 1
- 5619 0666 7894      		sei
- 5620               	 ;  0 "" 2
- 5621               	/* #NOAPP */
- 5622 0668 00C0      		rjmp .L327
- 5623               	.L325:
+ 5556 05ea 8091 0000 		lds r24,anschlagstatus
+ 5557 05ee 8F77      		andi r24,lo8(127)
+ 5558 05f0 8093 0000 		sts anschlagstatus,r24
+ 5559 05f4 00C0      		rjmp .L323
+ 5560               	.L322:
+ 5561               	.LSM942:
+ 5562 05f6 83E0      		ldi r24,lo8(3)
+ 5563 05f8 0E94 0000 		call AnschlagVonMotor
+ 5564               	.L323:
+ 5565               	.LSM943:
+ 5566 05fc 8091 0000 		lds r24,StepCounterD
+ 5567 0600 9091 0000 		lds r25,(StepCounterD)+1
+ 5568 0604 892B      		or r24,r25
+ 5569 0606 01F0      		breq .L324
+ 5570 0608 2091 0000 		lds r18,CounterD
+ 5571 060c 3091 0000 		lds r19,(CounterD)+1
+ 5572 0610 8091 0000 		lds r24,DelayD
+ 5573 0614 9091 0000 		lds r25,(DelayD)+1
+ 5574 0618 2817      		cp r18,r24
+ 5575 061a 3907      		cpc r19,r25
+ 5576 061c 00F0      		brlo .L324
+ 5577 061e 8091 0000 		lds r24,anschlagstatus
+ 5578 0622 87FD      		sbrc r24,7
+ 5579 0624 00C0      		rjmp .L324
+ 5580               	.LSM944:
+ 5581               	/* #APP */
+ 5582               	 ;  1465 "TWI_Slave.c" 1
+ 5583 0626 F894      		cli
+ 5584               	 ;  0 "" 2
+ 5585               	.LSM945:
+ 5586               	/* #NOAPP */
+ 5587 0628 2B98      		cbi 37-32,3
+ 5588               	.LSM946:
+ 5589 062a 1092 0000 		sts (CounterD)+1,__zero_reg__
+ 5590 062e 1092 0000 		sts CounterD,__zero_reg__
+ 5591               	.LSM947:
+ 5592 0632 8091 0000 		lds r24,StepCounterD
+ 5593 0636 9091 0000 		lds r25,(StepCounterD)+1
+ 5594 063a 0197      		sbiw r24,1
+ 5595 063c 9093 0000 		sts (StepCounterD)+1,r25
+ 5596 0640 8093 0000 		sts StepCounterD,r24
+ 5597               	.LSM948:
+ 5598 0644 8091 0000 		lds r24,StepCounterD
+ 5599 0648 9091 0000 		lds r25,(StepCounterD)+1
+ 5600 064c 892B      		or r24,r25
+ 5601 064e 01F4      		brne .L325
+ 5602 0650 8091 0000 		lds r24,motorstatus
+ 5603 0654 83FF      		sbrs r24,3
+ 5604 0656 00C0      		rjmp .L325
+ 5605               	.LSM949:
+ 5606 0658 83E0      		ldi r24,lo8(3)
+ 5607 065a 0E94 0000 		call StepEndVonMotor
+ 5608               	.L325:
+ 5609               	.LSM950:
+ 5610               	/* #APP */
+ 5611               	 ;  1476 "TWI_Slave.c" 1
+ 5612 065e 7894      		sei
+ 5613               	 ;  0 "" 2
+ 5614               	/* #NOAPP */
+ 5615 0660 00C0      		rjmp .L326
+ 5616               	.L324:
+ 5617               	.LSM951:
+ 5618 0662 2B9A      		sbi 37-32,3
+ 5619               	.LSM952:
+ 5620 0664 8091 0000 		lds r24,StepCounterD
+ 5621 0668 9091 0000 		lds r25,(StepCounterD)+1
+ 5622 066c 892B      		or r24,r25
+ 5623 066e 01F4      		brne .L326
  5624               	.LSM953:
- 5625 066a 2B9A      		sbi 37-32,3
- 5626               	.LSM954:
- 5627 066c 8091 0000 		lds r24,StepCounterD
- 5628 0670 9091 0000 		lds r25,(StepCounterD)+1
- 5629 0674 892B      		or r24,r25
- 5630 0676 01F4      		brne .L327
- 5631               	.LSM955:
- 5632 0678 2D9A      		sbi 37-32,5
- 5633               	.L327:
- 5634               	.LSM956:
- 5635               	/* #APP */
- 5636               	 ;  1493 "TWI_Slave.c" 1
- 5637 067a 7894      		sei
- 5638               	 ;  0 "" 2
- 5639               	.LSM957:
- 5640               	/* #NOAPP */
- 5641 067c 8FB1      		in r24,47-32
- 5642               	.LSM958:
- 5643 067e 8FB1      		in r24,47-32
- 5644               	.LSM959:
- 5645 0680 8091 0000 		lds r24,usbstatus
- 5646 0684 00C0      		rjmp .L328
- 5647               	.LFE57:
- 5649               	.global	rxdata
- 5650               	.global	rxdata
- 5651               		.section .bss
- 5654               	rxdata:
- 5655 0000 00        		.skip 1,0
- 5656               	.global	do_output
- 5657               	.global	do_output
- 5660               	do_output:
- 5661 0001 00        		.skip 1,0
- 5662               	.global	liniencounter
- 5663               	.global	liniencounter
- 5666               	liniencounter:
- 5667 0002 00        		.skip 1,0
- 5668               	.global	timer0startwert
- 5669               		.data
- 5672               	timer0startwert:
- 5673 001c 40        		.byte	64
- 5674               	.global	usbstatus
- 5675               	.global	usbstatus
- 5676               		.section .bss
- 5679               	usbstatus:
- 5680 0003 00        		.skip 1,0
- 5681               	.global	status
- 5682               	.global	status
- 5685               	status:
- 5686 0004 00        		.skip 1,0
- 5687               	.global	PWM
- 5688               	.global	PWM
- 5691               	PWM:
- 5692 0005 00        		.skip 1,0
- 5693               	.global	CounterA
- 5694               	.global	CounterA
- 5697               	CounterA:
- 5698 0006 0000      		.skip 2,0
- 5699               	.global	CounterB
- 5700               	.global	CounterB
- 5703               	CounterB:
- 5704 0008 0000      		.skip 2,0
- 5705               	.global	CounterC
- 5706               	.global	CounterC
- 5709               	CounterC:
- 5710 000a 0000      		.skip 2,0
- 5711               	.global	CounterD
- 5712               	.global	CounterD
- 5715               	CounterD:
- 5716 000c 0000      		.skip 2,0
- 5717               	.global	DelayA
- 5718               		.data
- 5721               	DelayA:
- 5722 001d 1800      		.word	24
- 5723               	.global	DelayB
- 5726               	DelayB:
- 5727 001f 1800      		.word	24
- 5728               	.global	DelayC
- 5731               	DelayC:
- 5732 0021 1800      		.word	24
- 5733               	.global	DelayD
- 5736               	DelayD:
- 5737 0023 1800      		.word	24
- 5738               	.global	StepCounterA
- 5739               	.global	StepCounterA
- 5740               		.section .bss
- 5743               	StepCounterA:
- 5744 000e 0000      		.skip 2,0
- 5745               	.global	StepCounterB
- 5746               	.global	StepCounterB
- 5749               	StepCounterB:
- 5750 0010 0000      		.skip 2,0
- 5751               	.global	StepCounterC
- 5752               	.global	StepCounterC
- 5755               	StepCounterC:
- 5756 0012 0000      		.skip 2,0
- 5757               	.global	StepCounterD
- 5758               	.global	StepCounterD
- 5761               	StepCounterD:
- 5762 0014 0000      		.skip 2,0
- 5763               	.global	timer2Counter
- 5764               	.global	timer2Counter
- 5767               	timer2Counter:
- 5768 0016 0000      		.skip 2,0
- 5769               		.lcomm buffer,32
- 5770               		.lcomm sendbuffer,32
- 5771               		.lcomm ringbufferstatus,1
- 5772               		.lcomm motorstatus,1
- 5773               		.lcomm abschnittnummer,2
- 5774               		.lcomm ladeposition,1
- 5775               		.lcomm AbschnittCounter,2
- 5776               		.data
- 5779               	endposition:
- 5780 0025 FFFF      		.word	-1
- 5781               		.lcomm anschlagstatus,1
- 5782               		.lcomm cncstatus,1
- 5783               		.lcomm pwmposition,1
- 5784               		.lcomm richtung,1
- 5785               		.section	.progmem.data,"a",@progbits
- 5788               	descriptor_list:
- 5789 0000 0001      		.word	256
- 5790 0002 0000      		.word	0
- 5791 0004 0000      		.word	device_descriptor
- 5792 0006 12        		.byte	18
- 5793 0007 0002      		.word	512
- 5794 0009 0000      		.word	0
- 5795 000b 0000      		.word	config1_descriptor
- 5796 000d 29        		.byte	41
- 5797 000e 0022      		.word	8704
- 5798 0010 0000      		.word	0
- 5799 0012 0000      		.word	rawhid_hid_report_desc
- 5800 0014 1C        		.byte	28
- 5801 0015 0021      		.word	8448
- 5802 0017 0000      		.word	0
- 5803 0019 0000      		.word	config1_descriptor+18
- 5804 001b 09        		.byte	9
- 5805 001c 0003      		.word	768
- 5806 001e 0000      		.word	0
- 5807 0020 0000      		.word	string0
- 5808 0022 04        		.byte	4
- 5809 0023 0103      		.word	769
- 5810 0025 0904      		.word	1033
- 5811 0027 0000      		.word	string1
- 5812 0029 22        		.byte	34
- 5813 002a 0203      		.word	770
- 5814 002c 0904      		.word	1033
- 5815 002e 0000      		.word	string2
- 5816 0030 10        		.byte	16
- 5817               		.lcomm usb_configuration,1
- 5820               	endpoint_config_table:
- 5821 0031 01        		.byte	1
- 5822 0032 C1        		.byte	-63
- 5823 0033 26        		.byte	38
- 5824 0034 01        		.byte	1
- 5825 0035 C0        		.byte	-64
- 5826 0036 26        		.byte	38
- 5827 0037 00        		.byte	0
- 5828 0038 00        		.byte	0
- 5829               		.lcomm rx_timeout_count,1
- 5830               		.lcomm tx_timeout_count,1
- 5831               		.data
- 5832               	.LC4:
- 5833 0027 4D4F 00   		.string	"MO"
- 5834               	.LC5:
- 5835 002a 4449 00   		.string	"DI"
- 5836               	.LC6:
- 5837 002d 4D49 00   		.string	"MI"
- 5838               	.LC7:
- 5839 0030 444F 00   		.string	"DO"
- 5840               	.LC8:
- 5841 0033 4652 00   		.string	"FR"
- 5842               	.LC9:
- 5843 0036 5341 00   		.string	"SA"
- 5844               	.LC10:
- 5845 0039 534F 00   		.string	"SO"
- 5848               	C.1.1917:
- 5849 003c 0000      		.word	.LC4
- 5850 003e 0000      		.word	.LC5
- 5851 0040 0000      		.word	.LC6
- 5852 0042 0000      		.word	.LC7
- 5853 0044 0000      		.word	.LC8
- 5854 0046 0000      		.word	.LC9
- 5855 0048 0000      		.word	.LC10
- 5856               		.lcomm CNCDaten,132
- 5857               		.comm ADCWert16,3,1
- 5858               		.comm buffer_adr,1,1
- 5859               		.section	.progmem.data
- 5862               	device_descriptor:
- 5863 0039 12        		.byte	18
- 5864 003a 01        		.byte	1
- 5865 003b 00        		.byte	0
- 5866 003c 02        		.byte	2
- 5867 003d 00        		.byte	0
- 5868 003e 00        		.byte	0
- 5869 003f 00        		.byte	0
- 5870 0040 20        		.byte	32
- 5871 0041 C0        		.byte	-64
- 5872 0042 16        		.byte	22
- 5873 0043 80        		.byte	-128
- 5874 0044 04        		.byte	4
- 5875 0045 00        		.byte	0
- 5876 0046 01        		.byte	1
- 5877 0047 01        		.byte	1
- 5878 0048 02        		.byte	2
- 5879 0049 00        		.byte	0
- 5880 004a 01        		.byte	1
- 5883               	config1_descriptor:
- 5884 004b 09        		.byte	9
- 5885 004c 02        		.byte	2
- 5886 004d 29        		.byte	41
- 5887 004e 00        		.byte	0
- 5888 004f 01        		.byte	1
- 5889 0050 01        		.byte	1
- 5890 0051 00        		.byte	0
- 5891 0052 C0        		.byte	-64
- 5892 0053 32        		.byte	50
- 5893 0054 09        		.byte	9
- 5894 0055 04        		.byte	4
- 5895 0056 00        		.byte	0
- 5896 0057 00        		.byte	0
- 5897 0058 02        		.byte	2
- 5898 0059 03        		.byte	3
- 5899 005a 00        		.byte	0
- 5900 005b 00        		.byte	0
- 5901 005c 00        		.byte	0
- 5902 005d 09        		.byte	9
- 5903 005e 21        		.byte	33
- 5904 005f 11        		.byte	17
- 5905 0060 01        		.byte	1
- 5906 0061 00        		.byte	0
- 5907 0062 01        		.byte	1
- 5908 0063 22        		.byte	34
- 5909 0064 1C        		.byte	28
- 5910 0065 00        		.byte	0
- 5911 0066 07        		.byte	7
- 5912 0067 05        		.byte	5
- 5913 0068 81        		.byte	-127
- 5914 0069 03        		.byte	3
- 5915 006a 20        		.byte	32
- 5916 006b 00        		.byte	0
- 5917 006c 02        		.byte	2
- 5918 006d 07        		.byte	7
- 5919 006e 05        		.byte	5
- 5920 006f 02        		.byte	2
- 5921 0070 03        		.byte	3
- 5922 0071 20        		.byte	32
- 5923 0072 00        		.byte	0
- 5924 0073 08        		.byte	8
- 5927               	rawhid_hid_report_desc:
- 5928 0074 06        		.byte	6
- 5929 0075 AB        		.byte	-85
- 5930 0076 FF        		.byte	-1
- 5931 0077 0A        		.byte	10
- 5932 0078 00        		.byte	0
- 5933 0079 02        		.byte	2
- 5934 007a A1        		.byte	-95
- 5935 007b 01        		.byte	1
- 5936 007c 75        		.byte	117
- 5937 007d 08        		.byte	8
- 5938 007e 15        		.byte	21
- 5939 007f 00        		.byte	0
- 5940 0080 26        		.byte	38
- 5941 0081 FF        		.byte	-1
- 5942 0082 00        		.byte	0
- 5943 0083 95        		.byte	-107
- 5944 0084 20        		.byte	32
- 5945 0085 09        		.byte	9
- 5946 0086 01        		.byte	1
- 5947 0087 81        		.byte	-127
- 5948 0088 02        		.byte	2
- 5949 0089 95        		.byte	-107
- 5950 008a 20        		.byte	32
- 5951 008b 09        		.byte	9
- 5952 008c 02        		.byte	2
- 5953 008d 91        		.byte	-111
- 5954 008e 02        		.byte	2
- 5955 008f C0        		.byte	-64
- 5958               	string0:
- 5959 0090 04        		.byte	4
- 5960 0091 03        		.byte	3
- 5961 0092 0904      		.word	1033
- 5964               	string1:
- 5965 0094 22        		.byte	34
- 5966 0095 03        		.byte	3
- 5967 0096 5200      		.string	"R"
- 5968 0098 7500      		.string	"u"
- 5969 009a 6500      		.string	"e"
- 5970 009c 6400      		.string	"d"
- 5971 009e 6900      		.string	"i"
- 5972 00a0 5F00      		.string	"_"
- 5973 00a2 4800      		.string	"H"
- 5974 00a4 6500      		.string	"e"
- 5975 00a6 6900      		.string	"i"
- 5976 00a8 6D00      		.string	"m"
- 5977 00aa 6C00      		.string	"l"
- 5978 00ac 6900      		.string	"i"
- 5979 00ae 6300      		.string	"c"
- 5980 00b0 6800      		.string	"h"
- 5981 00b2 6500      		.string	"e"
- 5982 00b4 7200      		.string	"r"
- 5983 00b6 00        		.string	""
- 5984 00b7 00        		.string	""
- 5987               	string2:
- 5988 00b8 10        		.byte	16
- 5989 00b9 03        		.byte	3
- 5990 00ba 4300      		.string	"C"
- 5991 00bc 4E00      		.string	"N"
- 5992 00be 4300      		.string	"C"
- 5993 00c0 5F00      		.string	"_"
- 5994 00c2 5500      		.string	"U"
- 5995 00c4 5300      		.string	"S"
- 5996 00c6 4200      		.string	"B"
- 5997 00c8 00        		.string	""
- 5998 00c9 00        		.string	""
- 6399               	.Letext0:
+ 5625 0670 2D9A      		sbi 37-32,5
+ 5626               	.L326:
+ 5627               	.LSM954:
+ 5628               	/* #APP */
+ 5629               	 ;  1494 "TWI_Slave.c" 1
+ 5630 0672 7894      		sei
+ 5631               	 ;  0 "" 2
+ 5632               	.LSM955:
+ 5633               	/* #NOAPP */
+ 5634 0674 8FB1      		in r24,47-32
+ 5635               	.LSM956:
+ 5636 0676 8FB1      		in r24,47-32
+ 5637               	.LSM957:
+ 5638 0678 8091 0000 		lds r24,usbstatus
+ 5639 067c 00C0      		rjmp .L327
+ 5640               	.LFE57:
+ 5642               	.global	rxdata
+ 5643               	.global	rxdata
+ 5644               		.section .bss
+ 5647               	rxdata:
+ 5648 0000 00        		.skip 1,0
+ 5649               	.global	do_output
+ 5650               	.global	do_output
+ 5653               	do_output:
+ 5654 0001 00        		.skip 1,0
+ 5655               	.global	liniencounter
+ 5656               	.global	liniencounter
+ 5659               	liniencounter:
+ 5660 0002 00        		.skip 1,0
+ 5661               	.global	timer0startwert
+ 5662               		.data
+ 5665               	timer0startwert:
+ 5666 001c 40        		.byte	64
+ 5667               	.global	usbstatus
+ 5668               	.global	usbstatus
+ 5669               		.section .bss
+ 5672               	usbstatus:
+ 5673 0003 00        		.skip 1,0
+ 5674               	.global	status
+ 5675               	.global	status
+ 5678               	status:
+ 5679 0004 00        		.skip 1,0
+ 5680               	.global	PWM
+ 5681               	.global	PWM
+ 5684               	PWM:
+ 5685 0005 00        		.skip 1,0
+ 5686               	.global	CounterA
+ 5687               	.global	CounterA
+ 5690               	CounterA:
+ 5691 0006 0000      		.skip 2,0
+ 5692               	.global	CounterB
+ 5693               	.global	CounterB
+ 5696               	CounterB:
+ 5697 0008 0000      		.skip 2,0
+ 5698               	.global	CounterC
+ 5699               	.global	CounterC
+ 5702               	CounterC:
+ 5703 000a 0000      		.skip 2,0
+ 5704               	.global	CounterD
+ 5705               	.global	CounterD
+ 5708               	CounterD:
+ 5709 000c 0000      		.skip 2,0
+ 5710               	.global	DelayA
+ 5711               		.data
+ 5714               	DelayA:
+ 5715 001d 1800      		.word	24
+ 5716               	.global	DelayB
+ 5719               	DelayB:
+ 5720 001f 1800      		.word	24
+ 5721               	.global	DelayC
+ 5724               	DelayC:
+ 5725 0021 1800      		.word	24
+ 5726               	.global	DelayD
+ 5729               	DelayD:
+ 5730 0023 1800      		.word	24
+ 5731               	.global	StepCounterA
+ 5732               	.global	StepCounterA
+ 5733               		.section .bss
+ 5736               	StepCounterA:
+ 5737 000e 0000      		.skip 2,0
+ 5738               	.global	StepCounterB
+ 5739               	.global	StepCounterB
+ 5742               	StepCounterB:
+ 5743 0010 0000      		.skip 2,0
+ 5744               	.global	StepCounterC
+ 5745               	.global	StepCounterC
+ 5748               	StepCounterC:
+ 5749 0012 0000      		.skip 2,0
+ 5750               	.global	StepCounterD
+ 5751               	.global	StepCounterD
+ 5754               	StepCounterD:
+ 5755 0014 0000      		.skip 2,0
+ 5756               	.global	timer2Counter
+ 5757               	.global	timer2Counter
+ 5760               	timer2Counter:
+ 5761 0016 0000      		.skip 2,0
+ 5762               		.lcomm buffer,32
+ 5763               		.lcomm sendbuffer,32
+ 5764               		.lcomm ringbufferstatus,1
+ 5765               		.lcomm motorstatus,1
+ 5766               		.lcomm abschnittnummer,2
+ 5767               		.lcomm ladeposition,1
+ 5768               		.lcomm AbschnittCounter,2
+ 5769               		.data
+ 5772               	endposition:
+ 5773 0025 FFFF      		.word	-1
+ 5774               		.lcomm anschlagstatus,1
+ 5775               		.lcomm cncstatus,1
+ 5776               		.lcomm pwmposition,1
+ 5777               		.lcomm richtung,1
+ 5778               		.section	.progmem.data,"a",@progbits
+ 5781               	descriptor_list:
+ 5782 0000 0001      		.word	256
+ 5783 0002 0000      		.word	0
+ 5784 0004 0000      		.word	device_descriptor
+ 5785 0006 12        		.byte	18
+ 5786 0007 0002      		.word	512
+ 5787 0009 0000      		.word	0
+ 5788 000b 0000      		.word	config1_descriptor
+ 5789 000d 29        		.byte	41
+ 5790 000e 0022      		.word	8704
+ 5791 0010 0000      		.word	0
+ 5792 0012 0000      		.word	rawhid_hid_report_desc
+ 5793 0014 1C        		.byte	28
+ 5794 0015 0021      		.word	8448
+ 5795 0017 0000      		.word	0
+ 5796 0019 0000      		.word	config1_descriptor+18
+ 5797 001b 09        		.byte	9
+ 5798 001c 0003      		.word	768
+ 5799 001e 0000      		.word	0
+ 5800 0020 0000      		.word	string0
+ 5801 0022 04        		.byte	4
+ 5802 0023 0103      		.word	769
+ 5803 0025 0904      		.word	1033
+ 5804 0027 0000      		.word	string1
+ 5805 0029 22        		.byte	34
+ 5806 002a 0203      		.word	770
+ 5807 002c 0904      		.word	1033
+ 5808 002e 0000      		.word	string2
+ 5809 0030 10        		.byte	16
+ 5810               		.lcomm usb_configuration,1
+ 5813               	endpoint_config_table:
+ 5814 0031 01        		.byte	1
+ 5815 0032 C1        		.byte	-63
+ 5816 0033 26        		.byte	38
+ 5817 0034 01        		.byte	1
+ 5818 0035 C0        		.byte	-64
+ 5819 0036 26        		.byte	38
+ 5820 0037 00        		.byte	0
+ 5821 0038 00        		.byte	0
+ 5822               		.lcomm rx_timeout_count,1
+ 5823               		.lcomm tx_timeout_count,1
+ 5824               		.data
+ 5825               	.LC4:
+ 5826 0027 4D4F 00   		.string	"MO"
+ 5827               	.LC5:
+ 5828 002a 4449 00   		.string	"DI"
+ 5829               	.LC6:
+ 5830 002d 4D49 00   		.string	"MI"
+ 5831               	.LC7:
+ 5832 0030 444F 00   		.string	"DO"
+ 5833               	.LC8:
+ 5834 0033 4652 00   		.string	"FR"
+ 5835               	.LC9:
+ 5836 0036 5341 00   		.string	"SA"
+ 5837               	.LC10:
+ 5838 0039 534F 00   		.string	"SO"
+ 5841               	C.1.1917:
+ 5842 003c 0000      		.word	.LC4
+ 5843 003e 0000      		.word	.LC5
+ 5844 0040 0000      		.word	.LC6
+ 5845 0042 0000      		.word	.LC7
+ 5846 0044 0000      		.word	.LC8
+ 5847 0046 0000      		.word	.LC9
+ 5848 0048 0000      		.word	.LC10
+ 5849               		.lcomm CNCDaten,132
+ 5850               		.comm ADCWert16,3,1
+ 5851               		.comm buffer_adr,1,1
+ 5852               		.section	.progmem.data
+ 5855               	device_descriptor:
+ 5856 0039 12        		.byte	18
+ 5857 003a 01        		.byte	1
+ 5858 003b 00        		.byte	0
+ 5859 003c 02        		.byte	2
+ 5860 003d 00        		.byte	0
+ 5861 003e 00        		.byte	0
+ 5862 003f 00        		.byte	0
+ 5863 0040 20        		.byte	32
+ 5864 0041 C0        		.byte	-64
+ 5865 0042 16        		.byte	22
+ 5866 0043 80        		.byte	-128
+ 5867 0044 04        		.byte	4
+ 5868 0045 00        		.byte	0
+ 5869 0046 01        		.byte	1
+ 5870 0047 01        		.byte	1
+ 5871 0048 02        		.byte	2
+ 5872 0049 00        		.byte	0
+ 5873 004a 01        		.byte	1
+ 5876               	config1_descriptor:
+ 5877 004b 09        		.byte	9
+ 5878 004c 02        		.byte	2
+ 5879 004d 29        		.byte	41
+ 5880 004e 00        		.byte	0
+ 5881 004f 01        		.byte	1
+ 5882 0050 01        		.byte	1
+ 5883 0051 00        		.byte	0
+ 5884 0052 C0        		.byte	-64
+ 5885 0053 32        		.byte	50
+ 5886 0054 09        		.byte	9
+ 5887 0055 04        		.byte	4
+ 5888 0056 00        		.byte	0
+ 5889 0057 00        		.byte	0
+ 5890 0058 02        		.byte	2
+ 5891 0059 03        		.byte	3
+ 5892 005a 00        		.byte	0
+ 5893 005b 00        		.byte	0
+ 5894 005c 00        		.byte	0
+ 5895 005d 09        		.byte	9
+ 5896 005e 21        		.byte	33
+ 5897 005f 11        		.byte	17
+ 5898 0060 01        		.byte	1
+ 5899 0061 00        		.byte	0
+ 5900 0062 01        		.byte	1
+ 5901 0063 22        		.byte	34
+ 5902 0064 1C        		.byte	28
+ 5903 0065 00        		.byte	0
+ 5904 0066 07        		.byte	7
+ 5905 0067 05        		.byte	5
+ 5906 0068 81        		.byte	-127
+ 5907 0069 03        		.byte	3
+ 5908 006a 20        		.byte	32
+ 5909 006b 00        		.byte	0
+ 5910 006c 02        		.byte	2
+ 5911 006d 07        		.byte	7
+ 5912 006e 05        		.byte	5
+ 5913 006f 02        		.byte	2
+ 5914 0070 03        		.byte	3
+ 5915 0071 20        		.byte	32
+ 5916 0072 00        		.byte	0
+ 5917 0073 08        		.byte	8
+ 5920               	rawhid_hid_report_desc:
+ 5921 0074 06        		.byte	6
+ 5922 0075 AB        		.byte	-85
+ 5923 0076 FF        		.byte	-1
+ 5924 0077 0A        		.byte	10
+ 5925 0078 00        		.byte	0
+ 5926 0079 02        		.byte	2
+ 5927 007a A1        		.byte	-95
+ 5928 007b 01        		.byte	1
+ 5929 007c 75        		.byte	117
+ 5930 007d 08        		.byte	8
+ 5931 007e 15        		.byte	21
+ 5932 007f 00        		.byte	0
+ 5933 0080 26        		.byte	38
+ 5934 0081 FF        		.byte	-1
+ 5935 0082 00        		.byte	0
+ 5936 0083 95        		.byte	-107
+ 5937 0084 20        		.byte	32
+ 5938 0085 09        		.byte	9
+ 5939 0086 01        		.byte	1
+ 5940 0087 81        		.byte	-127
+ 5941 0088 02        		.byte	2
+ 5942 0089 95        		.byte	-107
+ 5943 008a 20        		.byte	32
+ 5944 008b 09        		.byte	9
+ 5945 008c 02        		.byte	2
+ 5946 008d 91        		.byte	-111
+ 5947 008e 02        		.byte	2
+ 5948 008f C0        		.byte	-64
+ 5951               	string0:
+ 5952 0090 04        		.byte	4
+ 5953 0091 03        		.byte	3
+ 5954 0092 0904      		.word	1033
+ 5957               	string1:
+ 5958 0094 22        		.byte	34
+ 5959 0095 03        		.byte	3
+ 5960 0096 5200      		.string	"R"
+ 5961 0098 7500      		.string	"u"
+ 5962 009a 6500      		.string	"e"
+ 5963 009c 6400      		.string	"d"
+ 5964 009e 6900      		.string	"i"
+ 5965 00a0 5F00      		.string	"_"
+ 5966 00a2 4800      		.string	"H"
+ 5967 00a4 6500      		.string	"e"
+ 5968 00a6 6900      		.string	"i"
+ 5969 00a8 6D00      		.string	"m"
+ 5970 00aa 6C00      		.string	"l"
+ 5971 00ac 6900      		.string	"i"
+ 5972 00ae 6300      		.string	"c"
+ 5973 00b0 6800      		.string	"h"
+ 5974 00b2 6500      		.string	"e"
+ 5975 00b4 7200      		.string	"r"
+ 5976 00b6 00        		.string	""
+ 5977 00b7 00        		.string	""
+ 5980               	string2:
+ 5981 00b8 10        		.byte	16
+ 5982 00b9 03        		.byte	3
+ 5983 00ba 4300      		.string	"C"
+ 5984 00bc 4E00      		.string	"N"
+ 5985 00be 4300      		.string	"C"
+ 5986 00c0 5F00      		.string	"_"
+ 5987 00c2 5500      		.string	"U"
+ 5988 00c4 5300      		.string	"S"
+ 5989 00c6 4200      		.string	"B"
+ 5990 00c8 00        		.string	""
+ 5991 00c9 00        		.string	""
+ 6392               	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 TWI_Slave.c
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:2      *ABS*:0000003f __SREG__
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:3      *ABS*:0000003e __SP_H__
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:4      *ABS*:0000003d __SP_L__
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5      *ABS*:00000034 __CCP__
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:6      *ABS*:00000000 __tmp_reg__
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:7      *ABS*:00000001 __zero_reg__
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:19     .text.lcddelay_ms:00000000 lcddelay_ms
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:60     .text.lcd_backlight:00000000 lcd_backlight
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:81     .text.lcd_load_byte:00000000 lcd_load_byte
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:151    .text.lcd_send_cmd:00000000 lcd_send_cmd
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:218    .text.lcd_initialize:00000000 lcd_initialize
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:442    .text.lcd_send_char:00000000 lcd_send_char
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:509    .text.lcd_putc:00000000 lcd_putc
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:528    .text.lcd_puts:00000000 lcd_puts
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:560    .text.lcd_putint1:00000000 lcd_putint1
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:595    .text.lcd_putint2:00000000 lcd_putint2
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:642    .text.lcd_putint16:00000000 lcd_putint16
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:709    .text.lcd_putint:00000000 lcd_putint
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:762    .text.lcd_strobe_E:00000000 lcd_strobe_E
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:801    .text.lcd_cursor_home:00000000 lcd_cursor_home
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:819    .text.lcd_move_cursor:00000000 lcd_move_cursor
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:840    .text.lcd_inc_cursor:00000000 lcd_inc_cursor
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:872    .text.lcd_dec_cursor:00000000 lcd_dec_cursor
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:904    .text.lcd_gotoxy:00000000 lcd_gotoxy
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:933    .text.lcd_cls:00000000 lcd_cls
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:1021   .text.lcd_clr_line:00000000 lcd_clr_line
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:1089   .text.r_uitoa:00000000 r_uitoa
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:1156   .text.r_itoa:00000000 r_itoa
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:1251   .text.r_itoa16:00000000 r_itoa16
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:1313   .text.lcd_puthex:00000000 lcd_puthex
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:1387   .text.lcd_put_frac:00000000 lcd_put_frac
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:1498   .text.lcd_put_zeit:00000000 lcd_put_zeit
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:1582   .text.lcd_put_wochentag:00000000 lcd_put_wochentag
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5848   .data:0000003c C.1.1917
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:1641   .text.lcd_put_temperatur:00000000 lcd_put_temperatur
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:1790   .text.lcd_put_tempbis99:00000000 lcd_put_tempbis99
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:1940   .text.readKanal16Bit:00000000 readKanal16Bit
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:2007   .text.initADC:00000000 initADC
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:2040   .text.readKanal:00000000 readKanal
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:2089   .text.closeADC:00000000 closeADC
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:2108   .text.readKanalOrig:00000000 readKanalOrig
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:2175   .text.usb_init:00000000 usb_init
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5784   .bss:00000063 usb_configuration
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:2218   .text.usb_configured:00000000 usb_configured
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:2233   .text.usb_rawhid_recv:00000000 usb_rawhid_recv
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5817   .bss:00000064 rx_timeout_count
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:2505   .text.usb_rawhid_send:00000000 usb_rawhid_send
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5829   .bss:00000065 tx_timeout_count
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:2777   .text.__vector_10:00000000 __vector_10
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:2857   .text.__vector_11:00000000 __vector_11
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5788   .progmem.data:00000000 descriptor_list
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5820   .progmem.data:00000031 endpoint_config_table
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:3505   .text.slaveinit:00000000 slaveinit
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:3604   .text.delay_ms:00000000 delay_ms
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:3645   .text.timer0:00000000 timer0
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:3678   .text.__vector_15:00000000 __vector_15
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5767   .bss:00000016 timer2Counter
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5697   .bss:00000006 CounterA
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5703   .bss:00000008 CounterB
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5709   .bss:0000000a CounterC
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5715   .bss:0000000c CounterD
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5691   .bss:00000005 PWM
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5782   .bss:00000061 pwmposition
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:3759   .text.AbschnittLaden:00000000 AbschnittLaden
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5783   .bss:00000062 richtung
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5743   .bss:0000000e StepCounterA
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5721   .data:0000001d DelayA
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5749   .bss:00000010 StepCounterB
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5726   .data:0000001f DelayB
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5755   .bss:00000012 StepCounterC
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5731   .data:00000021 DelayC
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5761   .bss:00000014 StepCounterD
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5736   .data:00000023 DelayD
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5771   .bss:00000059 motorstatus
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:4142   .text.AnschlagVonMotor:00000000 AnschlagVonMotor
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5775   .bss:0000005f anschlagstatus
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5781   .bss:00000060 cncstatus
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5769   .bss:00000038 sendbuffer
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5773   .bss:0000005c ladeposition
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5772   .bss:0000005a abschnittnummer
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:4427   .text.StepEndVonMotor:00000000 StepEndVonMotor
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5779   .data:00000025 endposition
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5770   .bss:00000058 ringbufferstatus
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5830   .bss:00000066 CNCDaten
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5774   .bss:0000005d AbschnittCounter
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:4671   .text.main:00000000 main
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:2      *ABS*:0000003f __SREG__
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:3      *ABS*:0000003e __SP_H__
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:4      *ABS*:0000003d __SP_L__
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5      *ABS*:00000034 __CCP__
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:6      *ABS*:00000000 __tmp_reg__
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:7      *ABS*:00000001 __zero_reg__
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:19     .text.lcddelay_ms:00000000 lcddelay_ms
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:60     .text.lcd_backlight:00000000 lcd_backlight
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:81     .text.lcd_load_byte:00000000 lcd_load_byte
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:151    .text.lcd_send_cmd:00000000 lcd_send_cmd
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:218    .text.lcd_initialize:00000000 lcd_initialize
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:442    .text.lcd_send_char:00000000 lcd_send_char
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:509    .text.lcd_putc:00000000 lcd_putc
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:528    .text.lcd_puts:00000000 lcd_puts
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:560    .text.lcd_putint1:00000000 lcd_putint1
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:595    .text.lcd_putint2:00000000 lcd_putint2
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:642    .text.lcd_putint16:00000000 lcd_putint16
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:709    .text.lcd_putint:00000000 lcd_putint
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:762    .text.lcd_strobe_E:00000000 lcd_strobe_E
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:801    .text.lcd_cursor_home:00000000 lcd_cursor_home
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:819    .text.lcd_move_cursor:00000000 lcd_move_cursor
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:840    .text.lcd_inc_cursor:00000000 lcd_inc_cursor
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:872    .text.lcd_dec_cursor:00000000 lcd_dec_cursor
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:904    .text.lcd_gotoxy:00000000 lcd_gotoxy
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:933    .text.lcd_cls:00000000 lcd_cls
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:1021   .text.lcd_clr_line:00000000 lcd_clr_line
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:1089   .text.r_uitoa:00000000 r_uitoa
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:1156   .text.r_itoa:00000000 r_itoa
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:1251   .text.r_itoa16:00000000 r_itoa16
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:1313   .text.lcd_puthex:00000000 lcd_puthex
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:1387   .text.lcd_put_frac:00000000 lcd_put_frac
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:1498   .text.lcd_put_zeit:00000000 lcd_put_zeit
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:1582   .text.lcd_put_wochentag:00000000 lcd_put_wochentag
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5841   .data:0000003c C.1.1917
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:1641   .text.lcd_put_temperatur:00000000 lcd_put_temperatur
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:1790   .text.lcd_put_tempbis99:00000000 lcd_put_tempbis99
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:1940   .text.readKanal16Bit:00000000 readKanal16Bit
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:2007   .text.initADC:00000000 initADC
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:2040   .text.readKanal:00000000 readKanal
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:2089   .text.closeADC:00000000 closeADC
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:2108   .text.readKanalOrig:00000000 readKanalOrig
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:2175   .text.usb_init:00000000 usb_init
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5777   .bss:00000063 usb_configuration
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:2218   .text.usb_configured:00000000 usb_configured
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:2233   .text.usb_rawhid_recv:00000000 usb_rawhid_recv
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5810   .bss:00000064 rx_timeout_count
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:2505   .text.usb_rawhid_send:00000000 usb_rawhid_send
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5822   .bss:00000065 tx_timeout_count
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:2777   .text.__vector_10:00000000 __vector_10
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:2857   .text.__vector_11:00000000 __vector_11
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5781   .progmem.data:00000000 descriptor_list
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5813   .progmem.data:00000031 endpoint_config_table
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:3505   .text.slaveinit:00000000 slaveinit
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:3604   .text.delay_ms:00000000 delay_ms
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:3645   .text.timer0:00000000 timer0
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:3678   .text.__vector_15:00000000 __vector_15
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5760   .bss:00000016 timer2Counter
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5690   .bss:00000006 CounterA
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5696   .bss:00000008 CounterB
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5702   .bss:0000000a CounterC
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5708   .bss:0000000c CounterD
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5684   .bss:00000005 PWM
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5775   .bss:00000061 pwmposition
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:3759   .text.AbschnittLaden:00000000 AbschnittLaden
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5776   .bss:00000062 richtung
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5736   .bss:0000000e StepCounterA
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5714   .data:0000001d DelayA
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5742   .bss:00000010 StepCounterB
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5719   .data:0000001f DelayB
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5748   .bss:00000012 StepCounterC
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5724   .data:00000021 DelayC
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5754   .bss:00000014 StepCounterD
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5729   .data:00000023 DelayD
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5764   .bss:00000059 motorstatus
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:4142   .text.AnschlagVonMotor:00000000 AnschlagVonMotor
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5768   .bss:0000005f anschlagstatus
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5774   .bss:00000060 cncstatus
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5762   .bss:00000038 sendbuffer
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5766   .bss:0000005c ladeposition
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5765   .bss:0000005a abschnittnummer
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:4427   .text.StepEndVonMotor:00000000 StepEndVonMotor
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5772   .data:00000025 endposition
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5763   .bss:00000058 ringbufferstatus
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5823   .bss:00000066 CNCDaten
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5767   .bss:0000005d AbschnittCounter
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:4671   .text.main:00000000 main
                              .bss:00000018 buffer
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5679   .bss:00000003 usbstatus
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5654   .bss:00000000 rxdata
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5660   .bss:00000001 do_output
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5666   .bss:00000002 liniencounter
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5672   .data:0000001c timer0startwert
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5685   .bss:00000004 status
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5862   .progmem.data:00000039 device_descriptor
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5883   .progmem.data:0000004b config1_descriptor
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5927   .progmem.data:00000074 rawhid_hid_report_desc
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5958   .progmem.data:00000090 string0
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5964   .progmem.data:00000094 string1
-/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//ccsET8Yb.s:5987   .progmem.data:000000b8 string2
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5672   .bss:00000003 usbstatus
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5647   .bss:00000000 rxdata
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5653   .bss:00000001 do_output
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5659   .bss:00000002 liniencounter
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5665   .data:0000001c timer0startwert
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5678   .bss:00000004 status
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5855   .progmem.data:00000039 device_descriptor
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5876   .progmem.data:0000004b config1_descriptor
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5920   .progmem.data:00000074 rawhid_hid_report_desc
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5951   .progmem.data:00000090 string0
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5957   .progmem.data:00000094 string1
+/var/folders/vm/650ssqs08xl63r006s7ds01h0000gp/T//cc3msmxx.s:5980   .progmem.data:000000b8 string2
                             *COM*:00000003 ADCWert16
                             *COM*:00000001 buffer_adr
 

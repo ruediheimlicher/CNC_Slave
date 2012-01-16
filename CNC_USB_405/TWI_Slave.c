@@ -141,7 +141,7 @@ volatile uint8_t           liniencounter= 0;
 #define MB_RI           4
 #define MB_EN           5
 
-#define END_A0          4           // Anschlagstatus:  Bit fuer Endanschlag bei A0
+#define END_A0          4           // Anschlagstatus:  Bit fuer Endanschlag bei A0 (NICHT PIN)
 #define END_B0          5           // Anschlagstatus:  Bit fuer Endanschlag bei A0
 
 // Seite 2
@@ -303,7 +303,7 @@ void slaveinit(void)
    LOOPLEDPORT |= (1<<LOOPLED);
 
    CMD_DDR |= (1<<DC);                       // DC-PWM-Ausgang
-   CMD_PORT |= (1<<DC);                      // HI
+   CMD_PORT &= ~(1<<DC);                      // LO
 
    CMD_DDR |= (1<<STROM);                    // Stepperstrom-Ausgang, Active HI
    CMD_PORT &= ~(1<<STROM);                  // LO
@@ -1063,13 +1063,14 @@ int main (void)
                PWM = buffer[8];
                if (PWM==0)
                {
-                  CMD_PORT |= (1<<DC);
+                  CMD_PORT &= ~(1<<DC);
                }
-               sendbuffer[0]=0xE3;
+               
+               //sendbuffer[0]=0xE3;
                //usb_rawhid_send((void*)sendbuffer, 50);
-               sendbuffer[0]=0x00;
-               sendbuffer[5]=0x00;
-               sendbuffer[6]=0x00;
+               //sendbuffer[0]=0x00;
+               //sendbuffer[5]=0x00;
+               //sendbuffer[6]=0x00;
                
             }break;
                
@@ -1224,14 +1225,14 @@ int main (void)
       
       if (PWM) // Heizung ist ON
       {
-         if (pwmposition > PWM) // > DC OFF, PIN ist HI
-         {
-            CMD_PORT |= (1<<DC);
-            OSZI_A_HI ;
-         }
-         else                    // > DC ON, PIN ist LO
+         if (pwmposition > PWM) // > DC OFF, PIN ist LO
          {
             CMD_PORT &= ~(1<<DC);
+            OSZI_A_HI ;
+         }
+         else                    // > DC ON, PIN ist HI
+         {
+            CMD_PORT |= (1<<DC);
             OSZI_A_LO ;
             
          }

@@ -219,7 +219,7 @@ LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1818
+.text           0x00000000     0x1810
  *(.vectors)
  .vectors       0x00000000       0x98 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1286.o
                 0x00000000                __vectors
@@ -369,13 +369,13 @@ LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a
  .text.StepEndVonMotor
                 0x00000fea      0x1cc TWI_Slave.o
                 0x00000fea                StepEndVonMotor
- .text.main     0x000011b6      0x65e TWI_Slave.o
+ .text.main     0x000011b6      0x656 TWI_Slave.o
                 0x000011b6                main
-                0x00001814                . = ALIGN (0x2)
+                0x0000180c                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001814        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
-                0x00001814                exit
-                0x00001814                _exit
+ .fini9         0x0000180c        0x0 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+                0x0000180c                exit
+                0x0000180c                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -394,11 +394,11 @@ LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001814        0x4 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
+ .fini0         0x0000180c        0x4 /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a(_exit.o)
  *(.fini0)
-                0x00001818                _etext = .
+                0x00001810                _etext = .
 
-.data           0x00800100       0x4a load address 0x00001818
+.data           0x00800100       0x4a load address 0x00001810
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100       0x4a TWI_Slave.o
@@ -437,8 +437,8 @@ LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a
  *(.bss*)
  *(COMMON)
                 0x00800234                PROVIDE (__bss_end, .)
-                0x00001818                __data_load_start = LOADADDR (.data)
-                0x00001862                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001810                __data_load_start = LOADADDR (.data)
+                0x0000185a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800234        0x0
                 0x00800234                PROVIDE (__noinit_start, .)
@@ -518,9 +518,9 @@ LOAD /usr/local/CrossPack-AVR-20100115/lib/gcc/avr/4.3.3/avr51/libgcc.a
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x3b9 TWI_Slave.o
 
-.debug_line     0x00000000     0x2294
+.debug_line     0x00000000     0x2284
  *(.debug_line)
- .debug_line    0x00000000     0x2294 TWI_Slave.o
+ .debug_line    0x00000000     0x2284 TWI_Slave.o
 
 .debug_frame    0x00000000      0x310
  *(.debug_frame)
