@@ -714,7 +714,7 @@ void AnschlagVonMotor(const uint8_t motor)
          cli();
          
          anschlagstatus |= (1<< (END_A0 + motor));      // Bit fuer Anschlag A0+motor setzen
-         lcd_putc('A');
+         //lcd_putc('A');
          
 
          if (cncstatus & (1<<GO_HOME)) // nur eigene Seite abstellen
@@ -734,7 +734,7 @@ void AnschlagVonMotor(const uint8_t motor)
             
             }//switch motor
 
-            lcd_putc('B');
+            //lcd_putc('B');
             sendbuffer[0]=0xB5 + motor;
             
            cncstatus |= (1<<motor);
@@ -1058,7 +1058,7 @@ int main (void)
                
             }break;
             
-               
+            /*   
             case 0xE2: // DC ON_OFF
             {
                PWM = buffer[8];
@@ -1074,6 +1074,7 @@ int main (void)
                //sendbuffer[6]=0x00;
                
             }break;
+            */
                
             case 0xE4: // Stepperstrom ON_OFF
             {
@@ -1092,7 +1093,7 @@ int main (void)
                sendbuffer[6]=0x00;
                
             }break;
-               
+              
             default:
             {  
                
@@ -1100,7 +1101,7 @@ int main (void)
                uint8_t indexl=buffer[19];
                abschnittnummer= indexh<<8;
                abschnittnummer += indexl;
-               
+               PWM = buffer[20];
                
                
                if (abschnittnummer==0) // neue Datenreihe
