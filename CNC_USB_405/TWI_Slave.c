@@ -713,8 +713,8 @@ void AnschlagVonMotor(const uint8_t motor)
       {
          cli();
          
-         anschlagstatus |= (1<< (END_A0 + motor));      // Bit fuer Anschlag A0 setzen
-         
+         anschlagstatus |= (1<< (END_A0 + motor));      // Bit fuer Anschlag A0+motor setzen
+         lcd_putc('A');
          
 
          if (cncstatus & (1<<GO_HOME)) // nur eigene Seite abstellen
@@ -734,7 +734,7 @@ void AnschlagVonMotor(const uint8_t motor)
             
             }//switch motor
 
-            
+            lcd_putc('B');
             sendbuffer[0]=0xB5 + motor;
             
            cncstatus |= (1<<motor);
@@ -1057,6 +1057,7 @@ int main (void)
                CounterD=0;
                
             }break;
+            
                
             case 0xE2: // DC ON_OFF
             {
@@ -1120,7 +1121,7 @@ int main (void)
                   ringbufferstatus=0x00;
                   ringbufferstatus |= (1<<FIRSTBIT);
                   AbschnittCounter=0;
-                  //             lcd_clr_line(1);
+                  lcd_clr_line(1);
                   sendbuffer[5]=0x00;
                   //sendbuffer[6]=code;
                   
