@@ -1058,10 +1058,10 @@ int main (void)
                
             }break;
             
-            /*   
+               
             case 0xE2: // DC ON_OFF
             {
-               PWM = buffer[8];
+               PWM = buffer[20];
                if (PWM==0)
                {
                   CMD_PORT &= ~(1<<DC);
@@ -1074,7 +1074,7 @@ int main (void)
                //sendbuffer[6]=0x00;
                
             }break;
-            */
+            
                
             case 0xE4: // Stepperstrom ON_OFF
             {
@@ -1223,9 +1223,9 @@ int main (void)
       
       /**	End USB-routinen	***********************/
      
-      /**	Heizung	***********************/
+      /**	HOT	***********************/
       
-      if (PWM) // Heizung ist ON
+      if (PWM) // Draht soll heiss sein
       {
          if (pwmposition > PWM) // > DC OFF, PIN ist LO
          {
