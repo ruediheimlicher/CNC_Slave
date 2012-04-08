@@ -82,9 +82,9 @@ volatile uint8_t           liniencounter= 0;
 
 #define TIMER0_STARTWERT	0x40
 
-#define LOOPLEDDDR          DDRD
-#define LOOPLEDPORT         PORTD
-#define LOOPLED             6 
+#define LOOPLEDDDR          DDRF
+#define LOOPLEDPORT         PORTF
+#define LOOPLED             4 
 #define DC                  7    // DC ON: LO
 #define STROM               4    // Stepperstrom ON: LO
 
@@ -1006,6 +1006,7 @@ int main (void)
 			loopcount1+=1;
 			LOOPLEDPORT ^=(1<<LOOPLED);
          //LOOPLEDPORT ^=(1<<DC);
+         
 		}
 		
        /**	Begin USB-routinen	***********************/
