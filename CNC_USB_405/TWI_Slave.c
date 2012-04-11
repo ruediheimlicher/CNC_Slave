@@ -1105,6 +1105,7 @@ int main (void)
                PWM = buffer[20];
                
                
+               
                if (abschnittnummer==0) // neue Datenreihe
                {
                   uint8_t i=0, k=0;
