@@ -86,7 +86,7 @@ volatile uint8_t           liniencounter= 0;
 #define LOOPLEDPORT         PORTF
 #define LOOPLED             4 
 #define DC                  7    // DC ON: LO
-#define STROM               4    // Stepperstrom ON: LO
+#define STROM               4    // Stepperstrom ON: HI
 
 #define TASTENDDR           DDRF
 #define TASTENPORT          PORTF
