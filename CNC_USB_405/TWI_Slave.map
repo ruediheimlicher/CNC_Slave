@@ -50,8 +50,6 @@ Discarded input sections
  .text.r_itoa   0x00000000       0x62 TWI_Slave.o
  .text.r_itoa16
                 0x00000000       0x38 TWI_Slave.o
- .text.lcd_puthex
-                0x00000000       0x54 TWI_Slave.o
  .text.lcd_put_frac
                 0x00000000       0x8a TWI_Slave.o
  .text.lcd_put_zeit
@@ -78,7 +76,6 @@ Discarded input sections
  .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_udivmodqi4.o)
  .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_udivmodqi4.o)
  .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_udivmodqi4.o)
- .text.libgcc   0x00000000       0x18 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_udivmodqi4.o)
  .text          0x00000000        0x0 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_udivmodhi4.o)
  .data          0x00000000        0x0 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_udivmodhi4.o)
  .bss           0x00000000        0x0 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_udivmodhi4.o)
@@ -219,7 +216,7 @@ LOAD /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1862
+.text           0x00000000     0x1900
  *(.vectors)
  .vectors       0x00000000       0x98 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/../../../../avr/lib/avr51/crtusb1286.o
                 0x00000000                __vectors
@@ -347,46 +344,51 @@ LOAD /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a
  .text.lcd_clr_line
                 0x0000030e       0x28 TWI_Slave.o
                 0x0000030e                lcd_clr_line
+ .text.lcd_puthex
+                0x00000336       0x52 TWI_Slave.o
+                0x00000336                lcd_puthex
  .text.usb_init
-                0x00000336       0x2e TWI_Slave.o
-                0x00000336                usb_init
+                0x00000388       0x2e TWI_Slave.o
+                0x00000388                usb_init
  .text.usb_rawhid_recv
-                0x00000364      0x1a8 TWI_Slave.o
-                0x00000364                usb_rawhid_recv
+                0x000003b6      0x1a8 TWI_Slave.o
+                0x000003b6                usb_rawhid_recv
  .text.usb_rawhid_send
-                0x0000050c      0x1a8 TWI_Slave.o
-                0x0000050c                usb_rawhid_send
+                0x0000055e      0x1a8 TWI_Slave.o
+                0x0000055e                usb_rawhid_send
  .text.__vector_10
-                0x000006b4       0x6e TWI_Slave.o
-                0x000006b4                __vector_10
+                0x00000706       0x6e TWI_Slave.o
+                0x00000706                __vector_10
  .text.__vector_11
-                0x00000722      0x2d2 TWI_Slave.o
-                0x00000722                __vector_11
+                0x00000774      0x2d2 TWI_Slave.o
+                0x00000774                __vector_11
  .text.slaveinit
-                0x000009f4       0x58 TWI_Slave.o
-                0x000009f4                slaveinit
+                0x00000a46       0x58 TWI_Slave.o
+                0x00000a46                slaveinit
  .text.delay_ms
-                0x00000a4c       0x16 TWI_Slave.o
-                0x00000a4c                delay_ms
+                0x00000a9e       0x16 TWI_Slave.o
+                0x00000a9e                delay_ms
  .text.__vector_15
-                0x00000a62       0xaa TWI_Slave.o
-                0x00000a62                __vector_15
+                0x00000ab4       0xaa TWI_Slave.o
+                0x00000ab4                __vector_15
  .text.AbschnittLaden
-                0x00000b0c      0x316 TWI_Slave.o
-                0x00000b0c                AbschnittLaden
+                0x00000b5e      0x316 TWI_Slave.o
+                0x00000b5e                AbschnittLaden
  .text.AnschlagVonMotor
-                0x00000e22      0x208 TWI_Slave.o
-                0x00000e22                AnschlagVonMotor
+                0x00000e74      0x23c TWI_Slave.o
+                0x00000e74                AnschlagVonMotor
  .text.StepEndVonMotor
-                0x0000102a      0x1c6 TWI_Slave.o
-                0x0000102a                StepEndVonMotor
- .text.main     0x000011f0      0x66e TWI_Slave.o
-                0x000011f0                main
-                0x0000185e                . = ALIGN (0x2)
+                0x000010b0      0x1c6 TWI_Slave.o
+                0x000010b0                StepEndVonMotor
+ .text.main     0x00001276      0x66e TWI_Slave.o
+                0x00001276                main
+ .text.libgcc   0x000018e4       0x18 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_udivmodqi4.o)
+                0x000018e4                __udivmodqi4
+                0x000018fc                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000185e        0x0 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_exit.o)
-                0x0000185e                exit
-                0x0000185e                _exit
+ .fini9         0x000018fc        0x0 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_exit.o)
+                0x000018fc                exit
+                0x000018fc                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -405,11 +407,11 @@ LOAD /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000185e        0x4 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_exit.o)
+ .fini0         0x000018fc        0x4 /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a(_exit.o)
  *(.fini0)
-                0x00001862                _etext = .
+                0x00001900                _etext = .
 
-.data           0x00800100       0x4a load address 0x00001862
+.data           0x00800100       0x4a load address 0x00001900
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100       0x4a TWI_Slave.o
@@ -448,8 +450,8 @@ LOAD /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a
  *(.bss*)
  *(COMMON)
                 0x00800234                PROVIDE (__bss_end, .)
-                0x00001862                __data_load_start = LOADADDR (.data)
-                0x000018ac                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00001900                __data_load_start = LOADADDR (.data)
+                0x0000194a                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800234        0x0
                 0x00800234                PROVIDE (__noinit_start, .)
@@ -529,9 +531,9 @@ LOAD /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x3c3 TWI_Slave.o
 
-.debug_line     0x00000000     0x24a6
+.debug_line     0x00000000     0x24c6
  *(.debug_line)
- .debug_line    0x00000000     0x24a6 TWI_Slave.o
+ .debug_line    0x00000000     0x24c6 TWI_Slave.o
 
 .debug_frame    0x00000000      0x320
  *(.debug_frame)
@@ -542,9 +544,9 @@ LOAD /usr/local/CrossPack-AVR-20120217/lib/gcc/avr/4.5.1/avr51/libgcc.a
  .debug_str     0x00000000      0x7ce TWI_Slave.o
                                 0x8af (size before relaxing)
 
-.debug_loc      0x00000000     0x1878
+.debug_loc      0x00000000     0x186d
  *(.debug_loc)
- .debug_loc     0x00000000     0x1878 TWI_Slave.o
+ .debug_loc     0x00000000     0x186d TWI_Slave.o
 
 .debug_macinfo
  *(.debug_macinfo)

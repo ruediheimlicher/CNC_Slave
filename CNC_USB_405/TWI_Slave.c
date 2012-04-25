@@ -141,8 +141,8 @@ volatile uint8_t           liniencounter= 0;
 #define MB_RI           4
 #define MB_EN           5
 
-#define END_A0          4           // Anschlagstatus:  Bit fuer Endanschlag bei A0 (NICHT PIN)
-#define END_B0          5           // Anschlagstatus:  Bit fuer Endanschlag bei A0
+#define END_A0          6           // Anschlagstatus:  Bit fuer Endanschlag bei A0 (NICHT PIN)
+#define END_B0          7           // Anschlagstatus:  Bit fuer Endanschlag bei A0
 
 // Seite 2
 
@@ -705,7 +705,10 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten)
 
 void AnschlagVonMotor(const uint8_t motor)
 {
-   
+   lcd_gotoxy(0,1);
+   lcd_putc('A');
+   lcd_gotoxy(2+2*motor,1);
+   lcd_puthex(motor);
    if (richtung & (1<<(RICHTUNG_A + motor))) // Richtung ist auf Anschlag A0 zu         
    {
       
@@ -1152,11 +1155,6 @@ int main (void)
                   
                }
                
-               
-               
-               
-               
-               
                if (buffer[17]& 0x02)// letzter Abschnitt, Bit 1
                {
                   ringbufferstatus |= (1<<LASTBIT);
@@ -1187,6 +1185,7 @@ int main (void)
                if ((abschnittnummer == 0)&&(endposition))
                {
                   {
+                     //lcd_gotoxy(10,0);
                      //lcd_putc('*');
                      sendbuffer[5]=abschnittnummer;
                      sendbuffer[6]=ladeposition;
@@ -1195,7 +1194,6 @@ int main (void)
                      sendbuffer[0]=0x00;
                      sendbuffer[5]=0x00;
                      sendbuffer[6]=0x00;
-                     
                      
                   }  
                }
@@ -1232,12 +1230,12 @@ int main (void)
          if (pwmposition > PWM) // > DC OFF, PIN ist LO
          {
             CMD_PORT &= ~(1<<DC);
-            OSZI_A_HI ;
+            //OSZI_A_HI ;
          }
          else                    // > DC ON, PIN ist HI
          {
             CMD_PORT |= (1<<DC);
-            OSZI_A_LO ;
+            //OSZI_A_LO ;
             
          }
       }
@@ -1278,6 +1276,7 @@ int main (void)
       }
       else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag A0
       {
+         
          AnschlagVonMotor(0);
        // 
    //
@@ -1332,6 +1331,7 @@ int main (void)
       // * End Motor A *
       // ***************
 
+      
       // **************************************
       // * Anschlag Motor B *
       // **************************************
