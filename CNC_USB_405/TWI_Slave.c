@@ -705,10 +705,10 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten)
 
 void AnschlagVonMotor(const uint8_t motor)
 {
-   lcd_gotoxy(0,1);
-   lcd_putc('A');
-   lcd_gotoxy(2+2*motor,1);
-   lcd_puthex(motor);
+   //lcd_gotoxy(0,1);
+   //lcd_putc('A');
+   //lcd_gotoxy(2+2*motor,1);
+   //lcd_puthex(motor);
    if (richtung & (1<<(RICHTUNG_A + motor))) // Richtung ist auf Anschlag A0 zu         
    {
       
@@ -722,9 +722,6 @@ void AnschlagVonMotor(const uint8_t motor)
 
          if (cncstatus & (1<<GO_HOME)) // nur eigene Seite abstellen
          {
-            
-            
-            
             
             // Paralleler Schlitten gleichzeitig am Anschlag?
             switch (motor) // Stepperport 1
@@ -1127,7 +1124,7 @@ int main (void)
                   ringbufferstatus=0x00;
                   ringbufferstatus |= (1<<FIRSTBIT);
                   AbschnittCounter=0;
-                  lcd_clr_line(1);
+         //         lcd_clr_line(1);
                   sendbuffer[5]=0x00;
                   //sendbuffer[6]=code;
                   
@@ -1281,6 +1278,12 @@ int main (void)
        // 
    //
       }
+      
+      
+      
+      
+      
+      
       
       // **************************************
       // * Motor A *
