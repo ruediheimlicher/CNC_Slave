@@ -367,21 +367,36 @@ ISR (TIMER2_OVF_vect)
 { 
 	timer2Counter +=1;
 	
-	if (timer2Counter >= 14) 
+   if (PWM)
+   {
+      pwmposition ++;
+      if (pwmposition > PWM) // > DC OFF, PIN ist LO
+      {
+         CMD_PORT &= ~(1<<DC);
+         //OSZI_A_HI ;
+      }
+      else                    // > DC ON, PIN ist HI
+      {
+         CMD_PORT |= (1<<DC);
+         //OSZI_A_LO ;
+         
+      }
+      
+      
+   }
+   else
+   {
+      pwmposition =0;
+   }
+   
+   
+   if (timer2Counter >= 14) 
 	{
 		CounterA+=1;
 		CounterB+=1;
       CounterC+=1;
       CounterD+=1;
       
-      if (PWM)
-      {
-         pwmposition ++;
-      }
-      else
-      {
-         pwmposition =0;
-      }
       
 		timer2Counter = 0; 
         //OSZI_B_TOGG ;
@@ -877,7 +892,10 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D
       //         anschlagstatus=0;
       anschlagstatus &= ~(1<< (END_A0 + motor)); // Bit fuer Anschlag A0 zuruecksetzen
       motorstatus=0;
+      //sendbuffer[0]=0xAA + motor;
       sendbuffer[0]=0xAA + motor;
+      
+      
       sendbuffer[1]=abschnittnummer;
       sendbuffer[5]=abschnittnummer;
       sendbuffer[6]=ladeposition;
@@ -1060,7 +1078,7 @@ int main (void)
             }break;
             
                
-            case 0xE2: // DC ON_OFF
+            case 0xE2: // DC ON_OFF: Temperatur Schneiddraht setzen
             {
                PWM = buffer[20];
                if (PWM==0)
@@ -1221,9 +1239,12 @@ int main (void)
       /**	End USB-routinen	***********************/
      
       /**	HOT	***********************/
-      
-      if (PWM) // Draht soll heiss sein
+      /*
+       pwmposition wird in der ISR incrementiert. Wenn pwmposition > ist als der eingestellte Wert PWM, wird der Impuls wieder abgeschaltet. Nach dem Overflow wird wieder eingeschaltet
+       */
+      if (PWM) // Draht soll heiss sein. 
       {
+         /*
          if (pwmposition > PWM) // > DC OFF, PIN ist LO
          {
             CMD_PORT &= ~(1<<DC);
@@ -1235,6 +1256,7 @@ int main (void)
             //OSZI_A_LO ;
             
          }
+          */
       }
 
       /**	Start CNC-routinen	***********************/
@@ -1281,8 +1303,61 @@ int main (void)
       
       
       
+      // **************************************
+      // * Anschlag Motor B *
+      // **************************************
+      // Anschlag B0
+      if ((STEPPERPIN_1 & (1<< END_B0_PIN)) ) // Schlitten nicht am Anschlag B0
+      {
+         if (anschlagstatus &(1<< END_B0))
+         {
+            anschlagstatus &= ~(1<< END_B0); // Bit fuer Anschlag B0 zuruecksetzen
+         }
+      }
+      else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag B0
+      {
+         AnschlagVonMotor(1);
+         //
+         
+      } // end Anschlag B0
       
+      // End Anschlag B
+
       
+      // ********************
+      // * Anschlag Motor C *
+      // ********************
+      
+      // Anschlag C0
+      if ((STEPPERPIN_2 & (1<< END_C0_PIN)) ) // Eingang ist HI, Schlitten nicht am Anschlag C0
+      {
+         if (anschlagstatus &(1<< END_C0))
+         {
+            anschlagstatus &= ~(1<< END_C0); // Bit fuer Anschlag C0 zuruecksetzen
+         }
+         
+      }
+      else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag C0
+      {
+         AnschlagVonMotor(2);
+      }
+      
+      // ***************
+      // * Anschlag Motor D *
+      // ***************
+      
+      // Anschlag D0
+      if ((STEPPERPIN_2 & (1<< END_D0_PIN)) ) // Schlitten nicht am Anschlag D0
+      {
+         if (anschlagstatus &(1<< END_D0))
+         {
+            anschlagstatus &= ~(1<< END_D0); // Bit fuer Anschlag D0 zuruecksetzen
+         }
+      }
+      else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag D0
+      {
+         AnschlagVonMotor(3);
+      }
       
       
       // **************************************
@@ -1334,27 +1409,7 @@ int main (void)
       // * End Motor A *
       // ***************
 
-      
-      // **************************************
-      // * Anschlag Motor B *
-      // **************************************
-      // Anschlag B0
-      if ((STEPPERPIN_1 & (1<< END_B0_PIN)) ) // Schlitten nicht am Anschlag B0
-      {
-         if (anschlagstatus &(1<< END_B0))
-         {
-            anschlagstatus &= ~(1<< END_B0); // Bit fuer Anschlag B0 zuruecksetzen
-         }
-      }
-      else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag B0
-      {
-         AnschlagVonMotor(1);
-      //
-         
-      } // end Anschlag B0
-
-      // End Anschlag B
-      
+       
       // **************************************
       // * Motor B *
       // **************************************
@@ -1391,25 +1446,6 @@ int main (void)
       // * End Motor B *
       // ***************
 
-      
-      // ********************
-      // * Anschlag Motor C *
-      // ********************
-      
-      // Anschlag C0
-      if ((STEPPERPIN_2 & (1<< END_C0_PIN)) ) // Eingang ist HI, Schlitten nicht am Anschlag C0
-      {
-         if (anschlagstatus &(1<< END_C0))
-         {
-            anschlagstatus &= ~(1<< END_C0); // Bit fuer Anschlag C0 zuruecksetzen
-         }
-      
-      }
-      else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag C0
-      {
-       AnschlagVonMotor(2);
-      }
-     
       // **************************************
       // * Motor C *
       // **************************************
@@ -1446,24 +1482,7 @@ int main (void)
       // ***************
       
       
-      // ***************
-      // * Anschlag Motor D *
-      // ***************
-      
-      // Anschlag D0
-      if ((STEPPERPIN_2 & (1<< END_D0_PIN)) ) // Schlitten nicht am Anschlag D0
-      {
-         if (anschlagstatus &(1<< END_D0))
-         {
-            anschlagstatus &= ~(1<< END_D0); // Bit fuer Anschlag D0 zuruecksetzen
-         }
-      }
-      else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag D0
-      {
-         AnschlagVonMotor(3);
-      }
-      
-
+ 
       // **************************************
       // * Motor D *
       // **************************************
