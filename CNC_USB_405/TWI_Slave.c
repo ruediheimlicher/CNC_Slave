@@ -374,10 +374,12 @@ ISR (TIMER2_OVF_vect)
    if (PWM)
    {
       pwmdivider++;
-      if (pwmdivider >= DC_DIVIDER)
+//      if (pwmdivider >= DC_DIVIDER)
       {
+         /*
          
          pwmposition ++;
+         
          if (pwmposition > PWM) // > DC OFF, PIN ist LO
          {
             CMD_PORT &= ~(1<<DC);
@@ -389,6 +391,7 @@ ISR (TIMER2_OVF_vect)
             //OSZI_A_LO ;
             
          }
+          */
          pwmdivider = 0;
       }
       
@@ -407,6 +410,15 @@ ISR (TIMER2_OVF_vect)
       CounterC+=1;
       CounterD+=1;
       
+      if (PWM)
+      {
+         pwmposition ++;
+      }
+      else
+      {
+         pwmposition =0;
+      }
+
       
 		timer2Counter = 0; 
         //OSZI_B_TOGG ;
@@ -1254,7 +1266,7 @@ int main (void)
        */
       if (PWM) // Draht soll heiss sein. 
       {
-         /*
+         
          if (pwmposition > PWM) // > DC OFF, PIN ist LO
          {
             CMD_PORT &= ~(1<<DC);
@@ -1266,7 +1278,7 @@ int main (void)
             //OSZI_A_LO ;
             
          }
-          */
+          
       }
 
       /**	Start CNC-routinen	***********************/
