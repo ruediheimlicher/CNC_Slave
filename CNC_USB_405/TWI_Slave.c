@@ -178,6 +178,7 @@ volatile uint8_t           liniencounter= 0;
 
 volatile uint8_t timer0startwert=TIMER0_STARTWERT;
 
+
 void delay_ms(unsigned int ms);
 
 static volatile uint8_t    anschlagstatus=0x00;
