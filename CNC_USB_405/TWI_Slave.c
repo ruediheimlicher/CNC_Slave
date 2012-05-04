@@ -174,6 +174,8 @@ volatile uint8_t           liniencounter= 0;
 #define USB_DATENBREITE    32
 #define USB_SEND           0
 
+#define DC_DIVIDER          1       // teilt die pwm-Frequenz in ISR
+
 volatile uint8_t timer0startwert=TIMER0_STARTWERT;
 
 void delay_ms(unsigned int ms);
@@ -191,6 +193,7 @@ volatile uint8_t           status=0;
 
 volatile uint8_t           PWM=0;
 static volatile uint8_t    pwmposition=0;
+static volatile uint8_t    pwmdivider=0;
 
 
 // CNC
@@ -369,24 +372,30 @@ ISR (TIMER2_OVF_vect)
 	
    if (PWM)
    {
-      pwmposition ++;
-      if (pwmposition > PWM) // > DC OFF, PIN ist LO
+      pwmdivider++;
+      if (pwmdivider >= DC_DIVIDER)
       {
-         CMD_PORT &= ~(1<<DC);
-         //OSZI_A_HI ;
-      }
-      else                    // > DC ON, PIN ist HI
-      {
-         CMD_PORT |= (1<<DC);
-         //OSZI_A_LO ;
          
+         pwmposition ++;
+         if (pwmposition > PWM) // > DC OFF, PIN ist LO
+         {
+            CMD_PORT &= ~(1<<DC);
+            //OSZI_A_HI ;
+         }
+         else                    // > DC ON, PIN ist HI
+         {
+            CMD_PORT |= (1<<DC);
+            //OSZI_A_LO ;
+            
+         }
+         pwmdivider = 0;
       }
-      
       
    }
    else
    {
       pwmposition =0;
+      pwmdivider = 0;
    }
    
    
