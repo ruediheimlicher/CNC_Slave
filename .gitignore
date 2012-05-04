@@ -6,3 +6,8 @@ TWI_Slave.lst
 TWI_Slave.map
 TWI_Slave.o
 TWI_Slave.sym
+TWI_Slave.eep
+runavarice.sh
+teensy_loader_cli
+usb_rawhid.lst
+usb_rawhid.o
