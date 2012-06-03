@@ -1054,7 +1054,7 @@ int main (void)
       // Start USB
       //lcd_putc('u');
       r = usb_rawhid_recv((void*)buffer, 0);
-		if (r > 0) 
+		if (r > 0) // etwas angekommen
       {
          //OSZI_B_HI;
          cli(); 
@@ -1077,6 +1077,7 @@ int main (void)
             {
                ringbufferstatus = 0;
                motorstatus=0;
+               anschlagstatus = 0;
                sendbuffer[0]=0xE1;
                sendbuffer[5]=abschnittnummer;
                sendbuffer[6]=ladeposition;
@@ -1122,11 +1123,19 @@ int main (void)
                if (buffer[8])
                {
                   CMD_PORT |= (1<<STROM); // ON
+                  PWM = buffer[20];
                }
                else
                {
                   CMD_PORT &= ~(1<<STROM); // OFF
+                  PWM = 0;
                }
+               
+               if (PWM==0)
+               {
+                  CMD_PORT &= ~(1<<DC);
+               }
+
                sendbuffer[0]=0xE5;
                //usb_rawhid_send((void*)sendbuffer, 50);
                sendbuffer[0]=0x00;
