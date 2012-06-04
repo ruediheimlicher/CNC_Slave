@@ -11,3 +11,4 @@ runavarice.sh
 teensy_loader_cli
 usb_rawhid.lst
 usb_rawhid.o
+CNC.xcodeproj
