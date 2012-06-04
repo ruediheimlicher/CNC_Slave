@@ -1143,6 +1143,7 @@ int main (void)
                   CMD_PORT &= ~(1<<DC);
                }
 
+               
                sendbuffer[0]=0xE5;
                //usb_rawhid_send((void*)sendbuffer, 50);
                sendbuffer[0]=0x00;
