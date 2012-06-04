@@ -1078,6 +1078,8 @@ int main (void)
                ringbufferstatus = 0;
                motorstatus=0;
                anschlagstatus = 0;
+               
+               cncstatus = 0;
                sendbuffer[0]=0xE1;
                sendbuffer[5]=abschnittnummer;
                sendbuffer[6]=ladeposition;
@@ -1086,7 +1088,12 @@ int main (void)
                sendbuffer[5]=0x00;
                sendbuffer[6]=0x00;
                ladeposition=0;
+               endposition=0xFFFF;
+               
                AbschnittCounter=0;
+               PWM = sendbuffer[20];
+               CMD_PORT &= ~(1<<DC);
+               
                
                StepCounterA=0;
                StepCounterB=0;
@@ -1165,7 +1172,7 @@ int main (void)
                         CNCDaten[k][i]=0;  
                      }
                   }
-                  
+                  PWM = 0;
                   ladeposition=0;
                   endposition=0xFFFF;
                   anschlagstatus=0;
