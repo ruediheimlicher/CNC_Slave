@@ -469,6 +469,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten)
     18   (10)   indexh     // Nummer des Abschnitts
     19   (11)   indexl   
     
+    20     pwm
 	 */			
 	int lage = 0;
 //   lage = AbschnittDaten[9]; // Start: 1, innerhalb: 0, Ende: 2
@@ -942,6 +943,16 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D
          if (aktuellelage==2) // war letzter Abschnitt
          {
             endposition=abschnittnummer; // letzter Abschnitt zu fahren
+
+            // Neu: letzer Abschnitt melden
+            sendbuffer[0]=0xD0;
+            sendbuffer[5]=abschnittnummer;
+            sendbuffer[6]=ladeposition;
+            usb_rawhid_send((void*)sendbuffer, 50);
+            sendbuffer[0]=0x00;
+            sendbuffer[5]=0x00;
+            sendbuffer[6]=0x00;
+            // end neu
          }  
          else
          {
@@ -1211,6 +1222,8 @@ int main (void)
                
                if (buffer[17]& 0x02)// letzter Abschnitt, Bit 1
                {
+                  
+
                   ringbufferstatus |= (1<<LASTBIT);
                   if (ringbufferstatus & (1<<FIRSTBIT)) // nur ein Abschnitt
                   {
