@@ -944,7 +944,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D
          {
             endposition=abschnittnummer; // letzter Abschnitt zu fahren
 
-            // Neu: letzer Abschnitt melden
+            // Neu: letzen Abschnitt melden
             sendbuffer[0]=0xD0;
             sendbuffer[5]=abschnittnummer;
             sendbuffer[6]=ladeposition;
@@ -1163,6 +1163,48 @@ int main (void)
                
             }break;
               
+            case 0xF1: // reset
+            {
+               ringbufferstatus = 0;
+               motorstatus=0;
+               anschlagstatus = 0;
+               
+               cncstatus = 0;
+               sendbuffer[0]=0xE1;
+               sendbuffer[5]=abschnittnummer;
+               sendbuffer[6]=ladeposition;
+               usb_rawhid_send((void*)sendbuffer, 50);
+               sendbuffer[0]=0x00;
+               sendbuffer[5]=0x00;
+               sendbuffer[6]=0x00;
+               ladeposition=0;
+               endposition=0xFFFF;
+               
+               AbschnittCounter=0;
+               PWM = sendbuffer[20];
+               CMD_PORT &= ~(1<<DC);
+               
+               
+               StepCounterA=0;
+               StepCounterB=0;
+               StepCounterC=0;
+               StepCounterD=0;
+               
+               CounterA=0;
+               CounterB=0;
+               CounterC=0;
+               CounterD=0;
+               usb_init();
+               while (!usb_configured()) /* wait */ ;
+               
+               // Wait an extra second for the PC's operating system to load drivers
+               // and do whatever it does to actually be ready for input
+               _delay_ms(1000);
+               
+               sei();
+
+            }break;
+               
             default:
             {  
                
