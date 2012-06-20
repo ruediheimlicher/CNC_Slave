@@ -1089,7 +1089,6 @@ int main (void)
                ringbufferstatus = 0;
                motorstatus=0;
                anschlagstatus = 0;
-               
                cncstatus = 0;
                sendbuffer[0]=0xE1;
                sendbuffer[5]=abschnittnummer;
@@ -1115,7 +1114,9 @@ int main (void)
                CounterB=0;
                CounterC=0;
                CounterD=0;
-               
+               lcd_gotoxy(0,1);
+               lcd_puts("HALT\0");
+
             }break;
             
                
@@ -1165,23 +1166,25 @@ int main (void)
               
             case 0xF1: // reset
             {
+               uint8_t i=0, k=0;
+               for (k=0;k<RINGBUFFERTIEFE;k++)
+               {
+                  for(i=0;i<USB_DATENBREITE;i++)
+                  {
+                     CNCDaten[k][i]=0;  
+                  }
+               }
+              
                ringbufferstatus = 0;
                motorstatus=0;
                anschlagstatus = 0;
                
                cncstatus = 0;
-               sendbuffer[0]=0xE1;
-               sendbuffer[5]=abschnittnummer;
-               sendbuffer[6]=ladeposition;
-               usb_rawhid_send((void*)sendbuffer, 50);
-               sendbuffer[0]=0x00;
-               sendbuffer[5]=0x00;
-               sendbuffer[6]=0x00;
                ladeposition=0;
                endposition=0xFFFF;
                
                AbschnittCounter=0;
-               PWM = sendbuffer[20];
+               PWM = 0;
                CMD_PORT &= ~(1<<DC);
                
                
@@ -1194,14 +1197,22 @@ int main (void)
                CounterB=0;
                CounterC=0;
                CounterD=0;
-               usb_init();
-               while (!usb_configured()) /* wait */ ;
+               
+               lcd_gotoxy(0,1);
+               lcd_puts("reset\0");
+               //cli();
+               //usb_init();
+               /*
+               while (!usb_configured()) // wait  ;
                
                // Wait an extra second for the PC's operating system to load drivers
                // and do whatever it does to actually be ready for input
                _delay_ms(1000);
-               
-               sei();
+               */
+               //sei();
+               //sendbuffer[0]=0xF2;
+               //usb_rawhid_send((void*)sendbuffer, 50);
+               //sendbuffer[0]=0x00;
 
             }break;
                
@@ -1213,12 +1224,13 @@ int main (void)
                abschnittnummer= indexh<<8;
                abschnittnummer += indexl;
                PWM = buffer[20];
-               
+               //lcd_clr_line(1);
                
                
                if (abschnittnummer==0) // neue Datenreihe
                {
                   uint8_t i=0, k=0;
+                  /*
                   for (k=0;k<RINGBUFFERTIEFE;k++)
                   {
                      for(i=0;i<USB_DATENBREITE;i++)
@@ -1226,6 +1238,7 @@ int main (void)
                         CNCDaten[k][i]=0;  
                      }
                   }
+                  */
                   PWM = 0;
                   ladeposition=0;
                   endposition=0xFFFF;
