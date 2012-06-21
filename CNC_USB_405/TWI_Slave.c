@@ -1063,7 +1063,6 @@ int main (void)
        /**	Begin USB-routinen	***********************/
       
       // Start USB
-      //lcd_putc('u');
       r = usb_rawhid_recv((void*)buffer, 0);
 		if (r > 0) // etwas angekommen
       {
@@ -1091,6 +1090,7 @@ int main (void)
                anschlagstatus = 0;
                cncstatus = 0;
                sendbuffer[0]=0xE1;
+               
                sendbuffer[5]=abschnittnummer;
                sendbuffer[6]=ladeposition;
                usb_rawhid_send((void*)sendbuffer, 50);
@@ -1251,7 +1251,6 @@ int main (void)
                   sendbuffer[5]=0x00;
                   //sendbuffer[6]=code;
                   
-                  
                   if (code == 0xF0) // cncstatus fuer go_home setzen
                   {
                      sendbuffer[5]=0xF0;
@@ -1407,8 +1406,6 @@ int main (void)
        // 
    //
       }
-      
-      
       
       // **************************************
       // * Anschlag Motor B *
