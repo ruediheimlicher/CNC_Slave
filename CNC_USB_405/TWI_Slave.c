@@ -158,7 +158,7 @@ volatile uint8_t           liniencounter= 0;
 #define MD_RI           4
 #define MD_EN           5
 
-#define END_C0          6           // Anschlagstatus: Bit fuer Endanschlag bei C0
+#define END_C0          6           // Anschlagstatus:  Bit fuer Endanschlag bei C0
 #define END_D0          7           // Anschlagstatus:  Bit fuer Endanschlag bei D0
 
 #define HALT_PIN 0
@@ -871,7 +871,7 @@ void AnschlagVonMotor(const uint8_t motor)
 void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D
 {
    STEPPERPORT_1 |= (1<<(MA_EN + motor));					// Motor A... OFF
-   
+   /*
    if (cncstatus & (1<<GO_HOME)) 
    {
       
@@ -880,7 +880,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D
    {
       
    }
-   
+   */
    if (motor < 2)
    {
    STEPPERPORT_1 |= (1<<(MA_EN + motor));
@@ -982,30 +982,30 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D
 
 int main (void) 
 {
-    int8_t r;
-
+   int8_t r;
+   
    uint16_t count=0;
-    
+   
 	// set for 16 MHz clock
 	CPU_PRESCALE(0);
-    
+   
 	// Initialize the USB, and then wait for the host to set configuration.
 	// If the Teensy is powered without a PC connected to the USB port,
 	// this will wait forever.
 	usb_init();
 	while (!usb_configured()) /* wait */ ;
-    
+   
 	// Wait an extra second for the PC's operating system to load drivers
 	// and do whatever it does to actually be ready for input
 	_delay_ms(1000);
-
+   
 	sei();
-		
+   
 	slaveinit();
-		
+   
 	/* initialize the LCD */
 	lcd_initialize(LCD_FUNCTION_8x2, LCD_CMD_ENTRY_INC, LCD_CMD_ON);
-
+   
 	lcd_puts("Guten Tag\0");
 	delay_ms(100);
 	lcd_cls();
@@ -1013,7 +1013,7 @@ int main (void)
 	lcd_puts("V: \0");
 	lcd_puts(VERSION);
    lcd_clr_line(1);
-
+   
 	uint8_t Tastenwert=0;
 	uint8_t TastaturCount=0;
 	
@@ -1027,7 +1027,7 @@ int main (void)
 	
 	uint16_t loopcount0=0;
 	uint8_t loopcount1=0;
-
+   
 	
 	//delay_ms(800);
 	//eeprom_write_byte(&WDT_ErrCount0,0);
@@ -1036,15 +1036,15 @@ int main (void)
    
 	//timer2
 	TCNT2   = 0; 
-//	TCCR2A |= (1 << WGM21); // Configure timer 2 for CTC mode 
+   //	TCCR2A |= (1 << WGM21); // Configure timer 2 for CTC mode 
 	TCCR2B |= (1 << CS20); // Start timer at Fcpu/8 
-//	TIMSK2 |= (1 << OCIE2A); // Enable CTC interrupt 
+   //	TIMSK2 |= (1 << OCIE2A); // Enable CTC interrupt 
 	TIMSK2 |= (1 << TOIE2); // Enable OV interrupt 
 	//OCR2A   = 5; // Set CTC compare value with a prescaler of 64 
-    TCCR2A = 0x00;
-
-	  sei();
-	  
+   TCCR2A = 0x00;
+   
+   sei();
+   PWM = 0;
 #pragma mark while	  
 	while (1)
 	{	
@@ -1060,7 +1060,7 @@ int main (void)
          
 		}
 		
-       /**	Begin USB-routinen	***********************/
+      /**	Begin USB-routinen	***********************/
       
       // Start USB
       r = usb_rawhid_recv((void*)buffer, 0);
@@ -1116,9 +1116,9 @@ int main (void)
                CounterD=0;
                lcd_gotoxy(0,1);
                lcd_puts("HALT\0");
-
+               
             }break;
-            
+               
                
             case 0xE2: // DC ON_OFF: Temperatur Schneiddraht setzen
             {
@@ -1135,7 +1135,7 @@ int main (void)
                //sendbuffer[6]=0x00;
                
             }break;
-            
+               
                
             case 0xE4: // Stepperstrom ON_OFF
             {
@@ -1154,7 +1154,7 @@ int main (void)
                {
                   CMD_PORT &= ~(1<<DC);
                }
-
+               
                
                sendbuffer[0]=0xE5;
                //usb_rawhid_send((void*)sendbuffer, 50);
@@ -1163,7 +1163,7 @@ int main (void)
                sendbuffer[6]=0x00;
                
             }break;
-              
+               
             case 0xF1: // reset
             {
                uint8_t i=0, k=0;
@@ -1174,7 +1174,7 @@ int main (void)
                      CNCDaten[k][i]=0;  
                   }
                }
-              
+               
                ringbufferstatus = 0;
                motorstatus=0;
                anschlagstatus = 0;
@@ -1203,17 +1203,17 @@ int main (void)
                //cli();
                //usb_init();
                /*
-               while (!usb_configured()) // wait  ;
-               
-               // Wait an extra second for the PC's operating system to load drivers
-               // and do whatever it does to actually be ready for input
-               _delay_ms(1000);
-               */
+                while (!usb_configured()) // wait  ;
+                
+                // Wait an extra second for the PC's operating system to load drivers
+                // and do whatever it does to actually be ready for input
+                _delay_ms(1000);
+                */
                //sei();
                //sendbuffer[0]=0xF2;
                //usb_rawhid_send((void*)sendbuffer, 50);
                //sendbuffer[0]=0x00;
-
+               
             }break;
                
             default:
@@ -1231,14 +1231,14 @@ int main (void)
                {
                   uint8_t i=0, k=0;
                   /*
-                  for (k=0;k<RINGBUFFERTIEFE;k++)
-                  {
-                     for(i=0;i<USB_DATENBREITE;i++)
-                     {
-                        CNCDaten[k][i]=0;  
-                     }
-                  }
-                  */
+                   for (k=0;k<RINGBUFFERTIEFE;k++)
+                   {
+                   for(i=0;i<USB_DATENBREITE;i++)
+                   {
+                   CNCDaten[k][i]=0;  
+                   }
+                   }
+                   */
                   PWM = 0;
                   ladeposition=0;
                   endposition=0xFFFF;
@@ -1247,7 +1247,7 @@ int main (void)
                   ringbufferstatus=0x00;
                   ringbufferstatus |= (1<<FIRSTBIT);
                   AbschnittCounter=0;
-         //         lcd_clr_line(1);
+                  //         lcd_clr_line(1);
                   sendbuffer[5]=0x00;
                   //sendbuffer[6]=code;
                   
@@ -1277,7 +1277,7 @@ int main (void)
                if (buffer[17]& 0x02)// letzter Abschnitt, Bit 1
                {
                   
-
+                  
                   ringbufferstatus |= (1<<LASTBIT);
                   if (ringbufferstatus & (1<<FIRSTBIT)) // nur ein Abschnitt
                   {
@@ -1287,12 +1287,12 @@ int main (void)
                
                // Daten vom buffer in CNCDaten laden
                {
-                  uint8_t pos=(abschnittnummer);
+                  uint8_t pos = abschnittnummer;
                   pos &= 0x03; // 2 bit // Beschraenkung des index auf Buffertiefe, wert 0,1 
-                  if (abschnittnummer>8)
-                  {
+                  //if (abschnittnummer>8)
+                  //{
                      //lcd_putint1(pos);
-                  }
+                  //}
                   uint8_t i=0;
                   for(i=0;i<USB_DATENBREITE;i++)
                   {
@@ -1340,10 +1340,8 @@ int main (void)
          sei();
 		} // end r>0, neue Daten
       
-      
-      
       /**	End USB-routinen	***********************/
-     
+      
       /**	HOT	***********************/
       /*
        pwmposition wird in der ISR incrementiert. Wenn pwmposition > ist als der eingestellte Wert PWM, wird der Impuls wieder abgeschaltet. Nach dem Overflow wird wieder eingeschaltet
@@ -1362,9 +1360,13 @@ int main (void)
             //OSZI_A_LO ;
             
          }
-          
+         
       }
-
+      else
+      {
+         CMD_PORT &= ~(1<<DC);
+      }
+      
       /**	Start CNC-routinen	***********************/
       
       if (ringbufferstatus & (1<<STARTBIT)) // Buffer ist geladen, Abschnitt 0 laden
@@ -1386,12 +1388,12 @@ int main (void)
          AbschnittCounter+=1;
          sei();
       } // end ringbufferstatus & (1<<STARTBIT)
-
-        
-       // ********************
+      
+      
+      // ********************
       // * Anschlag Motor A *
       // ********************
-
+      
       if ((STEPPERPIN_1 & (1<< END_A0_PIN)) ) // Eingang ist HI, Schlitten nicht am Anschlag A0
       {
          if (anschlagstatus &(1<< END_A0))
@@ -1403,8 +1405,8 @@ int main (void)
       {
          
          AnschlagVonMotor(0);
-       // 
-   //
+         // 
+         //
       }
       
       // **************************************
@@ -1426,7 +1428,7 @@ int main (void)
       } // end Anschlag B0
       
       // End Anschlag B
-
+      
       
       // ********************
       // * Anschlag Motor C *
@@ -1483,7 +1485,7 @@ int main (void)
 				
             StepEndVonMotor(0);
          }
-      
+         
 			sei();
 		}
 		else// if (CounterA)
@@ -1496,7 +1498,7 @@ int main (void)
 			}
 			
 		}
-    
+      
       /*     
        // Halt-Pin
        else if (!(richtung & (1<<RICHTUNG_A)))
@@ -1512,12 +1514,12 @@ int main (void)
       // ***************
       // * End Motor A *
       // ***************
-
-       
+      
+      
       // **************************************
       // * Motor B *
       // **************************************
-
+      
 		if (StepCounterB && (CounterB >= DelayB) &&(!((anschlagstatus & (1<< END_B0)))))
 		{
          cli();
@@ -1549,7 +1551,7 @@ int main (void)
       // ***************
       // * End Motor B *
       // ***************
-
+      
       // **************************************
       // * Motor C *
       // **************************************
@@ -1586,7 +1588,7 @@ int main (void)
       // ***************
       
       
- 
+      
       // **************************************
       // * Motor D *
       // **************************************
@@ -1602,7 +1604,7 @@ int main (void)
 			if (StepCounterD ==0 && (motorstatus & (1<< COUNT_D))) // Motor D ist relevant fuer Stepcount 
 			{
 				StepEndVonMotor(3);
-          }
+         }
 			sei();
 		}
 		else// if (CounterB)
@@ -1615,7 +1617,7 @@ int main (void)
 			}
 			
 		}
-
+      
       
       // ***************
       // * End Motor D *
@@ -1686,7 +1688,7 @@ int main (void)
                //lcd_putint(TastenStatus);
                
                
- //					anschlagstatus |= (1<<TASTE0); // anschlagstatus &= ~(1<<TASTE0); ??
+               //					anschlagstatus |= (1<<TASTE0); // anschlagstatus &= ~(1<<TASTE0); ??
 				}
 			}//else
 			
@@ -1752,6 +1754,6 @@ int main (void)
       
 	}//while
    //free (sendbuffer);
-
-// return 0;
+   
+   // return 0;
 }
