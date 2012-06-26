@@ -1076,7 +1076,7 @@ int main (void)
          sendbuffer[5]=code;
          //sendbuffer[6]=code;
          sendbuffer[0]=0x33;
-         usb_rawhid_send((void*)sendbuffer, 50);
+//         usb_rawhid_send((void*)sendbuffer, 50);
          sendbuffer[0]=0x00;
          sendbuffer[5]=0x00;
          sendbuffer[6]=0x00;
@@ -1313,8 +1313,8 @@ int main (void)
                      sendbuffer[0]=0xAF;
                      usb_rawhid_send((void*)sendbuffer, 50);
                      sendbuffer[0]=0x00;
-                     sendbuffer[5]=0x00;
-                     sendbuffer[6]=0x00;
+                    sendbuffer[5]=0x00;
+                    sendbuffer[6]=0x00;
                      
                   }  
                }
@@ -1402,11 +1402,8 @@ int main (void)
          }
       }
       else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag A0
-      {
-         
+      {         
          AnschlagVonMotor(0);
-         // 
-         //
       }
       
       // **************************************
@@ -1423,8 +1420,6 @@ int main (void)
       else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag B0
       {
          AnschlagVonMotor(1);
-         //
-         
       } // end Anschlag B0
       
       // End Anschlag B
@@ -1440,8 +1435,7 @@ int main (void)
          if (anschlagstatus &(1<< END_C0))
          {
             anschlagstatus &= ~(1<< END_C0); // Bit fuer Anschlag C0 zuruecksetzen
-         }
-         
+         }         
       }
       else // Schlitten bewegte sich auf Anschlag zu und ist am Anschlag C0
       {
@@ -1474,15 +1468,13 @@ int main (void)
       if (StepCounterA && (CounterA >= DelayA) &&(!((anschlagstatus & (1<< END_A0)))))
 		{
          cli();
-         //lcd_putc('A');
          
 			STEPPERPORT_1 &= ~(1<<MA_STEP);					// Impuls an Motor A LO ON
 			CounterA=0;
 			StepCounterA--;
          
 			if (StepCounterA ==0 && (motorstatus & (1<< COUNT_A))) // Motor A ist relevant fuer Stepcount 
-			{
-				
+			{				
             StepEndVonMotor(0);
          }
          
@@ -1493,24 +1485,10 @@ int main (void)
 			STEPPERPORT_1 |= (1<<MA_STEP);
 			if (StepCounterA ==0)							// Keine Steps mehr fuer Motor A
 			{
- 				STEPPERPORT_1 |= (1<<MA_EN);					// Motor A OFF
-            
-			}
-			
+ 				STEPPERPORT_1 |= (1<<MA_EN);					// Motor A OFF            
+			}			
 		}
       
-      /*     
-       // Halt-Pin
-       else if (!(richtung & (1<<RICHTUNG_A)))
-       {
-       DelayA = 0;
-       StepCounterA = 0;
-       STEPPERPORT_1 |= (1<<MA_STEP);     // StepCounterA beenden
-       STEPPERPORT_1 |= (1<<MA_EN);
-       CounterA=0;
-       
-       }
-       */
       // ***************
       // * End Motor A *
       // ***************
@@ -1524,8 +1502,7 @@ int main (void)
 		{
          cli();
          //lcd_putc('B');
-         
-			STEPPERPORT_1 &= ~(1<<MB_STEP);                         // Impuls an Motor B LO ON
+         STEPPERPORT_1 &= ~(1<<MB_STEP);                         // Impuls an Motor B LO ON
 			CounterB=0;
 			StepCounterB--;
          
@@ -1534,8 +1511,7 @@ int main (void)
 				StepEndVonMotor(1);
          }
 			
-			
-			sei();
+         sei();
 		}
 		else  // if (CounterB)
 		{
@@ -1543,7 +1519,6 @@ int main (void)
 			if (StepCounterB ==0)							// Keine Steps mehr fuer Motor B
 			{
 				STEPPERPORT_1 |= (1<<MB_EN);					// Motor B OFF
-            
 			}
 			
 		}
@@ -1566,8 +1541,7 @@ int main (void)
 			StepCounterC--;
          
 			if (StepCounterC ==0 && (motorstatus & (1<< COUNT_C))) // Motor C ist relevant fuer Stepcount 
-			{
-            
+			{            
             StepEndVonMotor(2);
          }
 			sei();
@@ -1577,8 +1551,7 @@ int main (void)
 			STEPPERPORT_2 |= (1<<MC_STEP);
 			if (StepCounterC ==0)							// Keine Steps mehr fuer Motor C
 			{
- 				STEPPERPORT_2 |= (1<<MC_EN);					// Motor C OFF
-            
+ 				STEPPERPORT_2 |= (1<<MC_EN);					// Motor C OFF            
 			}
 			
 		}
@@ -1612,8 +1585,7 @@ int main (void)
 			STEPPERPORT_2 |= (1<<MD_STEP);
 			if (StepCounterD ==0)							// Keine Steps mehr fuer Motor D
 			{
-				STEPPERPORT_2 |= (1<<MD_EN);					// Motor D OFF
-            
+				STEPPERPORT_2 |= (1<<MD_EN);					// Motor D OFF            
 			}
 			
 		}
@@ -1624,13 +1596,10 @@ int main (void)
       // ***************
       
 		sei(); 
-      
-		
-      
+
 		/**	Ende CNC-routinen	***********************/
 		
-		
-		/* **** rx_buffer abfragen **************** */
+      /* **** rx_buffer abfragen **************** */
 		//rxdata=0;
 		
 #pragma mark rxdata		
@@ -1647,8 +1616,7 @@ int main (void)
 			
 			if (!(TastenStatus & (1<<TASTE0))) //Taste 0 war noch nicht gedrueckt
 			{
-				//RingD2(5);
-				TastenStatus |= (1<<TASTE0);
+				TastenStatus |= (1<<TASTE0); // Taste0 markieren
 				
 				Tastencount=0;
 				//lcd_gotoxy(0,1);
@@ -1658,8 +1626,6 @@ int main (void)
 			}
 			else
 			{
-				
-				
 				Tastencount +=1;
 				//lcd_gotoxy(7,1);
 				//lcd_puts("TC \0");
@@ -1667,9 +1633,8 @@ int main (void)
 				
 				if (Tastencount >= Tastenprellen)
 				{
-               
 					Tastencount=0;
-               if (TastenStatus & (1<<TASTE0))
+               if (TastenStatus & (1<<TASTE0)) // Aktion ausloesen
                {
                   //sendbuffer[0]=loopcount1;
                   //sendbuffer[1]=0xAB;
@@ -1694,7 +1659,6 @@ int main (void)
 			
 		}	// Taste 0
 		
-      
 		
 		if (!(TASTENPIN & (1<<TASTE1))) // Taste 1
 		{
@@ -1719,11 +1683,8 @@ int main (void)
 				Tastencount +=1;
 				if (Tastencount >= Tastenprellen)
 				{
-					
-					
 					Tastencount=0;
 					TastenStatus &= ~(1<<TASTE1);
-					
 				}
 			}//	else
 			
@@ -1739,6 +1700,7 @@ int main (void)
 		//lcd_putint(Tastenwert);
       
 		//OSZI_B_HI;
+      /*
       if (usbstatus & (1<< USB_SEND))
       {
          //lcd_gotoxy(10,1);
@@ -1751,7 +1713,7 @@ int main (void)
          //usbstatus &= ~(1<< USB_SEND);
          
       }
-      
+      */
 	}//while
    //free (sendbuffer);
    
