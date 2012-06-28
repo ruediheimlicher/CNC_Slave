@@ -266,14 +266,14 @@ void slaveinit(void)
    
 	
 	//Pin 0 von   als Ausgang fuer OSZI
-   /*
+   
 	OSZIPORTDDR |= (1<<OSZI_PULS_A);	//Pin 0 von  als Ausgang fuer LED TWI
     OSZIPORT |= (1<<OSZI_PULS_A);		// HI
 	
     OSZIPORTDDR |= (1<<OSZI_PULS_B);		//Pin 1 von  als Ausgang fuer LED TWI
     OSZIPORT |= (1<<OSZI_PULS_B);		//Pin   von   als Ausgang fuer OSZI
 	
-    */
+    
 	TASTENDDR &= ~(1<<TASTE0);	//Bit 0 von PORT B als Eingang fŸr Taste 0
 	TASTENPORT |= (1<<TASTE0);	//Pull-up
 
@@ -438,8 +438,9 @@ ISR(TIMER2_COMP_vect) // Schaltet Impuls an SERVOPIN0 aus
 
 
 
-uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten)
+uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 {
+   
 	uint8_t returnwert=0;
 	/*			
 	 Reihenfolge der Daten:
@@ -868,24 +869,18 @@ void AnschlagVonMotor(const uint8_t motor)
 }
 
 
-void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D
+void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
 {
+   
+   OSZI_A_LO;
+   
    STEPPERPORT_1 |= (1<<(MA_EN + motor));					// Motor A... OFF
-   /*
-   if (cncstatus & (1<<GO_HOME)) 
-   {
-      
-   }
-   else
-   {
-      
-   }
-   */
+
    if (motor < 2)
    {
-   STEPPERPORT_1 |= (1<<(MA_EN + motor));
-   StepCounterA=0;
-   StepCounterB=0;
+      STEPPERPORT_1 |= (1<<(MA_EN + motor));
+      StepCounterA=0;
+      StepCounterB=0;
    }
    else
    {
@@ -900,14 +895,14 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D
    StepCounterB=0;
    CounterA=0;
    CounterB=0;
-
-
+   
+   
    STEPPERPORT_2 |= (1<<(MA_EN + motor -2));
    StepCounterC=0;
    StepCounterD=0;
    CounterC=0;
    CounterD=0;
-
+   
    
    if (abschnittnummer==endposition)
    {  
@@ -939,11 +934,11 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D
          uint8_t aktuelleladeposition=(ladeposition & 0x00FF);
          aktuelleladeposition &= 0x03;
          // aktuellen Abschnitt laden
-         aktuellelage = AbschnittLaden(CNCDaten[aktuelleladeposition]);
+         aktuellelage = AbschnittLaden((uint8_t*)CNCDaten[aktuelleladeposition]);
          if (aktuellelage==2) // war letzter Abschnitt
          {
             endposition=abschnittnummer; // letzter Abschnitt zu fahren
-
+            
             // Neu: letzen Abschnitt melden
             sendbuffer[0]=0xD0;
             sendbuffer[5]=abschnittnummer;
@@ -976,7 +971,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D
       AbschnittCounter++;
       
    }
-   
+   OSZI_A_HI;
 }
 
 
@@ -1066,7 +1061,7 @@ int main (void)
       r = usb_rawhid_recv((void*)buffer, 0);
 		if (r > 0) // etwas angekommen
       {
-         //OSZI_B_HI;
+         
          cli(); 
          // code abfragen
          uint8_t code = 0x00;
@@ -1076,10 +1071,12 @@ int main (void)
          sendbuffer[5]=code;
          //sendbuffer[6]=code;
          sendbuffer[0]=0x33;
-//         usb_rawhid_send((void*)sendbuffer, 50);
+         usb_rawhid_send((void*)sendbuffer, 50);
          sendbuffer[0]=0x00;
          sendbuffer[5]=0x00;
          sendbuffer[6]=0x00;
+         
+         //OSZI_A_LO ;
          
          switch (code)
          {
@@ -1216,8 +1213,9 @@ int main (void)
                
             }break;
                
-            default:
+            default: // 45 us
             {  
+               
                
                uint8_t indexh=buffer[18];
                uint8_t indexl=buffer[19];
@@ -1332,9 +1330,11 @@ int main (void)
                      
                   }
                }
+               
             }  
          } // switch code
          
+  //       OSZI_A_HI ;
          
          code=0;
          sei();
@@ -1346,6 +1346,7 @@ int main (void)
       /*
        pwmposition wird in der ISR incrementiert. Wenn pwmposition > ist als der eingestellte Wert PWM, wird der Impuls wieder abgeschaltet. Nach dem Overflow wird wieder eingeschaltet
        */
+      
       if (PWM) // Draht soll heiss sein. 
       {
          
@@ -1369,8 +1370,10 @@ int main (void)
       
       /**	Start CNC-routinen	***********************/
       
+      
       if (ringbufferstatus & (1<<STARTBIT)) // Buffer ist geladen, Abschnitt 0 laden
       {
+         
          cli();
          //lcd_putc('g'); // los
          ringbufferstatus &= ~(1<<STARTBIT);         
@@ -1387,6 +1390,7 @@ int main (void)
          
          AbschnittCounter+=1;
          sei();
+         
       } // end ringbufferstatus & (1<<STARTBIT)
       
       
@@ -1467,6 +1471,7 @@ int main (void)
  		
       if (StepCounterA && (CounterA >= DelayA) &&(!((anschlagstatus & (1<< END_A0)))))
 		{
+         
          cli();
          
 			STEPPERPORT_1 &= ~(1<<MA_STEP);					// Impuls an Motor A LO ON
@@ -1479,6 +1484,7 @@ int main (void)
          }
          
 			sei();
+         
 		}
 		else// if (CounterA)
 		{
