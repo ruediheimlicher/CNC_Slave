@@ -836,11 +836,8 @@ void AnschlagVonMotor(const uint8_t motor)
          sendbuffer[6]=ladeposition;
          sendbuffer[7]=cncstatus;
          usb_rawhid_send((void*)sendbuffer, 50);
-         sendbuffer[0]=0x00;
-         sendbuffer[5]=0x00;
-         sendbuffer[6]=0x00;
-         sendbuffer[7]=0x00;
-
+         sei();
+ 
          
          //ladeposition=0;
         // motorstatus=0;
@@ -916,6 +913,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
       sendbuffer[6]=ladeposition;
       sendbuffer[7]=cncstatus;
       usb_rawhid_send((void*)sendbuffer, 50);
+      sei();
      /*
       sendbuffer[0]=0x00;
       sendbuffer[1]=0x00;
@@ -945,6 +943,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
             sendbuffer[5]=abschnittnummer;
             sendbuffer[6]=ladeposition;
             usb_rawhid_send((void*)sendbuffer, 50);
+            sei();
             /*
             sendbuffer[0]=0x00;
             sendbuffer[5]=0x00;
@@ -959,6 +958,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
             sendbuffer[6]=ladeposition;
             sendbuffer[0]=0xA0 + motor;
             usb_rawhid_send((void*)sendbuffer, 50);
+            sei();
             /*
             sendbuffer[0]=0x00;
             sendbuffer[5]=0x00;
@@ -1063,7 +1063,7 @@ int main (void)
 		if (r > 0) // etwas angekommen
       {
          
-         cli(); 
+        // cli(); 
          // code abfragen
          uint8_t code = 0x00;
          code = buffer[16];
@@ -1092,6 +1092,7 @@ int main (void)
                sendbuffer[5]=abschnittnummer;
                sendbuffer[6]=ladeposition;
                usb_rawhid_send((void*)sendbuffer, 50);
+               sei();
                sendbuffer[0]=0x00;
                sendbuffer[5]=0x00;
                sendbuffer[6]=0x00;
@@ -1262,6 +1263,7 @@ int main (void)
                   }
                   
                   usb_rawhid_send((void*)sendbuffer, 50);
+                  sei();
                   //sendbuffer[0]=0x00;
                   //sendbuffer[5]=0x00;
                   //sendbuffer[6]=0x00;
@@ -1307,6 +1309,7 @@ int main (void)
                   sendbuffer[6]=ladeposition;
                   sendbuffer[0]=0xAF;
                   usb_rawhid_send((void*)sendbuffer, 50);
+                  sei();
 //                  sendbuffer[0]=0x00;
 //                  sendbuffer[5]=0x00;
 //                  sendbuffer[6]=0x00;
@@ -1370,7 +1373,7 @@ int main (void)
       if (ringbufferstatus & (1<<STARTBIT)) // Buffer ist geladen, Abschnitt 0 laden
       {
          OSZI_B_LO;
-         cli();
+         //cli();
          //lcd_putc('g'); // los
          ringbufferstatus &= ~(1<<STARTBIT);         
          ladeposition=0;
@@ -1385,7 +1388,7 @@ int main (void)
          }
          
          AbschnittCounter+=1;
-         sei();
+         //sei();
          OSZI_B_HI;
       } // end ringbufferstatus & (1<<STARTBIT)
       
