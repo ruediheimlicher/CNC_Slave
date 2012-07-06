@@ -916,11 +916,13 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
       sendbuffer[6]=ladeposition;
       sendbuffer[7]=cncstatus;
       usb_rawhid_send((void*)sendbuffer, 50);
+     /*
       sendbuffer[0]=0x00;
       sendbuffer[1]=0x00;
       sendbuffer[5]=0x00;
       sendbuffer[6]=0x00;
       sendbuffer[7]=0;
+      */
       ladeposition=0;
       
    }
@@ -943,9 +945,11 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
             sendbuffer[5]=abschnittnummer;
             sendbuffer[6]=ladeposition;
             usb_rawhid_send((void*)sendbuffer, 50);
+            /*
             sendbuffer[0]=0x00;
             sendbuffer[5]=0x00;
             sendbuffer[6]=0x00;
+             */
             // end neu
          }  
          else
@@ -955,10 +959,11 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
             sendbuffer[6]=ladeposition;
             sendbuffer[0]=0xA0 + motor;
             usb_rawhid_send((void*)sendbuffer, 50);
+            /*
             sendbuffer[0]=0x00;
             sendbuffer[5]=0x00;
             sendbuffer[6]=0x00;
-            
+            */
          }
          
          ladeposition++;
@@ -1302,9 +1307,9 @@ int main (void)
                   sendbuffer[6]=ladeposition;
                   sendbuffer[0]=0xAF;
                   usb_rawhid_send((void*)sendbuffer, 50);
-                  sendbuffer[0]=0x00;
-                  sendbuffer[5]=0x00;
-                  sendbuffer[6]=0x00;
+//                  sendbuffer[0]=0x00;
+//                  sendbuffer[5]=0x00;
+//                  sendbuffer[6]=0x00;
                   
                }
                
