@@ -1468,7 +1468,7 @@ int main (void)
       if (StepCounterA && (CounterA >= DelayA) &&(!((anschlagstatus & (1<< END_A0)))))
 		{
          
-         cli();
+         //cli();
          // Impuls einschalten
 			STEPPERPORT_1 &= ~(1<<MA_STEP);					// Impuls an Motor A LO ON
 			CounterA=0;
@@ -1481,7 +1481,7 @@ int main (void)
             
          }
          
-			sei();
+			//sei();
          
 		}
 		else// if (CounterA > 2) // zwei DurchgŠnge in ISR, Impulsbreite gewaehrleisten
@@ -1505,7 +1505,7 @@ int main (void)
       
 		if (StepCounterB && (CounterB >= DelayB) &&(!((anschlagstatus & (1<< END_B0)))))
 		{
-         cli();
+         //cli();
          //lcd_putc('B');
          STEPPERPORT_1 &= ~(1<<MB_STEP);                         // Impuls an Motor B LO ON
 			CounterB=0;
@@ -1518,7 +1518,7 @@ int main (void)
             
          }
 			
-         sei();
+         //sei();
 		}
 		else  // if (CounterB > 2)
 		{
@@ -1540,7 +1540,7 @@ int main (void)
 		
       if (StepCounterC && (CounterC >= DelayC) &&(!((anschlagstatus & (1<< END_C0)))))
 		{
-         cli();
+         //cli();
          //lcd_putc('C');
          
 			STEPPERPORT_2 &= ~(1<<MC_STEP);					// Impuls an Motor C LO ON
@@ -1553,7 +1553,8 @@ int main (void)
             StepEndVonMotor(2);
             
          }
-			sei();
+
+			//sei();
 		}
 		else// if (CounterC > 2)
 		{
@@ -1576,7 +1577,7 @@ int main (void)
       // **************************************
       if (StepCounterD && (CounterD >= DelayD) &&(!((anschlagstatus & (1<< END_D0)))))
 		{
-         cli();
+         //cli();
          //lcd_putc('D');
          
 			STEPPERPORT_2 &= ~(1<<MD_STEP);					// Impuls an Motor D LO ON
@@ -1589,7 +1590,8 @@ int main (void)
 				StepEndVonMotor(3);
             
          }
-			sei();
+        
+			//sei();
 		}
 		else// if (CounterD > 2)
 		{
