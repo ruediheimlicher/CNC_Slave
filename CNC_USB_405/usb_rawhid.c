@@ -502,6 +502,7 @@ int8_t usb_rawhid_recv(uint8_t *buffer, uint8_t timeout)
 // send a packet, with timeout
 int8_t usb_rawhid_send(const uint8_t *buffer, uint8_t timeout)
 {
+   
 	uint8_t intr_state;
 
 	// if we're not online (enumerated and configured), error
