@@ -471,6 +471,8 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
     19   (11)   indexl   
     
     20     pwm
+    
+    21   motorstatus // relevanter Motor fuer Abschnitt
 	 */			
 	int lage = 0;
 //   lage = AbschnittDaten[9]; // Start: 1, innerhalb: 0, Ende: 2
@@ -563,25 +565,17 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	
 	dataL=AbschnittDaten[8];
 	dataH=AbschnittDaten[9];
-   /*
-   lcd_gotoxy(0,1);
-   lcd_puthex(dataL);
-   lcd_puthex(dataH);
-    */
 
 	//richtung=0;
-	//lcd_gotoxy(18,0);
 	if (dataH & (0x80)) // Bit 7 gesetzt, negative zahl
 	{
 		richtung |= (1<<RICHTUNG_C); // Rueckwarts
 		STEPPERPORT_2 &= ~(1<< MC_RI);
-		//lcd_putc('r');
 	}
 	else 
 	{
 		richtung &= ~(1<<RICHTUNG_C);
 		STEPPERPORT_2 |= (1<< MC_RI);
-		//lcd_putc('v');	// Vorwaerts
 	}
 	
 	dataH &= (0x7F);
@@ -592,11 +586,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	
 	delayL=AbschnittDaten[12];
 	delayH=AbschnittDaten[13];
-   /*
-   lcd_gotoxy(5,1);
-   lcd_puthex(delayL);
-   lcd_puthex(delayH);
-   */
+
 	DelayC = delayH;
 	DelayC <<=8;
 	DelayC += delayL;
@@ -613,12 +603,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	
 	dataL=AbschnittDaten[10];
 	dataH=AbschnittDaten[11];
-   /*
-   lcd_gotoxy(10,1);
-   lcd_puthex(dataL);
-   lcd_puthex(dataH);
-    */
-	//lcd_gotoxy(18,0);
+
 	if (dataH & (0x80)) // Bit 7 gesetzt, negative zahl
 	{
 		richtung |= (1<<RICHTUNG_D); // Rueckwarts
@@ -629,7 +614,6 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	{
 		richtung &= ~(1<<RICHTUNG_D);
 		STEPPERPORT_2 |= (1<< MD_RI);
-		//lcd_putc('v');	// Vorwaerts
 	}
 	
 	dataH &= (0x7F);
@@ -639,23 +623,12 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	
 	delayL=AbschnittDaten[14];
 	delayH=AbschnittDaten[15];
-   /*
-   lcd_gotoxy(15,1);
-   lcd_puthex(delayL);
-   lcd_puthex(delayH);
-   */
+
 	DelayD = delayH;
 	DelayD <<=8;
 	DelayD += delayL;
    
-   
-   //lcd_gotoxy(19,0);
-   //lcd_putc(' ');
-   //lcd_gotoxy(19,0);
-    
-   
-   
-   motorstatus=0;
+   motorstatus=AbschnittDaten[21];
    
    /*
    if (StepCounterA > StepCounterB) 
@@ -675,6 +648,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
    
    //return returnwert;
    
+   /*
    if (StepCounterA > StepCounterB) 
    {
       if (StepCounterA > StepCounterC)
@@ -738,7 +712,8 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
          
       }
    }
-   
+   */
+   //OSZI_A_HI;
    return returnwert;
 }
 
@@ -970,7 +945,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
          
       }
       AbschnittCounter++;
-      //OSZI_A_HI;
+      //OSZI_A_LO;
    }
   
 }
@@ -1298,7 +1273,8 @@ int main (void)
                   }
                   
                }
-               
+               //STEPPERPORT_1 &= ~(1<<MA_STEP);					// Impuls an Motor A LO ON
+               //OSZI_A_HI; // Abschnitt geladen
                
                // Erster Abschnitt, mehr als ein Abschnitt vorhanden, naechsten Abschnitt laden
                if ((abschnittnummer == 0)&&(endposition))
@@ -1372,7 +1348,7 @@ int main (void)
       
       if (ringbufferstatus & (1<<STARTBIT)) // Buffer ist geladen, Abschnitt 0 laden
       {
-         OSZI_B_LO;
+         //OSZI_B_LO;
          //cli();
          //lcd_putc('g'); // los
          ringbufferstatus &= ~(1<<STARTBIT);         
@@ -1389,7 +1365,7 @@ int main (void)
          
          AbschnittCounter+=1;
          //sei();
-         OSZI_B_HI;
+         //OSZI_B_HI;
       } // end ringbufferstatus & (1<<STARTBIT)
       
       
@@ -1466,8 +1442,7 @@ int main (void)
       // **************************************
       // * Motor A *
       // **************************************
-      // Es hat noch Steps, CounterA ist abgezaehlt (Ende des aktuellen Impulses, DelayA bestimmt Impulsabstand fuer Steps)
- 		
+      // Es hat noch Steps, CounterA ist abgezaehlt (Ende des aktuellen Impulses, DelayA bestimmt Impulsabstand fuer Steps) 
       if (StepCounterA && (CounterA >= DelayA) &&(!((anschlagstatus & (1<< END_A0)))))
 		{
          
@@ -1484,10 +1459,11 @@ int main (void)
             
          }
          
+         
 			//sei();
          
 		}
-		else// if (CounterA > 2) // zwei Durchgänge in ISR, Impulsbreite gewaehrleisten
+		else // 
 		{
 			STEPPERPORT_1 |= (1<<MA_STEP);            // Impuls OFF
 			
