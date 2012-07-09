@@ -681,6 +681,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
          
       }
    }// A>B
+    
    
    else // B>A A weg
    {
