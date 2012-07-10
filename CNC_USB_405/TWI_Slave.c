@@ -125,8 +125,13 @@ volatile uint8_t           liniencounter= 0;
 #define RICHTUNG_C	2
 #define RICHTUNG_D	3
 
+// Konstanten fuer cncstatus
 #define GO_HOME            3 // Bit fuer befehl beginn home auf cncstatus
-#define At_HOME            4 // Bit fuer befehl beginn home auf cncstatus
+//#define AT_HOME            4 // Bit fuer befehl beginn home auf cncstatus
+
+#define LOAD_NEXT    5  // Bit fuer Laden des naechsten Abschnitts in der loop
+#define LOAD_LAST    6  // Bit fuer Laden des letzten Abschnitts in der loop
+
 
 #define STEPPERPORT_1	PORTC
 #define STEPPERDDR_1    DDRC
@@ -628,27 +633,12 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	DelayD <<=8;
 	DelayD += delayL;
    
-   motorstatus=AbschnittDaten[21];
+ //  PWM = AbschnittDaten[20];
    
-   /*
-   if (StepCounterA > StepCounterB) 
-   {
-      motorstatus |= (1<<COUNT_A);
-      //lcd_putc('A');
-   }
-   else 
-   {
-      motorstatus |= (1<<COUNT_B);
-      //lcd_putc('B');
-   }
-    */
+    motorstatus=AbschnittDaten[21];
+   return returnwert;
    
-   // Test 16.12.11
-   //motorstatus |= (1<<COUNT_A);
    
-   //return returnwert;
-   
-   /*
    if (StepCounterA > StepCounterB) 
    {
       if (StepCounterA > StepCounterC)
@@ -713,7 +703,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
          
       }
    }
-   */
+   
    //OSZI_A_HI;
    return returnwert;
 }
@@ -844,6 +834,7 @@ void AnschlagVonMotor(const uint8_t motor)
 
 void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
 {
+   
    STEPPERPORT_1 |= (1<<(MA_EN + motor));					// Motor A... OFF
 
    if (motor < 2)
