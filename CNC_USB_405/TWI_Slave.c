@@ -899,12 +899,14 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
          uint8_t aktuelleladeposition=(ladeposition & 0x00FF);
          aktuelleladeposition &= 0x03;
          // aktuellen Abschnitt laden
+         
          aktuellelage = AbschnittLaden((uint8_t*)CNCDaten[aktuelleladeposition]);
          
          if (aktuellelage==2) // war letzter Abschnitt
          {
             endposition=abschnittnummer; // letzter Abschnitt zu fahren
             
+            cncstatus |= (1<<LOAD_LAST);
             // Neu: letzen Abschnitt melden
             sendbuffer[0]=0xD0;
             sendbuffer[5]=abschnittnummer;
@@ -920,6 +922,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
          }  
          else
          {
+            cncstatus |= (1<<LOAD_NEXT);
             // neuen Abschnitt abrufen
             sendbuffer[5]=abschnittnummer;
             sendbuffer[6]=ladeposition;
@@ -1184,6 +1187,18 @@ int main (void)
                
             default: // 45 us
             {  
+               
+               if (cncstatus & (1<<LOAD_NEXT))
+               {
+                  
+                  cncstatus &= ~(1<<LOAD_NEXT);
+               }
+               else if (cncstatus & (1<<LOAD_LAST))
+               {
+                  
+                  cncstatus &= ~(1<<LOAD_LAST);
+               }
+               
                // Abschnittnummer bestimmen
                uint8_t indexh=buffer[18];
                uint8_t indexl=buffer[19];
