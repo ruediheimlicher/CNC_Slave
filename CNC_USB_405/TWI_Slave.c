@@ -835,17 +835,17 @@ void AnschlagVonMotor(const uint8_t motor)
 void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
 {
    
-   STEPPERPORT_1 |= (1<<(MA_EN + motor));					// Motor A... OFF
+//   STEPPERPORT_1 |= (1<<(MA_EN + motor));					// Motor A... OFF
 
    if (motor < 2)
    {
-      STEPPERPORT_1 |= (1<<(MA_EN + motor));
+//      STEPPERPORT_1 |= (1<<(MA_EN + motor));
       StepCounterA=0;
       StepCounterB=0;
    }
    else
    {
-      STEPPERPORT_2 |= (1<<(MA_EN + motor -2)); // MC_EN ist = MA_EN, aber motor ist 3
+//      STEPPERPORT_2 |= (1<<(MA_EN + motor -2)); // MC_EN ist = MA_EN, aber motor ist 3
       StepCounterC=0;
       StepCounterD=0;
       
