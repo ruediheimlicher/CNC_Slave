@@ -202,7 +202,7 @@ static volatile uint8_t    motorstatus=0x00;
 volatile uint8_t           usbstatus=0x00;
 
 static volatile uint8_t richtung=0;
- 
+
 volatile uint8_t           status=0;
 
 volatile uint8_t           PWM=0;
@@ -234,7 +234,7 @@ void slaveinit(void)
 	//OSZIPORTDDR |= (1<<PULS);	// Output
 	//OSZIPORT |= (1<<PULS);		// HI
 	
-
+   
 	STEPPERDDR_1 |= (1<<MA_STEP);
 	STEPPERPORT_1 |= (1<<MA_STEP);	// HI
 	
@@ -281,48 +281,48 @@ void slaveinit(void)
 	
    OSZIPORTDDR |= (1<<OSZI_PULS_B);		
    OSZIPORT |= (1<<OSZI_PULS_B);		
-
+   
    OSZIPORTDDR |= (1<<OSZI_PULS_C);		
    OSZIPORT |= (1<<OSZI_PULS_C);		
    OSZIPORTDDR |= (1<<OSZI_PULS_D);		
    OSZIPORT |= (1<<OSZI_PULS_D);		
-
-    
+   
+   
 	TASTENDDR &= ~(1<<TASTE0);	//Bit 0 von PORT F als Eingang fŸr Taste 0
 	TASTENPORT |= (1<<TASTE0);	//Pull-up
-
-//	DDRB &= ~(1<<PORTB1);	//Bit 1 von PORT F als Eingang fŸr Taste 1
-//	PORTB |= (1<<PORTB1);	//Pull-up
+   
+   //	DDRB &= ~(1<<PORTB1);	//Bit 1 von PORT F als Eingang fŸr Taste 1
+   //	PORTB |= (1<<PORTB1);	//Pull-up
 	
-
+   
 	//LCD
 	LCD_DDR |= (1<<LCD_RSDS_PIN);		//Pin 4 von PORT D als Ausgang fuer LCD
  	LCD_DDR |= (1<<LCD_ENABLE_PIN);	//Pin 5 von PORT D als Ausgang fuer LCD
 	LCD_DDR |= (1<<LCD_CLOCK_PIN);	//Pin 6 von PORT D als Ausgang fuer LCD
-
+   
 	
    // Anschlaege
    
    STEPPERPORT_1 &= ~(1<<END_A0_PIN);			//	Eingang fŸr Endanschlag A0
 	STEPPERPORT_1 |= (1<<END_A0_PIN);			// Pull-up
-
+   
 	STEPPERPORT_1 &= ~(1<<END_B0_PIN);			//	Eingang fŸr Endanschlag B0
 	STEPPERPORT_1 |= (1<<END_B0_PIN);			// Pull-up
-
+   
    
    STEPPERDDR_2 &= ~(1<<END_C0_PIN);			//	Eingang fŸr Endanschlag C0
 	STEPPERPORT_2 |= (1<<END_C0_PIN);			// Pull-up
-
+   
    STEPPERDDR_2 &= ~(1<<END_D0_PIN);			//	Eingang fŸr Endanschlag D0
 	STEPPERPORT_2 |= (1<<END_D0_PIN);			// Pull-up
-
+   
 	
    LOOPLEDDDR |= (1<<LOOPLED);                // Blink-LED
    LOOPLEDPORT |= (1<<LOOPLED);
-
+   
    CMD_DDR |= (1<<DC);                       // DC-PWM-Ausgang
    CMD_PORT &= ~(1<<DC);                      // LO
-
+   
    CMD_DDR |= (1<<STROM);                    // Stepperstrom-Ausgang, Active HI
    CMD_PORT &= ~(1<<STROM);                  // LO
 }
@@ -342,7 +342,7 @@ void delay_ms(unsigned int ms)/* delay for a minimum of <ms> */
 
 void timer0 (void) 
 { 
-// Timer fuer Exp
+   // Timer fuer Exp
 	//TCCR0 |= (1<<CS01);						// clock	/8
 	//TCCR0 |= (1<<CS01)|(1<<CS02);			// clock	/64
 	TCCR0B |= (1<<CS02)| (1<<CS02);			// clock	/256
@@ -353,31 +353,31 @@ void timer0 (void)
 	//TIFR |= (1<<TOV0);							//Clear TOV0 Timer/Counter Overflow Flag. clear pending interrupts
 	TIMSK0 |= (1<<TOIE0);							//Overflow Interrupt aktivieren
 	TCNT0 = TIMER0_STARTWERT;					//RŸcksetzen des Timers
-
+   
 }
 
 /*
-void timer2 (uint8_t wert) 
-{ 
-//	TCCR2 |= (1<<CS02);							//8-Bit Timer, Timer clock = system clock/256
-
-//Takt fuer Servo
-	TCCR2 |= (1<<CS20)|(1<<CS21);				//Takt /64	Intervall 64 us
-
-	TCCR2 |= (1<<WGM21);							//	ClearTimerOnCompareMatch CTC
-
-	//OC2 akt
-//	TCCR2 |= (1<<COM20);						//	OC2 Pin zuruecksetzen bei CTC
-
-
-	TIFR |= (1<<TOV2);							//Clear TOV2 Timer/Counter Overflow Flag. clear pending interrupts
-	TIMSK0 |= (1<<OCIE2);							//CTC Interrupt aktivieren
-
-	TCNT2 = 0x00;									//Zaehler zuruecksetzen
-	
-	OCR2 = wert;									//Setzen des Compare Registers auf Servoimpulsdauer
-} 
-*/
+ void timer2 (uint8_t wert) 
+ { 
+ //	TCCR2 |= (1<<CS02);							//8-Bit Timer, Timer clock = system clock/256
+ 
+ //Takt fuer Servo
+ TCCR2 |= (1<<CS20)|(1<<CS21);				//Takt /64	Intervall 64 us
+ 
+ TCCR2 |= (1<<WGM21);							//	ClearTimerOnCompareMatch CTC
+ 
+ //OC2 akt
+ //	TCCR2 |= (1<<COM20);						//	OC2 Pin zuruecksetzen bei CTC
+ 
+ 
+ TIFR |= (1<<TOV2);							//Clear TOV2 Timer/Counter Overflow Flag. clear pending interrupts
+ TIMSK0 |= (1<<OCIE2);							//CTC Interrupt aktivieren
+ 
+ TCNT2 = 0x00;									//Zaehler zuruecksetzen
+ 
+ OCR2 = wert;									//Setzen des Compare Registers auf Servoimpulsdauer
+ } 
+ */
 
 volatile uint16_t timer2Counter=0; 
 
@@ -387,33 +387,33 @@ ISR (TIMER2_OVF_vect)
 	
    if (PWM) // Draht soll heiss sein. 
    {
- //     pwmdivider++;
-//      if (pwmdivider >= DC_DIVIDER)
+      //     pwmdivider++;
+      //      if (pwmdivider >= DC_DIVIDER)
       {
          /*
-         
-         pwmposition ++;
-         
-         if (pwmposition > PWM) // > DC OFF, PIN ist LO
-         {
-            CMD_PORT &= ~(1<<DC);
-            //OSZI_A_HI ;
-         }
-         else                    // > DC ON, PIN ist HI
-         {
-            CMD_PORT |= (1<<DC);
-            //OSZI_A_LO ;
-            
-         }
+          
+          pwmposition ++;
+          
+          if (pwmposition > PWM) // > DC OFF, PIN ist LO
+          {
+          CMD_PORT &= ~(1<<DC);
+          //OSZI_A_HI ;
+          }
+          else                    // > DC ON, PIN ist HI
+          {
+          CMD_PORT |= (1<<DC);
+          //OSZI_A_LO ;
+          
+          }
           */
- //        pwmdivider = 0;
+         //        pwmdivider = 0;
       }
       
    }
    else
    {
       pwmposition =0;
- //     pwmdivider = 0;
+      //     pwmdivider = 0;
    }
    
    
@@ -432,23 +432,23 @@ ISR (TIMER2_OVF_vect)
       {
          pwmposition =0;
       }
-
+      
       
 		timer2Counter = 0; 
-        //OSZI_B_TOGG ;
-	
+      //OSZI_B_TOGG ;
+      
    } 
 	TCNT2 = 10;							// ergibt 2 kHz fuer Timertakt
 }
 
 /*
-ISR(TIMER2_COMP_vect) // Schaltet Impuls an SERVOPIN0 aus
-{
-//		lcd_clr_line(1);
-//		lcd_puts("Timer2 Comp\0");
-		TCCR20=0;
-}
-*/
+ ISR(TIMER2_COMP_vect) // Schaltet Impuls an SERVOPIN0 aus
+ {
+ //		lcd_clr_line(1);
+ //		lcd_puts("Timer2 Comp\0");
+ TCCR20=0;
+ }
+ */
 
 
 
@@ -467,7 +467,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
     5    delayax hb
     6    delayay lb
     7    delayay hb
-
+    
     8    schrittebx lb
     9    schrittebx hb
     10    schritteby lb
@@ -477,7 +477,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
     13    delaybx hb
     14    delayby lb
     15    delayby hb
-
+    
     
     16   (8)    code
     17   (9)    position // Beschreibung der Lage im Schnittpolygon:first, last, ...
@@ -489,7 +489,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
     21   motorstatus // relevanter Motor fuer Abschnitt
 	 */			
 	int lage = 0;
-//   lage = AbschnittDaten[9]; // Start: 1, innerhalb: 0, Ende: 2
+   //   lage = AbschnittDaten[9]; // Start: 1, innerhalb: 0, Ende: 2
    lage = AbschnittDaten[17]; // Start: 1, innerhalb: 0, Ende: 2
 	if (lage & 0x01)
    {
@@ -579,7 +579,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	
 	dataL=AbschnittDaten[8];
 	dataH=AbschnittDaten[9];
-
+   
 	//richtung=0;
 	if (dataH & (0x80)) // Bit 7 gesetzt, negative zahl
 	{
@@ -600,7 +600,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	
 	delayL=AbschnittDaten[12];
 	delayH=AbschnittDaten[13];
-
+   
 	DelayC = delayH;
 	DelayC <<=8;
 	DelayC += delayL;
@@ -617,7 +617,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	
 	dataL=AbschnittDaten[10];
 	dataH=AbschnittDaten[11];
-
+   
 	if (dataH & (0x80)) // Bit 7 gesetzt, negative zahl
 	{
 		richtung |= (1<<RICHTUNG_D); // Rueckwarts
@@ -637,14 +637,14 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	
 	delayL=AbschnittDaten[14];
 	delayH=AbschnittDaten[15];
-
+   
 	DelayD = delayH;
 	DelayD <<=8;
 	DelayD += delayL;
    
- //  PWM = AbschnittDaten[20];
+   //  PWM = AbschnittDaten[20];
    
-    motorstatus=AbschnittDaten[21];
+   motorstatus=AbschnittDaten[21];
    return returnwert;
    
    
@@ -680,7 +680,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
          
       }
    }// A>B
-    
+   
    
    else // B>A A weg
    {
@@ -733,7 +733,7 @@ void AnschlagVonMotor(const uint8_t motor)
          anschlagstatus |= (1<< (END_A0 + motor));      // Bit fuer Anschlag A0+motor setzen
          //lcd_putc('A');
          
-
+         
          if (cncstatus & (1<<GO_HOME)) // nur eigene Seite abstellen
          {
             
@@ -744,15 +744,15 @@ void AnschlagVonMotor(const uint8_t motor)
                {
                   
                }
-            
-            
+                  
+                  
             }//switch motor
-
+            
             //lcd_putc('B');
             sendbuffer[0]=0xB5 + motor;
             
-           cncstatus |= (1<<motor);
-                
+            cncstatus |= (1<<motor);
+            
             if (motor<2) // Stepperport 1
             {
                STEPPERPORT_1 |= (1<<(MA_EN + motor));     // Motor 0,1 OFF
@@ -762,7 +762,7 @@ void AnschlagVonMotor(const uint8_t motor)
                CounterA=0;
                CounterB=0;
                
-           }
+            }
             else // Stepperport 2
             {
                STEPPERPORT_2 |= (1<<(MA_EN + motor));     // Motor 2,3 OFF
@@ -771,9 +771,9 @@ void AnschlagVonMotor(const uint8_t motor)
                StepCounterD=0;
                CounterC=0;
                CounterD=0;
-          }
+            }
             //cncstatus &= ~(1<<GO_HOME);
-         
+            
          }
          else           // beide Seiten abstellen
          {    
@@ -804,7 +804,7 @@ void AnschlagVonMotor(const uint8_t motor)
             
             ladeposition=0;
             motorstatus=0;
-         
+            
          }
          
          sendbuffer[5]=abschnittnummer;
@@ -812,13 +812,13 @@ void AnschlagVonMotor(const uint8_t motor)
          sendbuffer[7]=cncstatus;
          usb_rawhid_send((void*)sendbuffer, 50);
          sei();
- 
+         
          
          //ladeposition=0;
-        // motorstatus=0;
+         // motorstatus=0;
          
          richtung &= ~(1<<(RICHTUNG_A + motor));
-        
+         
          
          sei();
       } // NOT END_A0
@@ -831,7 +831,7 @@ void AnschlagVonMotor(const uint8_t motor)
    else 
    {
       if (!(anschlagstatus &(1<< (END_A0 + motor))))
-      
+         
       {
          anschlagstatus &= ~(1<< (END_A0 + motor)); // Bit fuer Anschlag B0 zuruecksetzen
       }
@@ -844,31 +844,31 @@ void AnschlagVonMotor(const uint8_t motor)
 void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
 {
    
-//   STEPPERPORT_1 |= (1<<(MA_EN + motor));					// Motor A... OFF
-
+   //   STEPPERPORT_1 |= (1<<(MA_EN + motor));					// Motor A... OFF
+   
    if (motor < 2)
    {
-//      STEPPERPORT_1 |= (1<<(MA_EN + motor));
-  //    StepCounterA=0;
- //     StepCounterB=0;
+      //      STEPPERPORT_1 |= (1<<(MA_EN + motor));
+      //    StepCounterA=0;
+      //     StepCounterB=0;
    }
    else
    {
-//      STEPPERPORT_2 |= (1<<(MA_EN + motor -2)); // MC_EN ist = MA_EN, aber motor ist 3
-   //   StepCounterC=0;
-   //   StepCounterD=0;
+      //      STEPPERPORT_2 |= (1<<(MA_EN + motor -2)); // MC_EN ist = MA_EN, aber motor ist 3
+      //   StepCounterC=0;
+      //   StepCounterD=0;
       
    }
    
-//   STEPPERPORT_1 |= (1<<(MA_EN + motor));
-
+   //   STEPPERPORT_1 |= (1<<(MA_EN + motor));
+   
    StepCounterA=0;
    StepCounterB=0;
    CounterA=0;
    CounterB=0;
    
    
-//   STEPPERPORT_2 |= (1<<(MA_EN + motor -2));
+   //   STEPPERPORT_2 |= (1<<(MA_EN + motor -2));
    StepCounterC=0;
    StepCounterD=0;
    CounterC=0;
@@ -890,13 +890,13 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
       sendbuffer[7]=cncstatus;
       usb_rawhid_send((void*)sendbuffer, 50);
       sei();
-     /*
-      sendbuffer[0]=0x00;
-      sendbuffer[1]=0x00;
-      sendbuffer[5]=0x00;
-      sendbuffer[6]=0x00;
-      sendbuffer[7]=0;
-      */
+      /*
+       sendbuffer[0]=0x00;
+       sendbuffer[1]=0x00;
+       sendbuffer[5]=0x00;
+       sendbuffer[6]=0x00;
+       sendbuffer[7]=0;
+       */
       ladeposition=0;
       
       STEPPERPORT_1 |= (1<<MA_EN);
@@ -923,7 +923,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
             endposition=abschnittnummer; // letzter Abschnitt zu fahren
             
             cncstatus |= (1<<LOAD_LAST);
-           
+            
             // Neu: letzen Abschnitt melden
             sendbuffer[0]=0xD0;
             sendbuffer[5]=abschnittnummer;
@@ -932,9 +932,9 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
             sei();
             
             /*
-            sendbuffer[0]=0x00;
-            sendbuffer[5]=0x00;
-            sendbuffer[6]=0x00;
+             sendbuffer[0]=0x00;
+             sendbuffer[5]=0x00;
+             sendbuffer[6]=0x00;
              */
             // end neu
          }  
@@ -950,20 +950,20 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
             sei();
             
             /*
-            sendbuffer[0]=0x00;
-            sendbuffer[5]=0x00;
-            sendbuffer[6]=0x00;
-            */
+             sendbuffer[0]=0x00;
+             sendbuffer[5]=0x00;
+             sendbuffer[6]=0x00;
+             */
          }
          
-        ladeposition++;
+         ladeposition++;
          
       }
       AbschnittCounter++;
       //OSZI_A_LO;
       OSZI_B_HI;
    }
-  
+   
 }
 
 
@@ -1054,20 +1054,20 @@ int main (void)
 		if (r > 0) // etwas angekommen
       {
          
-        // cli(); 
+         // cli(); 
          // code abfragen
          uint8_t code = 0x00;
          code = buffer[16];
          /*
-         // Empfang quittieren
-         sendbuffer[5]=code;
-         //sendbuffer[6]=code;
-         sendbuffer[0]=0x33;
-         usb_rawhid_send((void*)sendbuffer, 50);
-         sendbuffer[0]=0x00;
-         sendbuffer[5]=0x00;
-         sendbuffer[6]=0x00;
-         */
+          // Empfang quittieren
+          sendbuffer[5]=code;
+          //sendbuffer[6]=code;
+          sendbuffer[0]=0x33;
+          usb_rawhid_send((void*)sendbuffer, 50);
+          sendbuffer[0]=0x00;
+          sendbuffer[5]=0x00;
+          sendbuffer[6]=0x00;
+          */
          //OSZI_A_LO ;
          
          switch (code)
@@ -1245,7 +1245,7 @@ int main (void)
                
                if (abschnittnummer==0) // neue Datenreihe
                {
-                   PWM = 0;
+                  PWM = 0;
                   ladeposition=0;
                   endposition=0xFFFF;
                   anschlagstatus=0;
@@ -1295,7 +1295,7 @@ int main (void)
                   pos &= 0x03; // 2 bit // Beschraenkung des index auf Buffertiefe, wert 0,1 
                   //if (abschnittnummer>8)
                   //{
-                     //lcd_putint1(pos);
+                  //lcd_putint1(pos);
                   //}
                   uint8_t i=0;
                   for(i=0;i<USB_DATENBREITE;i++)
@@ -1317,9 +1317,9 @@ int main (void)
                   sendbuffer[0]=0xAF;
                   usb_rawhid_send((void*)sendbuffer, 50);
                   sei();
-//                  sendbuffer[0]=0x00;
-//                  sendbuffer[5]=0x00;
-//                  sendbuffer[6]=0x00;
+                  //                  sendbuffer[0]=0x00;
+                  //                  sendbuffer[5]=0x00;
+                  //                  sendbuffer[6]=0x00;
                   
                }
                
@@ -1340,7 +1340,7 @@ int main (void)
             }  
          } // switch code
          
-  //       OSZI_A_HI ;
+         //       OSZI_A_HI ;
          
          code=0;
          sei();
@@ -1574,7 +1574,7 @@ int main (void)
             StepEndVonMotor(2);
             
          }
-
+         
 			//sei();
 		}
 		else// if (CounterC > 2)
@@ -1612,7 +1612,7 @@ int main (void)
 				StepEndVonMotor(3);
             
          }
-        
+         
 			//sei();
 		}
 		else// if (CounterD > 2)
@@ -1631,7 +1631,7 @@ int main (void)
       // ***************
       
 		sei(); 
-
+      
 		/**	Ende CNC-routinen	***********************/
 		
       /* **** rx_buffer abfragen **************** */
@@ -1736,19 +1736,19 @@ int main (void)
       
 		//OSZI_B_HI;
       /*
-      if (usbstatus & (1<< USB_SEND))
-      {
-         //lcd_gotoxy(10,1);
-         //lcd_puthex(AbschnittCounter);
-         //sendbuffer[3]= AbschnittCounter;
-         //usb_rawhid_send((void*)sendbuffer, 50);
-         //sendbuffer[0]=0;
-         //sendbuffer[5]=0;
-         //sendbuffer[6]=0;
-         //usbstatus &= ~(1<< USB_SEND);
-         
-      }
-      */
+       if (usbstatus & (1<< USB_SEND))
+       {
+       //lcd_gotoxy(10,1);
+       //lcd_puthex(AbschnittCounter);
+       //sendbuffer[3]= AbschnittCounter;
+       //usb_rawhid_send((void*)sendbuffer, 50);
+       //sendbuffer[0]=0;
+       //sendbuffer[5]=0;
+       //sendbuffer[6]=0;
+       //usbstatus &= ~(1<< USB_SEND);
+       
+       }
+       */
 	}//while
    //free (sendbuffer);
    
