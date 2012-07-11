@@ -68,14 +68,22 @@ volatile uint8_t           liniencounter= 0;
 #define OSZIPORTPIN	PINA
 #define OSZI_PULS_A	0
 #define OSZI_PULS_B	1
+#define OSZI_PULS_C	2
+#define OSZI_PULS_D	3
 
 #define OSZI_A_LO    OSZIPORT &= ~(1<<OSZI_PULS_A)
 #define OSZI_A_HI    OSZIPORT |= (1<<OSZI_PULS_A)
 
-
 #define OSZI_B_LO    OSZIPORT &= ~(1<<OSZI_PULS_B)
 #define OSZI_B_HI    OSZIPORT |= (1<<OSZI_PULS_B)
 #define OSZI_B_TOGG  OSZIPORT ^= (1<<OSZI_PULS_B)
+
+#define OSZI_C_LO    OSZIPORT &= ~(1<<OSZI_PULS_C)
+#define OSZI_C_HI    OSZIPORT |= (1<<OSZI_PULS_C)
+
+#define OSZI_D_LO    OSZIPORT &= ~(1<<OSZI_PULS_D)
+#define OSZI_D_HI    OSZIPORT |= (1<<OSZI_PULS_D)
+
 // SPI
 
 
@@ -234,7 +242,6 @@ void slaveinit(void)
 	STEPPERPORT_1 |= (1 << MA_RI);	// HI
    
 	STEPPERDDR_1 |= (1 << MA_EN);
-//	STEPPERPORT_1 &= ~(1 << MA_EN);   // LO
    STEPPERPORT_1 |= (1 << MA_EN);	// HI
 	
 	STEPPERDDR_1 |= (1 << MB_STEP);
@@ -244,7 +251,6 @@ void slaveinit(void)
 	STEPPERPORT_1 |= (1 << MB_RI);	// HI
 	
 	STEPPERDDR_1 |= (1 << MB_EN);
-//	STEPPERPORT_1 &= ~(1 << MB_EN); // LO
    STEPPERPORT_1 |= (1 << MB_EN);	// HI
    
    //Seite 2
@@ -255,7 +261,6 @@ void slaveinit(void)
 	STEPPERPORT_1 |= (1 << MC_RI);	// HI
    
 	STEPPERDDR_2 |= (1 << MC_EN);
-	//STEPPERPORT_2 &= ~(1 << MC_EN);   // LO
 	STEPPERPORT_2 |= (1 << MC_EN);	// HI
 	
 	STEPPERDDR_2 |= (1 << MD_STEP);
@@ -265,24 +270,28 @@ void slaveinit(void)
 	STEPPERPORT_2 |= (1 << MD_RI);	// HI
 	
 	STEPPERDDR_2 |= (1 << MD_EN);
-	//STEPPERPORT_2 &= ~(1 << MD_EN); // LO
    STEPPERPORT_2 |= (1 << MD_EN);	// HI
    
    
 	
 	//Pin 0 von   als Ausgang fuer OSZI
    
-	OSZIPORTDDR |= (1<<OSZI_PULS_A);	//Pin 0 von  als Ausgang fuer LED TWI
-    OSZIPORT |= (1<<OSZI_PULS_A);		// HI
+	OSZIPORTDDR |= (1<<OSZI_PULS_A);	//Pin OSZI_A  als Ausgang fuer OSZI
+   OSZIPORT |= (1<<OSZI_PULS_A);		// HI
 	
-    OSZIPORTDDR |= (1<<OSZI_PULS_B);		//Pin 1 von  als Ausgang fuer LED TWI
-    OSZIPORT |= (1<<OSZI_PULS_B);		//Pin   von   als Ausgang fuer OSZI
-	
+   OSZIPORTDDR |= (1<<OSZI_PULS_B);		
+   OSZIPORT |= (1<<OSZI_PULS_B);		
+
+   OSZIPORTDDR |= (1<<OSZI_PULS_C);		
+   OSZIPORT |= (1<<OSZI_PULS_C);		
+   OSZIPORTDDR |= (1<<OSZI_PULS_D);		
+   OSZIPORT |= (1<<OSZI_PULS_D);		
+
     
-	TASTENDDR &= ~(1<<TASTE0);	//Bit 0 von PORT B als Eingang fŸr Taste 0
+	TASTENDDR &= ~(1<<TASTE0);	//Bit 0 von PORT F als Eingang fŸr Taste 0
 	TASTENPORT |= (1<<TASTE0);	//Pull-up
 
-//	DDRB &= ~(1<<PORTB1);	//Bit 1 von PORT B als Eingang fŸr Taste 1
+//	DDRB &= ~(1<<PORTB1);	//Bit 1 von PORT F als Eingang fŸr Taste 1
 //	PORTB |= (1<<PORTB1);	//Pull-up
 	
 
@@ -840,31 +849,32 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
    if (motor < 2)
    {
 //      STEPPERPORT_1 |= (1<<(MA_EN + motor));
-      StepCounterA=0;
-      StepCounterB=0;
+  //    StepCounterA=0;
+ //     StepCounterB=0;
    }
    else
    {
 //      STEPPERPORT_2 |= (1<<(MA_EN + motor -2)); // MC_EN ist = MA_EN, aber motor ist 3
-      StepCounterC=0;
-      StepCounterD=0;
+   //   StepCounterC=0;
+   //   StepCounterD=0;
       
    }
    
-   STEPPERPORT_1 |= (1<<(MA_EN + motor));
+//   STEPPERPORT_1 |= (1<<(MA_EN + motor));
+
    StepCounterA=0;
    StepCounterB=0;
    CounterA=0;
    CounterB=0;
    
    
-   STEPPERPORT_2 |= (1<<(MA_EN + motor -2));
+//   STEPPERPORT_2 |= (1<<(MA_EN + motor -2));
    StepCounterC=0;
    StepCounterD=0;
    CounterC=0;
    CounterD=0;
    
-   
+   OSZI_B_LO;
    if (abschnittnummer==endposition) // Serie fertig
    {  
       ringbufferstatus = 0;
@@ -889,6 +899,10 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
       */
       ladeposition=0;
       
+      STEPPERPORT_1 |= (1<<MA_EN);
+      STEPPERPORT_1 |= (1<<MB_EN);
+      STEPPERPORT_2 |= (1<<MC_EN);
+      STEPPERPORT_2 |= (1<<MD_EN);
    }
    else 
    { 
@@ -903,6 +917,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
          uint8_t aktuellermotor = motor;
          aktuellermotor <<=6;
          cncstatus |= aktuellermotor;
+         
          if (aktuellelage==2) // war letzter Abschnitt
          {
             endposition=abschnittnummer; // letzter Abschnitt zu fahren
@@ -946,6 +961,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
       }
       AbschnittCounter++;
       //OSZI_A_LO;
+      OSZI_B_HI;
    }
   
 }
@@ -1460,31 +1476,38 @@ int main (void)
       // Es hat noch Steps, CounterA ist abgezaehlt (Ende des aktuellen Impulses, DelayA bestimmt Impulsabstand fuer Steps) 
       if (StepCounterA && (CounterA >= DelayA) &&(!((anschlagstatus & (1<< END_A0)))))
 		{
+         OSZI_A_LO;
          
          //cli();
          // Impuls einschalten
 			STEPPERPORT_1 &= ~(1<<MA_STEP);					// Impuls an Motor A LO ON
-			CounterA=0;
+			OSZI_C_LO;
+         CounterA=0;
 			StepCounterA--;
          
-			if (StepCounterA ==0 && (motorstatus & (1<< COUNT_A))) // Motor A ist relevant fuer Stepcount 
-			{				
+			if (StepCounterA ==0)
+         {
             
-            StepEndVonMotor(0);
-            
+            if (motorstatus & (1<< COUNT_A)) // Motor A ist relevant fuer Stepcount 
+            {				
+               
+               StepEndVonMotor(0);
+               
+            }
          }
-         
+         OSZI_A_HI;
          
 			//sei();
          
 		}
-		else // 
+		else //if (CounterA) 
 		{
+         
 			STEPPERPORT_1 |= (1<<MA_STEP);            // Impuls OFF
-			
+			OSZI_C_HI;
          if (StepCounterA ==0)							// Keine Steps mehr fuer Motor A
 			{
- 				STEPPERPORT_1 |= (1<<MA_EN);					// Motor A OFF            
+ 				//STEPPERPORT_1 |= (1<<MA_EN);					// Motor A OFF            
 			}			
 		}
       
@@ -1505,13 +1528,17 @@ int main (void)
 			CounterB=0;
 			StepCounterB--;
          
-			if (StepCounterB ==0 && (motorstatus & (1<< COUNT_B))) // Motor B ist relevant fuer Stepcount 
-			{
-            
-				StepEndVonMotor(1);
-            
+			if (StepCounterB ==0)
+         {
+            //StepCounterB=0;
+            if(motorstatus & (1<< COUNT_B)) // Motor B ist relevant fuer Stepcount 
+            {
+               
+               StepEndVonMotor(1);
+               
+               
+            }
          }
-			
          //sei();
 		}
 		else  // if (CounterB > 2)
@@ -1519,7 +1546,7 @@ int main (void)
 			STEPPERPORT_1 |= (1<<MB_STEP);
 			if (StepCounterB ==0)							// Keine Steps mehr fuer Motor B
 			{
-				STEPPERPORT_1 |= (1<<MB_EN);					// Motor B OFF
+				//STEPPERPORT_1 |= (1<<MB_EN);					// Motor B OFF
 			}
 			
 		}
@@ -1536,7 +1563,7 @@ int main (void)
 		{
          //cli();
          //lcd_putc('C');
-         
+         OSZI_D_LO;
 			STEPPERPORT_2 &= ~(1<<MC_STEP);					// Impuls an Motor C LO ON
 			CounterC=0;
 			StepCounterC--;
@@ -1552,10 +1579,11 @@ int main (void)
 		}
 		else// if (CounterC > 2)
 		{
+         OSZI_D_HI;
 			STEPPERPORT_2 |= (1<<MC_STEP);
 			if (StepCounterC ==0)							// Keine Steps mehr fuer Motor C
 			{
- 				STEPPERPORT_2 |= (1<<MC_EN);					// Motor C OFF            
+ 				//STEPPERPORT_2 |= (1<<MC_EN);					// Motor C OFF            
 			}
 			
 		}
@@ -1592,7 +1620,7 @@ int main (void)
 			STEPPERPORT_2 |= (1<<MD_STEP);
 			if (StepCounterD ==0)							// Keine Steps mehr fuer Motor D
 			{
-				STEPPERPORT_2 |= (1<<MD_EN);					// Motor D OFF            
+				//STEPPERPORT_2 |= (1<<MD_EN);					// Motor D OFF            
 			}
 			
 		}
