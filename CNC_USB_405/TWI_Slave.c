@@ -900,18 +900,22 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
          // aktuellen Abschnitt laden
          
          aktuellelage = AbschnittLaden((uint8_t*)CNCDaten[aktuelleladeposition]);
-         
+         uint8_t aktuellermotor = motor;
+         aktuellermotor <<=6;
+         cncstatus |= aktuellermotor;
          if (aktuellelage==2) // war letzter Abschnitt
          {
             endposition=abschnittnummer; // letzter Abschnitt zu fahren
             
             cncstatus |= (1<<LOAD_LAST);
+           
             // Neu: letzen Abschnitt melden
             sendbuffer[0]=0xD0;
             sendbuffer[5]=abschnittnummer;
             sendbuffer[6]=ladeposition;
             usb_rawhid_send((void*)sendbuffer, 50);
             sei();
+            
             /*
             sendbuffer[0]=0x00;
             sendbuffer[5]=0x00;
@@ -923,11 +927,13 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
          {
             cncstatus |= (1<<LOAD_NEXT);
             // neuen Abschnitt abrufen
+            
             sendbuffer[5]=abschnittnummer;
             sendbuffer[6]=ladeposition;
             sendbuffer[0]=0xA0 + motor;
             usb_rawhid_send((void*)sendbuffer, 50);
             sei();
+            
             /*
             sendbuffer[0]=0x00;
             sendbuffer[5]=0x00;
@@ -935,7 +941,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
             */
          }
          
-         ladeposition++;
+        ladeposition++;
          
       }
       AbschnittCounter++;
@@ -1189,24 +1195,25 @@ int main (void)
                
                if (cncstatus & (1<<LOAD_NEXT))
                {
-                  /*
-                  sendbuffer[5]=abschnittnummer;
-                  sendbuffer[6]=ladeposition;
-                  sendbuffer[0]=0xA0 + motor;
-                  usb_rawhid_send((void*)sendbuffer, 50);
-                  sei();
-                  */
+                  //sendbuffer[5]=abschnittnummer;
+                  //sendbuffer[6]=ladeposition;
+                  //sendbuffer[0]=0xA0 + (cncstatus >>6);// motor;
+                  cncstatus &= ~((1<<6)|(1<<7));
+                  //usb_rawhid_send((void*)sendbuffer, 50);
+                  //sei();
+                  //ladeposition++;
+                  //AbschnittCounter++;
                   cncstatus &= ~(1<<LOAD_NEXT);
                }
                else if (cncstatus & (1<<LOAD_LAST))
                {
-                  /*
-                  sendbuffer[0]=0xD0;
-                  sendbuffer[5]=abschnittnummer;
-                  sendbuffer[6]=ladeposition;
-                  usb_rawhid_send((void*)sendbuffer, 50);
-                  sei();
-                  */
+                  
+                  //sendbuffer[0]=0xD0;
+                  //sendbuffer[5]=abschnittnummer;
+                  //sendbuffer[6]=ladeposition;
+                  //usb_rawhid_send((void*)sendbuffer, 50);
+                  //sei();
+                  
                   cncstatus &= ~(1<<LOAD_LAST);
                }
                
@@ -1222,17 +1229,7 @@ int main (void)
                
                if (abschnittnummer==0) // neue Datenreihe
                {
-                  /*
-                  uint8_t i=0, k=0;
-                  for (k=0;k<RINGBUFFERTIEFE;k++)
-                   {
-                   for(i=0;i<USB_DATENBREITE;i++)
-                   {
-                   CNCDaten[k][i]=0;  
-                   }
-                   }
-                   */
-                  PWM = 0;
+                   PWM = 0;
                   ladeposition=0;
                   endposition=0xFFFF;
                   anschlagstatus=0;
