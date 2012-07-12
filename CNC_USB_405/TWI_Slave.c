@@ -860,6 +860,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A - D   52 us
       
    }
    
+   
    //   STEPPERPORT_1 |= (1<<(MA_EN + motor));
    
    StepCounterA=0;
