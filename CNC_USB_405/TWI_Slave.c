@@ -647,7 +647,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
    motorstatus=AbschnittDaten[21];
    return returnwert;
    
-   
+   // Nicht mehr verwendet, wird in Stepper berechnet
    if (StepCounterA > StepCounterB) 
    {
       if (StepCounterA > StepCounterC)
@@ -841,7 +841,7 @@ void AnschlagVonMotor(const uint8_t motor)
 }
 
 
-void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
+void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A - D   52 us
 {
    
    //   STEPPERPORT_1 |= (1<<(MA_EN + motor));					// Motor A... OFF
@@ -910,10 +910,10 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
       uint8_t aktuellelage=0;
       {
          uint8_t aktuelleladeposition=(ladeposition & 0x00FF);
-         aktuelleladeposition &= 0x03;
+         aktuelleladeposition &= 0x03; // Position im Ringbuffer
          // aktuellen Abschnitt laden
          
-         aktuellelage = AbschnittLaden((uint8_t*)CNCDaten[aktuelleladeposition]);
+         aktuellelage = AbschnittLaden((uint8_t*)CNCDaten[aktuelleladeposition]); //gibt Lage zurueck: 1: Anfang, 2: Ende, 0; innerhalb
          uint8_t aktuellermotor = motor;
          aktuellermotor <<=6;
          cncstatus |= aktuellermotor;
@@ -956,7 +956,7 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A  D   52 us
              */
          }
          
-         ladeposition++;
+         ladeposition++; // Position im Ringbuffer
          
       }
       AbschnittCounter++;
@@ -1330,8 +1330,6 @@ int main (void)
                {
                   {
                      ringbufferstatus &= ~(1<<LASTBIT);
-                     //Beginnen
-                     //lcd_putc('s');
                      ringbufferstatus |= (1<<STARTBIT);
                      
                   }
