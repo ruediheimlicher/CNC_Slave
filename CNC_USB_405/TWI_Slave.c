@@ -419,10 +419,10 @@ ISR (TIMER2_OVF_vect)
    
    if (timer2Counter >= 14) 
 	{
-		CounterA+=1;
-		CounterB+=1;
-      CounterC+=1;
-      CounterD+=1;
+		CounterA-=1;
+		CounterB-=1;
+      CounterC-=1;
+      CounterD-=1;
       
       if (PWM)
       {
@@ -503,7 +503,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
    
 	// Motor A
 	STEPPERPORT_1 &= ~(1<<MA_EN); // Pololu ON
-	CounterA=0;
+	
 	uint8_t dataL=0;
 	uint8_t dataH=0;
 	
@@ -528,7 +528,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	}
 	
 	dataH &= (0x7F);
-	StepCounterA= dataH;		// HByte
+	StepCounterA = dataH;		// HByte
 	StepCounterA <<= 8;		// shift 8
 	StepCounterA += dataL;	// +LByte
 	
@@ -537,11 +537,13 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	
 	
 	DelayA = delayH;
-	DelayA <<=8;
+	DelayA <<= 8;
 	DelayA += delayL;
 	
+   CounterA = DelayA;
+   
 	// Motor B
-	CounterB=0;
+	//CounterB=0;
 	STEPPERPORT_1 &= ~(1<<MB_EN);	// Pololu ON
 	dataL=AbschnittDaten[2];
 	dataH=AbschnittDaten[3];
@@ -561,16 +563,17 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	}
 	
 	dataH &= (0x7F);
-	StepCounterB= dataH;		// HByte
+	StepCounterB = dataH;		// HByte
 	StepCounterB <<= 8;		// shift 8
 	StepCounterB += dataL;	// +LByte
 	
 	DelayB = (AbschnittDaten[7]<<8)+ AbschnittDaten[6];
    
+   CounterB = DelayB;
    
 	// Motor C
 	STEPPERPORT_2 &= ~(1<<MC_EN); // Pololu ON
-	CounterC=0;
+	//CounterC=0;
 	dataL=0;
 	dataH=0;
 	
@@ -593,7 +596,7 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	}
 	
 	dataH &= (0x7F);
-	StepCounterC= dataH;		// HByte
+	StepCounterC = dataH;		// HByte
 	StepCounterC <<= 8;		// shift 8
 	StepCounterC += dataL;	// +LByte
    
@@ -605,18 +608,19 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	DelayC <<=8;
 	DelayC += delayL;
    
+   CounterC = DelayC;
    
    // Motor D
 	STEPPERPORT_2 &= ~(1<<MD_EN); // Pololu ON
-	CounterD=0;
+	//CounterD=0;
 	dataL=0;
 	dataH=0;
 	
-	delayL=0;
-	delayH=0;
+	delayL = 0;
+	delayH = 0;
 	
-	dataL=AbschnittDaten[10];
-	dataH=AbschnittDaten[11];
+	dataL = AbschnittDaten[10];
+	dataH = AbschnittDaten[11];
    
 	if (dataH & (0x80)) // Bit 7 gesetzt, negative zahl
 	{
@@ -639,12 +643,14 @@ uint8_t  AbschnittLaden(const uint8_t* AbschnittDaten) // 22us
 	delayH=AbschnittDaten[15];
    
 	DelayD = delayH;
-	DelayD <<=8;
+	DelayD <<= 8;
 	DelayD += delayL;
    
-   //  PWM = AbschnittDaten[20];
+   CounterD = DelayD;
    
-   motorstatus=AbschnittDaten[21];
+     PWM = AbschnittDaten[20];
+   
+   motorstatus = AbschnittDaten[21];
    return returnwert;
    
    // Nicht mehr verwendet, wird in Stepper berechnet
@@ -759,8 +765,8 @@ void AnschlagVonMotor(const uint8_t motor)
                //STEPPERPORT_2 |= (1<<(MA_EN + motor + 2)); // Paralleler Motor 2,3 OFF
                StepCounterA=0;
                StepCounterB=0;
-               CounterA=0;
-               CounterB=0;
+               CounterA=0xFFFF;
+               CounterB=0xFFFF;
                
             }
             else // Stepperport 2
@@ -769,8 +775,8 @@ void AnschlagVonMotor(const uint8_t motor)
                //STEPPERPORT_1 |= (1<<(MA_EN + motor - 2)); // Paralleler Motor 0,1 OFF
                StepCounterC=0;
                StepCounterD=0;
-               CounterC=0;
-               CounterD=0;
+               CounterC=0xFFFF;
+               CounterD=0xFFFF;
             }
             //cncstatus &= ~(1<<GO_HOME);
             
@@ -797,10 +803,10 @@ void AnschlagVonMotor(const uint8_t motor)
             StepCounterC=0;
             StepCounterD=0;
             
-            CounterA=0;
-            CounterB=0;
-            CounterC=0;
-            CounterD=0;
+            CounterA=0xFFFF;
+            CounterB=0xFFFF;
+            CounterC=0xFFFF;
+            CounterD=0xFFFF;
             
             ladeposition=0;
             motorstatus=0;
@@ -860,26 +866,50 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A - D   52 us
       
    }
    
+   sendbuffer[16]=StepCounterA & 0xFF;
+   sendbuffer[17]=StepCounterB & 0xFF;
+   sendbuffer[18]=StepCounterC & 0xFF;
+   sendbuffer[19]=StepCounterD & 0xFF;
+
    
    //   STEPPERPORT_1 |= (1<<(MA_EN + motor));
-   
+   if (StepCounterA)
+   {
+      StepCounterA=1;
+   }
    StepCounterA=0;
+   
+   if (StepCounterB)
+   {
+      StepCounterB=1;
+   }
+
    StepCounterB=0;
-   CounterA=0;
-   CounterB=0;
    
-   
+   CounterA=0xFFFF;
+   CounterB=0xFFFF;
+      
    //   STEPPERPORT_2 |= (1<<(MA_EN + motor -2));
+   if (StepCounterC)
+   {
+      StepCounterC=1;
+   }
    StepCounterC=0;
+
+   if (StepCounterD)
+   {
+      StepCounterD=1;
+   }
    StepCounterD=0;
-   CounterC=0;
-   CounterD=0;
+   
+   CounterC=0xFFFF;
+   CounterD=0xFFFF;
    
    OSZI_B_LO;
    if (abschnittnummer==endposition) // Serie fertig
    {  
       ringbufferstatus = 0;
-      //         anschlagstatus=0;
+      //anschlagstatus=0;
       anschlagstatus &= ~(1<< (END_A0 + motor)); // Bit fuer Anschlag A0 zuruecksetzen
       motorstatus=0;
       //sendbuffer[0]=0xAA + motor;
@@ -1241,12 +1271,12 @@ int main (void)
                abschnittnummer += indexl;
                
                // PWM lesen
-               PWM = buffer[20];
+ //              PWM = buffer[20];
                
                
                if (abschnittnummer==0) // neue Datenreihe
                {
-                  PWM = 0;
+//                  PWM = 0;
                   ladeposition=0;
                   endposition=0xFFFF;
                   anschlagstatus=0;
@@ -1473,7 +1503,9 @@ int main (void)
       // * Motor A *
       // **************************************
       // Es hat noch Steps, CounterA ist abgezaehlt (Ende des aktuellen Impulses, DelayA bestimmt Impulsabstand fuer Steps) 
-      if (StepCounterA && (CounterA >= DelayA) &&(!((anschlagstatus & (1<< END_A0)))))
+ //     if (StepCounterA && (CounterA >= DelayA) &&(!((anschlagstatus & (1<< END_A0)))))
+ 
+      if (StepCounterA && (CounterA==0) &&(!((anschlagstatus & (1<< END_A0)))))
 		{
          OSZI_A_LO;
          
@@ -1481,8 +1513,10 @@ int main (void)
          // Impuls einschalten
 			STEPPERPORT_1 &= ~(1<<MA_STEP);					// Impuls an Motor A LO ON
 			OSZI_C_LO;
-         CounterA=0;
+         
 			StepCounterA--;
+         
+         CounterA = DelayA;
          
 			if (StepCounterA ==0)
          {
@@ -1519,12 +1553,12 @@ int main (void)
       // * Motor B *
       // **************************************
       
-		if (StepCounterB && (CounterB >= DelayB) &&(!((anschlagstatus & (1<< END_B0)))))
+		if (StepCounterB && (CounterB ==0) &&(!((anschlagstatus & (1<< END_B0)))))
 		{
          //cli();
          //lcd_putc('B');
          STEPPERPORT_1 &= ~(1<<MB_STEP);                         // Impuls an Motor B LO ON
-			CounterB=0;
+			CounterB= DelayB;
 			StepCounterB--;
          
 			if (StepCounterB ==0)
@@ -1558,13 +1592,13 @@ int main (void)
       // * Motor C *
       // **************************************
 		
-      if (StepCounterC && (CounterC >= DelayC) &&(!((anschlagstatus & (1<< END_C0)))))
+      if (StepCounterC && (CounterC ==0) &&(!((anschlagstatus & (1<< END_C0)))))
 		{
          //cli();
          //lcd_putc('C');
          OSZI_D_LO;
 			STEPPERPORT_2 &= ~(1<<MC_STEP);					// Impuls an Motor C LO ON
-			CounterC=0;
+			CounterC = DelayC;
 			StepCounterC--;
          
 			if (StepCounterC ==0 && (motorstatus & (1<< COUNT_C))) // Motor C ist relevant fuer Stepcount 
@@ -1596,13 +1630,13 @@ int main (void)
       // **************************************
       // * Motor D *
       // **************************************
-      if (StepCounterD && (CounterD >= DelayD) &&(!((anschlagstatus & (1<< END_D0)))))
+      if (StepCounterD && (CounterD ==0) &&(!((anschlagstatus & (1<< END_D0)))))
 		{
          //cli();
          //lcd_putc('D');
          
 			STEPPERPORT_2 &= ~(1<<MD_STEP);					// Impuls an Motor D LO ON
-			CounterD=0;
+			CounterD= DelayD;
 			StepCounterD--;
          
 			if (StepCounterD ==0 && (motorstatus & (1<< COUNT_D))) // Motor D ist relevant fuer Stepcount 
