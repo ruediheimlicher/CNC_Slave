@@ -184,10 +184,10 @@ volatile uint8_t           liniencounter= 0;
 #define COUNT_C				2        // Motorstatus:   Schritte von Motor C zaehlen
 #define COUNT_D				3        // Motorstatus:   Schritte von Motor D zaehlen
 
-#define STEPEND_A          4        // Motor A hat einde der Steps erreicht
-#define STEPEND_B          5
-#define STEPEND_C          6
-#define STEPEND_D          7
+#define STEPEND_A          0x80      // Motor A hat Ende der Steps erreicht. Bit 7 zeigt an, dass stepend bearbeitet werden muss
+#define STEPEND_B          0x90
+#define STEPEND_C          0xA0
+#define STEPEND_D          0xB0
 
 #define USB_DATENBREITE    32
 #define USB_SEND           0
@@ -852,11 +852,14 @@ void AnschlagVonMotor(const uint8_t motor)
 }
 
 
-void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A - D   52 us
+void StepEndVonMotor(const uint8_t derstatus) // 0 - 3 fuer A - D   52 us
 {
-   
+   uint8_t motor = (derstatus & 0x30)>>4;
+   //uint8_t motor = derstatus ;
+   //motor=0;
    //   STEPPERPORT_1 |= (1<<(MA_EN + motor));					// Motor A... OFF
    
+  
    if (motor < 2)
    {
       //      STEPPERPORT_1 |= (1<<(MA_EN + motor));
@@ -875,7 +878,9 @@ void StepEndVonMotor(const uint8_t motor) // 0 - 3 fuer A - D   52 us
    sendbuffer[17]=StepCounterB & 0xFF;
    sendbuffer[18]=StepCounterC & 0xFF;
    sendbuffer[19]=StepCounterD & 0xFF;
-
+   sendbuffer[20]=derstatus;
+   sendbuffer[21]=motor;
+   sendbuffer[22]=motorstatus;
    
    //   STEPPERPORT_1 |= (1<<(MA_EN + motor));
    if (StepCounterA)
@@ -1528,8 +1533,9 @@ int main (void)
             
             if (motorstatus & (1<< COUNT_A)) // Motor A ist relevant fuer Stepcount 
             {				
-               
-               StepEndVonMotor(0);
+               motorstatus |= STEPEND_A;
+               //motorstatus = 0x30;
+               //StepEndVonMotor(motorstatus);
                
             }
          }
@@ -1571,8 +1577,8 @@ int main (void)
             //StepCounterB=0;
             if(motorstatus & (1<< COUNT_B)) // Motor B ist relevant fuer Stepcount 
             {
-               
-               StepEndVonMotor(1);
+               motorstatus |= STEPEND_B;
+               //StepEndVonMotor(motorstatus);
                
                
             }
@@ -1608,8 +1614,8 @@ int main (void)
          
 			if (StepCounterC ==0 && (motorstatus & (1<< COUNT_C))) // Motor C ist relevant fuer Stepcount 
 			{            
-            
-            StepEndVonMotor(2);
+            motorstatus |= STEPEND_C;
+            //StepEndVonMotor(motorstatus);
             
          }
          
@@ -1646,8 +1652,8 @@ int main (void)
          
 			if (StepCounterD ==0 && (motorstatus & (1<< COUNT_D))) // Motor D ist relevant fuer Stepcount 
 			{
-            
-				StepEndVonMotor(3);
+            motorstatus |= STEPEND_D;
+				//StepEndVonMotor(motorstatus);
             
          }
          
@@ -1668,7 +1674,11 @@ int main (void)
       // * End Motor D *
       // ***************
       
-      
+      if (motorstatus & 0x80)
+          {
+             StepEndVonMotor(motorstatus);
+             motorstatus &= ~0xF0;
+          }
 		sei(); 
       
 		/**	Ende CNC-routinen	***********************/
