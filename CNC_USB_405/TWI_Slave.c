@@ -141,6 +141,8 @@ volatile uint8_t           liniencounter= 0;
 #define LOAD_LAST    6  // Bit fuer Laden des letzten Abschnitts in der loop
 
 
+
+
 #define STEPPERPORT_1	PORTC
 #define STEPPERDDR_1    DDRC
 #define STEPPERPIN_1    PINC
@@ -182,7 +184,10 @@ volatile uint8_t           liniencounter= 0;
 #define COUNT_C				2        // Motorstatus:   Schritte von Motor C zaehlen
 #define COUNT_D				3        // Motorstatus:   Schritte von Motor D zaehlen
 
-
+#define STEPEND_A          4        // Motor A hat einde der Steps erreicht
+#define STEPEND_B          5
+#define STEPEND_C          6
+#define STEPEND_D          7
 
 #define USB_DATENBREITE    32
 #define USB_SEND           0
@@ -1662,6 +1667,7 @@ int main (void)
       // ***************
       // * End Motor D *
       // ***************
+      
       
 		sei(); 
       
