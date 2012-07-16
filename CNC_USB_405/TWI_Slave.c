@@ -1528,17 +1528,21 @@ int main (void)
          
          CounterA = DelayA;
          
-			if (StepCounterA ==0)
+			if (StepCounterA ==0) // Jetzt ist StepCounter abgezaehlt
          {
             
             if (motorstatus & (1<< COUNT_A)) // Motor A ist relevant fuer Stepcount 
             {				
                motorstatus |= STEPEND_A;
                //motorstatus = 0x30;
-               //StepEndVonMotor(motorstatus);
+               //StepEndVonMotor(motorstatus); >> erst am Schluss
                
             }
          }
+         
+         
+         
+         
          OSZI_A_HI;
          
 			//sei();
@@ -1664,7 +1668,7 @@ int main (void)
 			STEPPERPORT_2 |= (1<<MD_STEP);
 			if (StepCounterD ==0)							// Keine Steps mehr fuer Motor D
 			{
-				//STEPPERPORT_2 |= (1<<MD_EN);					// Motor D OFF            
+				//STEPPERPORT_2 |= (1<<MD_EN);					// Motor D OFF > erst nach letztem Abschnitt           
 			}
 			
 		}
